@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using __Scripts.Systems;
 using UnityEngine;
 using UnityEngine.UI;
     
@@ -31,7 +32,8 @@ public class MenuPanel : MonoBehaviour
         ArcherPanel.gameObject.SetActive(false);
         MagePanel.gameObject.SetActive(false);
         EquipPanel.gameObject.SetActive(false);
-        
+
+        AudioSystem.Instance.PlayMenuSelectSound();
         switch(panel)
         {
             case EMenuPanel.Warrior:

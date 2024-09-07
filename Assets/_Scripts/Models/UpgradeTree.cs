@@ -27,7 +27,6 @@ namespace _Scripts.Models
                     return false;
                 }
             }
-
             return true;
         }
     }
