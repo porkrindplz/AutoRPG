@@ -28,6 +28,11 @@ public class GameManager : Singleton<GameManager>
     /// is the target of the action, which may be itself.
     /// </summary>
     public Action<EntityBehaviour, EntityBehaviour, GameAction> OnAction;
+
+    /// <summary>
+    /// Emitted anytime an entity gets an upgrade
+    /// </summary>
+    public Action<EntityBehaviour, Upgrade> OnUpgraded;
     
     public Dictionary<string, IGameAction> AllActions { get; set; }
 

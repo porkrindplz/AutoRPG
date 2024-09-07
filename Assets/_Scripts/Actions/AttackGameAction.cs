@@ -5,6 +5,8 @@ namespace _Scripts.Actions
 {
     public class AttackGameAction : IGameAction
     {
+        public GameAction GameAction { get; set; }
+
         public void Interact(Entity actor, Entity actee)
         {
             // TODO: make this more interesting
