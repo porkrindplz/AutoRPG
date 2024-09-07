@@ -1,0 +1,15 @@
+{
+  "Enemies": [
+    {
+      "Name": "Goblin",
+      "MaxHealth": 50,
+      "MaxMagic": 10,
+      "BaseAtk": 5,
+      "BaseDef": 4,
+      "Speed": 1,
+      "Actions": ["attack", "block"],
+      "ActionWeights": [4, 1],
+      "SpritePath": ""
+    }
+  ]
+}

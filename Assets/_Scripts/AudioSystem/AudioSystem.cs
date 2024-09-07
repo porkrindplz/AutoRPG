@@ -63,7 +63,7 @@ namespace __Scripts.Systems
             ChangeVolume(AudioType.SFX, _sfxVolume);
             ChangeVolume(AudioType.Main, _mainVolume);
 
-            PlayCombatMusic();
+            //PlayCombatMusic();
         }
         
         public void PlayCombatMusic()

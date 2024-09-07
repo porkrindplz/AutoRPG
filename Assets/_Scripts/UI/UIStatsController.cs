@@ -22,12 +22,12 @@ namespace _Scripts.UI
 
         private void OnDestroy()
         {
-            GameManager.Instance.OnUpgraded -= OnUpgraded;
         }
 
         void OnUpgraded(EntityBehaviour entityBehaviour, Upgrade upgrade)
         {
-            if (entityBehaviour.Entity.IsPlayer != isPlayer) return;
+            if ((entityBehaviour.Entity is Player && isPlayer == false) ||
+                (entityBehaviour.Entity is Enemy && isPlayer)) return;
             
             statText.text = $"Health: {(int)entityBehaviour.Entity.CurrentHealth}/{(int)entityBehaviour.Entity.MaxHealth}\n" +
                             $"Attack: {(int)entityBehaviour.Entity.GetTotalAttack()}" +

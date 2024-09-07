@@ -10,8 +10,8 @@ namespace _Scripts.Actions
         public void Interact(Entity actor, Entity actee)
         {
             // TODO: make this more interesting
-            var totalDamage = Math.Max(actor.GetTotalAttack() - actor.GetTotalDefense(), 0);
-            actee.CurrentHealth -= totalDamage;
+            //var totalDamage = Math.Max(actor.GetTotalAttack() - actor.GetTotalDefense(), 0);
+            //actee.CurrentHealth -= totalDamage;
         }
     }
 }
