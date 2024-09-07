@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _Scripts.Utilities;
 using UnityEngine;
 using System;
+using System.Linq;
 using _Scripts.Actions;
 using _Scripts.Entities;
 using _Scripts.Managers;
@@ -48,14 +49,32 @@ public class GameManager : Singleton<GameManager>
 
     protected override void Awake()
     {
-        AllActions = new Dictionary<string, IGameAction>()
-        {
-            { "Attack", new AttackGameAction() },
-            { "Cum", new AttackGameAction() }
-        };
+        LoadActions();
         base.Awake();
     }
-    
+
+    private void LoadActions()
+    {
+        AllActions = new Dictionary<string, IGameAction>()
+        {
+            { "attack", new AttackGameAction() },
+            { "block", new BlockGA() }
+        };
+        var allActions = Resources.LoadAll<GameAction>("Actions").ToList();
+        foreach (var action in AllActions)
+        {
+            AllActions[action.Key].GameAction = allActions.FirstOrDefault(a => a.Name == action.Key);
+        }
+    }
+
+    protected void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            EnemyManager.Instance.SpawnEnemy();
+        }
+    }
+
     public void ChangeGameState(EGameState newState)
     {
         OnBeforeGameStateChanged?.Invoke(CurrentGameState, newState);
