@@ -12,16 +12,16 @@ namespace _Scripts.Utilities
             {
                 case ElementsType.Fire:
                     return Color.red;
-                case ElementsType.Water:
-                    return Color.blue;
+                //case ElementsType.Water:
+                //    return Color.blue;
                 case ElementsType.Earth:
                     return Color.green;
                 case ElementsType.Ice:
                     return Color.cyan;
-                case ElementsType.Electric:
-                    return Color.yellow;
-                case ElementsType.Poison:
-                    return Color.magenta;
+                // case ElementsType.Electric:
+                //     return Color.yellow;
+                // case ElementsType.Poison:
+                //     return Color.magenta;
                 default:
                     return Color.white;
             }

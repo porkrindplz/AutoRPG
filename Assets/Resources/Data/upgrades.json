@@ -1,0 +1,138 @@
+{
+  "Paladin": {
+    "Upgrades": [
+      {
+        "Id": "block",
+        "Name": "Block",
+        "Description": "",
+        "MaxUpgrades": 2,
+        "Prerequisites": [],
+        "Children": [
+          "enchant_holy",
+          "shield_bash",
+          "resist_fire",
+          "resist_ice",
+          "resist_earth"
+        ]
+      },
+      {
+        "Id": "enchant_holy",
+        "Name": "Enchant Holy",
+        "Description": "",
+        "MaxUpgrades": 2,
+        "Prerequisites": ["block"],
+        "Children": [],
+        "Effects": [
+          {
+            "Attribute": "Holy",
+            "Value": 50
+          }
+        ]
+      },
+      {
+        "Id": "shield_bash",
+        "Name": "Shield Bash",
+        "Description": "",
+        "MaxUpgrades": 1,
+        "Prerequisites": ["block"],
+        "Children": []
+      },
+      {
+        "Id": "resist_fire",
+        "Name": "Resist Fire",
+        "Description": "",
+        "MaxUpgrades": 3,
+        "Prerequisites": ["block"],
+        "Children": [],
+        "ExclusiveWith": ["resist_ice", "resist_earth"],
+        "Effects": [
+          {
+            "Attribute": "Fire",
+            "Value": 50
+          },
+          {
+            "Attribute": "Ice",
+            "Value": -50
+          }
+        ]
+      },
+      {
+        "Id": "resist_ice",
+        "Name": "Resist Fire",
+        "Description": "",
+        "MaxUpgrades": 3,
+        "Prerequisites": ["block"],
+        "Children": [],
+        "ExclusiveWith": ["resist_fire", "resist_earth"],
+        "Effects": [
+          {
+            "Attribute": "Ice",
+            "Value": 50
+          },
+          {
+            "Attribute": "Earth",
+            "Value": -50
+          }
+        ]
+      },
+      {
+        "Id": "resist_earth",
+        "Name": "Resist Earth",
+        "Description": "",
+        "MaxUpgrades": 3,
+        "Prerequisites": ["block"],
+        "Children": [],
+        "ExclusiveWith": ["resist_fire", "resist_ice"],
+        "Effects": [
+          {
+            "Attribute": "Earth",
+            "Value": 50
+          },
+          {
+            "Attribute": "Fire",
+            "Value": -50
+          }
+        ]
+      }
+    ]
+  },
+  "Warrior": {
+    "Upgrades": [
+      {
+        "Id": "sword",
+        "Name": "Sword",
+        "Description": "",
+        "MaxUpgrades": 3,
+        "Prerequisites": [],
+        "Children": ["slash", "whirlwind"]
+      },
+      {
+        "Id": "slash",
+        "Name": "Sword",
+        "Description": "",
+        "MaxUpgrades": 3,
+        "Prerequisites": ["sword"],
+        "Children": ["suplex"],
+        "ExclusiveWith": ["whirlwind"]
+      },
+      {
+        "Id": "whirlwind",
+        "Name": "Whirlwind",
+        "Description": "",
+        "MaxUpgrades": 3,
+        "Prerequisites": ["sword"],
+        "Children": ["suplex"],
+        "ExclusiveWith": ["slash"]
+      },
+      {
+        "Id": "suplex",
+        "Name": "Sword",
+        "Description": "",
+        "MaxUpgrades": 3,
+        "Prerequisites": ["slash", "whirlwind"],
+        "Children": []
+      }
+    ]
+  }
+    
+}

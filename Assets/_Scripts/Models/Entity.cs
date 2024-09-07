@@ -19,10 +19,10 @@ namespace _Scripts.Models
 
         public List<Upgrade> Upgrades = new();
 
-        public double GetTotalAttack() => GetTotal(BaseAtk, "Attack");
-        public double GetTotalDefense() => GetTotal(BaseDef, "Defense");
+        //ublic double GetTotalAttack() => GetTotal(BaseAtk, "Attack");
+        //public double GetTotalDefense() => GetTotal(BaseDef, "Defense");
 
-        public double GetStatAdditions(string upgradeAttribute)
+        /*public double GetStatAdditions(string upgradeAttribute)
         {
             var bonuses = Upgrades.Where(u => u.UpgradeEffect.Attribute == upgradeAttribute);
             return bonuses.Where(ab => ab.UpgradeEffect.Operation == "add")
@@ -44,6 +44,6 @@ namespace _Scripts.Models
             baseStat += GetStatAdditions(upgradeAttribute);
             var multipliers = GetMultiplier(upgradeAttribute);
             return baseStat * multipliers;
-        }
+        }*/
     }
 }

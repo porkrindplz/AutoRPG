@@ -1,12 +1,21 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace _Scripts.Models
 {
 
+    [Serializable]
+    public class AllTrees
+    {
+        public UpgradeTree Warrior;
+        public UpgradeTree Paladin;
+    }
+    
+    [Serializable]
     public class UpgradeTree
     {
-        public List<Upgrade> Upgrades { get; set; } = new List<Upgrade>();
+        public List<Upgrade> Upgrades;
 
         /// <summary>
         /// Checks if the given hero's upgrades allows for the new upgrade to be chosen.
@@ -31,10 +40,11 @@ namespace _Scripts.Models
         }
     }
 
+    [Serializable]
     public class Effect
     {
-        public string Attribute { get; set; }
-        public double Value { get; set; }
-        public string Operation { get; set; }
+        public string Attribute;
+        public double Value;
+        public string Operation;
     }
 }

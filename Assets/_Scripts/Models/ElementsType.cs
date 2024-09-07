@@ -5,9 +5,8 @@ namespace _Scripts.Models
         None,
         Fire,
         Ice,
-        Water,
         Earth,
-        Poison,
-        Electric
+        Holy,
+        Death
     }
 }

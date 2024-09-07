@@ -41,15 +41,15 @@ public class GameManager : Singleton<GameManager>
     public Dictionary<string, IGameAction> AllActions { get; set; }
     public AutoAction AutoAction;
     public EnemyManager EnemyManager;
+
+    public AllTrees AllTrees;
     
-    
-    public UpgradeTree WarriorTree;
-    public UpgradeTree WizardTree;
     public EGameState CurrentGameState { get; private set; }
 
     protected override void Awake()
     {
         LoadActions();
+        LoadUpgradeTrees();
         base.Awake();
     }
 
@@ -70,6 +70,12 @@ public class GameManager : Singleton<GameManager>
         {
             AllActions[action.Key].GameAction = allActions.FirstOrDefault(a => a.Name == action.Key);
         }
+    }
+
+    private void LoadUpgradeTrees()
+    {
+        var text = Resources.Load<TextAsset>("Data/upgrades");
+        AllTrees = JsonUtility.FromJson<AllTrees>(text.text);
     }
 
     protected void Update()

@@ -13,7 +13,7 @@ namespace _Scripts.Actions
         public void Interact(Entity actor, Entity actee)
         {
             // TODO: make this more interesting
-            var totalDamage = Math.Max(actor.GetTotalAttack() - actor.GetTotalDefense(), 0);
+            var totalDamage = Math.Max(actor.BaseAtk - actor.BaseDef, 0);
             Value = totalDamage;
             actee.CurrentHealth -= totalDamage;
         }

@@ -30,8 +30,8 @@ namespace _Scripts.UI
                 (entityBehaviour.Entity is Enemy && isPlayer)) return;
             
             statText.text = $"Health: {(int)entityBehaviour.Entity.CurrentHealth}/{(int)entityBehaviour.Entity.MaxHealth}\n" +
-                            $"Attack: {(int)entityBehaviour.Entity.GetTotalAttack()}" +
-                            $"Defense: {(int)entityBehaviour.Entity.GetTotalDefense()}" +
+                            $"Attack: {(int)entityBehaviour.Entity.BaseAtk}" +
+                            $"Defense: {(int)entityBehaviour.Entity.BaseDef}" +
                             $"Speed: {entityBehaviour.Entity.Speed}";
             var resText = "Resistances\n";
             foreach (var element in Enum.GetValues(typeof(ElementsType)).Cast<ElementsType>())
