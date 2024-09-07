@@ -108,7 +108,7 @@
       },
       {
         "Id": "slash",
-        "Name": "Sword",
+        "Name": "Slash",
         "Description": "",
         "MaxUpgrades": 3,
         "Prerequisites": ["sword"],
@@ -126,7 +126,7 @@
       },
       {
         "Id": "suplex",
-        "Name": "Sword",
+        "Name": "Suplex",
         "Description": "",
         "MaxUpgrades": 3,
         "Prerequisites": ["slash", "whirlwind"],

@@ -27,9 +27,10 @@ namespace _Scripts.UI
         }
         private void OnDisable()
         {
-            GameManager.Instance.OnAction -= GenerateStatusText;
+            if(GameManager.Instance!=null)
+                GameManager.Instance.OnAction -= GenerateStatusText;
         }
-
+    
         void UpdateDisplay(EntityBehaviour entity, string value, Color color)
         {
             var text = Instantiate(textPrefab, parentCanvas.transform);
