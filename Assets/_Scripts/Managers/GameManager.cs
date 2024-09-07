@@ -5,6 +5,7 @@ using UnityEngine;
 using System;
 using _Scripts.Actions;
 using _Scripts.Entities;
+using _Scripts.Managers;
 using _Scripts.Models;
 using Logger = _Scripts.Utilities.Logger;
 
@@ -13,9 +14,11 @@ public enum EGameState
 {
     MainMenu,
     SetupGame,
+    SpawnEnemy,
     Playing,
     EnemyDefeated,
     PlayerDefeated,
+    Walking,
     Paused,
 }
 public class GameManager : Singleton<GameManager>
@@ -27,7 +30,7 @@ public class GameManager : Singleton<GameManager>
     /// Emitted anytime that an action is taken by a player. The first entity emits the action, the second
     /// is the target of the action, which may be itself.
     /// </summary>
-    public Action<EntityBehaviour, EntityBehaviour, GameAction> OnAction;
+    public Action<EntityBehaviour, EntityBehaviour, IGameAction> OnAction;
 
     /// <summary>
     /// Emitted anytime an entity gets an upgrade
@@ -35,7 +38,10 @@ public class GameManager : Singleton<GameManager>
     public Action<EntityBehaviour, Upgrade> OnUpgraded;
     
     public Dictionary<string, IGameAction> AllActions { get; set; }
-
+    public AutoAction AutoAction;
+    public EnemyManager EnemyManager;
+    
+    
     public UpgradeTree WarriorTree;
     public UpgradeTree WizardTree;
     public EGameState CurrentGameState { get; private set; }
@@ -92,10 +98,16 @@ public class GameManager : Singleton<GameManager>
         //Load trees
         //Load Enemy
     }
+    private void HandleSpawnEnemy()
+    {
+        DisableAllInput();
+        EnemyManager.SpawnEnemy();
+    }
 
     private void HandlePlaying()
     {
         DisableAllInput();
+        AutoAction.enabled = true;
 
         //Enable play inputs
     }
@@ -113,6 +125,12 @@ public class GameManager : Singleton<GameManager>
         DisableAllInput();
         
         //Enable Gameover UI & Inputs
+    }
+
+    private void HandleWalking()
+    {
+        DisableAllInput();
+        //Enable play inputs
     }
 
     private void HandlePaused()

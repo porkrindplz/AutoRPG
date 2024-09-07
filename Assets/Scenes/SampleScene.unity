@@ -1554,9 +1554,9 @@ GameObject:
   m_Component:
   - component: {fileID: 606377402}
   - component: {fileID: 606377406}
-  - component: {fileID: 606377405}
   - component: {fileID: 606377404}
   - component: {fileID: 606377403}
+  - component: {fileID: 606377407}
   m_Layer: 5
   m_Name: ActionPanel
   m_TagString: Untagged
@@ -1631,36 +1631,6 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &606377405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 606377401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.2991723, g: 0.764151, b: 0.3958149, a: 0.392}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &606377406
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1669,6 +1639,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606377401}
   m_CullTransparentMesh: 1
+--- !u!114 &606377407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606377401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7cd7fa101930f643889e46c696c0ee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textPrefab: {fileID: 9219365534660583725, guid: 2ee2c8b503548ef449fac0928ae6c2e8, type: 3}
 --- !u!1 &618426492
 GameObject:
   m_ObjectHideFlags: 0
@@ -2662,6 +2645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3261670e94f729e49af9c549edb9a637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 0}
 --- !u!4 &860623984
 Transform:
   m_ObjectHideFlags: 0
@@ -2914,7 +2898,6 @@ GameObject:
   m_Component:
   - component: {fileID: 926144348}
   - component: {fileID: 926144351}
-  - component: {fileID: 926144350}
   - component: {fileID: 926144349}
   m_Layer: 5
   m_Name: ParentPanel
@@ -2970,36 +2953,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &926144350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 926144347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &926144351
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3349,7 +3302,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statText: {fileID: 1554425964}
-  IsPlayer: 0
+  resistanceText: {fileID: 0}
+  isPlayer: 0
 --- !u!1 &1092834468
 GameObject:
   m_ObjectHideFlags: 0
@@ -5981,7 +5935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.3647059}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6711,7 +6665,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statText: {fileID: 1273544102}
-  IsPlayer: 1
+  resistanceText: {fileID: 0}
+  isPlayer: 0
 --- !u!1 &1942172340
 GameObject:
   m_ObjectHideFlags: 0

@@ -44,7 +44,7 @@ public class AutoAction : MonoBehaviour
             var processedAction = GameManager.Instance.AllActions[takenAction.Name];
             var actee = takenAction.IsSelfTargetting ? currentEntity : opposingEntity;
             processedAction?.Interact(currentEntity.Entity, actee.Entity);
-            GameManager.Instance.OnAction?.Invoke(currentEntity, actee, takenAction);
+            GameManager.Instance.OnAction?.Invoke(currentEntity, actee, processedAction);
             ActionQueue.Enqueue(_weighter.SelectItem(possibleActions, weights));
         }
     }
