@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using _Scripts.Utilities;
 using UnityEngine;
 using System;
+using _Scripts.Actions;
+using _Scripts.Entities;
+using _Scripts.Models;
 using Logger = _Scripts.Utilities.Logger;
 
 
@@ -19,7 +22,28 @@ public class GameManager : Singleton<GameManager>
 {
     public event Action<EGameState,EGameState> OnBeforeGameStateChanged;
     public event Action<EGameState,EGameState> OnAfterGameStateChanged;
+    
+    /// <summary>
+    /// Emitted anytime that an action is taken by a player. The first entity emits the action, the second
+    /// is the target of the action, which may be itself.
+    /// </summary>
+    public Action<EntityBehaviour, EntityBehaviour, GameAction> OnAction;
+    
+    public Dictionary<string, IGameAction> AllActions { get; set; }
+
+    public UpgradeTree WarriorTree;
+    public UpgradeTree WizardTree;
     public EGameState CurrentGameState { get; private set; }
+
+    protected override void Awake()
+    {
+        AllActions = new Dictionary<string, IGameAction>()
+        {
+            { "Attack", new AttackGameAction() },
+            { "Cum", new AttackGameAction() }
+        };
+        base.Awake();
+    }
     
     public void ChangeGameState(EGameState newState)
     {
