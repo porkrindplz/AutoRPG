@@ -20,8 +20,6 @@ MonoBehaviour:
   speed: 1
   actions:
   - attack
-  - block
   actionWeights:
   - 4
-  - 1
   sprite: {fileID: 0}

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using _Scripts.Actions;
 using _Scripts.Entities;
@@ -9,7 +10,16 @@ namespace _Scripts.UI
 {
     public class ResultTextSpawner : MonoBehaviour
     {
+        
         [SerializeField] private TextMeshProUGUI textPrefab;
+        [SerializeField] private float shiftDistance;
+        private Canvas parentCanvas;
+        
+        
+        private void Awake()
+        {
+            parentCanvas = FindObjectOfType<Canvas>();
+        }
 
         private void OnEnable()
         {
@@ -22,7 +32,7 @@ namespace _Scripts.UI
 
         void UpdateDisplay(EntityBehaviour entity, string value, Color color)
         {
-            var text = Instantiate(textPrefab, transform);
+            var text = Instantiate(textPrefab, parentCanvas.transform);
 
             text.color = color;
             text.text = value;
@@ -56,8 +66,8 @@ namespace _Scripts.UI
             while (value < 1)
             {
                 value += Time.deltaTime;
-                text.transform.localScale = initScale*value;
-                text.rectTransform.position = new Vector2(initPosition.x, initPosition.y + value);
+                text.transform.localScale = initScale*(value + 0.25f);
+                text.transform.position = new Vector2(initPosition.x, initPosition.y + value*shiftDistance);
                 yield return null;
             }
             yield return new WaitForSeconds(.5f);

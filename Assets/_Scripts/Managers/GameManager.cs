@@ -53,6 +53,11 @@ public class GameManager : Singleton<GameManager>
         base.Awake();
     }
 
+    protected void Start()
+    {
+        ChangeGameState(EGameState.SetupGame);
+    }
+
     private void LoadActions()
     {
         AllActions = new Dictionary<string, IGameAction>()
