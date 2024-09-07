@@ -1,26 +1,11 @@
 using System.Collections;
+using _Scripts.Models;
 using _Scripts.Utilities;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace __Scripts.Systems
 {
-    public enum AudioEnemy
-    {
-        Shoot,
-        Hit,
-        Die,
-        Alert,
-    }
-    public enum AudioPlayer
-    {
-        Shoot,
-        Melee,
-        Hit,
-        Die,
-        Pickup,
-        ShieldHit,
-        Dash,
-    }
 
     public enum AudioType
     {
@@ -31,10 +16,10 @@ namespace __Scripts.Systems
 
     public class AudioSystem : Singleton<AudioSystem>
     {
-        private AudioSource _musicSourceEnviro;
-        private Coroutine _musicEnviroTransition;
         private AudioSource _musicSourceCombat;
         private Coroutine _musicCombatTransition;
+        private AudioSource _musicSourceDire;
+        private Coroutine _musicDireTransition;
         private AudioSource _sfxSource;
 
         [SerializeField][Range(0, 1)] private float _mainVolume = 0.5f;
@@ -46,21 +31,31 @@ namespace __Scripts.Systems
 
         [Header("Music")]
         [SerializeField] private AudioClip _menuMusic;
-        [SerializeField] private AudioClip[] _enviroMusic;
-        [SerializeField] bool _playEnviroMusicOnStart = true;
         [SerializeField] private AudioClip[] _combatMusic;
+        [SerializeField] bool _playCombatMusicOnStart = true;
+        [SerializeField] private AudioClip[] _direMusic;
 
         [Header("General SFX")]
         [SerializeField] private AudioClip _selectSound;
         [SerializeField] private AudioClip _confirmSound;
 
+        [Header("Game Action SFX")] 
+        [SerializeField] private AudioClip[] _noneSounds;
+        [SerializeField] private AudioClip[] _fireSounds;
+        [SerializeField] private AudioClip[] _iceSounds;
+        [SerializeField] private AudioClip[] _waterSounds;
+        [SerializeField] private AudioClip[] _earthSounds;
+        [SerializeField] private AudioClip[] _poisonSounds;
+        [SerializeField] private AudioClip[] _electricSounds;
+        
+
         private void OnEnable()
         {
-            _musicSourceEnviro = gameObject.AddComponent<AudioSource>();
-            _musicSourceEnviro.loop = true;
-
             _musicSourceCombat = gameObject.AddComponent<AudioSource>();
             _musicSourceCombat.loop = true;
+
+            _musicSourceDire = gameObject.AddComponent<AudioSource>();
+            _musicSourceDire.loop = true;
 
             _sfxSource = gameObject.AddComponent<AudioSource>();
 
@@ -68,33 +63,29 @@ namespace __Scripts.Systems
             ChangeVolume(AudioType.SFX, _sfxVolume);
             ChangeVolume(AudioType.Main, _mainVolume);
 
-            PlayEnviroMusic();
+            PlayCombatMusic();
         }
-
-        public void PlayMusic()
-        {
-            PlayEnviroMusic();
-        }
-        public void PlayEnviroMusic()
-        {
-            if (_musicSourceEnviro.isPlaying) return;
-            _musicSourceEnviro.clip = _enviroMusic[0];
-            _musicEnviroTransition = StartCoroutine(TransitionSound(_musicSourceEnviro, _musicVolume, _musicTransitionDuration));
-        }
+        
         public void PlayCombatMusic()
         {
             if (_musicSourceCombat.isPlaying) return;
             _musicSourceCombat.clip = _combatMusic[0];
-            _musicSourceCombat.time = _musicSourceEnviro.time;
             _musicCombatTransition = StartCoroutine(TransitionSound(_musicSourceCombat, _musicVolume, _musicTransitionDuration));
-        }
-        public void StopEnviroMusic()
-        {
-            _musicEnviroTransition = StartCoroutine(TransitionSound(_musicSourceEnviro, 0, _musicTransitionDuration));
         }
         public void StopCombatMusic()
         {
             _musicCombatTransition = StartCoroutine(TransitionSound(_musicSourceCombat, 0, _musicTransitionDuration));
+        }
+        public void PlayDireMusic()
+        {
+            if (_musicSourceDire.isPlaying) return;
+            _musicSourceDire.clip = _direMusic[0];
+            _musicSourceDire.time = _musicSourceCombat.time;
+            _musicDireTransition = StartCoroutine(TransitionSound(_musicSourceDire, _musicVolume, _musicTransitionDuration));
+        }
+        public void StopDireMusic()
+        {
+            _musicDireTransition = StartCoroutine(TransitionSound(_musicSourceDire, 0, _musicTransitionDuration));
         }
         IEnumerator TransitionSound(AudioSource source, float targetVolume, float duration)
         {
@@ -160,14 +151,14 @@ namespace __Scripts.Systems
             {
                 case AudioType.Main:
                     _mainVolume = vol;
-                    _musicSourceEnviro.volume = vol * _musicVolume;
                     _musicSourceCombat.volume = vol * _musicVolume;
+                    _musicSourceDire.volume = vol * _musicVolume;
                     _sfxSource.volume = vol * _sfxVolume;
                     break;
                 case AudioType.Music:
                     _musicVolume = vol;
-                    _musicSourceEnviro.volume = vol * _mainVolume;
                     _musicSourceCombat.volume = vol * _mainVolume;
+                    _musicSourceDire.volume = vol * _mainVolume;
                     break;
                 case AudioType.SFX:
                     _sfxVolume = vol;
@@ -178,6 +169,19 @@ namespace __Scripts.Systems
         void RandomizeSound(AudioClip clip)
         {
             _sfxSource.pitch = Random.Range(0.9f, 1.1f);
+        }
+
+        public void PlayElementalSound(ElementsType type)
+        {
+            switch (type)
+            {
+                case ElementsType.None:
+                    PlaySound(_noneSounds,1,false);
+                    break;
+                case ElementsType.Fire:
+                    PlaySound(_fireSounds,1,false);
+                    break;
+            }
         }
     }
 }
