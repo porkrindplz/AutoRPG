@@ -38,6 +38,7 @@ namespace __Scripts.Systems
         [Header("General SFX")]
         [SerializeField] private AudioClip _selectSound;
         [SerializeField] private AudioClip _confirmSound;
+        [SerializeField] private AudioClip _negativeSound;
 
         [Header("Game Action SFX")] 
         [SerializeField] private AudioClip[] _noneSounds;
@@ -143,6 +144,12 @@ namespace __Scripts.Systems
             _sfxSource.pitch = 1;
 
             _sfxSource.PlayOneShot(_confirmSound, _sfxVolume);
+        }
+        public void PlayNegativeSound()
+        {
+            _sfxSource.pitch = 1;
+
+            _sfxSource.PlayOneShot(_negativeSound, _sfxVolume);
         }
 
         public void ChangeVolume(AudioType type, float vol)
