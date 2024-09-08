@@ -85,7 +85,7 @@ namespace _Scripts.UI
 
             resistanceText.text = resText;
             
-            nutsText.text = $"Nuts: {entityBehaviour.Entity.Nuts}";
+            nutsText.text = $"{entityBehaviour.Entity.Nuts}";
         }
         
         void ClearStats()
@@ -94,7 +94,5 @@ namespace _Scripts.UI
             resistanceText.text = "";
             nutsText.text = "";
         }
-
-
     }
 }

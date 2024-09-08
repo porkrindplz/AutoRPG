@@ -68,6 +68,7 @@ namespace _Scripts.Managers
 
         private void OnEnemyDeath(Entity entity)
         {
+            GameManager.Instance.EnemyNuts = entity.Nuts;
             GameManager.Instance.ChangeGameState(EGameState.EnemyDefeated);
         }
 

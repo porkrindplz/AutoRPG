@@ -46,7 +46,16 @@ public class GameManager : Singleton<GameManager>
 
     public AllTrees AllTrees;
 
-    public int Nuts;
+    public int EnemyNuts
+    {
+        get => enemyNuts;
+        set
+        {
+            enemyNuts = value;
+        }
+    }
+
+    private int enemyNuts;
     public RectTransform VictoryPanel;
     
     [field:SerializeField]public EntityBehaviour Player { get; private set; }
@@ -147,6 +156,7 @@ public class GameManager : Singleton<GameManager>
     {
         DisableAllInput();
         EnemyManager.Instance.SpawnEnemy();
+        
         ChangeGameState(EGameState.Playing);
     }
 

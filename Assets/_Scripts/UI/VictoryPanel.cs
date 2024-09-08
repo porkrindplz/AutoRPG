@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine.UI;
+using Logger = _Scripts.Utilities.Logger;
 
 public class VictoryPanel : MonoBehaviour
 {
@@ -11,25 +13,28 @@ public class VictoryPanel : MonoBehaviour
     [SerializeField] private Button healthButton;
 
     private int nuts;
+    private int minNuts = 10;
     private int health = 10;
     private void OnEnable()
     {
-        GameManager.Instance.OnBeforeGameStateChanged += GameStateChanged;
+        UpdateButtons();
         nutsButton.onClick.AddListener(CollectNuts);
         healthButton.onClick.AddListener(HealPlayer);
     }
-    
-    void GameStateChanged(EGameState before, EGameState after)
+
+    private void OnDisable()
     {
-        if (after == EGameState.EnemyDefeated)
-        {
-            nuts = GameManager.Instance.EnemyManager.CurrentEnemy.Entity.Nuts;
-            nutsButton.GetComponentInChildren<TextMeshProUGUI>().text = nuts.ToString();
-            healthButton.GetComponentInChildren<TextMeshProUGUI>().text = health.ToString();
-        }
+        nutsButton.onClick.RemoveAllListeners();
+        healthButton.onClick.RemoveAllListeners();
     }
 
-    public void HealPlayer()
+    private void UpdateButtons()
+    {
+        nuts = GameManager.Instance.EnemyNuts + minNuts;
+        nutsButton.GetComponentInChildren<TextMeshProUGUI>().text = $"+{nuts.ToString()} Nuts";
+        healthButton.GetComponentInChildren<TextMeshProUGUI>().text = $"+{health.ToString()} HP";
+    }
+    private void HealPlayer()
     {
         GameManager.Instance.Player.Entity.CurrentHealth += health;
         if(GameManager.Instance.Player.Entity.CurrentHealth > GameManager.Instance.Player.Entity.MaxHealth)
@@ -40,9 +45,9 @@ public class VictoryPanel : MonoBehaviour
         Continue();
     }
 
-    public void CollectNuts()
+    private void CollectNuts()
     {
-        GameManager.Instance.Nuts += nuts;
+        GameManager.Instance.Player.Entity.Nuts += nuts;
         Continue();
     }
 
