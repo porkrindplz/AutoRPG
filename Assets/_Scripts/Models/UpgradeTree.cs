@@ -60,12 +60,4 @@ namespace _Scripts.Models
             upgrade.NumOfUpgrades++;
         }
     }
-
-    [Serializable]
-    public class Effect
-    {
-        public string Attribute;
-        public double Value;
-        public string Operation;
-    }
 }

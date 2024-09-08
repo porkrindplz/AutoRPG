@@ -25,7 +25,6 @@ namespace _Scripts.UI
 
         private void OnAction(EntityBehaviour actor, EntityBehaviour actee, IGameAction action)
         {
-            Debug.Log(action.GameAction.Name);
             if (entity.GetType() == actor.GetType())
             {
                 UpdateStats(actor);

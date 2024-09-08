@@ -47,9 +47,7 @@ namespace _Scripts.Managers
             enemyPanel.GetComponent<EntityBehaviour>().Entity = newEnemyStats;
             var autoAction = enemyPanel.GetComponent<AutoAction>();
             autoAction.weights = newEnemyStats.ActionWeights;
-            autoAction.possibleActions = GameManager.Instance.AllActions
-                .Where(a => newEnemyStats.Actions.Contains(a.Key))
-                .Select(a => a.Value.GameAction).ToList();
+            autoAction.possibleActions = newEnemyStats.Actions;
             autoAction.PopulateQueue();
             
             Logger.Log(autoAction.weights.Count.ToString());

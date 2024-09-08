@@ -24,7 +24,7 @@ public class PlayerInit : MonoBehaviour
                     CurrentMagic = 25,
                     MaxMagic = 25,
                     BaseAtk = 10,
-                    BaseDef = 5,
+                    BaseDef = 2,
                     Speed = 1,
                     Resistances = new Dictionary<ElementsType, float>(),
                     Upgrades = new List<Upgrade>(),

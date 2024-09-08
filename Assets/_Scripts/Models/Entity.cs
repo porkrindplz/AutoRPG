@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using _Scripts.Actions.Effects;
 
 namespace _Scripts.Models
 {
@@ -29,11 +30,28 @@ namespace _Scripts.Models
         public double BaseDef;
         public int Speed;
 
+        /// <summary>
+        /// List of all active effects being applied, these are temporary and should affect stats on Getters.
+        /// DO NOT add effects through here, add them through Entity Behaviour. This is bad design process
+        /// </summary>
+        public List<ActiveEffect> ActiveEffects { get; } = new();
+
         public Dictionary<ElementsType, float> Resistances = new();
         //public Dictionary<ElementsType, float> ElementalBonus { get; set; }
 
         public List<Upgrade> Upgrades = new();
+        
+        public double GetDefense()
+        {
+            double multipliers = 1;
+            if (ActiveEffects.FindIndex(ae => ae.ActiveEffectType == ActiveEffectType.Block) != -1)
+            {
+                multipliers *= 2f;
+            }
 
+            return BaseDef * multipliers;
+        }
+        
         //ublic double GetTotalAttack() => GetTotal(BaseAtk, "Attack");
         //public double GetTotalDefense() => GetTotal(BaseDef, "Defense");
 

@@ -11,13 +11,13 @@ using Random = System.Random;
 public class AutoAction : MonoBehaviour
 {
 
-    [SerializeField] public List<GameAction> possibleActions;
+    [SerializeField] public List<string> possibleActions;
     [SerializeField] public List<double> weights;
     [SerializeField] private EntityBehaviour currentEntity;
     [SerializeField] private EntityBehaviour opposingEntity;
     [SerializeField] private int maxQueuedActions = 3;
     
-    public Queue<GameAction> ActionQueue;
+    public Queue<IGameAction> ActionQueue;
     
     private double _timer;
     private WeightedRouletteWheel _weighter;
@@ -26,7 +26,7 @@ public class AutoAction : MonoBehaviour
     void Awake()
     {
         _weighter = new WeightedRouletteWheel();
-        ActionQueue = new Queue<GameAction>();
+        ActionQueue = new Queue<IGameAction>();
     }
 
     public void PopulateQueue()
@@ -34,7 +34,8 @@ public class AutoAction : MonoBehaviour
         if (possibleActions.Count == 0) return;
         for (int i = 0; i < maxQueuedActions; i++)
         {
-            ActionQueue.Enqueue(_weighter.SelectItem(possibleActions, weights));
+            var newAction = GameManager.Instance.GetNewAction(_weighter.SelectItem(possibleActions, weights));
+            ActionQueue.Enqueue(newAction);
         }
     }
 
@@ -46,17 +47,20 @@ public class AutoAction : MonoBehaviour
             return;
         }
         
+        //if (ActionQueue?.Peek().)
+        
         _timer += Time.deltaTime;
-        if (ActionQueue is { Count: > 0 } && _timer >= ActionQueue.Peek().TimeToExecute)
+        if (ActionQueue is { Count: > 0 } && _timer >= ActionQueue.Peek().GameAction.TimeToExecute)
         {
             _timer = 0;
             var takenAction = ActionQueue.Dequeue();
-            Debug.Log("Executing Action " + takenAction.Name);
-            var processedAction = GameManager.Instance.AllActions[takenAction.Name];
-            var actee = takenAction.IsSelfTargetting ? currentEntity : opposingEntity;
-            processedAction?.Interact(currentEntity.Entity, actee.Entity);
+            Debug.Log("Executing Action " + takenAction.GameAction.Name);
+            var processedAction = GameManager.Instance.GetNewAction(takenAction.GameAction.Name);
+            var actee = takenAction.GameAction.IsSelfTargetting ? currentEntity : opposingEntity;
+            processedAction?.Interact(currentEntity, actee);
             GameManager.Instance.OnAction?.Invoke(currentEntity, actee, processedAction);
-            ActionQueue.Enqueue(_weighter.SelectItem(possibleActions, weights));
+            var newAction = GameManager.Instance.GetNewAction(_weighter.SelectItem(possibleActions, weights));
+            ActionQueue.Enqueue(newAction);
         }
     }
 }

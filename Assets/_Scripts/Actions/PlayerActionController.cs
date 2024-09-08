@@ -22,8 +22,8 @@ namespace _Scripts.Actions
         {
             actionSlots = new List<(GameAction action, CountdownTimer timer)?>
             {
-                (GameManager.Instance.AllActions["attack"].GameAction, new CountdownTimer(1)),
-                (GameManager.Instance.AllActions["block"].GameAction, new CountdownTimer(3)),
+                (GameManager.Instance.GetNewAction("attack").GameAction, new CountdownTimer(1)),
+                (GameManager.Instance.GetNewAction("block").GameAction, new CountdownTimer(3)),
             };
             currentEntity = GetComponentInParent<EntityBehaviour>();
             Buttons = GetComponentsInChildren<Button>().ToList();
@@ -66,9 +66,9 @@ namespace _Scripts.Actions
             actionSlots[i]?.timer.Reset();
             actionSlots[i]?.timer.Start();
             var takenAction = actionSlots[i]?.action;
-            var processedAction = GameManager.Instance.AllActions[takenAction.Name];
+            var processedAction = GameManager.Instance.GetNewAction(takenAction.Name);
             var actee = takenAction.IsSelfTargetting ? currentEntity : opposingEntity;
-            processedAction?.Interact(currentEntity.Entity, actee.Entity);
+            processedAction?.Interact(currentEntity, actee);
             GameManager.Instance.OnAction?.Invoke(currentEntity, actee, processedAction);   
         }
     }

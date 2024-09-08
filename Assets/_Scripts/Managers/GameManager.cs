@@ -37,7 +37,7 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public Action<EntityBehaviour, Upgrade> OnUpgraded;
     
-    public Dictionary<string, IGameAction> AllActions { get; set; }
+    public Dictionary<string, GameAction> AllActions { get; set; }
     public AutoAction AutoAction;
     public EnemyManager EnemyManager;
 
@@ -54,6 +54,18 @@ public class GameManager : Singleton<GameManager>
         LoadUpgradeTrees();
         base.Awake();
     }
+
+    public IGameAction GetNewAction(string actionName)
+    {
+         IGameAction action = actionName switch
+        {
+            "attack" => new AttackGameAction(),
+            "block" => new BlockAction(),
+            _ => throw new Exception($"Invalid action {actionName}")
+        };
+        action.GameAction = AllActions[actionName];
+        return action;
+    }
     
     protected void Start()
     {
@@ -62,15 +74,11 @@ public class GameManager : Singleton<GameManager>
 
     private void LoadActions()
     {
-        AllActions = new Dictionary<string, IGameAction>()
-        {
-            { "attack", new AttackGameAction() },
-            { "block", new BlockGA() }
-        };
+        AllActions = new Dictionary<string, GameAction>();
         var allActions = Resources.LoadAll<GameAction>("Actions").ToList();
-        foreach (var action in AllActions)
+        foreach (var action in allActions)
         {
-            AllActions[action.Key].GameAction = allActions.FirstOrDefault(a => a.Name == action.Key);
+            AllActions[action.Name] = allActions.FirstOrDefault(a => a.Name == action.Name);
         }
     }
 
