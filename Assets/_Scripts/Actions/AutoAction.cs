@@ -23,7 +23,7 @@ public class AutoAction : MonoBehaviour
     private WeightedRouletteWheel _weighter;
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _weighter = new WeightedRouletteWheel();
         ActionQueue = new Queue<GameAction>();

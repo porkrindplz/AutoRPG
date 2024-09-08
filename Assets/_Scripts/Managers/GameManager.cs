@@ -25,7 +25,6 @@ public enum EGameState
 public class GameManager : Singleton<GameManager>
 {
     public event Action<EGameState,EGameState> OnBeforeGameStateChanged;
-    public event Action<EGameState,EGameState> OnAfterGameStateChanged;
     
     /// <summary>
     /// Emitted anytime that an action is taken by a player. The first entity emits the action, the second
@@ -43,8 +42,11 @@ public class GameManager : Singleton<GameManager>
     public EnemyManager EnemyManager;
 
     public AllTrees AllTrees;
+
+    public int Nuts;
+    public RectTransform VictoryPanel;
     
-    public EGameState CurrentGameState { get; private set; }
+    [field:SerializeField]public EGameState CurrentGameState { get; private set; }
 
     protected override void Awake()
     {
@@ -52,7 +54,7 @@ public class GameManager : Singleton<GameManager>
         LoadUpgradeTrees();
         base.Awake();
     }
-
+    
     protected void Start()
     {
         ChangeGameState(EGameState.SetupGame);
@@ -89,31 +91,36 @@ public class GameManager : Singleton<GameManager>
     public void ChangeGameState(EGameState newState)
     {
         OnBeforeGameStateChanged?.Invoke(CurrentGameState, newState);
-        
+        CurrentGameState = newState;
         switch (newState)
         {
             case EGameState.MainMenu:
                 Logger.Log("Main Menu");
+                HandleMainMenu();
                 break;
             case EGameState.SetupGame:
-                Logger.Log("Setup Game");
+                HandleSetupGame();
+                break;
+            case EGameState.SpawnEnemy:
+                HandleSpawnEnemy();
                 break;
             case EGameState.Playing:
                 Logger.Log("Playing");
+                HandlePlaying();
                 break;
             case EGameState.EnemyDefeated:
                 Logger.Log("Enemy Defeated");
+                HandleEnemyDefeated();
                 break;
             case EGameState.PlayerDefeated:
                 Logger.Log("Player Defeated");
+                HandlePlayerDefeated();
                 break;
             case EGameState.Paused:
                 Logger.Log("Paused");
+                HandlePaused();
                 break;
         }
-        OnAfterGameStateChanged?.Invoke(CurrentGameState, newState);
-
-        CurrentGameState = newState;
     }
 
     private void HandleMainMenu()
@@ -124,21 +131,23 @@ public class GameManager : Singleton<GameManager>
 
     private void HandleSetupGame()
     {
+        
         //Load Player
         //Load trees
         //Load Enemy
+        Logger.Log("Handle Setup");
+        ChangeGameState(EGameState.SpawnEnemy);
     }
     private void HandleSpawnEnemy()
     {
         DisableAllInput();
-        EnemyManager.SpawnEnemy();
+        EnemyManager.Instance.SpawnEnemy();
+        ChangeGameState(EGameState.Playing);
     }
 
     private void HandlePlaying()
     {
         DisableAllInput();
-        AutoAction.enabled = true;
-
         //Enable play inputs
     }
 
@@ -146,7 +155,7 @@ public class GameManager : Singleton<GameManager>
     {
         DisableAllInput();
 
-        //Enable Reward UI & Inputs
+        VictoryPanel.gameObject.SetActive(true);
         
     }
 

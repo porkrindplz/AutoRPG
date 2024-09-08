@@ -1,4 +1,6 @@
 using System.Collections;
+using _Scripts.Actions;
+using _Scripts.Entities;
 using _Scripts.Models;
 using _Scripts.Utilities;
 using UnityEngine;
@@ -48,10 +50,15 @@ namespace __Scripts.Systems
         [SerializeField] private AudioClip[] _earthSounds;
         [SerializeField] private AudioClip[] _poisonSounds;
         [SerializeField] private AudioClip[] _electricSounds;
+        [SerializeField] private AudioClip[] _swordSounds;
+        [SerializeField] private AudioClip[] _shieldSounds;
+        [SerializeField] private AudioClip[] _bowSounds;
         
 
         private void OnEnable()
         {
+            GameManager.Instance.OnAction += PlayActionSound;
+            
             _musicSourceCombat = gameObject.AddComponent<AudioSource>();
             _musicSourceCombat.loop = true;
 
@@ -177,6 +184,18 @@ namespace __Scripts.Systems
         {
             _sfxSource.pitch = Random.Range(0.9f, 1.1f);
         }
+        
+        void PlayActionSound(EntityBehaviour actor, EntityBehaviour actee, IGameAction action)
+        {
+            // if (action is AttackGameAction attack)
+            // {
+            //     PlayElementalSound(attack.Element);
+            // }
+            // else if (action is WeaponGameAction weapon)
+            // {
+            //     PlayWeaponSound(weapon.Weapon);
+            // }
+        }
 
         public void PlayElementalSound(ElementsType type)
         {
@@ -187,6 +206,21 @@ namespace __Scripts.Systems
                     break;
                 case ElementsType.Fire:
                     PlaySound(_fireSounds,1,false);
+                    break;
+            }
+        }
+        public void PlayWeaponSound(WeaponsType type)
+        {
+            switch (type)
+            {
+                case WeaponsType.Sword:
+                    PlaySound(_swordSounds,1,false);
+                    break;
+                case WeaponsType.Shield:
+                    PlaySound(_shieldSounds,1,false);
+                    break;
+                case WeaponsType.Bow:
+                    PlaySound(_bowSounds,1,false);
                     break;
             }
         }

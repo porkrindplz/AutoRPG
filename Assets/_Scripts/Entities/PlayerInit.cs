@@ -13,7 +13,7 @@ public class PlayerInit : MonoBehaviour
     void OnEnable()
     {
         playerEntity = GetComponent<EntityBehaviour>();
-        GameManager.Instance.OnAfterGameStateChanged += (_, gameState) =>
+        GameManager.Instance.OnBeforeGameStateChanged += (_, gameState) =>
         {
             if (gameState == EGameState.SetupGame)
             {
@@ -32,12 +32,14 @@ public class PlayerInit : MonoBehaviour
                     UsedSkillPoints = 0,
 
                 };
+                playerEntity.Entity.OnDeath += _ =>
+                {
+                    GameManager.Instance.ChangeGameState(EGameState.PlayerDefeated);
+                };
             }
+
         };
-        playerEntity.Entity.OnDeath += _ =>
-        {
-            GameManager.Instance.ChangeGameState(EGameState.PlayerDefeated);
-        };
+
     }
 
     // Update is called once per frame
