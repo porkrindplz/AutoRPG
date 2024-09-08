@@ -29,6 +29,17 @@ namespace _Scripts.Models
         public double BaseDef;
         public int Speed;
 
+        public int Nuts
+        {
+            get => nuts;
+            set
+            {
+                nuts = value;
+                GameManager.Instance.OnNutsChanged?.Invoke(this, Nuts);
+            }
+        }
+        private int nuts;
+
         public Dictionary<ElementsType, float> Resistances = new();
         //public Dictionary<ElementsType, float> ElementalBonus { get; set; }
 

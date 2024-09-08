@@ -22,6 +22,9 @@ public class AutoAction : MonoBehaviour
     private double _timer;
     private WeightedRouletteWheel _weighter;
     
+    private double _nutTimer;
+    private int _nutInterval = 5;
+    
     // Start is called before the first frame update
     void Awake()
     {
@@ -57,6 +60,16 @@ public class AutoAction : MonoBehaviour
             processedAction?.Interact(currentEntity.Entity, actee.Entity);
             GameManager.Instance.OnAction?.Invoke(currentEntity, actee, processedAction);
             ActionQueue.Enqueue(_weighter.SelectItem(possibleActions, weights));
+        }
+        
+        if (currentEntity.Entity.Nuts > 1)
+        {
+            _nutTimer += Time.deltaTime;
+            if (_nutTimer >= _nutInterval)
+            {
+                _nutTimer = 0;
+                currentEntity.Entity.Nuts--;
+            }
         }
     }
 }

@@ -2,26 +2,58 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using Unity.VisualScripting;
+using UnityEngine.UI;
+using Logger = _Scripts.Utilities.Logger;
 
 public class VictoryPanel : MonoBehaviour
 {
+    [SerializeField] private Button nutsButton;
+    [SerializeField] private Button healthButton;
+
+    private int nuts;
+    private int minNuts = 10;
+    private int health = 10;
     private void OnEnable()
     {
-        GameManager.Instance.OnBeforeGameStateChanged += AfterGameStateChanged;
-    }
-    
-    void AfterGameStateChanged(EGameState before, EGameState after)
-    {
-
+        UpdateButtons();
+        nutsButton.onClick.AddListener(CollectNuts);
+        healthButton.onClick.AddListener(HealPlayer);
     }
 
-    public void HealPlayer()
+    private void OnDisable()
     {
-        
+        nutsButton.onClick.RemoveAllListeners();
+        healthButton.onClick.RemoveAllListeners();
     }
 
-    public void CollectNuts()
+    private void UpdateButtons()
     {
-        
+        nutsButton.GetComponentInChildren<TextMeshProUGUI>().text = $"{minNuts.ToString()} Nuts \n +{GameManager.Instance.EnemyNuts} Bonus";
+        nuts = GameManager.Instance.EnemyNuts + minNuts;
+        healthButton.GetComponentInChildren<TextMeshProUGUI>().text = $"+{health.ToString()} HP";
+    }
+    private void HealPlayer()
+    {
+        GameManager.Instance.Player.Entity.CurrentHealth += health;
+        if(GameManager.Instance.Player.Entity.CurrentHealth > GameManager.Instance.Player.Entity.MaxHealth)
+        {
+            GameManager.Instance.Player.Entity.CurrentHealth = GameManager.Instance.Player.Entity.MaxHealth;
+        }
+
+        Continue();
+    }
+
+    private void CollectNuts()
+    {
+        GameManager.Instance.Player.Entity.Nuts += nuts;
+        Continue();
+    }
+
+    public void Continue()
+    {
+        GameManager.Instance.ChangeGameState(EGameState.SpawnEnemy);
+        this.gameObject.SetActive(false);
     }
 }

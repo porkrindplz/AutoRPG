@@ -6,6 +6,7 @@ using _Scripts.Models;
 using TMPro;
 using UnityEngine;
 using ElementsType = _Scripts.Models.ElementsType;
+using Logger = _Scripts.Utilities.Logger;
 
 namespace _Scripts.UI
 {
@@ -14,13 +15,29 @@ namespace _Scripts.UI
         [SerializeField] private EntityBehaviour entity;
         [SerializeField] private TextMeshProUGUI statText;
         [SerializeField] private TextMeshProUGUI resistanceText;
+        [SerializeField] private TextMeshProUGUI nutsText;
         [SerializeField] private bool isPlayer;
-    
+        
+
         // Start is called before the first frame update
-        void Start()
+        void OnEnable()
         {
             GameManager.Instance.OnUpgraded += OnUpgraded;
             GameManager.Instance.OnAction += OnAction;
+            GameManager.Instance.OnNutsChanged += OnNutsChanged;
+            GameManager.Instance.OnBeforeGameStateChanged += OnStateChange;
+        }
+        private void OnStateChange(EGameState before, EGameState after)
+        {
+            if (after == EGameState.Playing)
+            {
+                UpdateStats(entity);
+            }
+            if(!isPlayer && after == EGameState.EnemyDefeated)
+            {
+                Logger.Log("Clear!");
+                ClearStats();
+            }
         }
 
         private void OnAction(EntityBehaviour actor, EntityBehaviour actee, IGameAction action)
@@ -36,9 +53,12 @@ namespace _Scripts.UI
                 UpdateStats(actee);
             }
         }
-
-        private void OnDestroy()
+        private void OnNutsChanged(Entity e, int nuts)
         {
+            if (e == this.entity.Entity)
+            {
+                UpdateStats(entity);
+            }
         }
 
         void OnUpgraded(EntityBehaviour entityBehaviour, Upgrade upgrade)
@@ -51,6 +71,7 @@ namespace _Scripts.UI
             if ((entityBehaviour.Entity is Player && isPlayer == false) ||
                 (entityBehaviour.Entity is Enemy && isPlayer)) return;
             
+            Logger.Log(entityBehaviour.Entity.GetType().ToString() + " Updating Stats");
             statText.text = $"Health: {(int)entityBehaviour.Entity.CurrentHealth}/{(int)entityBehaviour.Entity.MaxHealth}\n" +
                             $"Magic: {(int)entityBehaviour.Entity.CurrentMagic}/{(int)entityBehaviour.Entity.MaxMagic}\n" +
                             $"Attack: {(int)entityBehaviour.Entity.BaseAtk}\n" +
@@ -63,8 +84,15 @@ namespace _Scripts.UI
             }*/
 
             resistanceText.text = resText;
+            
+            nutsText.text = $"{entityBehaviour.Entity.Nuts}";
         }
-
-
+        
+        void ClearStats()
+        {
+            statText.text = "";
+            resistanceText.text = "";
+            nutsText.text = "";
+        }
     }
 }
