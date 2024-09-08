@@ -19,8 +19,8 @@ public class PlayerInit : MonoBehaviour
             {
                 playerEntity.Entity = new Player
                 {
-                    CurrentHealth = 100,
-                    MaxHealth = 100,
+                    CurrentHealth = 10,
+                    MaxHealth = 10,
                     CurrentMagic = 25,
                     MaxMagic = 25,
                     BaseAtk = 10,

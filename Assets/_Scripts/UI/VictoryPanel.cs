@@ -30,8 +30,8 @@ public class VictoryPanel : MonoBehaviour
 
     private void UpdateButtons()
     {
+        nutsButton.GetComponentInChildren<TextMeshProUGUI>().text = $"{minNuts.ToString()} Nuts \n +{GameManager.Instance.EnemyNuts} Bonus";
         nuts = GameManager.Instance.EnemyNuts + minNuts;
-        nutsButton.GetComponentInChildren<TextMeshProUGUI>().text = $"+{nuts.ToString()} Nuts";
         healthButton.GetComponentInChildren<TextMeshProUGUI>().text = $"+{health.ToString()} HP";
     }
     private void HealPlayer()

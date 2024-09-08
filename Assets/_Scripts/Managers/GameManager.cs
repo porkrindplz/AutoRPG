@@ -38,13 +38,25 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public Action<EntityBehaviour, Upgrade> OnUpgraded;
     
+    /// <summary>
+    ///  Emitted anytime deez nuts are updated
+    /// </summary>
     public Action<Entity,int> OnNutsChanged;
     
+
     public Dictionary<string, IGameAction> AllActions { get; set; }
     public AutoAction AutoAction;
     public EnemyManager EnemyManager;
 
     public AllTrees AllTrees;
+    
+    [Header("UI")]
+    public RectTransform MainMenuPanel;
+    public RectTransform VictoryPanel;
+    public RectTransform GameOverPanel;
+    [field:SerializeField]public EntityBehaviour Player { get; private set; }
+    
+    [field:SerializeField]public EGameState CurrentGameState { get; private set; }
 
     public int EnemyNuts
     {
@@ -54,14 +66,9 @@ public class GameManager : Singleton<GameManager>
             enemyNuts = value;
         }
     }
-
     private int enemyNuts;
-    public RectTransform VictoryPanel;
     
-    [field:SerializeField]public EntityBehaviour Player { get; private set; }
     
-    [field:SerializeField]public EGameState CurrentGameState { get; private set; }
-
     protected override void Awake()
     {
         LoadActions();
@@ -71,7 +78,7 @@ public class GameManager : Singleton<GameManager>
     
     protected void Start()
     {
-        ChangeGameState(EGameState.SetupGame);
+        ChangeGameState(EGameState.MainMenu);
     }
 
     private void LoadActions()
@@ -141,6 +148,7 @@ public class GameManager : Singleton<GameManager>
     {
         DisableAllInput();
         //Enable Main Menu Inputs
+        MainMenuPanel.gameObject.SetActive(true);
     }
 
     private void HandleSetupGame()
@@ -178,7 +186,7 @@ public class GameManager : Singleton<GameManager>
     {
         DisableAllInput();
         
-        //Enable Gameover UI & Inputs
+        GameOverPanel.gameObject.SetActive(true);
     }
 
     private void HandleWalking()
