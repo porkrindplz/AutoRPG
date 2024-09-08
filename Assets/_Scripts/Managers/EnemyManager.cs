@@ -37,6 +37,13 @@ namespace _Scripts.Managers
         public void SpawnEnemy()
         {
             var newEnemyStats = _allEnemies[_random.Next(0, _allEnemies.Count)];
+            newEnemyStats.OnDeath += OnEnemyDeath;
+            var existingEnemy = enemyPanel.GetComponent<EntityBehaviour>();
+            if (existingEnemy.Entity != null)
+            {
+                existingEnemy.Entity.OnDeath -= OnEnemyDeath;    
+            }
+            
             enemyPanel.GetComponent<EntityBehaviour>().Entity = newEnemyStats;
             var autoAction = enemyPanel.GetComponent<AutoAction>();
             autoAction.weights = newEnemyStats.ActionWeights;
@@ -44,6 +51,7 @@ namespace _Scripts.Managers
                 .Where(a => newEnemyStats.Actions.Contains(a.Key))
                 .Select(a => a.Value.GameAction).ToList();
             autoAction.PopulateQueue();
+            
             Logger.Log(autoAction.weights.Count.ToString());
             UpdateNextEnemy();
         }
@@ -53,6 +61,11 @@ namespace _Scripts.Managers
             Logger.Log("Setting next enemy icon");
             
             //
+        }
+
+        private void OnEnemyDeath(Entity entity)
+        {
+            GameManager.Instance.ChangeGameState(EGameState.EnemyDefeated);
         }
 
         private void LoadEnemyData()

@@ -654,9 +654,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WarriorPanel: {fileID: 2130201202}
-  ArcherPanel: {fileID: 1492099670}
+  PaladinPanel: {fileID: 0}
   MagePanel: {fileID: 693239417}
-  EquipPanel: {fileID: 1752726914}
+  ArcherPanel: {fileID: 1492099670}
 --- !u!1 &301572321
 GameObject:
   m_ObjectHideFlags: 0
@@ -3131,6 +3131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0452da6bf914c74b1c4847f1aff81e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entity: {fileID: 1063827020}
   statText: {fileID: 1554425964}
   resistanceText: {fileID: 618426495}
   isPlayer: 0
@@ -6388,9 +6389,9 @@ GameObject:
   - component: {fileID: 1919131766}
   - component: {fileID: 1919131765}
   - component: {fileID: 1919131769}
-  - component: {fileID: 1919131771}
   - component: {fileID: 1919131770}
   - component: {fileID: 1919131772}
+  - component: {fileID: 1919131773}
   m_Layer: 5
   m_Name: PlayerPanel
   m_TagString: Untagged
@@ -6515,9 +6516,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0452da6bf914c74b1c4847f1aff81e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entity: {fileID: 1919131770}
   statText: {fileID: 1273544102}
   resistanceText: {fileID: 689665559}
-  isPlayer: 0
+  isPlayer: 1
 --- !u!114 &1919131770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6530,23 +6532,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6467996138c149a7acb45d3652b1e807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1919131771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1919131763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98862c0f7e2d4104ba9a9a8ad3c03d5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  possibleActions: []
-  weights: []
-  currentEntity: {fileID: 1919131770}
-  opposingEntity: {fileID: 1063827020}
-  maxQueuedActions: 3
 --- !u!114 &1919131772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6559,6 +6544,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11232d90bc83849d49e25ec6e9d23293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1919131773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919131763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 642366b1843c408d8f41170da2f5ab9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentEntity: {fileID: 1919131770}
+  opposingEntity: {fileID: 1063827020}
 --- !u!1 &1942172340
 GameObject:
   m_ObjectHideFlags: 0

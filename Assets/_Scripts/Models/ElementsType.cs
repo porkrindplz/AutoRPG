@@ -4,9 +4,9 @@ namespace _Scripts.Models
     {
         None,
         Fire,
-        Ice,
-        Earth,
-        Holy,
-        Death
+        Water,
+        Leaf,
+        Lightning,
+        Darkness
     }
 }

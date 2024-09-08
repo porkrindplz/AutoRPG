@@ -7,18 +7,18 @@ using UnityEngine.UI;
 public enum EMenuPanel
 {
     Warrior,
-    Archer,
+    Paladin,
     Mage,
-    Equip
+    Archer
 }
 
 public class MenuPanel : MonoBehaviour
 {
     
     [SerializeField] private RectTransform WarriorPanel;
-    [SerializeField] private RectTransform ArcherPanel;
+    [SerializeField] private RectTransform PaladinPanel;
     [SerializeField] private RectTransform MagePanel;   
-    [SerializeField] private RectTransform EquipPanel;
+    [SerializeField] private RectTransform ArcherPanel;
     
     public void SwitchPanel(int panel)
     {
@@ -31,7 +31,7 @@ public class MenuPanel : MonoBehaviour
         WarriorPanel.gameObject.SetActive(false);
         ArcherPanel.gameObject.SetActive(false);
         MagePanel.gameObject.SetActive(false);
-        EquipPanel.gameObject.SetActive(false);
+        PaladinPanel.gameObject.SetActive(false);
 
         AudioSystem.Instance.PlayMenuSelectSound();
         switch(panel)
@@ -45,8 +45,8 @@ public class MenuPanel : MonoBehaviour
             case EMenuPanel.Mage:
                 MagePanel.gameObject.SetActive(true);
                 break;
-            case EMenuPanel.Equip:
-                EquipPanel.gameObject.SetActive(true);
+            case EMenuPanel.Paladin:
+                PaladinPanel.gameObject.SetActive(true);
                 break;
         }
     }

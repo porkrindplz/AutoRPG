@@ -14,9 +14,9 @@ namespace _Scripts.Utilities
                     return Color.red;
                 //case ElementsType.Water:
                 //    return Color.blue;
-                case ElementsType.Earth:
+                case ElementsType.Leaf:
                     return Color.green;
-                case ElementsType.Ice:
+                case ElementsType.Water:
                     return Color.cyan;
                 // case ElementsType.Electric:
                 //     return Color.yellow;

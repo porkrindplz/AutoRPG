@@ -6,7 +6,22 @@ namespace _Scripts.Models
 {
     public class Entity
     {
-        public double CurrentHealth;
+        public event Action<Entity> OnDeath;
+
+        public double CurrentHealth
+        {
+            get => currentHealth;
+            set
+            {
+                currentHealth = value;
+                if (currentHealth <= 0)
+                {
+                    OnDeath?.Invoke(this);
+                }
+            }
+        }
+
+        private double currentHealth;
         public double MaxHealth;
         public double CurrentMagic;
         public double MaxMagic;

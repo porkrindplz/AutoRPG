@@ -41,6 +41,11 @@ public class AutoAction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.CurrentGameState != EGameState.Playing)
+        {
+            return;
+        }
+        
         _timer += Time.deltaTime;
         if (ActionQueue is { Count: > 0 } && _timer >= ActionQueue.Peek().TimeToExecute)
         {

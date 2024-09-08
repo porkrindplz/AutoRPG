@@ -80,7 +80,7 @@ public class GameManager : Singleton<GameManager>
 
     protected void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             EnemyManager.Instance.SpawnEnemy();
         }
