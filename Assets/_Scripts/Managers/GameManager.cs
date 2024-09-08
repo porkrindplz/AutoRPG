@@ -8,6 +8,7 @@ using _Scripts.Actions;
 using _Scripts.Entities;
 using _Scripts.Managers;
 using _Scripts.Models;
+using _Scripts.UI;
 using Logger = _Scripts.Utilities.Logger;
 
 
@@ -37,6 +38,8 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public Action<EntityBehaviour, Upgrade> OnUpgraded;
     
+    public Action<Entity,int> OnNutsChanged;
+    
     public Dictionary<string, IGameAction> AllActions { get; set; }
     public AutoAction AutoAction;
     public EnemyManager EnemyManager;
@@ -45,6 +48,8 @@ public class GameManager : Singleton<GameManager>
 
     public int Nuts;
     public RectTransform VictoryPanel;
+    
+    [field:SerializeField]public EntityBehaviour Player { get; private set; }
     
     [field:SerializeField]public EGameState CurrentGameState { get; private set; }
 

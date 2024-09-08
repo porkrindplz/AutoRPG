@@ -2311,8 +2311,8 @@ MonoBehaviour:
     Rizz:
     10%'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: bce694661dc5c774eaed7be4fff92214, type: 2}
-  m_sharedMaterial: {fileID: 5070301412218342672, guid: bce694661dc5c774eaed7be4fff92214, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2728,8 +2728,8 @@ MonoBehaviour:
     Rizz:
     10%'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: bce694661dc5c774eaed7be4fff92214, type: 2}
-  m_sharedMaterial: {fileID: 5070301412218342672, guid: bce694661dc5c774eaed7be4fff92214, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4118,6 +4118,7 @@ MonoBehaviour:
   entity: {fileID: 1063827020}
   statText: {fileID: 1554425964}
   resistanceText: {fileID: 618426495}
+  nutsText: {fileID: 128713282}
   isPlayer: 0
 --- !u!114 &1063827020
 MonoBehaviour:
@@ -4407,8 +4408,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: bce694661dc5c774eaed7be4fff92214, type: 2}
-  m_sharedMaterial: {fileID: 5070301412218342672, guid: bce694661dc5c774eaed7be4fff92214, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5916,8 +5917,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: bce694661dc5c774eaed7be4fff92214, type: 2}
-  m_sharedMaterial: {fileID: 5070301412218342672, guid: bce694661dc5c774eaed7be4fff92214, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6945,8 +6946,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Archer
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: bce694661dc5c774eaed7be4fff92214, type: 2}
-  m_sharedMaterial: {fileID: 5070301412218342672, guid: bce694661dc5c774eaed7be4fff92214, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7663,8 +7664,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Mage
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: bce694661dc5c774eaed7be4fff92214, type: 2}
-  m_sharedMaterial: {fileID: 5070301412218342672, guid: bce694661dc5c774eaed7be4fff92214, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7751,6 +7752,7 @@ GameObject:
   - component: {fileID: 1864730226}
   - component: {fileID: 1864730225}
   - component: {fileID: 1864730224}
+  - component: {fileID: 1864730228}
   m_Layer: 5
   m_Name: VictoryPanel
   m_TagString: Untagged
@@ -7863,6 +7865,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1864730222}
   m_CullTransparentMesh: 1
+--- !u!114 &1864730228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864730222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5e7d21513e928245976faafbe90bbe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nutsButton: {fileID: 1753408695}
+  healthButton: {fileID: 660964093}
 --- !u!1 &1874202208
 GameObject:
   m_ObjectHideFlags: 0
@@ -7924,8 +7940,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: bce694661dc5c774eaed7be4fff92214, type: 2}
-  m_sharedMaterial: {fileID: 5070301412218342672, guid: bce694661dc5c774eaed7be4fff92214, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8148,6 +8164,7 @@ MonoBehaviour:
   entity: {fileID: 1919131770}
   statText: {fileID: 1273544102}
   resistanceText: {fileID: 689665559}
+  nutsText: {fileID: 1382746497}
   isPlayer: 1
 --- !u!114 &1919131770
 MonoBehaviour:
@@ -8248,8 +8265,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: bce694661dc5c774eaed7be4fff92214, type: 2}
-  m_sharedMaterial: {fileID: 5070301412218342672, guid: bce694661dc5c774eaed7be4fff92214, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8361,6 +8378,8 @@ MonoBehaviour:
       Upgrades: []
   Nuts: 0
   VictoryPanel: {fileID: 1864730223}
+  <Player>k__BackingField: {fileID: 1919131770}
+  <CurrentGameState>k__BackingField: 0
 --- !u!4 &1982539229
 Transform:
   m_ObjectHideFlags: 0
