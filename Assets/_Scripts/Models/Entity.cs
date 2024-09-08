@@ -36,6 +36,17 @@ namespace _Scripts.Models
         /// </summary>
         public List<ActiveEffect> ActiveEffects { get; } = new();
 
+        public int Nuts
+        {
+            get => nuts;
+            set
+            {
+                nuts = value;
+                GameManager.Instance.OnNutsChanged?.Invoke(this, Nuts);
+            }
+        }
+        private int nuts;
+
         public Dictionary<ElementsType, float> Resistances = new();
         //public Dictionary<ElementsType, float> ElementalBonus { get; set; }
 

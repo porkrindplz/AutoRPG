@@ -5,7 +5,6 @@ using _Scripts.Entities;
 using _Scripts.Models;
 using _Scripts.Utilities;
 using UnityEngine;
-using UnityEngine.Windows;
 using Logger = _Scripts.Utilities.Logger;
 using Random = System.Random;
 
@@ -24,6 +23,8 @@ namespace _Scripts.Managers
         
         private List<Enemy> _allEnemies;
         private Random _random;
+        
+        public EntityBehaviour CurrentEnemy { get; private set; }
 
         protected override void Awake()
         {
@@ -36,20 +37,22 @@ namespace _Scripts.Managers
         
         public void SpawnEnemy()
         {
-            var newEnemyStats = _allEnemies[_random.Next(0, _allEnemies.Count)];
+            var newEnemyStats = _allEnemies[_random.Next(0, _allEnemies.Count)].Copy();
             newEnemyStats.OnDeath += OnEnemyDeath;
             var existingEnemy = enemyPanel.GetComponent<EntityBehaviour>();
             if (existingEnemy.Entity != null)
             {
                 existingEnemy.Entity.OnDeath -= OnEnemyDeath;    
             }
+
+            CurrentEnemy = existingEnemy;
             
             enemyPanel.GetComponent<EntityBehaviour>().Entity = newEnemyStats;
             var autoAction = enemyPanel.GetComponent<AutoAction>();
             autoAction.weights = newEnemyStats.ActionWeights;
             autoAction.possibleActions = newEnemyStats.Actions;
             autoAction.PopulateQueue();
-            
+
             Logger.Log(autoAction.weights.Count.ToString());
             UpdateNextEnemy();
         }
@@ -63,6 +66,7 @@ namespace _Scripts.Managers
 
         private void OnEnemyDeath(Entity entity)
         {
+            GameManager.Instance.EnemyNuts = entity.Nuts;
             GameManager.Instance.ChangeGameState(EGameState.EnemyDefeated);
         }
 
@@ -82,6 +86,7 @@ namespace _Scripts.Managers
                      BaseAtk = data.baseAtk,
                      BaseDef = data.baseDef,
                      Speed = data.speed,
+                     Nuts = data.baseNuts,
                      Actions = data.actions,
                      ActionWeights = data.actionWeights,
                      Resistances = new Dictionary<ElementsType, float>(),

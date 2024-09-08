@@ -8,6 +8,7 @@ using _Scripts.Actions;
 using _Scripts.Entities;
 using _Scripts.Managers;
 using _Scripts.Models;
+using _Scripts.UI;
 using Logger = _Scripts.Utilities.Logger;
 
 
@@ -38,16 +39,36 @@ public class GameManager : Singleton<GameManager>
     public Action<Upgrade> OnUpgraded;
     
     public Dictionary<string, GameAction> AllActions { get; set; }
+    
+    /// <summary>
+    ///  Emitted anytime deez nuts are updated
+    /// </summary>
+    public Action<Entity,int> OnNutsChanged;
+    
     public AutoAction AutoAction;
     public EnemyManager EnemyManager;
 
     public AllTrees AllTrees;
-
-    public int Nuts;
+    
+    [Header("UI")]
+    public RectTransform MainMenuPanel;
     public RectTransform VictoryPanel;
+    public RectTransform GameOverPanel;
+    [field:SerializeField]public EntityBehaviour Player { get; private set; }
     
     [field:SerializeField]public EGameState CurrentGameState { get; private set; }
 
+    public int EnemyNuts
+    {
+        get => enemyNuts;
+        set
+        {
+            enemyNuts = value;
+        }
+    }
+    private int enemyNuts;
+    
+    
     protected override void Awake()
     {
         LoadActions();
@@ -69,7 +90,7 @@ public class GameManager : Singleton<GameManager>
     
     protected void Start()
     {
-        ChangeGameState(EGameState.SetupGame);
+        ChangeGameState(EGameState.MainMenu);
     }
 
     private void LoadActions()
@@ -135,6 +156,7 @@ public class GameManager : Singleton<GameManager>
     {
         DisableAllInput();
         //Enable Main Menu Inputs
+        MainMenuPanel.gameObject.SetActive(true);
     }
 
     private void HandleSetupGame()
@@ -150,6 +172,7 @@ public class GameManager : Singleton<GameManager>
     {
         DisableAllInput();
         EnemyManager.Instance.SpawnEnemy();
+        
         ChangeGameState(EGameState.Playing);
     }
 
@@ -171,7 +194,7 @@ public class GameManager : Singleton<GameManager>
     {
         DisableAllInput();
         
-        //Enable Gameover UI & Inputs
+        GameOverPanel.gameObject.SetActive(true);
     }
 
     private void HandleWalking()

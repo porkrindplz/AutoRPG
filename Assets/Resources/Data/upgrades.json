@@ -161,7 +161,7 @@
         "Description": "",
         "MaxUpgrades": 3,
         "Prerequisites": [],
-        "ExclusiveWith": ["fire", "leaf"],
+        "ExclusiveWith": ["fireball", "leaf"],
         "Children": ["aoe", "cannon", "enchant"]
       },
       {
@@ -170,7 +170,7 @@
         "Description": "",
         "MaxUpgrades": 3,
         "Prerequisites": [],
-        "ExclusiveWith": ["water", "fire"],
+        "ExclusiveWith": ["water", "fireball"],
         "Children": ["aoe", "cannon", "enchant"]
       },
       {
@@ -178,7 +178,7 @@
         "Name": "Area of Effect",
         "Description": "",
         "MaxUpgrades": 1,
-        "Prerequisites": ["fire", "water", "leaf"],
+        "Prerequisites": ["fireball", "water", "leaf"],
         "PrerequisiteType": "or",
         "ExclusiveWith": ["cannon", "enchant"],
         "Children": ["lightning", "shadow"]
@@ -188,7 +188,7 @@
         "Name": "Cannon",
         "Description": "",
         "MaxUpgrades": 1,
-        "Prerequisites": ["fire", "water", "leaf"],
+        "Prerequisites": ["fireball", "water", "leaf"],
         "PrerequisiteType": "or",
         "ExclusiveWith": ["aoe", "enchant"],
         "Children": ["lightning", "shadow"]
@@ -198,7 +198,7 @@
         "Name": "Enchant",
         "Description": "",
         "MaxUpgrades": 1,
-        "Prerequisites": ["fire", "water", "leaf"],
+        "Prerequisites": ["fireball", "water", "leaf"],
         "PrerequisiteType": "or",
         "ExclusiveWith": ["cannon", "aoe"],
         "Children": ["lightning", "shadow"]

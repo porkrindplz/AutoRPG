@@ -13,6 +13,7 @@ namespace _Scripts.Entities
         public double baseAtk;
         public double baseDef;
         public int speed;
+        public int baseNuts;
         public List<string> actions;
         public List<double> actionWeights;
         public Sprite sprite;
