@@ -35,9 +35,9 @@ namespace _Scripts.Managers
             base.Awake();
         }
         
-        public void SpawnEnemy()    
+        public void SpawnEnemy()
         {
-            var newEnemyStats = _allEnemies[_random.Next(0, _allEnemies.Count)];
+            var newEnemyStats = _allEnemies[_random.Next(0, _allEnemies.Count)].Copy();
             newEnemyStats.OnDeath += OnEnemyDeath;
             var existingEnemy = enemyPanel.GetComponent<EntityBehaviour>();
             if (existingEnemy.Entity != null)
