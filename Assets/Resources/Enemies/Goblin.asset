@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Goblin
   m_EditorClassIdentifier: 
   name: Goblin
-  maxHealth: 10
+  maxHealth: 40
   maxMagic: 10
   baseAtk: 5
   baseDef: 3

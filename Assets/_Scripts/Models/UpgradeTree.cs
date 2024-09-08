@@ -9,8 +9,10 @@ namespace _Scripts.Models
     [Serializable]
     public class AllTrees
     {
-        public UpgradeTree Warrior;
-        public UpgradeTree Paladin;
+        public UpgradeTree Sword;
+        public UpgradeTree Shield;
+        public UpgradeTree Staff;
+        public UpgradeTree Slingshot;
     }
     
     [Serializable]
@@ -30,14 +32,7 @@ namespace _Scripts.Models
             if (newUpgrade is null) return false;
 
             if (!newUpgrade.CanUpgradeMore()) return false;
-
-            foreach (var prereq in newUpgrade.Prerequisites)
-            {
-                if (currentUpgrades.FindIndex(u=>u.Id ==prereq)==-1)
-                {
-                    return false;
-                }
-            }
+            
             foreach(var exclusive in newUpgrade.ExclusiveWith)
             {
                 if (currentUpgrades.FindIndex(u=>u.Id ==exclusive)!=-1)
@@ -45,19 +40,47 @@ namespace _Scripts.Models
                     return false;
                 }
             }
+
+            // If condition is and, then all are required. Also works for all non-defined prerequsuite types with 1
+            if (newUpgrade.PrerequisiteType is "and" or null or "")
+            {
+                foreach (var prereq in newUpgrade.Prerequisites)
+                {
+                    if (currentUpgrades.FindIndex(u => u.Id == prereq) == -1)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            // If condition is or, then only one is required
+            if (newUpgrade.PrerequisiteType == "or")
+            {
+                foreach (var prereq in newUpgrade.Prerequisites)
+                {
+                    if (currentUpgrades.FindIndex(u => u.Id == prereq) != -1)
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
             return true;
         }
         
-        public void TryUpgrade(string id)
+        public Upgrade? TryUpgrade(string id)
         {
             if (!CanUpgrade(id))
             {
                 AudioSystem.Instance.PlayNegativeSound();
-                return;
+                return null;
             }
             AudioSystem.Instance.PlayMenuConfirmSound();
             var upgrade = Upgrades.FirstOrDefault(u => u.Id == id);
             upgrade.NumOfUpgrades++;
+            GameManager.Instance.OnUpgraded?.Invoke(upgrade);
+            return upgrade;
         }
     }
 }

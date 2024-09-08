@@ -35,7 +35,7 @@ public class GameManager : Singleton<GameManager>
     /// <summary>
     /// Emitted anytime an entity gets an upgrade
     /// </summary>
-    public Action<EntityBehaviour, Upgrade> OnUpgraded;
+    public Action<Upgrade> OnUpgraded;
     
     public Dictionary<string, GameAction> AllActions { get; set; }
     public AutoAction AutoAction;

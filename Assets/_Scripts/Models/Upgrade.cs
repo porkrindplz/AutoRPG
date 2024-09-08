@@ -24,6 +24,8 @@ namespace _Scripts.Models
         /// Contains the Ids of all upgrades that need to be unlocked before this upgrade can be unlocked
         /// </summary>
         public List<string> Prerequisites  = new List<string>();
+
+        public string PrerequisiteType;
         
         /// <summary>
         /// Once this upgrade has at least one upgrade (NumUpgrades > 0) then all upgrades associated with this
@@ -32,6 +34,8 @@ namespace _Scripts.Models
         public List<string> Children  = new List<string>();
 
         public List<string> ExclusiveWith  = new List<string>();
+        
+        
 
         /// <summary>
         /// Keeps track of the number of times the player has specced into this upgrade. Cannt be greater than MaxUpgrades

@@ -40,9 +40,9 @@ namespace _Scripts.UI
         {
         }
 
-        void OnUpgraded(EntityBehaviour entityBehaviour, Upgrade upgrade)
+        void OnUpgraded(Upgrade upgrade)
         {
-            UpdateStats(entityBehaviour);
+            UpdateStats(entity);
         }
 
         void UpdateStats(EntityBehaviour entityBehaviour)

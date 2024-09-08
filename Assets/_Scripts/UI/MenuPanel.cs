@@ -2,23 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using __Scripts.Systems;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
     
 public enum EMenuPanel
 {
-    Warrior,
-    Paladin,
-    Mage,
-    Archer
+    Sword,
+    Staff,
+    Slingshot,
+    Shield
 }
 
 public class MenuPanel : MonoBehaviour
 {
     
-    [SerializeField] private RectTransform WarriorPanel;
-    [SerializeField] private RectTransform PaladinPanel;
-    [SerializeField] private RectTransform MagePanel;   
-    [SerializeField] private RectTransform ArcherPanel;
+    [SerializeField] private RectTransform SwordPanel;
+    [SerializeField] private RectTransform StaffPanel;
+    [SerializeField] private RectTransform SlingshotPanel;   
+    [SerializeField] private RectTransform ShieldPanel;
     
     public void SwitchPanel(int panel)
     {
@@ -28,25 +29,25 @@ public class MenuPanel : MonoBehaviour
     
     public void SelectPanel(EMenuPanel panel)
     {
-        WarriorPanel.gameObject.SetActive(false);
-        ArcherPanel.gameObject.SetActive(false);
-        MagePanel.gameObject.SetActive(false);
-        PaladinPanel.gameObject.SetActive(false);
+        SwordPanel.gameObject.SetActive(false);
+        StaffPanel.gameObject.SetActive(false);
+        SlingshotPanel.gameObject.SetActive(false);
+        ShieldPanel.gameObject.SetActive(false);
 
         AudioSystem.Instance.PlayMenuSelectSound();
         switch(panel)
         {
-            case EMenuPanel.Warrior:
-                WarriorPanel.gameObject.SetActive(true);
+            case EMenuPanel.Sword:
+                SwordPanel.gameObject.SetActive(true);
                 break;
-            case EMenuPanel.Archer:
-                ArcherPanel.gameObject.SetActive(true);
+            case EMenuPanel.Staff:
+                StaffPanel.gameObject.SetActive(true);
                 break;
-            case EMenuPanel.Mage:
-                MagePanel.gameObject.SetActive(true);
+            case EMenuPanel.Slingshot:
+                SlingshotPanel.gameObject.SetActive(true);
                 break;
-            case EMenuPanel.Paladin:
-                PaladinPanel.gameObject.SetActive(true);
+            case EMenuPanel.Shield:
+                ShieldPanel.gameObject.SetActive(true);
                 break;
         }
     }

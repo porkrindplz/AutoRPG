@@ -1,5 +1,5 @@
 {
-  "Paladin": {
+  "Shield": {
     "Upgrades": [
       {
         "Id": "block",
@@ -96,7 +96,7 @@
       }
     ]
   },
-  "Warrior": {
+  "Sword": {
     "Upgrades": [
       {
         "Id": "sword",
@@ -104,7 +104,7 @@
         "Description": "",
         "MaxUpgrades": 3,
         "Prerequisites": [],
-        "Children": ["slash", "whirlwind"]
+        "Children": ["slash", "cross_slash"]
       },
       {
         "Id": "slash",
@@ -112,27 +112,117 @@
         "Description": "",
         "MaxUpgrades": 3,
         "Prerequisites": ["sword"],
-        "Children": ["suplex"],
-        "ExclusiveWith": ["whirlwind"]
+        "Children": ["braveslash"],
+        "ExclusiveWith": ["cross_slash"]
+      },
+      {
+        "Id": "cross_slash",
+        "Name": "Cross Slash",
+        "Description": "",
+        "MaxUpgrades": 3,
+        "Prerequisites": ["sword"],
+        "Children": ["whirlwind"],
+        "ExclusiveWith": ["slash"]
       },
       {
         "Id": "whirlwind",
         "Name": "Whirlwind",
         "Description": "",
         "MaxUpgrades": 3,
-        "Prerequisites": ["sword"],
-        "Children": ["suplex"],
+        "Prerequisites": ["cross_slash"],
+        "Children": [],
         "ExclusiveWith": ["slash"]
       },
       {
-        "Id": "suplex",
-        "Name": "Suplex",
+        "Id": "brave_slash",
+        "Name": "Brave Slash",
         "Description": "",
         "MaxUpgrades": 3,
-        "Prerequisites": ["slash", "whirlwind"],
+        "Prerequisites": ["slash"],
+        "ExclusiveWith": ["Whirlwind"],
+        "Children": []
+      }
+    ]
+  },
+  "Staff": {
+    "Upgrades": [
+      {
+        "Id": "fireball",
+        "Name": "Fireball",
+        "Description": "",
+        "MaxUpgrades": 3,
+        "Prerequisites": [],
+        "ExclusiveWith": ["water", "leaf"],
+        "Children": ["aoe", "cannon", "enchant"]
+      },
+      {
+        "Id": "water",
+        "Name": "Water",
+        "Description": "",
+        "MaxUpgrades": 3,
+        "Prerequisites": [],
+        "ExclusiveWith": ["fire", "leaf"],
+        "Children": ["aoe", "cannon", "enchant"]
+      },
+      {
+        "Id": "leaf",
+        "Name": "Leaf",
+        "Description": "",
+        "MaxUpgrades": 3,
+        "Prerequisites": [],
+        "ExclusiveWith": ["water", "fire"],
+        "Children": ["aoe", "cannon", "enchant"]
+      },
+      {
+        "Id": "aoe",
+        "Name": "Area of Effect",
+        "Description": "",
+        "MaxUpgrades": 1,
+        "Prerequisites": ["fire", "water", "leaf"],
+        "PrerequisiteType": "or",
+        "ExclusiveWith": ["cannon", "enchant"],
+        "Children": ["lightning", "shadow"]
+      },
+      {
+        "Id": "cannon",
+        "Name": "Cannon",
+        "Description": "",
+        "MaxUpgrades": 1,
+        "Prerequisites": ["fire", "water", "leaf"],
+        "PrerequisiteType": "or",
+        "ExclusiveWith": ["aoe", "enchant"],
+        "Children": ["lightning", "shadow"]
+      },
+      {
+        "Id": "enchant",
+        "Name": "Enchant",
+        "Description": "",
+        "MaxUpgrades": 1,
+        "Prerequisites": ["fire", "water", "leaf"],
+        "PrerequisiteType": "or",
+        "ExclusiveWith": ["cannon", "aoe"],
+        "Children": ["lightning", "shadow"]
+      },
+      {
+        "Id": "lightning",
+        "Name": "Lightning",
+        "Description": "",
+        "MaxUpgrades": 3,
+        "Prerequisites": ["aoe", "cannon", "enchant"],
+        "PrerequisiteType": "or",
+        "ExclusiveWith": ["shadow"],
+        "Children": []
+      },
+      {
+        "Id": "shadow",
+        "Name": "Shadow",
+        "Description": "",
+        "MaxUpgrades": 3,
+        "Prerequisites": ["aoe", "cannon", "enchant"],
+        "PrerequisiteType": "or",
+        "ExclusiveWith": ["lightning"],
         "Children": []
       }
     ]
   }
-    
 }
