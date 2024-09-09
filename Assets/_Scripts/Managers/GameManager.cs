@@ -37,6 +37,8 @@ public class GameManager : Singleton<GameManager>
     /// Emitted anytime an entity gets an upgrade
     /// </summary>
     public Action<UpgradeTree, Upgrade> OnUpgraded;
+
+    public Action<UpgradeTree> OnResetTree;
     
     public Dictionary<AttackType, GameAction> AllActions { get; set; }
     

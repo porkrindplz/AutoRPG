@@ -33,9 +33,15 @@ namespace _Scripts.Managers
         {
             // Read JSON into
             LoadEnemyData();
-            EnemyIndex = 0;
             Debug.Log(_allEnemies.Count);
             _random = new Random();
+            GameManager.Instance.OnBeforeGameStateChanged += (state, gameState) =>
+            {
+                if (gameState == EGameState.SetupGame)
+                {
+                    EnemyIndex = 0;
+                }
+            };
             base.Awake();
         }
         

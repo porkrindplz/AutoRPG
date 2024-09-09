@@ -32,8 +32,21 @@ namespace _Scripts.Actions
             AnimationController = GetComponent<CharacterAnimationController>();
             //Animator = GetComponentInChildren<Animator>();
             GameManager.Instance.OnUpgraded += OnUpgraded;
+            GameManager.Instance.OnResetTree += OnResetTree;
             slotTreeNames = new List<string>() { "Sword", "Staff", "Slingshot", "Shield" };
             //GameManager.Instance.OnBeforeGameStateChanged += OnBeforeGameStateChanged;
+        }
+
+        private void OnResetTree(UpgradeTree tree)
+        {
+            for (var i = 0; i < slotTreeNames.Count; i++)
+            {
+                if (tree.Name == slotTreeNames[i])
+                {
+                    actionSlots[i] = null;
+                    Buttons[i].gameObject.GetComponent<Image>().sprite = null;
+                }
+            }
         }
 
         private void OnUpgraded(UpgradeTree tree, Upgrade obj)
@@ -48,7 +61,7 @@ namespace _Scripts.Actions
                     var atk = AttackTypeConverter.StringToAttackType(highestUpgrade.Name);
                     
                     var highestLevelAction = GameManager.Instance.AllActions[atk.Value];
-                    if (actionSlots[0]?.action.Name != highestLevelAction.Name)
+                    if (actionSlots[i]?.action.Name != highestLevelAction.Name)
                     {
                         actionSlots[i] = (highestLevelAction,
                             new CountdownTimer((float)highestLevelAction.TimeToExecute));

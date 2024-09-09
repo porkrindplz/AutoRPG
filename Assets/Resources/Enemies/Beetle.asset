@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Beetle
   maxHealth: 50
   maxMagic: 10
-  baseAtk: 5
+  baseAtk: 10
   baseDef: 3
   speed: 1
   baseNuts: 10

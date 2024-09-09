@@ -19,15 +19,28 @@ namespace _Scripts.UI
             button = GetComponent<Button>();
             GameManager.Instance.OnUpgraded += (_, _) =>
             {
-                button.interactable = parentName switch
-                {
-                    "SwordTree" => GameManager.Instance.AllTrees.Sword.CanUpgrade(UpgradeId),
-                    "StaffTree" => GameManager.Instance.AllTrees.Staff.CanUpgrade(UpgradeId),
-                    "SlingshotTree" => GameManager.Instance.AllTrees.Slingshot.CanUpgrade(UpgradeId),
-                    "ShieldTree" => GameManager.Instance.AllTrees.Shield.CanUpgrade(UpgradeId),
-                    _ => button.interactable
-                };
+                SetInteractable();
             };
+            GameManager.Instance.OnResetTree += tree =>
+            {
+                if (parentName != null && parentName.Contains(tree.Name))
+                {
+                    numText.text = "0";
+                    SetInteractable();
+                }
+            };
+        }
+
+        private void SetInteractable()
+        {
+            button.interactable = parentName switch
+            {
+                "SwordTree" => GameManager.Instance.AllTrees.Sword.CanUpgrade(UpgradeId),
+                "StaffTree" => GameManager.Instance.AllTrees.Staff.CanUpgrade(UpgradeId),
+                "SlingshotTree" => GameManager.Instance.AllTrees.Slingshot.CanUpgrade(UpgradeId),
+                "ShieldTree" => GameManager.Instance.AllTrees.Shield.CanUpgrade(UpgradeId),
+                _ => button.interactable
+            };   
         }
 
         public void OnClick()

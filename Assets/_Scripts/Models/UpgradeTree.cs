@@ -20,7 +20,7 @@ namespace _Scripts.Models
             Sword.ResetTree();
             Shield.ResetTree();
             Staff.ResetTree();
-            Slingshot.ResetTree();
+            //Slingshot.ResetTree();
         }
     }
     
@@ -102,6 +102,7 @@ namespace _Scripts.Models
         public void ResetTree()
         {
             Upgrades?.ForEach(u => u.NumOfUpgrades = 0);
+            GameManager.Instance.OnResetTree?.Invoke(this);
         }
         
         public Upgrade? TryUpgrade(string id)
