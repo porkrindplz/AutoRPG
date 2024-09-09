@@ -200,7 +200,12 @@ public class GameManager : Singleton<GameManager>
     private void HandlePlayerDefeated()
     {
         DisableAllInput();
-        
+
+        StartCoroutine(PlayerDefeatedSequence());
+    }
+    IEnumerator PlayerDefeatedSequence()
+    {
+        yield return new WaitForSeconds(2);
         GameOverPanel.gameObject.SetActive(true);
     }
 
