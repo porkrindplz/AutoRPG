@@ -194,9 +194,14 @@ public class GameManager : Singleton<GameManager>
     private void HandleEnemyDefeated()
     {
         DisableAllInput();
-
+        StartCoroutine(EnemyDefeatedSequence());
+    }
+    
+    IEnumerator EnemyDefeatedSequence()
+    {
+        yield return new WaitForSeconds(2);
+        EnemyManager.Instance.IncrementEnemyIndex();
         VictoryPanel.gameObject.SetActive(true);
-        
     }
 
     private void HandlePlayerDefeated()

@@ -19,7 +19,7 @@ namespace _Scripts.Managers
             public List<Enemy> Enemies;
         }
         
-        [SerializeField] private GameObject enemyPanel;
+        private GameObject enemyPanel;
 
         [SerializeField] private List<EnemyGroup> enemyOrder;
         private List<Enemy> _allEnemies;
@@ -27,11 +27,13 @@ namespace _Scripts.Managers
 
         private int EnemyIndex;
         
+        
         public EntityBehaviour CurrentEnemy { get; private set; }
 
         protected override void Awake()
         {
             // Read JSON into
+            enemyPanel = GameObject.Find("EnemyPanel");
             LoadEnemyData();
             Debug.Log(_allEnemies.Count);
             _random = new Random();
@@ -44,6 +46,8 @@ namespace _Scripts.Managers
             };
             base.Awake();
         }
+
+        public void IncrementEnemyIndex() => EnemyIndex++;
         
         public void SpawnEnemy()
         {
@@ -72,7 +76,6 @@ namespace _Scripts.Managers
             
             enemyAi.weights = newEnemyStats.ActionWeights;
             enemyAi.possibleActions = newEnemyStats.Actions;
-            EnemyIndex++;
             //autoAction.PopulateQueue();
 
             Logger.Log(enemyAi.weights.Count.ToString());
@@ -87,7 +90,8 @@ namespace _Scripts.Managers
         }
 
         private void OnEnemyDeath(Entity entity)
-        {
+        { 
+            CurrentEnemy.GetComponent<CharacterAnimationController>().DeathAnimation(entity);
             GameManager.Instance.EnemyNuts = entity.Nuts;
             
             // Go to next enemy, if -1 then we have defeated enemy
@@ -95,6 +99,7 @@ namespace _Scripts.Managers
             enemyOrder[EnemyIndex].GoToNextEnemy();
             if (enemyOrder[EnemyIndex].CurrentEnemy == -1)
             {
+                
                 GameManager.Instance.ChangeGameState(EGameState.EnemyGroupDefeated);    
             }
             else

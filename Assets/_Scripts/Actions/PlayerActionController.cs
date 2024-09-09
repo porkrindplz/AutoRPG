@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using _Scripts.Entities;
 using _Scripts.Models;
+using _Scripts.UI;
 using _Scripts.Utilities;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace _Scripts.Actions
@@ -18,6 +20,7 @@ namespace _Scripts.Actions
 
         
         private List<Button> Buttons;
+        private List<EventTrigger> EventTriggers;
         private RectTransform[] cooldowns;
 
         private List<KeyCode> slotButtons;
@@ -87,6 +90,7 @@ namespace _Scripts.Actions
             {
                 cooldowns[i] = Buttons[i].transform.Find("Cooldown").GetComponent<RectTransform>();
             }
+            EventTriggers = Buttons.Select(b => b.GetComponent<EventTrigger>()).ToList();
             Buttons.ForEach(b => b.enabled = false);
             slotButtons = new List<KeyCode> { KeyCode.Q, KeyCode.W, KeyCode.E, KeyCode.R };
 
@@ -98,6 +102,7 @@ namespace _Scripts.Actions
                 {
                     TryAct(i1, false);
                 });
+                
             }
         }
 
@@ -164,6 +169,18 @@ namespace _Scripts.Actions
             }
             cd.localScale = Vector2.zero;
 
+        }
+
+        public void GenerateToolTip(int i)
+        {
+            if (actionSlots[i] == null) return;
+            ToolTip.Instance.ShowToolTip(actionSlots[i]?.action.name);
+        }
+        public void HideToolTip()
+        {
+            
+            Debug.Log("Hiding from PC");
+            ToolTip.Instance.HideToolTip();
         }
     }
 }

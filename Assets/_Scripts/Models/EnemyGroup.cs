@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace _Scripts.Models
@@ -19,6 +20,11 @@ namespace _Scripts.Models
 
         public void GoToNextEnemy()
         {
+            if (NextEnemy is null || NextEnemy.Count == 0)
+            {
+                CurrentEnemy = -1;
+                return;
+            }
             CurrentEnemy = NextEnemy[CurrentEnemy];
         }
 
