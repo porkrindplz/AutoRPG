@@ -1,6 +1,7 @@
 using System;
 using _Scripts.Models;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -58,6 +59,23 @@ namespace _Scripts.UI
             {
                 numText.text = upgrade.NumOfUpgrades.ToString();
             }
+        }
+
+        public void ShowToolTip()
+        {
+            string description = parentName switch
+            {
+                "SwordTree" => GameManager.Instance.AllTrees.Sword.Upgrades.Find(u => u.Id == UpgradeId).Description,
+                "StaffTree" => GameManager.Instance.AllTrees.Staff.Upgrades.Find(u => u.Id == UpgradeId).Description,
+                "SlingshotTree" => GameManager.Instance.AllTrees.Slingshot.Upgrades.Find(u => u.Id == UpgradeId).Description,
+                "ShieldTree" => GameManager.Instance.AllTrees.Shield.Upgrades.Find(u => u.Id == UpgradeId).Description,
+                _ => ""
+            };
+            ToolTip.Instance.ShowToolTip(description);
+        }
+        public void HideToolTip()
+        {
+            ToolTip.Instance.HideToolTip();
         }
     }
 }

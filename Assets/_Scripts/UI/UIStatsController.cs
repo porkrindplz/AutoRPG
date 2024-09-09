@@ -14,7 +14,6 @@ namespace _Scripts.UI
     {
         [SerializeField] private EntityBehaviour entity;
         [SerializeField] private TextMeshProUGUI statText;
-        [SerializeField] private TextMeshProUGUI resistanceText;
         [SerializeField] private TextMeshProUGUI nutsText;
         [SerializeField] private bool isPlayer;
         
@@ -82,8 +81,6 @@ namespace _Scripts.UI
             {
                 resText += $"{element.ToString()}: {entityBehaviour.Entity.Resistances}\n";
             }*/
-
-            resistanceText.text = resText;
             
             nutsText.text = $"{entityBehaviour.Entity.Nuts}";
         }
@@ -91,7 +88,6 @@ namespace _Scripts.UI
         void ClearStats()
         {
             statText.text = "";
-            resistanceText.text = "";
             nutsText.text = "";
         }
     }
