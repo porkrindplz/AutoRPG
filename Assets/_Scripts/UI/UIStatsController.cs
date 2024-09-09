@@ -69,6 +69,7 @@ namespace _Scripts.UI
         {
             if ((entityBehaviour.Entity is Player && isPlayer == false) ||
                 (entityBehaviour.Entity is Enemy && isPlayer)) return;
+            if (entityBehaviour.Entity is null) return;
             
             Logger.Log(entityBehaviour.Entity.GetType().ToString() + " Updating Stats");
             statText.text = $"Health: {(int)entityBehaviour.Entity.CurrentHealth}/{(int)entityBehaviour.Entity.MaxHealth}\n" +

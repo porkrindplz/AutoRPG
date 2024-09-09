@@ -13,6 +13,14 @@ namespace _Scripts.Models
         public UpgradeTree Shield;
         public UpgradeTree Staff;
         public UpgradeTree Slingshot;
+
+        public void Reset()
+        {
+            Sword.ResetTree();
+            Shield.ResetTree();
+            Staff.ResetTree();
+            Slingshot.ResetTree();
+        }
     }
     
     [Serializable]
@@ -67,6 +75,11 @@ namespace _Scripts.Models
                 return false;
             }
             return true;
+        }
+
+        public void ResetTree()
+        {
+            Upgrades?.ForEach(u => u.NumOfUpgrades = 0);
         }
         
         public Upgrade? TryUpgrade(string id)
