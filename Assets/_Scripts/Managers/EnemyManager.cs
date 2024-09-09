@@ -89,7 +89,7 @@ namespace _Scripts.Managers
                      Nuts = data.baseNuts,
                      Actions = data.actions,
                      ActionWeights = data.actionWeights,
-                     Resistances = new Dictionary<ElementsType, float>(),
+                     Modifiers = new Dictionary<AttackType, float>(),
                      Upgrades = new List<Upgrade>(),
                      SpritePath = ""
                 };

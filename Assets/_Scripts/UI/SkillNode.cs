@@ -17,7 +17,7 @@ namespace _Scripts.UI
         {
             parentName = transform.parent.name;
             button = GetComponent<Button>();
-            GameManager.Instance.OnUpgraded += _ =>
+            GameManager.Instance.OnUpgraded += (_, _) =>
             {
                 button.interactable = parentName switch
                 {

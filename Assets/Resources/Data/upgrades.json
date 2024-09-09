@@ -1,11 +1,13 @@
 {
   "Shield": {
+    "Name": "Shield",
     "Upgrades": [
       {
         "Id": "block",
         "Name": "Block",
         "Description": "",
         "MaxUpgrades": 2,
+        "Level": 1,
         "Prerequisites": [],
         "Children": [
           "enchant_holy",
@@ -34,6 +36,7 @@
         "Name": "Shield Bash",
         "Description": "",
         "MaxUpgrades": 1,
+        "Level": 2,
         "Prerequisites": ["block"],
         "Children": []
       },
@@ -97,12 +100,14 @@
     ]
   },
   "Sword": {
+    "Name": "Sword",
     "Upgrades": [
       {
         "Id": "sword",
         "Name": "Sword",
         "Description": "",
         "MaxUpgrades": 3,
+        "Level": 1,
         "Prerequisites": [],
         "Children": ["slash", "cross_slash"]
       },
@@ -111,6 +116,7 @@
         "Name": "Slash",
         "Description": "",
         "MaxUpgrades": 3,
+        "Level": 2,
         "Prerequisites": ["sword"],
         "Children": ["braveslash"],
         "ExclusiveWith": ["cross_slash"]
@@ -120,6 +126,7 @@
         "Name": "Cross Slash",
         "Description": "",
         "MaxUpgrades": 3,
+        "Level": 2,
         "Prerequisites": ["sword"],
         "Children": ["whirlwind"],
         "ExclusiveWith": ["slash"]
@@ -129,6 +136,7 @@
         "Name": "Whirlwind",
         "Description": "",
         "MaxUpgrades": 3,
+        "Level": 3,
         "Prerequisites": ["cross_slash"],
         "Children": [],
         "ExclusiveWith": ["slash"]
@@ -138,6 +146,7 @@
         "Name": "Brave Slash",
         "Description": "",
         "MaxUpgrades": 3,
+        "Level": 3,
         "Prerequisites": ["slash"],
         "ExclusiveWith": ["Whirlwind"],
         "Children": []
@@ -145,12 +154,14 @@
     ]
   },
   "Staff": {
+    "Name": "Staff",
     "Upgrades": [
       {
         "Id": "fireball",
         "Name": "Fireball",
         "Description": "",
         "MaxUpgrades": 3,
+        "Level": 1,
         "Prerequisites": [],
         "ExclusiveWith": ["water", "leaf"],
         "Children": ["aoe", "cannon", "enchant"]
@@ -160,6 +171,7 @@
         "Name": "Water",
         "Description": "",
         "MaxUpgrades": 3,
+        "Level": 1,
         "Prerequisites": [],
         "ExclusiveWith": ["fireball", "leaf"],
         "Children": ["aoe", "cannon", "enchant"]
@@ -169,6 +181,7 @@
         "Name": "Leaf",
         "Description": "",
         "MaxUpgrades": 3,
+        "Level": 1,
         "Prerequisites": [],
         "ExclusiveWith": ["water", "fireball"],
         "Children": ["aoe", "cannon", "enchant"]
@@ -208,6 +221,7 @@
         "Name": "Lightning",
         "Description": "",
         "MaxUpgrades": 3,
+        "Level": 3,
         "Prerequisites": ["aoe", "cannon", "enchant"],
         "PrerequisiteType": "or",
         "ExclusiveWith": ["shadow"],
@@ -218,6 +232,7 @@
         "Name": "Shadow",
         "Description": "",
         "MaxUpgrades": 3,
+        "Level": 3,
         "Prerequisites": ["aoe", "cannon", "enchant"],
         "PrerequisiteType": "or",
         "ExclusiveWith": ["lightning"],

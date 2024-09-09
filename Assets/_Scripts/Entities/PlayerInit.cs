@@ -19,14 +19,14 @@ public class PlayerInit : MonoBehaviour
             {
                 playerEntity.Entity = new Player
                 {
-                    CurrentHealth = 10,
-                    MaxHealth = 10,
+                    CurrentHealth = 100,
+                    MaxHealth = 100,
                     CurrentMagic = 25,
                     MaxMagic = 25,
                     BaseAtk = 10,
                     BaseDef = 2,
                     Speed = 1,
-                    Resistances = new Dictionary<ElementsType, float>(),
+                    Modifiers = new Dictionary<AttackType, float>(),
                     Upgrades = new List<Upgrade>(),
                     MaxSkillPoints = 3,
                     UsedSkillPoints = 0,

@@ -60,7 +60,7 @@ namespace _Scripts.UI
             }
         }
 
-        void OnUpgraded(Upgrade upgrade)
+        void OnUpgraded(UpgradeTree tree, Upgrade upgrade)
         {
             UpdateStats(entity);
         }

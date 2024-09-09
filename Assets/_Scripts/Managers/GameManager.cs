@@ -36,9 +36,9 @@ public class GameManager : Singleton<GameManager>
     /// <summary>
     /// Emitted anytime an entity gets an upgrade
     /// </summary>
-    public Action<Upgrade> OnUpgraded;
+    public Action<UpgradeTree, Upgrade> OnUpgraded;
     
-    public Dictionary<string, GameAction> AllActions { get; set; }
+    public Dictionary<AttackType, GameAction> AllActions { get; set; }
     
     /// <summary>
     ///  Emitted anytime deez nuts are updated
@@ -76,15 +76,20 @@ public class GameManager : Singleton<GameManager>
         base.Awake();
     }
 
-    public IGameAction GetNewAction(string actionName)
+    public IGameAction GetNewAction(AttackType attackType)
     {
-         IGameAction action = actionName switch
+        IGameAction action = attackType switch
         {
-            "attack" => new AttackGameAction(),
-            "block" => new BlockAction(),
-            _ => throw new Exception($"Invalid action {actionName}")
+            AttackType.Sword => new AttackGameAction(),
+            AttackType.Block => new BlockAction(),
+            AttackType.Fireball => new AttackAction(AttackType.Fireball),
+            AttackType.Water => new AttackAction(AttackType.Water),
+            AttackType.Leaf => new AttackAction(AttackType.Leaf),
+            AttackType.Lightning => new AttackAction(AttackType.Lightning),
+            AttackType.Shadow => new AttackAction(AttackType.Shadow),
+            _ => throw new Exception($"Invalid action {attackType}")
         };
-        action.GameAction = AllActions[actionName];
+        action.GameAction = AllActions[attackType];
         return action;
     }
     
@@ -95,7 +100,7 @@ public class GameManager : Singleton<GameManager>
 
     private void LoadActions()
     {
-        AllActions = new Dictionary<string, GameAction>();
+        AllActions = new Dictionary<AttackType, GameAction>();
         var allActions = Resources.LoadAll<GameAction>("Actions").ToList();
         foreach (var action in allActions)
         {
@@ -167,7 +172,7 @@ public class GameManager : Singleton<GameManager>
         //Load Enemy
         Logger.Log("Handle Setup");
         AllTrees.Reset();
-        OnUpgraded?.Invoke(AllTrees.Sword.Upgrades[0]);
+        OnUpgraded?.Invoke(AllTrees.Sword, AllTrees.Sword.Upgrades[0]);
         ChangeGameState(EGameState.SpawnEnemy);
     }
     private void HandleSpawnEnemy()

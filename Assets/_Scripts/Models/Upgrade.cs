@@ -14,6 +14,8 @@ namespace _Scripts.Models
         public string Name;
         public string Description;
 
+        public int Level;
+
         /// <summary>
         /// Maximum number of times a player may spec into this upgrade
         /// </summary>

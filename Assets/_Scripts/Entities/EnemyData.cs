@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _Scripts.Models;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -14,7 +15,7 @@ namespace _Scripts.Entities
         public double baseDef;
         public int speed;
         public int baseNuts;
-        public List<string> actions;
+        public List<AttackType> actions;
         public List<double> actionWeights;
         public Sprite sprite;
     }

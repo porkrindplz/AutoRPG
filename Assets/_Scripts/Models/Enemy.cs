@@ -9,7 +9,7 @@ namespace _Scripts.Models
     public class Enemy : Entity
     {
         public string Name;
-        public List<string> Actions;
+        public List<AttackType> Actions;
         public List<double> ActionWeights;
         public string SpritePath;
 
@@ -30,7 +30,7 @@ namespace _Scripts.Models
                 BaseDef = BaseDef,
                 Speed = Speed,
                 Nuts = Nuts,
-                Resistances = Resistances,
+                Modifiers = Modifiers,
                 Upgrades = Upgrades,
                 Name = Name,
                 Actions = Actions,

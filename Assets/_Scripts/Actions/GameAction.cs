@@ -11,7 +11,7 @@ namespace _Scripts.Actions
         /// Name to refer to the GameAction by. MUST also have a corresponding entry in GameManager.AllActions
         /// dictionary in order to actually perform the logic of this action
         /// </summary>
-        public string Name;
+        public AttackType Name;
         
         /// <summary>
         /// Time in seconds it takes to execute the action once it is first in the action queue

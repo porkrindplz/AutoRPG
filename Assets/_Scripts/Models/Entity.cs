@@ -47,7 +47,7 @@ namespace _Scripts.Models
         }
         private int nuts;
 
-        public Dictionary<ElementsType, float> Resistances = new();
+        public Dictionary<AttackType, float> Modifiers = new();
         //public Dictionary<ElementsType, float> ElementalBonus { get; set; }
 
         public List<Upgrade> Upgrades = new();

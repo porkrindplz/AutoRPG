@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _Scripts.Actions;
 using _Scripts.Entities;
+using _Scripts.Models;
 using _Scripts.Utilities;
 using UnityEngine;
 using Random = System.Random;
@@ -11,7 +12,7 @@ using Random = System.Random;
 public class AutoAction : MonoBehaviour
 {
 
-    [SerializeField] public List<string> possibleActions;
+    [SerializeField] public List<AttackType> possibleActions;
     [SerializeField] public List<double> weights;
     [SerializeField] private EntityBehaviour currentEntity;
     [SerializeField] private EntityBehaviour opposingEntity;

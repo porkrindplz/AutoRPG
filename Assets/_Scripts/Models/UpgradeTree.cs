@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using __Scripts.Systems;
+using JetBrains.Annotations;
 
 namespace _Scripts.Models
 {
@@ -27,6 +28,7 @@ namespace _Scripts.Models
     public class UpgradeTree
     {
         public List<Upgrade> Upgrades;
+        public string Name;
 
         /// <summary>
         /// Checks if the given hero's upgrades allows for the new upgrade to be chosen.
@@ -77,6 +79,26 @@ namespace _Scripts.Models
             return true;
         }
 
+        [CanBeNull]
+        public Upgrade GetHighestLevelAction()
+        {
+            var boughtUpgrade = Upgrades?.Where(u => u.NumOfUpgrades > 0);
+            if (boughtUpgrade == null || !boughtUpgrade.Any()) return null;
+
+            int highestLevel = 0;
+            Upgrade? highestUpgrade = null;
+            foreach (var upgrade in boughtUpgrade)
+            {
+                if (upgrade.Level != null && upgrade.Level > highestLevel)
+                {
+                    highestLevel = upgrade.Level;
+                    highestUpgrade = upgrade;
+                }
+            }
+
+            return highestUpgrade;
+        }
+
         public void ResetTree()
         {
             Upgrades?.ForEach(u => u.NumOfUpgrades = 0);
@@ -92,7 +114,7 @@ namespace _Scripts.Models
             AudioSystem.Instance.PlayMenuConfirmSound();
             var upgrade = Upgrades.FirstOrDefault(u => u.Id == id);
             upgrade.NumOfUpgrades++;
-            GameManager.Instance.OnUpgraded?.Invoke(upgrade);
+            GameManager.Instance.OnUpgraded?.Invoke(this, upgrade);
             return upgrade;
         }
     }
