@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec3b06827a8c4d27a8747a5b3396197d, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  Name: attack
+  Name: 0
   TimeToExecute: 2
-  QueueIcon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  QueueIcon: {fileID: 21300000, guid: 51e6c535420f64c729a9e2e5a9cd5330, type: 3}
   Element: 0
+  AttackGroupType: 0
   IsSelfTargetting: 0
