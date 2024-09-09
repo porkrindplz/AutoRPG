@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using _Scripts.Entities;
@@ -13,10 +14,22 @@ namespace _Scripts.Actions
         [SerializeField] private EntityBehaviour currentEntity;
         [SerializeField] private EntityBehaviour opposingEntity;
 
+        private Animator Animator;
+        
         private List<Button> Buttons;
 
         private List<KeyCode> slotButtons;
-    
+
+        private void Awake()
+        {
+            Animator = GetComponentInChildren<Animator>();
+        }
+
+        private void OnEnable()
+        {
+            GameManager.Instance.OnAction += AnimateAction;
+        }
+
         // Start is called before the first frame update
         void Start()
         {
@@ -70,6 +83,13 @@ namespace _Scripts.Actions
             var actee = takenAction.IsSelfTargetting ? currentEntity : opposingEntity;
             processedAction?.Interact(currentEntity, actee);
             GameManager.Instance.OnAction?.Invoke(currentEntity, actee, processedAction);   
+        }
+        
+        void AnimateAction(EntityBehaviour actor, EntityBehaviour actee, IGameAction action)
+        {
+            if (actor != currentEntity) return;
+            
+            Animator.SetTrigger("OnAttack");
         }
     }
 }
