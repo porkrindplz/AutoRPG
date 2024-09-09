@@ -19,7 +19,7 @@ namespace _Scripts.Managers
             public List<Enemy> Enemies;
         }
         
-        [SerializeField] private GameObject enemyPanel;
+        private GameObject enemyPanel;
 
         [SerializeField] private List<string> enemyOrder;
         private List<Enemy> _allEnemies;
@@ -27,17 +27,20 @@ namespace _Scripts.Managers
 
         private int EnemyIndex;
         
+        
         public EntityBehaviour CurrentEnemy { get; private set; }
 
         protected override void Awake()
         {
             // Read JSON into
+            enemyPanel = GameObject.Find("EnemyPanel");
             LoadEnemyData();
             EnemyIndex = 0;
             Debug.Log(_allEnemies.Count);
             _random = new Random();
             base.Awake();
         }
+        
         
         public void SpawnEnemy()
         {
@@ -72,7 +75,8 @@ namespace _Scripts.Managers
         }
 
         private void OnEnemyDeath(Entity entity)
-        {
+        { 
+            CurrentEnemy.GetComponent<CharacterAnimationController>().DeathAnimation(entity);
             GameManager.Instance.EnemyNuts = entity.Nuts;
             GameManager.Instance.ChangeGameState(EGameState.EnemyDefeated);
         }

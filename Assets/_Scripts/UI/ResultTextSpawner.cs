@@ -69,6 +69,8 @@ namespace _Scripts.UI
                 value += Time.deltaTime;
                 text.transform.localScale = initScale*(value + 0.25f);
                 text.transform.position = new Vector2(initPosition.x, initPosition.y + value*shiftDistance);
+                if(value>0.5f)
+                    text.color = new Color(text.color.r, text.color.g, text.color.b, 1 - value);
                 yield return null;
             }
             yield return new WaitForSeconds(.5f);

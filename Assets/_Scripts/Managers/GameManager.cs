@@ -193,8 +193,13 @@ public class GameManager : Singleton<GameManager>
     {
         DisableAllInput();
 
+        StartCoroutine(EnemyDefeatedSequence());
+    }
+    
+    IEnumerator EnemyDefeatedSequence()
+    {
+        yield return new WaitForSeconds(2);
         VictoryPanel.gameObject.SetActive(true);
-        
     }
 
     private void HandlePlayerDefeated()
