@@ -1,22 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameOverPanel : MonoBehaviour
 {
-    [SerializeField] private Button RestartButton;
+     [SerializeField] private Button MainMenuButton;
+    [SerializeField] private Button TryAgainButton;
     public void OnEnable()
     {
-        RestartButton.onClick.AddListener(RestartGame);
+        MainMenuButton.onClick.AddListener(RestartGame);
+        TryAgainButton.onClick.AddListener(TryAgain);
     }
     public void OnDisable()
     {
-        RestartButton.onClick.RemoveAllListeners();
+        MainMenuButton.onClick.RemoveAllListeners();
+        TryAgainButton.onClick.RemoveAllListeners();
     }
+    
+    
     void RestartGame()
     {
         GameManager.Instance.ChangeGameState(EGameState.MainMenu);
         this.gameObject.SetActive(false);
+    }
+
+    void TryAgain()
+    {
+        GameManager.Instance.ChangeGameState(EGameState.SetupGame);
     }
 }

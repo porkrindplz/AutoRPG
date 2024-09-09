@@ -19,6 +19,8 @@ public class AutoAction : MonoBehaviour
     
     public Queue<IGameAction> ActionQueue;
     
+    Animator _animator;
+    
     private double _timer;
     private WeightedRouletteWheel _weighter;
     
@@ -30,6 +32,13 @@ public class AutoAction : MonoBehaviour
     {
         _weighter = new WeightedRouletteWheel();
         ActionQueue = new Queue<IGameAction>();
+        _animator = GetComponentInChildren<Animator>();
+    }
+
+    private void OnEnable()
+    {
+        GameManager.Instance.OnAction += AnimateAction;
+
     }
 
     public void PopulateQueue()
@@ -75,5 +84,13 @@ public class AutoAction : MonoBehaviour
                 currentEntity.Entity.Nuts--;
             }
         }
+        
+
+    }
+    void AnimateAction(EntityBehaviour actor, EntityBehaviour actee, IGameAction action)
+    {
+        if(actor!=currentEntity) return;
+        _animator.SetTrigger("OnAttack");
+            
     }
 }

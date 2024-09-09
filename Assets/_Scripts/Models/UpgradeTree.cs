@@ -25,7 +25,7 @@ namespace _Scripts.Models
         /// Criteria is based on if the skill tree contains the given id, all its prereqs have been researched,
         /// and there are still more possible upgrades that could be chosen
         /// </summary>
-        public bool CanUpgrade( string id)
+        public bool CanUpgrade(string id)
         {
             var currentUpgrades = Upgrades.Where(u => u.NumOfUpgrades > 0).ToList();
             var newUpgrade = Upgrades.FirstOrDefault(u => u.Id == id);
