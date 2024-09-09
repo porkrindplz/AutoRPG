@@ -29,5 +29,6 @@ public class GameOverPanel : MonoBehaviour
     void TryAgain()
     {
         GameManager.Instance.ChangeGameState(EGameState.SetupGame);
+        this.gameObject.SetActive(false);
     }
 }
