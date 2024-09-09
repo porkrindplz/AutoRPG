@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _Scripts.Entities;
 using _Scripts.Models;
-using _Scripts.Utilities;
+using Unity.VisualScripting;
 using UnityEngine;
 using Logger = _Scripts.Utilities.Logger;
 using Random = System.Random;
@@ -11,7 +11,7 @@ using Random = System.Random;
 namespace _Scripts.Managers
 {
     
-    public class EnemyManager : Singleton<EnemyManager>
+    public class EnemyManager : Utilities.Singleton<EnemyManager>
     {
         [Serializable]
         private class EnemyJSON
@@ -20,9 +20,12 @@ namespace _Scripts.Managers
         }
         
         [SerializeField] private GameObject enemyPanel;
-        
+
+        [SerializeField] private List<string> enemyOrder;
         private List<Enemy> _allEnemies;
         private Random _random;
+
+        private int EnemyIndex;
         
         public EntityBehaviour CurrentEnemy { get; private set; }
 
@@ -30,6 +33,7 @@ namespace _Scripts.Managers
         {
             // Read JSON into
             LoadEnemyData();
+            EnemyIndex = 0;
             Debug.Log(_allEnemies.Count);
             _random = new Random();
             base.Awake();
@@ -37,7 +41,7 @@ namespace _Scripts.Managers
         
         public void SpawnEnemy()
         {
-            var newEnemyStats = _allEnemies[_random.Next(0, _allEnemies.Count)].Copy();
+            var newEnemyStats = _allEnemies.Find(e => e.Name == enemyOrder[EnemyIndex]).Copy();
             newEnemyStats.OnDeath += OnEnemyDeath;
             var existingEnemy = enemyPanel.GetComponent<EntityBehaviour>();
             if (existingEnemy.Entity != null)
@@ -48,12 +52,15 @@ namespace _Scripts.Managers
             CurrentEnemy = existingEnemy;
             
             enemyPanel.GetComponent<EntityBehaviour>().Entity = newEnemyStats;
-            var autoAction = enemyPanel.GetComponent<AutoAction>();
-            autoAction.weights = newEnemyStats.ActionWeights;
-            autoAction.possibleActions = newEnemyStats.Actions;
-            autoAction.PopulateQueue();
+            enemyPanel.GetComponent<CharacterAnimationController>().EntityImage.sprite = newEnemyStats.Sprite;
+            var enemyAi = enemyPanel.GetComponent<EnemyAI>();
+            
+            enemyAi.weights = newEnemyStats.ActionWeights;
+            enemyAi.possibleActions = newEnemyStats.Actions;
+            EnemyIndex++;
+            //autoAction.PopulateQueue();
 
-            Logger.Log(autoAction.weights.Count.ToString());
+            Logger.Log(enemyAi.weights.Count.ToString());
             UpdateNextEnemy();
         }
 
@@ -89,9 +96,9 @@ namespace _Scripts.Managers
                      Nuts = data.baseNuts,
                      Actions = data.actions,
                      ActionWeights = data.actionWeights,
-                     Modifiers = new Dictionary<AttackType, float>(),
+                     ReceivedModifiers = data.Modifiers,
                      Upgrades = new List<Upgrade>(),
-                     SpritePath = ""
+                     Sprite = data.sprite
                 };
                 _allEnemies.Add(enemy);
             }

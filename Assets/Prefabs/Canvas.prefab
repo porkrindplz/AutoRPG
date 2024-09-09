@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.15723258, g: 0.15476036, b: 0.15484232, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -732,12 +732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c112fdaab089a004baf8ff7248de4bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldowns:
-  - {fileID: 8042308446354862655}
-  - {fileID: 3981644934775042468}
-  - {fileID: 5391634229412544215}
-  - {fileID: 5022095431945356629}
-  - {fileID: 3257006109327071704}
+  EntityImage: {fileID: 0}
 --- !u!1 &425215331688954393
 GameObject:
   m_ObjectHideFlags: 0
@@ -6000,6 +5995,7 @@ GameObject:
   - component: {fileID: 5449197858318570823}
   - component: {fileID: 1836924077281112955}
   - component: {fileID: 1450517605256988312}
+  - component: {fileID: 3098777867771356443}
   m_Layer: 5
   m_Name: EnemyPanel
   m_TagString: Untagged
@@ -6141,8 +6137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98862c0f7e2d4104ba9a9a8ad3c03d5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possibleActions: []
-  weights: []
   currentEntity: {fileID: 1836924077281112955}
   opposingEntity: {fileID: 5348818339194195994}
   maxQueuedActions: 3
@@ -6170,7 +6164,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c112fdaab089a004baf8ff7248de4bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldowns: []
+  EntityImage: {fileID: 7160172161482403617}
+--- !u!114 &3098777867771356443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4690253868194639254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe90651998a40f083a234dec1cd87c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleActions: 
+  weights: []
 --- !u!1 &4694617944588004744
 GameObject:
   m_ObjectHideFlags: 0

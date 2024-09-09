@@ -47,7 +47,10 @@ namespace _Scripts.Models
         }
         private int nuts;
 
-        public Dictionary<AttackType, float> Modifiers = new();
+        /// <summary>
+        /// Modifiers affect how much damage you take from certain attack
+        /// </summary>
+        public ModifierChart ReceivedModifiers;
         //public Dictionary<ElementsType, float> ElementalBonus { get; set; }
 
         public List<Upgrade> Upgrades = new();

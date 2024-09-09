@@ -16,4 +16,5 @@ MonoBehaviour:
   TimeToExecute: 4
   QueueIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   Element: 2
+  AttackGroupType: 3
   IsSelfTargetting: 0

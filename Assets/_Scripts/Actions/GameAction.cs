@@ -27,6 +27,8 @@ namespace _Scripts.Actions
         /// Elemental affinity of the attack, can be set to None for non-elemental
         /// </summary>
         public ElementsType Element;
+
+        public AttackGroupType AttackGroupType;
         
         /// <summary>
         /// If set to true, the actee of this action will be itself when executed

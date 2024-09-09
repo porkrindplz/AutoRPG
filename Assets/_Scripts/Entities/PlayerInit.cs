@@ -29,7 +29,7 @@ public class PlayerInit : MonoBehaviour
                     BaseAtk = 10,
                     BaseDef = 2,
                     Speed = 1,
-                    Modifiers = new Dictionary<AttackType, float>(),
+                    ReceivedModifiers = new ModifierChart(),
                     Upgrades = new List<Upgrade>(),
                     MaxSkillPoints = 3,
                     UsedSkillPoints = 0,

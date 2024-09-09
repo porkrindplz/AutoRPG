@@ -11,7 +11,7 @@ namespace _Scripts.Models
         public string Name;
         public List<AttackType> Actions;
         public List<double> ActionWeights;
-        public string SpritePath;
+        public Sprite Sprite;
 
         /// <summary>
         /// Creates a shallow copy of the object. NOTE: if we are modifying stuff like resistances or actions in
@@ -30,12 +30,12 @@ namespace _Scripts.Models
                 BaseDef = BaseDef,
                 Speed = Speed,
                 Nuts = Nuts,
-                Modifiers = Modifiers,
+                ReceivedModifiers = ReceivedModifiers,
                 Upgrades = Upgrades,
                 Name = Name,
                 Actions = Actions,
                 ActionWeights = ActionWeights,
-                SpritePath = SpritePath,
+                Sprite = Sprite,
             };
         }
     }

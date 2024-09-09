@@ -5,10 +5,12 @@ using _Scripts.Actions;
 using _Scripts.Entities;
 using _Scripts.Models;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterAnimationController : MonoBehaviour
 {
 
+    public Image EntityImage;
     private Animator animator;
     private EntityBehaviour entity;
 

@@ -17,11 +17,20 @@ namespace _Scripts.Models
         Whirlwind
     }
 
+    public enum AttackGroupType
+    {
+        Melee,
+        Ranged,
+        Aoe,
+        Magic,
+    }
+
     public static class AttackTypeConverter
     {
         
         public static AttackType? StringToAttackType(string attack)
         {
+            attack = attack.Replace(" ", "");
             bool valid = AttackType.TryParse(attack, out AttackType atk);
             return valid ? atk : null;
         }

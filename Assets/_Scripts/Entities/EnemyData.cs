@@ -18,5 +18,7 @@ namespace _Scripts.Entities
         public List<AttackType> actions;
         public List<double> actionWeights;
         public Sprite sprite;
+        public ModifierChart Modifiers;
+
     }
 }

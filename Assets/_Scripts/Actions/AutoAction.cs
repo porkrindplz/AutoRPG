@@ -11,17 +11,16 @@ using Random = System.Random;
 
 public class AutoAction : MonoBehaviour
 {
-
-    [SerializeField] public List<AttackType> possibleActions;
-    [SerializeField] public List<double> weights;
+    
     [SerializeField] private EntityBehaviour currentEntity;
     [SerializeField] private EntityBehaviour opposingEntity;
     [SerializeField] private int maxQueuedActions = 3;
     
     public Queue<IGameAction> ActionQueue;
+
+    private EnemyAI enemyAi;
     
     private double _timer;
-    private WeightedRouletteWheel _weighter;
     
     private double _nutTimer;
     private int _nutInterval = 5;
@@ -32,20 +31,10 @@ public class AutoAction : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        _weighter = new WeightedRouletteWheel();
+        enemyAi = GetComponent<EnemyAI>();
+        
         ActionQueue = new Queue<IGameAction>();
         AnimationController = GetComponent<CharacterAnimationController>();
-    }
-    
-
-    public void PopulateQueue()
-    {
-        if (possibleActions.Count == 0) return;
-        for (int i = 0; i < maxQueuedActions; i++)
-        {
-            var newAction = GameManager.Instance.GetNewAction(_weighter.SelectItem(possibleActions, weights));
-            ActionQueue.Enqueue(newAction);
-        }
     }
 
     // Update is called once per frame
@@ -54,6 +43,11 @@ public class AutoAction : MonoBehaviour
         if (GameManager.Instance.CurrentGameState != EGameState.Playing)
         {
             return;
+        }
+
+        if (ActionQueue.Count == 0)
+        {
+            AddAction();
         }
         
         //if (ActionQueue?.Peek().)
@@ -82,39 +76,46 @@ public class AutoAction : MonoBehaviour
                 currentEntity.Entity.Nuts--;
             }
         }
+    }
 
-        IEnumerator ProcessAction()
-        {
-            var takenAction = ActionQueue.Dequeue();
-            Debug.Log("Executing Action " + takenAction.GameAction.Name);
-            var processedAction = GameManager.Instance.GetNewAction(takenAction.GameAction.Name);
-            var actee = takenAction.GameAction.IsSelfTargetting ? currentEntity : opposingEntity;
-            float animationTime = AnimationController.AttackAnimation(currentEntity, actee, processedAction);
-            yield return new WaitForSeconds(animationTime);
+    private void AddAction()
+    {
+        ActionQueue.Enqueue( GameManager.Instance.GetNewAction(enemyAi.MakeDecision()));
+    }
+    
+    IEnumerator ProcessAction()
+    {
+        var takenAction = ActionQueue.Dequeue();
+        Debug.Log("Executing Action " + takenAction.GameAction.Name);
+        var processedAction = GameManager.Instance.GetNewAction(takenAction.GameAction.Name);
+        var actee = takenAction.GameAction.IsSelfTargetting ? currentEntity : opposingEntity;
+        float animationTime = AnimationController.AttackAnimation(currentEntity, actee, processedAction);
+        yield return new WaitForSeconds(animationTime);
             
-            processedAction?.Interact(currentEntity, actee);
-            GameManager.Instance.OnAction?.Invoke(currentEntity, actee, processedAction);
-            var newAction = GameManager.Instance.GetNewAction(_weighter.SelectItem(possibleActions, weights));
-            ActionQueue.Enqueue(newAction);
-            _actionCoroutine = null;
-            //yield return Cooldown(takenAction.TimeToExecute, cooldowns[i]); Need cooldown on enemy attacks
-        }
-        IEnumerator Cooldown(double cooldown, RectTransform cd)
-        {
-            float time = 0;
+        processedAction?.Interact(currentEntity, actee);
+        GameManager.Instance.OnAction?.Invoke(currentEntity, actee, processedAction);
+
+        AddAction();
+        _actionCoroutine = null;
+        /*
+        */
+        //yield return Cooldown(takenAction.TimeToExecute, cooldowns[i]); Need cooldown on enemy attacks
+    }
+    IEnumerator Cooldown(double cooldown, RectTransform cd)
+    {
+        float time = 0;
             
-            cd.localScale = Vector2.one;
+        cd.localScale = Vector2.one;
             
         
-            while (time < cooldown)
-            {
-                time += Time.deltaTime;
-                cd.localScale = new Vector3(((float)cooldown-time) / (float)cooldown, 1, 1);
-                yield return null;
-            }
-            cd.localScale = Vector2.zero;
-
+        while (time < cooldown)
+        {
+            time += Time.deltaTime;
+            cd.localScale = new Vector3(((float)cooldown-time) / (float)cooldown, 1, 1);
+            yield return null;
         }
+        cd.localScale = Vector2.zero;
+
     }
 
 }
