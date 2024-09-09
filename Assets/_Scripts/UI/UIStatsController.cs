@@ -33,7 +33,7 @@ namespace _Scripts.UI
             {
                 UpdateStats(entity);
             }
-            if(!isPlayer && after == EGameState.EnemyDefeated)
+            if(!isPlayer && after == EGameState.EnemyGroupDefeated)
             {
                 Logger.Log("Clear!");
                 ClearStats();

@@ -18,7 +18,7 @@ public enum EGameState
     SetupGame,
     SpawnEnemy,
     Playing,
-    EnemyDefeated,
+    EnemyGroupDefeated,
     PlayerDefeated,
     Walking,
     Paused,
@@ -144,7 +144,7 @@ public class GameManager : Singleton<GameManager>
                 Logger.Log("Playing");
                 HandlePlaying();
                 break;
-            case EGameState.EnemyDefeated:
+            case EGameState.EnemyGroupDefeated:
                 Logger.Log("Enemy Defeated");
                 HandleEnemyDefeated();
                 break;

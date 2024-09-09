@@ -21,7 +21,7 @@ namespace _Scripts.Managers
         
         [SerializeField] private GameObject enemyPanel;
 
-        [SerializeField] private List<string> enemyOrder;
+        [SerializeField] private List<EnemyGroup> enemyOrder;
         private List<Enemy> _allEnemies;
         private Random _random;
 
@@ -47,12 +47,21 @@ namespace _Scripts.Managers
         
         public void SpawnEnemy()
         {
-            var newEnemyStats = _allEnemies.Find(e => e.Name == enemyOrder[EnemyIndex]).Copy();
+            var nextEnemy = enemyOrder[EnemyIndex].GetCurrentEnemy();
+            var newEnemyStats = _allEnemies.Find(e => e.Name == nextEnemy).Copy();
+            
             newEnemyStats.OnDeath += OnEnemyDeath;
             var existingEnemy = enemyPanel.GetComponent<EntityBehaviour>();
             if (existingEnemy.Entity != null)
             {
                 existingEnemy.Entity.OnDeath -= OnEnemyDeath;    
+            }
+            
+            // Carry over hp 
+            if (enemyOrder[EnemyIndex].ShareHp && existingEnemy.Entity != null)
+            {
+                newEnemyStats.CurrentHealth = existingEnemy.Entity.CurrentHealth;
+                newEnemyStats.CurrentMagic = existingEnemy.Entity.CurrentMagic;
             }
 
             CurrentEnemy = existingEnemy;
@@ -80,7 +89,19 @@ namespace _Scripts.Managers
         private void OnEnemyDeath(Entity entity)
         {
             GameManager.Instance.EnemyNuts = entity.Nuts;
-            GameManager.Instance.ChangeGameState(EGameState.EnemyDefeated);
+            
+            // Go to next enemy, if -1 then we have defeated enemy
+            
+            enemyOrder[EnemyIndex].GoToNextEnemy();
+            if (enemyOrder[EnemyIndex].CurrentEnemy == -1)
+            {
+                GameManager.Instance.ChangeGameState(EGameState.EnemyGroupDefeated);    
+            }
+            else
+            {
+                SpawnEnemy();
+            }
+            
         }
 
         private void LoadEnemyData()
