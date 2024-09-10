@@ -1,6 +1,7 @@
 using System;
 using _Scripts.Actions.Effects;
 using _Scripts.Entities;
+using _Scripts.Managers;
 using _Scripts.Models;
 using _Scripts.Utilities;
 using UnityEngine;
@@ -17,8 +18,8 @@ namespace _Scripts.Actions
         public void Interact(EntityBehaviour actor, EntityBehaviour actee)
         {
             Debug.Log("Block");
-            _activeTimer = new CountdownTimer(5);
-            actee.AddActiveEffect(new ActiveEffect(ActiveEffectType.Block, 5));
+            _activeTimer = new CountdownTimer(StatConstants.Instance.ShieldTime);
+            actee.AddActiveEffect(new ActiveEffect(ActiveEffectType.Block, StatConstants.Instance.ShieldTime));
             HasStarted = true;
             _activeTimer.Start();
         }

@@ -104,6 +104,12 @@ namespace _Scripts.Models
             Upgrades?.ForEach(u => u.NumOfUpgrades = 0);
             GameManager.Instance.OnResetTree?.Invoke(this);
         }
+
+        public int GetUpgradeLevel(string id)
+        {
+            var upgrade = Upgrades.FirstOrDefault(u => u.Id == id);
+            return upgrade == null ? 0 : upgrade.NumOfUpgrades;
+        }
         
         public Upgrade? TryUpgrade(string id)
         {

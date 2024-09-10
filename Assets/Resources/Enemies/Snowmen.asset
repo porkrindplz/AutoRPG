@@ -21,7 +21,8 @@ MonoBehaviour:
   baseNuts: 10
   actions: 000000000c000000
   actionWeights:
-  - 4
+  - 2
+  - 5
   sprite: {fileID: 21300000, guid: a59c6535d2ae54caf90d2e1b8341bcd2, type: 3}
   Modifiers:
     Melee: 0

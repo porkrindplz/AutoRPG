@@ -10246,7 +10246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3127503845810766491, guid: 7d199c4171fc76747bb423a99bc10732, type: 3}
       propertyPath: m_text
-      value: Something
+      value: Atk+
       objectReference: {fileID: 0}
     - target: {fileID: 5861156342519515078, guid: 7d199c4171fc76747bb423a99bc10732, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument

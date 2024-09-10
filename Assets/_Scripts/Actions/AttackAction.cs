@@ -1,5 +1,6 @@
 using System;
 using _Scripts.Entities;
+using _Scripts.Managers;
 using _Scripts.Models;
 using UnityEngine;
 
@@ -22,10 +23,21 @@ namespace _Scripts.Actions
         
         public void Interact(EntityBehaviour actor, EntityBehaviour actee)
         {
+            
             var (actorE, acteeE) = (actor.Entity, actee.Entity);
             var dmg = (actorE.BaseAtk*actorE.BaseAtk) / (actorE.BaseAtk + acteeE.BaseDef);
 
-            dmg *= GetDefenseModifier(acteeE);
+            // Check for enchant modifier for shield breaks
+            if (GameAction.AttackGroupType == AttackGroupType.Melee && GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("enchant") > 0)
+            {
+                // TODO: make this break different shields
+                Debug.Log("Elemental attack, attempting to shield break");
+            }
+            
+            var upgradeModifiers = GetUpgradeModifier(actorE, acteeE);
+            dmg *= upgradeModifiers;
+            
+            dmg *= GetModifier(acteeE);
 
             dmg = Math.Round(dmg, 1);
             
@@ -35,7 +47,55 @@ namespace _Scripts.Actions
             OnFinished?.Invoke();
         }
 
-        private double GetDefenseModifier(Entity actee)
+        private double GetUpgradeModifier(Entity actor, Entity actee)
+        {
+            if (actor is Enemy) return 1;
+
+            if (GameAction.AttackGroupType == AttackGroupType.Melee)
+            {
+                var swordLevel = GameManager.Instance.AllTrees.Sword.GetUpgradeLevel("sword");
+                var bonusSwordMult = 1 + swordLevel * StatConstants.Instance.SwordMultiplier;
+
+                var slashLevel = GameManager.Instance.AllTrees.Sword.GetUpgradeLevel("slash");
+                bonusSwordMult += slashLevel * StatConstants.Instance.SlashMultiplier;
+                // TODO: upgrade slash should increase speed of melee
+
+                var crossSlashLevel = GameManager.Instance.AllTrees.Sword.GetUpgradeLevel("cross_slash");
+                bonusSwordMult += crossSlashLevel * StatConstants.Instance.CrossSlashMultiplier;
+
+                return bonusSwordMult;
+            }
+
+            // Check for AoE or Cannon modifiers
+            if (GameAction.AttackGroupType == AttackGroupType.Magic)
+            {
+                double bonusMagicDmg = 1;
+
+                bonusMagicDmg +=
+                    GameManager.Instance.AllTrees.Staff.GetUpgradeLevel(
+                        AttackTypeConverter.AttackTypeToString(AttackType)) * StatConstants.Instance.MagicModifier;
+                
+                
+                if (GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("aoe") > 0)
+                {
+                    // TODO: make this more involved with # of enemies
+                    return ModifierChart.GetModifier(actee.ReceivedModifiers.AoE);
+                }
+
+                var cannonLevel = GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("cannon");
+                if (cannonLevel > 0)
+                {
+                    bonusMagicDmg += cannonLevel * StatConstants.Instance.CannonModifier;
+                }
+
+                return bonusMagicDmg;
+            }
+
+
+            return 1;
+        }
+
+        private double GetModifier(Entity actee)
         {
             Debug.Log(AttackType);
             return AttackType switch
@@ -44,7 +104,7 @@ namespace _Scripts.Actions
                 AttackType.Leaf => ModifierChart.GetModifier(actee.ReceivedModifiers.Leaf),
                 AttackType.Water => ModifierChart.GetModifier(actee.ReceivedModifiers.Water),
                 AttackType.Lightning => ModifierChart.GetModifier(actee.ReceivedModifiers.Lightning),
-                AttackType.Shadow => ModifierChart.GetModifier(actee.ReceivedModifiers.Fire),
+                AttackType.Shadow => ModifierChart.GetModifier(actee.ReceivedModifiers.Shadow),
                 AttackType.Sword => ModifierChart.GetModifier(actee.ReceivedModifiers.Melee),
                 AttackType.Bow => ModifierChart.GetModifier(actee.ReceivedModifiers.Ranged),
                 AttackType.SniperShot => ModifierChart.GetModifier(actee.ReceivedModifiers.Ranged),
