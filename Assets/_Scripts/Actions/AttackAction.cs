@@ -50,8 +50,8 @@ namespace _Scripts.Actions
                 AttackType.SniperShot => ModifierChart.GetModifier(actee.ReceivedModifiers.Ranged),
                 AttackType.MultiShot => ModifierChart.GetModifier(actee.ReceivedModifiers.Ranged) * ModifierChart.GetModifier(actee.ReceivedModifiers.AoE),
                 AttackType.Block => 1,
-                AttackType.BraveSlash => ModifierChart.GetModifier(actee.ReceivedModifiers.AoE),
-                AttackType.CrossSlash => ModifierChart.GetModifier(actee.ReceivedModifiers.Melee),
+                AttackType.BraveSlash => ModifierChart.GetModifier(actee.ReceivedModifiers.Melee),
+                AttackType.CrossSlash => ModifierChart.GetModifier(actee.ReceivedModifiers.AoE),
                 AttackType.Slash => ModifierChart.GetModifier(actee.ReceivedModifiers.Melee),
                 AttackType.Whirlwind => ModifierChart.GetModifier(actee.ReceivedModifiers.AoE),
                 _ => throw new ArgumentOutOfRangeException()

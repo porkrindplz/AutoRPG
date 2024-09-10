@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using _Scripts.Actions.Effects;
+using Unity.Mathematics;
+using UnityEngine;
 
 namespace _Scripts.Models
 {
@@ -28,7 +30,10 @@ namespace _Scripts.Models
         public double MaxMagic;
         public double BaseAtk;
         public double BaseDef;
+        [Range(0, 100)]
         public int Speed;
+        
+        public float GetSpeedMultiplier() => (float)(0.5 + (float)(100-Speed) / 100 * (2 - 0.5));
 
         /// <summary>
         /// List of all active effects being applied, these are temporary and should affect stats on Getters.
