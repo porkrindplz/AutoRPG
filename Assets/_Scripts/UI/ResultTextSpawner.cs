@@ -5,6 +5,7 @@ using _Scripts.Entities;
 using _Scripts.Utilities;
 using TMPro;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 namespace _Scripts.UI
 {
@@ -37,7 +38,7 @@ namespace _Scripts.UI
 
             text.color = color;
             text.text = value;
-            text.rectTransform.position = entity.transform.position;
+            text.rectTransform.position = entity.GetComponent<CharacterAnimationController>().EntityImage.rectTransform.position +(Vector3.up*shiftDistance);
             
             StartCoroutine(AnimateText(text));
         }

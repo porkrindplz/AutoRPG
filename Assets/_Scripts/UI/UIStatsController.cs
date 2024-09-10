@@ -71,7 +71,10 @@ namespace _Scripts.UI
             if (entityBehaviour.Entity is null) return;
             
             Logger.Log(entityBehaviour.Entity.GetType().ToString() + " Updating Stats");
-            statText.text = $"Health: {(int)entityBehaviour.Entity.CurrentHealth}/{(int)entityBehaviour.Entity.MaxHealth}\n" +
+            var name = entityBehaviour.Entity is Enemy enemy ? enemy.Name : "ROLIG"; 
+            
+            statText.text = $"{name.ToUpper()}\n" +
+                            $"Health: {(int)entityBehaviour.Entity.CurrentHealth}/{(int)entityBehaviour.Entity.MaxHealth}\n" +
                             $"Magic: {(int)entityBehaviour.Entity.CurrentMagic}/{(int)entityBehaviour.Entity.MaxMagic}\n" +
                             $"Attack: {(int)entityBehaviour.Entity.BaseAtk}\n" +
                             $"Defense: {(int)entityBehaviour.Entity.BaseDef}\n" +
