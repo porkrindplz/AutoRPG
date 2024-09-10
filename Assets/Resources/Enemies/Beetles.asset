@@ -17,7 +17,7 @@ MonoBehaviour:
   maxMagic: 10
   baseAtk: 5
   baseDef: 3
-  speed: 1
+  speed: 50
   baseNuts: 10
   actions: 00000000
   actionWeights:
@@ -25,10 +25,10 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 4b8a67e85b96145fea69b13d00569588, type: 3}
   Modifiers:
     Melee: 0
-    Ranged: 3
-    AoE: 2
+    Ranged: 0
+    AoE: 0
     Fire: 0
-    Water: 3
-    Leaf: 3
+    Water: 0
+    Leaf: 0
     Lightning: 0
-    Shadow: 3
+    Shadow: 0

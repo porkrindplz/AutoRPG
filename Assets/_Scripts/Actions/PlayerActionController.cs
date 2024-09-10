@@ -67,7 +67,7 @@ namespace _Scripts.Actions
                     if (actionSlots[i]?.action.Name != highestLevelAction.Name)
                     {
                         actionSlots[i] = (highestLevelAction,
-                            new CountdownTimer((float)highestLevelAction.TimeToExecute));
+                            new CountdownTimer((float)highestLevelAction.TimeToExecute * currentEntity.Entity.GetSpeedMultiplier()));
                         Buttons[i].gameObject.GetComponent<Image>().sprite = actionSlots[i].Value.action.QueueIcon;
                     }
                 }
@@ -150,7 +150,7 @@ namespace _Scripts.Actions
            
             processedAction?.Interact(currentEntity, actee);
             GameManager.Instance.OnAction?.Invoke(currentEntity, actee, processedAction);  
-            yield return Cooldown(takenAction.TimeToExecute, cooldowns[i]);
+            yield return Cooldown(takenAction.TimeToExecute * currentEntity.Entity.GetSpeedMultiplier(), cooldowns[i]);
 
         }
         

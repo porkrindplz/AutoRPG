@@ -53,7 +53,7 @@ public class AutoAction : MonoBehaviour
         //if (ActionQueue?.Peek().)
         
         _timer += Time.deltaTime;
-        if (_actionCoroutine==null&&ActionQueue is { Count: > 0 } && _timer >= ActionQueue.Peek().GameAction.TimeToExecute)
+        if (_actionCoroutine==null&&ActionQueue is { Count: > 0 } && _timer >= ActionQueue.Peek().GameAction.TimeToExecute * currentEntity.Entity.GetSpeedMultiplier())
         {
             _timer = 0;
             _actionCoroutine = StartCoroutine(ProcessAction());

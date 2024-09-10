@@ -80,17 +80,8 @@ public class GameManager : Singleton<GameManager>
 
     public IGameAction GetNewAction(AttackType attackType)
     {
-        IGameAction action = attackType switch
-        {
-            AttackType.Sword => new AttackGameAction(),
-            AttackType.Block => new BlockAction(),
-            AttackType.Fireball => new AttackAction(AttackType.Fireball),
-            AttackType.Water => new AttackAction(AttackType.Water),
-            AttackType.Leaf => new AttackAction(AttackType.Leaf),
-            AttackType.Lightning => new AttackAction(AttackType.Lightning),
-            AttackType.Shadow => new AttackAction(AttackType.Shadow),
-            _ => throw new Exception($"Invalid action {attackType}")
-        };
+        if (attackType == AttackType.Block) return new BlockAction();
+        IGameAction action = new AttackAction(attackType);
         action.GameAction = AllActions[attackType];
         return action;
     }

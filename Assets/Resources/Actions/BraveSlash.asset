@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec3b06827a8c4d27a8747a5b3396197d, type: 3}
   m_Name: BraveSlash
   m_EditorClassIdentifier: 
-  Name: 2
+  Name: 3
   TimeToExecute: 5
   QueueIcon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   Element: 0
+  AttackGroupType: 0
   IsSelfTargetting: 0

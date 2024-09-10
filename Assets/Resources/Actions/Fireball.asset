@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec3b06827a8c4d27a8747a5b3396197d, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: 
-  Name: 4
+  Name: 5
   TimeToExecute: 4
   QueueIcon: {fileID: 21300000, guid: ed8568c323208468181e390b8fc62d65, type: 3}
   Element: 1
