@@ -5,14 +5,17 @@ namespace _Scripts.Models
     public enum AttackType
     {
         Sword,
+        Bow,
         Block,
         BraveSlash,
         CrossSlash,
         Fireball,
         Leaf,
         Lightning,
+        MultiShot,
         Shadow,
         Slash,
+        SniperShot,
         Water,
         Whirlwind
     }

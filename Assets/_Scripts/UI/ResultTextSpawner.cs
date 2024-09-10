@@ -53,6 +53,10 @@ namespace _Scripts.UI
                     text = $"-{damageAction.Value}";
                     color = Elements.GetElementColor(damageAction.GameAction.Element);
                     break;
+                case AttackAction damageAction:
+                    text = $"-{damageAction.Value}";
+                    color = Elements.GetElementColor(damageAction.GameAction.Element);
+                    break;
             }
             UpdateDisplay(actee, text, color);
         }

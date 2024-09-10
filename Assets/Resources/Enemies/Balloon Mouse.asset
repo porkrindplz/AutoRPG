@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aa013173c7942fc8f530f0a4a842b32, type: 3}
+  m_Name: Balloon Mouse
+  m_EditorClassIdentifier: 
+  name: Balloon Mouse
+  maxHealth: 100
+  maxMagic: 10
+  baseAtk: 10
+  baseDef: 3
+  speed: 1
+  baseNuts: 300
+  actions: 0300000001000000
+  actionWeights:
+  - 4
+  - 1
+  sprite: {fileID: 21300000, guid: a59c6535d2ae54caf90d2e1b8341bcd2, type: 3}
+  Modifiers:
+    Melee: 4
+    Ranged: 2
+    AoE: 3
+    Fire: 3
+    Water: 3
+    Leaf: 3
+    Lightning: 3
+    Shadow: 3

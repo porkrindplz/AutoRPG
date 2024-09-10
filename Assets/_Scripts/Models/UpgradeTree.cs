@@ -20,7 +20,7 @@ namespace _Scripts.Models
             Sword.ResetTree();
             Shield.ResetTree();
             Staff.ResetTree();
-            //Slingshot.ResetTree();
+            Slingshot.ResetTree();
         }
     }
     

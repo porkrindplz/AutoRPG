@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec3b06827a8c4d27a8747a5b3396197d, type: 3}
-  m_Name: Block
+  m_Name: SniperShot
   m_EditorClassIdentifier: 
-  Name: 2
-  TimeToExecute: 3
-  QueueIcon: {fileID: 21300000, guid: 47365203c81f04ca7851515a5a413027, type: 3}
+  Name: 11
+  TimeToExecute: 5
+  QueueIcon: {fileID: 21300000, guid: 16d0f7e5d7aa542f5a9f182378e30dab, type: 3}
   Element: 0
-  AttackGroupType: 0
-  IsSelfTargetting: 1
+  AttackGroupType: 1
+  IsSelfTargetting: 0
