@@ -13,6 +13,9 @@ namespace _Scripts.Managers
     
     public class EnemyManager : Utilities.Singleton<EnemyManager>
     {
+        public event System.Action<Enemy> OnEnemySpawned;
+        
+        
         [Serializable]
         private class EnemyJSON
         {
@@ -69,6 +72,7 @@ namespace _Scripts.Managers
             }
 
             CurrentEnemy = existingEnemy;
+            OnEnemySpawned?.Invoke(newEnemyStats);
             
             enemyPanel.GetComponent<EntityBehaviour>().Entity = newEnemyStats;
             enemyPanel.GetComponent<CharacterAnimationController>().EntityImage.sprite = newEnemyStats.Sprite;

@@ -5312,6 +5312,7 @@ GameObject:
   - component: {fileID: 1836924077281112955}
   - component: {fileID: 1450517605256988312}
   - component: {fileID: 3098777867771356443}
+  - component: {fileID: 6402877962071588828}
   m_Layer: 5
   m_Name: EnemyPanel
   m_TagString: Untagged
@@ -5494,6 +5495,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possibleActions: 
   weights: []
+--- !u!114 &6402877962071588828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4690253868194639254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d289468817d10409a938ee4b749a6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resistancePanel: {fileID: 3930584852551477374}
 --- !u!1 &4694617944588004744
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,7 +36,7 @@ namespace _Scripts.Actions
             //Animator = GetComponentInChildren<Animator>();
             GameManager.Instance.OnUpgraded += OnUpgraded;
             GameManager.Instance.OnResetTree += OnResetTree;
-            slotTreeNames = new List<string>() { "Sword", "Staff", "Slingshot", "Shield" };
+            slotTreeNames = new List<string>() { "Sword", "Shield", "Staff", "Slingshot" };
             //GameManager.Instance.OnBeforeGameStateChanged += OnBeforeGameStateChanged;
         }
 

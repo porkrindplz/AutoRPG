@@ -5,7 +5,7 @@
       {
         "Id": "block",
         "Name": "Block",
-        "Description": "",
+        "Description": "Provides some protection against all types of damage.",
         "MaxUpgrades": 2,
         "Level": 1,
         "Prerequisites": [],
@@ -20,7 +20,7 @@
       {
         "Id": "resist_physical",
         "Name": "Resist Physical",
-        "Description": "",
+        "Description": "Significantly reduces physical damage.",
         "MaxUpgrades": 2,
         "Prerequisites": ["block"],
         "Children": [],
@@ -29,7 +29,7 @@
       {
         "Id": "resist_ranged",
         "Name": "Resist Range",
-        "Description": "",
+        "Description": "Significantly reduces ranged damage.",
         "MaxUpgrades": 2,
         "Level": 2,
         "Prerequisites": ["block"],
@@ -39,7 +39,7 @@
       {
         "Id": "resist_fire",
         "Name": "Resist Fire",
-        "Description": "",
+        "Description": "Significantly reduces fire damage.",
         "MaxUpgrades": 3,
         "Prerequisites": ["block"],
         "Children": [],
@@ -48,7 +48,7 @@
       {
         "Id": "resist_water",
         "Name": "Resist Water",
-        "Description": "",
+        "Description": "Significantly reduces water damage.",
         "MaxUpgrades": 3,
         "Prerequisites": ["block"],
         "Children": [],
@@ -57,7 +57,7 @@
       {
         "Id": "resist_leaf",
         "Name": "Resist Leaf",
-        "Description": "",
+        "Description": "Significantly reduces leaf damage.",
         "MaxUpgrades": 3,
         "Prerequisites": ["block"],
         "Children": [],
@@ -71,7 +71,7 @@
       {
         "Id": "sword",
         "Name": "Sword",
-        "Description": "",
+        "Description": "A simple melee attack targeting a single enemy.",
         "MaxUpgrades": 3,
         "Level": 1,
         "Prerequisites": [],
@@ -80,7 +80,7 @@
       {
         "Id": "slash",
         "Name": "Slash",
-        "Description": "",
+        "Description": "A strong melee attack targeting a single enemy.",
         "MaxUpgrades": 3,
         "Level": 2,
         "Prerequisites": ["sword"],
@@ -90,7 +90,7 @@
       {
         "Id": "cross_slash",
         "Name": "Cross Slash",
-        "Description": "",
+        "Description": "A strong melee Attack targeting multiple enemies.",
         "MaxUpgrades": 3,
         "Level": 2,
         "Prerequisites": ["sword"],
@@ -100,7 +100,7 @@
       {
         "Id": "whirlwind",
         "Name": "Whirlwind",
-        "Description": "",
+        "Description": "A flurry of melee attacks targeting multiple enemies.",
         "MaxUpgrades": 3,
         "Level": 3,
         "Prerequisites": ["cross_slash"],
@@ -110,7 +110,7 @@
       {
         "Id": "brave_slash",
         "Name": "Brave Slash",
-        "Description": "",
+        "Description": "A focused and powerful melee attack targeting a single enemy.",
         "MaxUpgrades": 3,
         "Level": 3,
         "Prerequisites": ["slash"],
@@ -125,7 +125,7 @@
       {
         "Id": "fireball",
         "Name": "Fireball",
-        "Description": "",
+        "Description": "Enables fire magic attacks",
         "MaxUpgrades": 3,
         "Level": 1,
         "Prerequisites": [],
@@ -135,7 +135,7 @@
       {
         "Id": "water",
         "Name": "Water",
-        "Description": "",
+        "Description": "Enables water magic attacks",
         "MaxUpgrades": 3,
         "Level": 1,
         "Prerequisites": [],
@@ -145,7 +145,7 @@
       {
         "Id": "leaf",
         "Name": "Leaf",
-        "Description": "",
+        "Description": "Enables leaf magic attacks",
         "MaxUpgrades": 3,
         "Level": 1,
         "Prerequisites": [],
@@ -155,7 +155,7 @@
       {
         "Id": "aoe",
         "Name": "Area of Effect",
-        "Description": "",
+        "Description": "Makes magic attacks more effective against groups of enemies.",
         "MaxUpgrades": 1,
         "Prerequisites": ["fireball", "water", "leaf"],
         "PrerequisiteType": "or",
@@ -165,7 +165,7 @@
       {
         "Id": "cannon",
         "Name": "Cannon",
-        "Description": "",
+        "Description": "Makes magic attacks more effective against single enemies.",
         "MaxUpgrades": 1,
         "Prerequisites": ["fireball", "water", "leaf"],
         "PrerequisiteType": "or",
@@ -175,7 +175,7 @@
       {
         "Id": "enchant",
         "Name": "Enchant",
-        "Description": "",
+        "Description": "Breaks through elemental shields.",
         "MaxUpgrades": 1,
         "Prerequisites": ["fireball", "water", "leaf"],
         "PrerequisiteType": "or",
@@ -185,7 +185,7 @@
       {
         "Id": "lightning",
         "Name": "Lightning",
-        "Description": "",
+        "Description": "Deals lightning damage, cutting through darkness.",
         "MaxUpgrades": 3,
         "Level": 3,
         "Prerequisites": ["aoe", "cannon", "enchant"],
@@ -196,7 +196,7 @@
       {
         "Id": "shadow",
         "Name": "Shadow",
-        "Description": "",
+        "Description": "Deals shadow damage, consuming all light.",
         "MaxUpgrades": 3,
         "Level": 3,
         "Prerequisites": ["aoe", "cannon", "enchant"],
@@ -212,7 +212,7 @@
       {
         "Id": "bow",
         "Name": "Bow",
-        "Description": "",
+        "Description": "A quick ranged attack targeting a single enemy.",
         "MaxUpgrades": 3,
         "Level": 1,
         "Prerequisites": [],
@@ -222,7 +222,7 @@
       {
         "Id": "dodge",
         "Name": "Dodge",
-        "Description": "",
+        "Description": "Side step to avoid enemy attacks.",
         "MaxUpgrades": 2,
         "Level": 1,
         "Prerequisites": [],
@@ -232,7 +232,7 @@
       {
         "Id": "multi_shot",
         "Name": "Multi Shot",
-        "Description": "",
+        "Description": "Shoots a spread of arrows targeting multiple enemies.",
         "MaxUpgrades": 3,
         "Level": 2,
         "Prerequisites": ["bow"],
@@ -241,7 +241,7 @@
       {
         "Id": "sniper_shot",
         "Name": "Sniper Shot",
-        "Description": "",
+        "Description": "A precise ranged attack targeting a critical point on single enemy.",
         "MaxUpgrades": 3,
         "Level": 3,
         "Prerequisites": ["multi_shot"],
@@ -250,7 +250,7 @@
       {
         "Id": "honey",
         "Name": "Honey",
-        "Description": "",
+        "Description": "Immobilizes enemies with sticky honey.",
         "MaxUpgrades": 1,
         "Prerequisites": ["bow"],
         "ExclusiveWith": ["smoky", "status_3"],
@@ -258,7 +258,7 @@
       },
       {
         "Id": "smoky",
-        "Name": "Sniper Shot",
+        "Name": "Smoke Bomb",
         "Description": "",
         "MaxUpgrades": 1,
         "Prerequisites": ["bow"],
