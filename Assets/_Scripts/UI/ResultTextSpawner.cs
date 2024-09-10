@@ -72,10 +72,10 @@ namespace _Scripts.UI
             while (value < 1)
             {
                 value += Time.deltaTime;
-                text.transform.localScale = initScale*(value + 0.25f);
+                text.transform.localScale = initScale*(value + 0.5f);
                 text.transform.position = new Vector2(initPosition.x, initPosition.y + value*shiftDistance);
-                if(value>0.5f)
-                    text.color = new Color(text.color.r, text.color.g, text.color.b, 1 - value);
+                if(value>0.75f)
+                    text.color = new Color(text.color.r, text.color.g, text.color.b, (1 - value)/ (1 - .75f));
                 yield return null;
             }
             yield return new WaitForSeconds(.5f);
