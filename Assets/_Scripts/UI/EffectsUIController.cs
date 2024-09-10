@@ -29,6 +29,11 @@ namespace _Scripts.UI
 
         private void OnActiveEffectChanged()
         {
+            if(entityBehaviour.Entity.ActiveEffects.Count == 0)
+            {
+                text.text = "";
+                return;
+            }
             var s = "Effects:\n";
             foreach (var effect in entityBehaviour.Entity.ActiveEffects)
             {
