@@ -5,6 +5,7 @@ using System.Linq;
 using __Scripts.Systems;
 using _Scripts.Actions;
 using _Scripts.Entities;
+using _Scripts.Entities.EnemyAIs;
 using _Scripts.Models;
 using _Scripts.Utilities;
 using UnityEngine;

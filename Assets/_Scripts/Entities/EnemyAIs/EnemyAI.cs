@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
 using _Scripts.Models;
 using _Scripts.Utilities;
 using UnityEngine;
 
-namespace _Scripts.Entities
+namespace _Scripts.Entities.EnemyAIs
 {
     public class EnemyAI : MonoBehaviour
     {
@@ -12,7 +11,6 @@ namespace _Scripts.Entities
         [SerializeField] public List<double> weights;
         private WeightedRouletteWheel _weighter;
 
-        private IStageChanger _stageChanger;
         
         protected EntityBehaviour EnemyBehaviour;
 
@@ -20,11 +18,6 @@ namespace _Scripts.Entities
         {
             _weighter = new WeightedRouletteWheel();
             EnemyBehaviour = GetComponent<EntityBehaviour>();
-        }
-
-        public void AddStageChanger()
-        {
-            TryGetComponent(out _stageChanger);
         }
 
         public virtual AttackType MakeDecision()

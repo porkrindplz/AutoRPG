@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using _Scripts.Entities;
+using _Scripts.Entities.EnemyAIs;
 using _Scripts.Models;
+using _Scripts.Utilities;
 using Unity.VisualScripting;
 using UnityEngine;
 using Logger = _Scripts.Utilities.Logger;
@@ -54,15 +56,41 @@ namespace _Scripts.Managers
         
         public void SpawnEnemy()
         {
-            var nextEnemy = enemyOrder[EnemyIndex].GetCurrentEnemy();
-            var newEnemyStats = _allEnemies.Find(e => e.Name == nextEnemy).Copy();
+            var nextEnemy = enemyOrder[EnemyIndex].GetCurrentEnemySet();
+            var newEnemyStats = _allEnemies.Find(e => e.Name == nextEnemy.EnemyName).Copy();
             
             newEnemyStats.OnDeath += OnEnemyDeath;
             var existingEnemy = enemyPanel.GetComponent<EntityBehaviour>();
             if (existingEnemy.Entity != null)
             {
-                existingEnemy.Entity.OnDeath -= OnEnemyDeath;    
+                existingEnemy.Entity.OnDeath -= OnEnemyDeath;
+                if (existingEnemy.TryGetComponent<IStageChanger>(out var changer))
+                {
+                    changer.ChangeStage -= OnStageChange;
+                }
+                
             }
+
+            switch (nextEnemy.StateChangeType)
+            {
+                case EnemyStateChangeType.Death:
+                    break;
+                case EnemyStateChangeType.None:
+                    break;
+                case EnemyStateChangeType.Timer:
+                    var timerStageChanger = existingEnemy.AddComponent<TimerStageChanger>();
+                    timerStageChanger.TimerToStageChange = new CountdownTimer(nextEnemy.Timer);
+                    timerStageChanger.ChangeStage += OnStageChange;
+                    break;
+                case EnemyStateChangeType.Health:
+                    break;
+                case EnemyStateChangeType.Hit:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
+  
             
             // Carry over hp 
             if (enemyOrder[EnemyIndex].ShareHp && existingEnemy.Entity != null)
@@ -93,17 +121,23 @@ namespace _Scripts.Managers
             //
         }
 
+        private void OnStageChange()
+        {
+            Logger.Log("Changing stage");
+            enemyOrder[EnemyIndex].GoToNextEnemy();
+            SpawnEnemy();
+        }
+
         private void OnEnemyDeath(Entity entity)
         { 
             CurrentEnemy.GetComponent<CharacterAnimationController>().DeathAnimation(entity);
-            GameManager.Instance.EnemyNuts = entity.Nuts;
             
             // Go to next enemy, if -1 then we have defeated enemy
             
             enemyOrder[EnemyIndex].GoToNextEnemy();
             if (enemyOrder[EnemyIndex].CurrentEnemy == -1)
             {
-                
+                GameManager.Instance.EnemyNuts = entity.Nuts;    
                 GameManager.Instance.ChangeGameState(EGameState.EnemyGroupDefeated);    
             }
             else

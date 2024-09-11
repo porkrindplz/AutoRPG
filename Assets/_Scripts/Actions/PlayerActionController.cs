@@ -147,7 +147,7 @@ namespace _Scripts.Actions
             var processedAction = GameManager.Instance.GetNewAction(takenAction.Name);
             var actee = takenAction.IsSelfTargetting ? currentEntity : opposingEntity;
             float animationTime = AnimationController.AttackAnimation(currentEntity, actee, processedAction);
-            AudioSystem.Instance.PlaySound(takenAction.SoundEffects,1,true);
+            //AudioSystem.Instance.PlaySound(takenAction.SoundEffects,1,true);
 
             yield return new WaitForSeconds(animationTime);
            
