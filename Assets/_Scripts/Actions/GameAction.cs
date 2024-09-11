@@ -34,5 +34,7 @@ namespace _Scripts.Actions
         /// If set to true, the actee of this action will be itself when executed
         /// </summary>
         public bool IsSelfTargetting;
+        
+        public AudioClip[] SoundEffects;
     }
 }

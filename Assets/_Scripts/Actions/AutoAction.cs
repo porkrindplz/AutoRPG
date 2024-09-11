@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using __Scripts.Systems;
 using _Scripts.Actions;
 using _Scripts.Entities;
 using _Scripts.Models;
@@ -90,6 +91,7 @@ public class AutoAction : MonoBehaviour
         var processedAction = GameManager.Instance.GetNewAction(takenAction.GameAction.Name);
         var actee = takenAction.GameAction.IsSelfTargetting ? currentEntity : opposingEntity;
         float animationTime = AnimationController.AttackAnimation(currentEntity, actee, processedAction);
+        AudioSystem.Instance.PlaySound(takenAction.GameAction.SoundEffects,1,true);
         yield return new WaitForSeconds(animationTime);
             
         processedAction?.Interact(currentEntity, actee);
