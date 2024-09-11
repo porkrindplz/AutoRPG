@@ -19,7 +19,8 @@ namespace _Scripts.Managers
         public float CannonModifier = 0.15f;
         public float MagicModifier = 0.2f;
 
-        [Header("Slingshot Constants")] public int Foo = 1;
-
+        [Header("Slingshot Constants")]
+        public float BowModifier = 0.25f;
+        public float SniperShotModifier = 0.2f;
     }
 }

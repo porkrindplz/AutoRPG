@@ -11,15 +11,20 @@ namespace _Scripts.Entities
         [SerializeField] public List<AttackType> possibleActions;
         [SerializeField] public List<double> weights;
         private WeightedRouletteWheel _weighter;
+
+        private IStageChanger _stageChanger;
         
         protected EntityBehaviour EnemyBehaviour;
-
-        protected List<Stage> Stages;
 
         public void Start()
         {
             _weighter = new WeightedRouletteWheel();
             EnemyBehaviour = GetComponent<EntityBehaviour>();
+        }
+
+        public void AddStageChanger()
+        {
+            TryGetComponent(out _stageChanger);
         }
 
         public virtual AttackType MakeDecision()

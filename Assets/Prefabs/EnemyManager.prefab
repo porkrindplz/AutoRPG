@@ -45,42 +45,91 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyOrder:
-  - Enemies:
-    - Beetle
+  - Enemies: []
+    EnemySets:
+    - NextEnemy: -1
+      EnemyName: Beetle
+      StateChangeType: 0
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 0
+      HitGroupType: 0
     NextEnemy: 
     ShareHp: 0
     CurrentEnemy: 0
   - Enemies:
     - Snowman
+    EnemySets:
+    - NextEnemy: -1
+      EnemyName: Snowman
+      StateChangeType: 0
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 0
+      HitGroupType: 0
     NextEnemy: 
     ShareHp: 0
     CurrentEnemy: 0
-  - Enemies:
-    - Beetles
-    - Flame Beetles
+  - Enemies: []
+    EnemySets:
+    - NextEnemy: -1
+      EnemyName: Beetles
+      StateChangeType: 0
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 0
+      HitGroupType: 0
     NextEnemy: 
     ShareHp: 0
     CurrentEnemy: 0
   - Enemies:
     - Snowmen
+    EnemySets:
+    - NextEnemy: -1
+      EnemyName: Snowmen
+      StateChangeType: 0
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 0
+      HitGroupType: 0
     NextEnemy: 
     ShareHp: 0
     CurrentEnemy: 0
-  - Enemies:
-    - Flame Beetles
-    - Beetle King
-    NextEnemy: 01000000ffffffff
+  - Enemies: []
+    EnemySets:
+    - NextEnemy: 1
+      EnemyName: Flame Beetles
+      StateChangeType: 3
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 0
+      HitGroupType: 0
+    - NextEnemy: -1
+      EnemyName: Beetle King
+      StateChangeType: 0
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 0
+      HitGroupType: 0
+    NextEnemy: 
     ShareHp: 0
     CurrentEnemy: 0
-  - Enemies:
-    - Ooze
-    - Oozes
-    NextEnemy: 01000000ffffffff
-    ShareHp: 0
-    CurrentEnemy: 0
-  - Enemies:
-    - Ooze
-    - Oozes
-    NextEnemy: 01000000ffffffff
+  - Enemies: []
+    EnemySets:
+    - NextEnemy: 1
+      EnemyName: Ooze
+      StateChangeType: 3
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 0
+      HitGroupType: 0
+    - NextEnemy: -1
+      EnemyName: Oozes
+      StateChangeType: 0
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 0
+      HitGroupType: 0
+    NextEnemy: 
     ShareHp: 0
     CurrentEnemy: 0

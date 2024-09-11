@@ -51,48 +51,66 @@ namespace _Scripts.Actions
         {
             if (actor is Enemy) return 1;
 
-            if (GameAction.AttackGroupType == AttackGroupType.Melee)
+            switch (GameAction.AttackGroupType)
             {
-                var swordLevel = GameManager.Instance.AllTrees.Sword.GetUpgradeLevel("sword");
-                var bonusSwordMult = 1 + swordLevel * StatConstants.Instance.SwordMultiplier;
+                case AttackGroupType.Melee:
+                {
+                    var swordLevel = GameManager.Instance.AllTrees.Sword.GetUpgradeLevel("sword");
+                    var bonusSwordMult = 1 + swordLevel * StatConstants.Instance.SwordMultiplier;
 
-                var slashLevel = GameManager.Instance.AllTrees.Sword.GetUpgradeLevel("slash");
-                bonusSwordMult += slashLevel * StatConstants.Instance.SlashMultiplier;
-                // TODO: upgrade slash should increase speed of melee
+                    var slashLevel = GameManager.Instance.AllTrees.Sword.GetUpgradeLevel("slash");
+                    bonusSwordMult += slashLevel * StatConstants.Instance.SlashMultiplier;
+                    // TODO: upgrade slash should increase speed of melee
 
-                var crossSlashLevel = GameManager.Instance.AllTrees.Sword.GetUpgradeLevel("cross_slash");
-                bonusSwordMult += crossSlashLevel * StatConstants.Instance.CrossSlashMultiplier;
+                    var crossSlashLevel = GameManager.Instance.AllTrees.Sword.GetUpgradeLevel("cross_slash");
+                    bonusSwordMult += crossSlashLevel * StatConstants.Instance.CrossSlashMultiplier;
 
-                return bonusSwordMult;
-            }
+                    return bonusSwordMult;
+                }
+                // Check for AoE or Cannon modifiers
+                case AttackGroupType.Magic:
+                {
+                    double bonusMagicDmg = 1;
 
-            // Check for AoE or Cannon modifiers
-            if (GameAction.AttackGroupType == AttackGroupType.Magic)
-            {
-                double bonusMagicDmg = 1;
-
-                bonusMagicDmg +=
-                    GameManager.Instance.AllTrees.Staff.GetUpgradeLevel(
-                        AttackTypeConverter.AttackTypeToString(AttackType)) * StatConstants.Instance.MagicModifier;
+                    bonusMagicDmg +=
+                        GameManager.Instance.AllTrees.Staff.GetUpgradeLevel(
+                            AttackTypeConverter.AttackTypeToString(AttackType)) * StatConstants.Instance.MagicModifier;
                 
                 
-                if (GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("aoe") > 0)
-                {
-                    // TODO: make this more involved with # of enemies
-                    return ModifierChart.GetModifier(actee.ReceivedModifiers.AoE);
-                }
+                    if (GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("aoe") > 0)
+                    {
+                        // TODO: make this more involved with # of enemies
+                        return ModifierChart.GetModifier(actee.ReceivedModifiers.AoE);
+                    }
 
-                var cannonLevel = GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("cannon");
-                if (cannonLevel > 0)
-                {
-                    bonusMagicDmg += cannonLevel * StatConstants.Instance.CannonModifier;
-                }
+                    var cannonLevel = GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("cannon");
+                    if (cannonLevel > 0)
+                    {
+                        bonusMagicDmg += cannonLevel * StatConstants.Instance.CannonModifier;
+                    }
 
-                return bonusMagicDmg;
+                    return bonusMagicDmg;
+                }
+                case AttackGroupType.Ranged:
+                {
+                    double bonusRangedDmg = 1;
+                    bonusRangedDmg +=
+                        GameManager.Instance.AllTrees.Slingshot.GetUpgradeLevel("bow") * StatConstants.Instance.BowModifier;
+
+                    bonusRangedDmg += GameManager.Instance.AllTrees.Slingshot.GetUpgradeLevel("sniper_shot") *
+                                      StatConstants.Instance.SniperShotModifier;
+                    
+                    if (GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("aoe") > 0)
+                    {
+                        // TODO: make this more involved with # of enemies
+                        bonusRangedDmg *= ModifierChart.GetModifier(actee.ReceivedModifiers.AoE);
+                    }
+                    
+                    return bonusRangedDmg;
+                }
+                default:
+                    return 1;
             }
-
-
-            return 1;
         }
 
         private double GetModifier(Entity actee)

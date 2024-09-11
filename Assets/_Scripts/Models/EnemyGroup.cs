@@ -9,7 +9,7 @@ namespace _Scripts.Models
     public class EnemyGroup
     {
         public List<string> Enemies;
-        
+        public List<EnemySet> EnemySets;
         /// <summary>
         /// Upon defeating the ith enemy, we want to spawn the next enemy. If it is -1 then the group is defeated
         /// </summary>
@@ -30,5 +30,26 @@ namespace _Scripts.Models
 
         public string GetCurrentEnemy() => Enemies[CurrentEnemy];
 
+    }
+
+    public enum EnemyStateChangeType
+    {
+        None,
+        Timer,
+        Health,
+        Death,
+        Hit
+    }
+
+    [Serializable]
+    public class EnemySet
+    {
+        public int NextEnemy;
+        public string EnemyName;
+        public EnemyStateChangeType StateChangeType;
+        public float Timer;
+        public float HealthPercentage;
+        public int HitCount;
+        public AttackGroupType HitGroupType;
     }
 }
