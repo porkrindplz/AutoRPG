@@ -37,6 +37,9 @@ namespace _Scripts.Models
         /// </summary>
         public bool CanUpgrade(string id)
         {
+            var player = GameManager.Instance.Player.Entity as Player;
+            if (player?.UsedSkillPoints >= player?.MaxSkillPoints) return false;
+            
             var currentUpgrades = Upgrades.Where(u => u.NumOfUpgrades > 0).ToList();
             var newUpgrade = Upgrades.FirstOrDefault(u => u.Id == id);
             if (newUpgrade is null) return false;
@@ -101,6 +104,8 @@ namespace _Scripts.Models
 
         public void ResetTree()
         {
+            var pointsToGiveBack = Upgrades?.Sum(u => u.NumOfUpgrades) ?? 0;
+            ((Player)GameManager.Instance.Player.Entity).UsedSkillPoints -= pointsToGiveBack;
             Upgrades?.ForEach(u => u.NumOfUpgrades = 0);
             GameManager.Instance.OnResetTree?.Invoke(this);
         }
@@ -108,7 +113,7 @@ namespace _Scripts.Models
         public int GetUpgradeLevel(string id)
         {
             var upgrade = Upgrades.FirstOrDefault(u => u.Id == id);
-            return upgrade == null ? 0 : upgrade.NumOfUpgrades;
+            return upgrade?.NumOfUpgrades ?? 0;
         }
         
         public Upgrade? TryUpgrade(string id)
@@ -120,6 +125,7 @@ namespace _Scripts.Models
             }
             AudioSystem.Instance.PlayMenuConfirmSound();
             var upgrade = Upgrades.FirstOrDefault(u => u.Id == id);
+            ((Player)GameManager.Instance.Player.Entity).UsedSkillPoints++;
             upgrade.NumOfUpgrades++;
             GameManager.Instance.OnUpgraded?.Invoke(this, upgrade);
             return upgrade;

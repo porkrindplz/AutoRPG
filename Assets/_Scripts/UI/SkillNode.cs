@@ -9,27 +9,46 @@ namespace _Scripts.UI
 {
     public class SkillNode : MonoBehaviour
     {
-        private string parentName;
+        [SerializeField] private string parentName;
         [SerializeField] private string UpgradeId;
         [SerializeField] private TextMeshProUGUI numText;
         private Button button;
         
         private void Awake()
         {
+            // EW nasty hack TODO fix me
+            bool currentActivity = transform.parent.gameObject.activeInHierarchy;
+            transform.parent.gameObject.SetActive(true);
             parentName = transform.parent.name;
+            transform.parent.gameObject.SetActive(currentActivity);
+
             button = GetComponent<Button>();
+            button.interactable = false;
+            GameManager.Instance.OnBeforeGameStateChanged += (state, gameState) =>
+            {
+                if (gameState == EGameState.Playing)
+                {
+                    SetInteractable();
+                }
+            };
             GameManager.Instance.OnUpgraded += (_, _) =>
             {
                 SetInteractable();
             };
             GameManager.Instance.OnResetTree += tree =>
             {
+                SetInteractable();
                 if (parentName != null && parentName.Contains(tree.Name))
                 {
                     numText.text = "0";
-                    SetInteractable();
+                    
                 }
             };
+        }
+
+        private void OnEnable()
+        {
+            SetInteractable();
         }
 
         private void SetInteractable()
@@ -41,7 +60,7 @@ namespace _Scripts.UI
                 "SlingshotTree" => GameManager.Instance.AllTrees.Slingshot.CanUpgrade(UpgradeId),
                 "ShieldTree" => GameManager.Instance.AllTrees.Shield.CanUpgrade(UpgradeId),
                 _ => button.interactable
-            };   
+            };
         }
 
         public void OnClick()

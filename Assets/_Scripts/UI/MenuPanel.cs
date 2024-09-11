@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using __Scripts.Systems;
+using _Scripts.Models;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -23,9 +25,22 @@ public class MenuPanel : MonoBehaviour
     [SerializeField] private RectTransform ShieldPanel;
 
     [SerializeField] private Button ResetTreeButton;
-
-    private int openPanelId;
+    [SerializeField] private TextMeshProUGUI SkillPointText;
     
+    private int openPanelId;
+
+    private void Start()
+    {
+        //GameManager.Instance.OnUpgraded += (_, _) => UpdateSkillText();
+        GameManager.Instance.OnBeforeGameStateChanged += (state, gameState) =>
+        {
+            if (gameState == EGameState.Playing)
+            {
+                //UpdateSkillText();
+            }
+        };
+    }
+
     public void SwitchPanel(int panel)
     {
         SelectPanel((EMenuPanel)panel);
@@ -51,6 +66,7 @@ public class MenuPanel : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException();
         }
+        //UpdateSkillText();
     }
 
     public void Update()
@@ -59,6 +75,8 @@ public class MenuPanel : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2)) SwitchPanel(1);
         if (Input.GetKeyDown(KeyCode.Alpha3)) SwitchPanel(2);
         if (Input.GetKeyDown(KeyCode.Alpha4)) SwitchPanel(3);
+        var player = (Player)GameManager.Instance.Player.Entity;
+        SkillPointText.text = $"Skill Points: {player.UsedSkillPoints} / {player.MaxSkillPoints}";
     }
 
     public void SelectPanel(EMenuPanel panel)

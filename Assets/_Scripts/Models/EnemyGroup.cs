@@ -17,6 +17,7 @@ namespace _Scripts.Models
         public bool ShareHp;
 
         public int CurrentEnemy;
+        public bool SkillPointRewarded;
 
         public void GoToNextEnemy()
         {

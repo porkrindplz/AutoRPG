@@ -52,8 +52,17 @@ namespace _Scripts.Managers
             base.Awake();
         }
 
-        public void IncrementEnemyIndex() => EnemyIndex++;
-        
+        public void IncrementEnemyIndex()
+        {
+
+            if (enemyOrder[EnemyIndex].SkillPointRewarded)
+            {
+                ((Player)GameManager.Instance.Player.Entity).MaxSkillPoints++;
+            }
+
+            EnemyIndex++;
+        }
+
         public void SpawnEnemy()
         {
             var nextEnemy = enemyOrder[EnemyIndex].GetCurrentEnemySet();
@@ -96,8 +105,6 @@ namespace _Scripts.Managers
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            
-  
             
             // Carry over hp 
             if (enemyOrder[EnemyIndex].ShareHp && existingEnemy.Entity != null)

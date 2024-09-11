@@ -165,7 +165,7 @@ public class GameManager : Singleton<GameManager>
         //Load Enemy
         Logger.Log("Handle Setup");
         AllTrees.Reset();
-        OnUpgraded?.Invoke(AllTrees.Sword, AllTrees.Sword.Upgrades[0]);
+        
         ChangeGameState(EGameState.SpawnEnemy);
     }
     private void HandleSpawnEnemy()
