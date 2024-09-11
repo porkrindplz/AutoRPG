@@ -45,8 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyOrder:
-  - Enemies: []
-    EnemySets:
+  - EnemySets:
     - NextEnemy: -1
       EnemyName: Beetle
       StateChangeType: 0
@@ -54,12 +53,9 @@ MonoBehaviour:
       HealthPercentage: 0
       HitCount: 0
       HitGroupType: 0
-    NextEnemy: 
     ShareHp: 0
     CurrentEnemy: 0
-  - Enemies:
-    - Snowman
-    EnemySets:
+  - EnemySets:
     - NextEnemy: -1
       EnemyName: Snowman
       StateChangeType: 0
@@ -67,11 +63,9 @@ MonoBehaviour:
       HealthPercentage: 0
       HitCount: 0
       HitGroupType: 0
-    NextEnemy: 
     ShareHp: 0
     CurrentEnemy: 0
-  - Enemies: []
-    EnemySets:
+  - EnemySets:
     - NextEnemy: -1
       EnemyName: Beetles
       StateChangeType: 0
@@ -79,12 +73,9 @@ MonoBehaviour:
       HealthPercentage: 0
       HitCount: 0
       HitGroupType: 0
-    NextEnemy: 
     ShareHp: 0
     CurrentEnemy: 0
-  - Enemies:
-    - Snowmen
-    EnemySets:
+  - EnemySets:
     - NextEnemy: -1
       EnemyName: Snowmen
       StateChangeType: 0
@@ -92,11 +83,9 @@ MonoBehaviour:
       HealthPercentage: 0
       HitCount: 0
       HitGroupType: 0
-    NextEnemy: 
     ShareHp: 0
     CurrentEnemy: 0
-  - Enemies: []
-    EnemySets:
+  - EnemySets:
     - NextEnemy: 1
       EnemyName: Flame Beetles
       StateChangeType: 3
@@ -111,11 +100,9 @@ MonoBehaviour:
       HealthPercentage: 0
       HitCount: 0
       HitGroupType: 0
-    NextEnemy: 
     ShareHp: 0
     CurrentEnemy: 0
-  - Enemies: []
-    EnemySets:
+  - EnemySets:
     - NextEnemy: 1
       EnemyName: Ooze
       StateChangeType: 3
@@ -130,6 +117,49 @@ MonoBehaviour:
       HealthPercentage: 0
       HitCount: 0
       HitGroupType: 0
-    NextEnemy: 
+    ShareHp: 0
+    CurrentEnemy: 0
+  - EnemySets:
+    - NextEnemy: 1
+      EnemyName: Balloon Mouse
+      StateChangeType: 4
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 2
+      HitGroupType: 1
+    - NextEnemy: 0
+      EnemyName: Sitting Mouse
+      StateChangeType: 4
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 2
+      HitGroupType: 0
+    ShareHp: 1
+    CurrentEnemy: 0
+  - EnemySets:
+    - NextEnemy: -1
+      EnemyName: Hummingbird
+      StateChangeType: 4
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 0
+      HitGroupType: 0
+    ShareHp: 0
+    CurrentEnemy: 0
+  - EnemySets:
+    - NextEnemy: 1
+      EnemyName: Turtle
+      StateChangeType: 3
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 0
+      HitGroupType: 0
+    - NextEnemy: -1
+      EnemyName: Speed Turtle
+      StateChangeType: 4
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 0
+      HitGroupType: 0
     ShareHp: 0
     CurrentEnemy: 0

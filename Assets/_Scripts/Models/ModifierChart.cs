@@ -1,4 +1,5 @@
 using System;
+using UnityEngine.Serialization;
 
 namespace _Scripts.Models
 {
@@ -17,7 +18,7 @@ namespace _Scripts.Models
     {
         public ModifierType Melee;
         public ModifierType Ranged;
-        public ModifierType AoE;
+        [FormerlySerializedAs("AoE")] public ModifierType Aoe;
         public ModifierType Fire;
         public ModifierType Water;
         public ModifierType Leaf;

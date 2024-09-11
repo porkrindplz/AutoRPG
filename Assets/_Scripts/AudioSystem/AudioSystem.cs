@@ -129,6 +129,7 @@ namespace __Scripts.Systems
 
         public void PlaySound(AudioClip[] clips, float vol = 1f, bool randomPitch = false)
         {
+            if (clips == null || clips.Length == 0) return;
             AudioClip clip = clips[Random.Range(0, clips.Length)];
             if (randomPitch) RandomizeSound(clip);
             else _sfxSource.pitch = 1;

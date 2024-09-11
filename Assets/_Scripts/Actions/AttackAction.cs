@@ -80,7 +80,7 @@ namespace _Scripts.Actions
                     if (GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("aoe") > 0)
                     {
                         // TODO: make this more involved with # of enemies
-                        return ModifierChart.GetModifier(actee.ReceivedModifiers.AoE);
+                        return ModifierChart.GetModifier(actee.ReceivedModifiers.Aoe);
                     }
 
                     var cannonLevel = GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("cannon");
@@ -103,7 +103,7 @@ namespace _Scripts.Actions
                     if (GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("aoe") > 0)
                     {
                         // TODO: make this more involved with # of enemies
-                        bonusRangedDmg *= ModifierChart.GetModifier(actee.ReceivedModifiers.AoE);
+                        bonusRangedDmg *= ModifierChart.GetModifier(actee.ReceivedModifiers.Aoe);
                     }
                     
                     return bonusRangedDmg;
@@ -126,12 +126,12 @@ namespace _Scripts.Actions
                 AttackType.Sword => ModifierChart.GetModifier(actee.ReceivedModifiers.Melee),
                 AttackType.Bow => ModifierChart.GetModifier(actee.ReceivedModifiers.Ranged),
                 AttackType.SniperShot => ModifierChart.GetModifier(actee.ReceivedModifiers.Ranged),
-                AttackType.MultiShot => ModifierChart.GetModifier(actee.ReceivedModifiers.Ranged) * ModifierChart.GetModifier(actee.ReceivedModifiers.AoE),
+                AttackType.MultiShot => ModifierChart.GetModifier(actee.ReceivedModifiers.Ranged) * ModifierChart.GetModifier(actee.ReceivedModifiers.Aoe),
                 AttackType.Block => 1,
                 AttackType.BraveSlash => ModifierChart.GetModifier(actee.ReceivedModifiers.Melee),
-                AttackType.CrossSlash => ModifierChart.GetModifier(actee.ReceivedModifiers.AoE),
+                AttackType.CrossSlash => ModifierChart.GetModifier(actee.ReceivedModifiers.Aoe),
                 AttackType.Slash => ModifierChart.GetModifier(actee.ReceivedModifiers.Melee),
-                AttackType.Whirlwind => ModifierChart.GetModifier(actee.ReceivedModifiers.AoE),
+                AttackType.Whirlwind => ModifierChart.GetModifier(actee.ReceivedModifiers.Aoe),
                 _ => throw new ArgumentOutOfRangeException()
             };
         }

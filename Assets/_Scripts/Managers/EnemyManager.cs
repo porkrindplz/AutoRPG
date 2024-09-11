@@ -83,8 +83,15 @@ namespace _Scripts.Managers
                     timerStageChanger.ChangeStage += OnStageChange;
                     break;
                 case EnemyStateChangeType.Health:
+                    var healthStageChanger = existingEnemy.AddComponent<HealthStageChange>();
+                    healthStageChanger.healthPercentageToChange = nextEnemy.HealthPercentage;
+                    healthStageChanger.ChangeStage += OnStageChange;
                     break;
                 case EnemyStateChangeType.Hit:
+                    var hitStageChanger = existingEnemy.AddComponent<HitStageChange>();
+                    hitStageChanger.HitsUntilChange = nextEnemy.HitCount;
+                    hitStageChanger.GroupType = nextEnemy.HitGroupType;
+                    hitStageChanger.ChangeStage += OnStageChange;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
