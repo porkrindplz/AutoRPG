@@ -6,13 +6,17 @@ using _Scripts.Entities;
 using _Scripts.Models;
 using UnityEngine;
 using UnityEngine.UI;
+using Logger = _Scripts.Utilities.Logger;
 
 public class CharacterAnimationController : MonoBehaviour
 {
 
-    public Image EntityImage;
+    public RectTransform EntityImageRect;
     private Animator animator;
     private EntityBehaviour entity;
+    
+    Color takeDamageColor = Color.red;
+    Color defaultColor = Color.white;
 
     private void Awake()    
     {
@@ -22,12 +26,14 @@ public class CharacterAnimationController : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.Instance.OnAction += ReceiveAnimation;
+        
+        GameManager.Instance.OnAction += ActeeHitAnimation;
     }
 
     private void OnDisable()
     {
-        GameManager.Instance.OnAction -= ReceiveAnimation;
+        if(GameManager.Instance!=null)
+            GameManager.Instance.OnAction -= ActeeHitAnimation;
     }
 
     public float AttackAnimation(EntityBehaviour actor, EntityBehaviour actee, IGameAction action)
@@ -43,20 +49,31 @@ public class CharacterAnimationController : MonoBehaviour
         animator.SetTrigger("OnDeath");
     }
 
-    private void ReceiveAnimation(EntityBehaviour actor,EntityBehaviour actee,IGameAction action)
+    public void ActeeHitAnimation(EntityBehaviour actor, EntityBehaviour actee, IGameAction action)
     {
         if (actee != entity) return;
+        
+        Logger.Log($"Entity: {entity.Entity} is taking damage"); ;
+        
+        string type = action.GameAction.Name.ToString();
+        Logger.Log("Type: " + type);
+        if(action is AttackAction attackAction)
+        {
+            if (type.Contains("Shield"))
+            {
+                Logger.Log("Blocking?");
+                animator.SetTrigger("OnBlock");
+            }
+            else
+            {
+                Logger.Log("Taking Damage");
+                animator.SetTrigger("OnHit");
+            }
+        }
+        else if(action is BlockAction blockAction)
+            animator.SetTrigger("OnBlock");
 
         
-        if (action is AttackAction)
-        {
-            StartCoroutine(TakeDamageEffect());
-        }
     }
-    IEnumerator TakeDamageEffect()
-    {
-        EntityImage.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
-        EntityImage.color = Color.white;
-    }
+
 }

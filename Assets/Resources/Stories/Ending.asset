@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811c9e099595d9d4f8b228ebf4cc6b47, type: 3}
+  m_Name: Ending
+  m_EditorClassIdentifier: 
+  <Type>k__BackingField: 2
+  <Pages>k__BackingField:
+  - text: His tail matted mud and sweat, Rolig can finally return to his home and
+      prepare for the cold storm.
+    image: {fileID: 2800000, guid: d476eb233780d29448257ad598117933, type: 3}
+  - text: With the warmth of his home and the knowledge that he won't go hungry,
+      Rolig feels a sense of peace.
+    image: {fileID: 2800000, guid: be236e45341a3564ead2cab884c0046a, type: 3}
+  - text: 'And while no healthy creature would purposefully seek out the desperate
+      struggle of the season gone by, there will always be a part of Roli that will
+      miss the dance. '
+    image: {fileID: 2800000, guid: cea40ef40011e154288a61115fb242e9, type: 3}
+  <NextState>k__BackingField: 10

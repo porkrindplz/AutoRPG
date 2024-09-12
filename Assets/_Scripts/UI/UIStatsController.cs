@@ -70,7 +70,6 @@ namespace _Scripts.UI
                 (entityBehaviour.Entity is Enemy && isPlayer)) return;
             if (entityBehaviour.Entity is null) return;
             
-            Logger.Log(entityBehaviour.Entity.GetType().ToString() + " Updating Stats");
             var name = entityBehaviour.Entity is Enemy enemy ? enemy.Name : "ROLIG"; 
             
             statText.text = $"{name.ToUpper()}\n" +
