@@ -17,7 +17,16 @@ namespace _Scripts.Models
         public bool ShareHp;
 
         public int CurrentEnemy;
+        
+        /// <summary>
+        /// Determines if you should get an additional skill point after being the enemy group
+        /// </summary>
         public bool SkillPointRewarded;
+        
+        /// <summary>
+        /// Time in seconds where you get an S ranking for beating the enemy that speed. Nuts will also decay in some proportion to this value
+        /// </summary>
+        public double GoalBestTime;
 
         public void GoToNextEnemy()
         {

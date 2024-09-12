@@ -163,7 +163,7 @@ namespace _Scripts.Actions
             }
         }
 
-        private double GetModifier(Entity actee)
+        public double GetModifier(Entity actee)
         {
             Debug.Log(AttackType);
             return AttackType switch

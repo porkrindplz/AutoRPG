@@ -16,7 +16,7 @@ namespace _Scripts.Managers
         public float ShieldTime = 5; 
 
         [Header("Magic Constants")]
-        public float CannonModifier = 0.15f;
+        public float CannonModifier = 0.3f;
         public float MagicModifier = 0.2f;
 
         [Header("Slingshot Constants")]

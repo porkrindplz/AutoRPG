@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using _Scripts.Actions.Effects;
 using _Scripts.Models;
@@ -15,6 +16,17 @@ namespace _Scripts.Entities
         void Start()
         {
             
+        }
+
+        public void RemoveAllEffects()
+        {
+            if (Entity?.ActiveEffects == null) return;
+            foreach (var effect in Entity.ActiveEffects)
+            {
+                effect.Stop();
+            }
+
+            Entity.ActiveEffects?.Clear();
         }
 
         public bool HasActiveEffect(ActiveEffectType effect)

@@ -47,15 +47,25 @@ namespace _Scripts.UI
         {
             string text="";
             Color color=Color.white;
+            if (action is AttackAction attackAction)
+            {
+                var mod = attackAction.GetModifier(actee.Entity);
+                text = mod switch
+                {
+                    -0.5 => "Absorb: ",
+                    0.0 => "Null: ",
+                    0.5 => "Resist: ",
+                    1.5 => "Weak: ",
+                    2.0 => "Vulnerable: ",
+                    > 2 => "Rekt: ",
+                    _ => ""
+                };
+            }
         
             switch (action)
             {
-                case AttackGameAction damageAction:
-                    text = $"-{damageAction.Value}";
-                    color = Elements.GetElementColor(damageAction.GameAction.Element);
-                    break;
                 case AttackAction damageAction:
-                    text = $"-{damageAction.Value}";
+                    text += $"-{damageAction.Value}";
                     color = Elements.GetElementColor(damageAction.GameAction.Element);
                     break;
             }

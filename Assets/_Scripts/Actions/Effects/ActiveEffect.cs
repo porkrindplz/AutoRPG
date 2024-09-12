@@ -26,6 +26,11 @@ namespace _Scripts.Actions.Effects
             _timer.Start();
         }
 
+        public void Stop()
+        {
+            _timer.Stop();
+        }
+
         public void Update(float deltaTime)
         {
             _timer.Tick(deltaTime);

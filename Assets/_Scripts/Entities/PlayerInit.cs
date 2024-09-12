@@ -41,7 +41,39 @@ public class PlayerInit : MonoBehaviour
                     GameManager.Instance.ChangeGameState(EGameState.PlayerDefeated);
                 };
             }
+        };
 
+        GameManager.Instance.OnUpgraded += (tree, upgrade) =>
+        {
+            switch (upgrade.Id)
+            {
+                case "resist_fire":
+                    playerEntity.Entity.ReceivedModifiers.Fire = ModifierType.Resistant;
+                    playerEntity.Entity.ReceivedModifiers.Water = ModifierType.Weak;
+                    break;
+                case "resist_water":
+                    playerEntity.Entity.ReceivedModifiers.Water = ModifierType.Resistant;
+                    playerEntity.Entity.ReceivedModifiers.Leaf = ModifierType.Weak;
+                    break;
+                case "resist_leaf":
+                    playerEntity.Entity.ReceivedModifiers.Leaf = ModifierType.Resistant;
+                    playerEntity.Entity.ReceivedModifiers.Fire = ModifierType.Weak;
+                    break;
+                case "resist_physical":
+                    playerEntity.Entity.ReceivedModifiers.Melee = ModifierType.Resistant;
+                    break;
+                case "resist_ranged":
+                    playerEntity.Entity.ReceivedModifiers.Ranged = ModifierType.Resistant;
+                    break;
+            }
+        };
+
+        GameManager.Instance.OnResetTree += tree =>
+        {
+            if (tree.Name != "Shield") return;
+            playerEntity.Entity.ReceivedModifiers.Water = ModifierType.Neutral;
+            playerEntity.Entity.ReceivedModifiers.Fire = ModifierType.Neutral;
+            playerEntity.Entity.ReceivedModifiers.Water = ModifierType.Neutral;
         };
 
     }

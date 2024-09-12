@@ -39,7 +39,7 @@ namespace _Scripts.Models
         /// List of all active effects being applied, these are temporary and should affect stats on Getters.
         /// DO NOT add effects through here, add them through Entity Behaviour. This is bad design process
         /// </summary>
-        public List<ActiveEffect> ActiveEffects { get; } = new();
+        public List<ActiveEffect> ActiveEffects { get; set; } = new();
 
         public int Nuts
         {

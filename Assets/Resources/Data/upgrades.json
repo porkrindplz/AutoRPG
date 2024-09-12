@@ -20,7 +20,7 @@
       {
         "Id": "resist_physical",
         "Name": "Resist Physical",
-        "Description": "Significantly reduces physical damage.",
+        "Description": "Significantly reduces physical damage by 50%. TODO SEE IF THIS IS TOO MUCH",
         "MaxUpgrades": 2,
         "Prerequisites": ["block"],
         "Children": [],
@@ -29,7 +29,7 @@
       {
         "Id": "resist_ranged",
         "Name": "Resist Range",
-        "Description": "Significantly reduces ranged damage.",
+        "Description": "Significantly reduces ranged damage by physical 50% TODO SEE IF THIS IS TOO MUCH",
         "MaxUpgrades": 2,
         "Level": 2,
         "Prerequisites": ["block"],
@@ -39,7 +39,7 @@
       {
         "Id": "resist_fire",
         "Name": "Resist Fire",
-        "Description": "Significantly reduces fire damage.",
+        "Description": "Significantly reduces fire damage by 50%, makes you weak to water.",
         "MaxUpgrades": 3,
         "Prerequisites": ["block"],
         "Children": [],
@@ -48,7 +48,7 @@
       {
         "Id": "resist_water",
         "Name": "Resist Water",
-        "Description": "Significantly reduces water damage.",
+        "Description": "Significantly reduces water damage by 50%, makes you weak to leaf.",
         "MaxUpgrades": 3,
         "Prerequisites": ["block"],
         "Children": [],
@@ -57,7 +57,7 @@
       {
         "Id": "resist_leaf",
         "Name": "Resist Leaf",
-        "Description": "Significantly reduces leaf damage.",
+        "Description": "Significantly reduces leaf damage by 50%, makes you weak to fire.",
         "MaxUpgrades": 3,
         "Prerequisites": ["block"],
         "Children": [],
@@ -71,7 +71,7 @@
       {
         "Id": "sword",
         "Name": "Sword",
-        "Description": "A simple melee attack targeting a single enemy.",
+        "Description": "A simple melee attack targeting a single enemy. +25% melee damage per upgrade",
         "MaxUpgrades": 3,
         "Level": 1,
         "Prerequisites": [],
@@ -80,7 +80,7 @@
       {
         "Id": "slash",
         "Name": "Slash",
-        "Description": "A strong melee attack targeting a single enemy.",
+        "Description": "A strong melee attack targeting a single enemy. +20% melee damage per upgrade",
         "MaxUpgrades": 3,
         "Level": 2,
         "Prerequisites": ["sword"],
@@ -90,7 +90,7 @@
       {
         "Id": "cross_slash",
         "Name": "Cross Slash",
-        "Description": "A strong melee Attack targeting multiple enemies.",
+        "Description": "A strong melee attack targeting multiple enemies. +20% damage per upgrade",
         "MaxUpgrades": 3,
         "Level": 2,
         "Prerequisites": ["sword"],
@@ -125,7 +125,7 @@
       {
         "Id": "fireball",
         "Name": "Fireball",
-        "Description": "Enables fire magic attacks",
+        "Description": "Enables fire magic attacks. +20% fire damage per upgrade",
         "MaxUpgrades": 3,
         "Level": 1,
         "Prerequisites": [],
@@ -135,7 +135,7 @@
       {
         "Id": "water",
         "Name": "Water",
-        "Description": "Enables water magic attacks",
+        "Description": "Enables water magic attacks. +20% water damage per upgrade",
         "MaxUpgrades": 3,
         "Level": 1,
         "Prerequisites": [],
@@ -145,7 +145,7 @@
       {
         "Id": "leaf",
         "Name": "Leaf",
-        "Description": "Enables leaf magic attacks",
+        "Description": "Enables leaf magic attacks. +20% leaf damage per upgrade",
         "MaxUpgrades": 3,
         "Level": 1,
         "Prerequisites": [],
@@ -165,7 +165,7 @@
       {
         "Id": "cannon",
         "Name": "Cannon",
-        "Description": "Makes magic attacks more effective against single enemies.",
+        "Description": "Makes magic attacks more effective against single enemies. +30% damage",
         "MaxUpgrades": 1,
         "Prerequisites": ["fireball", "water", "leaf"],
         "PrerequisiteType": "or",
@@ -175,7 +175,7 @@
       {
         "Id": "enchant",
         "Name": "Enchant",
-        "Description": "Breaks through elemental shields.",
+        "Description": "Allows sword to break through elemental shields. Uses whatever element is unlocked",
         "MaxUpgrades": 1,
         "Prerequisites": ["fireball", "water", "leaf"],
         "PrerequisiteType": "or",

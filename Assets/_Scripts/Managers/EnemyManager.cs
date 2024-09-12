@@ -112,6 +112,7 @@ namespace _Scripts.Managers
                 newEnemyStats.CurrentHealth = existingEnemy.Entity.CurrentHealth;
                 newEnemyStats.CurrentMagic = existingEnemy.Entity.CurrentMagic;
             }
+            CurrentEnemy?.RemoveAllEffects();
 
             CurrentEnemy = existingEnemy;
             OnEnemySpawned?.Invoke(newEnemyStats);

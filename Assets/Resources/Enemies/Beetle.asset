@@ -19,9 +19,8 @@ MonoBehaviour:
   baseDef: 3
   speed: 25
   baseNuts: 10
-  actions: 0e00000000000000
+  actions: 0c000000
   actionWeights:
-  - 4
   - 4
   sprite: {fileID: 21300000, guid: 29e500fc77dfd4df1ad6fe16d6d60d60, type: 3}
   Modifiers:

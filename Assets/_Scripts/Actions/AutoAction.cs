@@ -6,6 +6,7 @@ using __Scripts.Systems;
 using _Scripts.Actions;
 using _Scripts.Entities;
 using _Scripts.Entities.EnemyAIs;
+using _Scripts.Managers;
 using _Scripts.Models;
 using _Scripts.Utilities;
 using UnityEngine;
@@ -37,6 +38,16 @@ public class AutoAction : MonoBehaviour
         
         ActionQueue = new Queue<IGameAction>();
         AnimationController = GetComponent<CharacterAnimationController>();
+    }
+
+    private void Start()
+    {
+        EnemyManager.Instance.OnEnemySpawned += enemy =>
+        {
+            ActionQueue.Clear();
+            _timer = 0;
+            
+        };
     }
 
     // Update is called once per frame
