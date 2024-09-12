@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 4
   <Pages>k__BackingField:
-  - text: Many foes have elemental weaknesses. Open the Staff tab to choose a magic
-      type!
+  - text: "Many foes have elemental weaknesses. Upgrade your Staff to melt them!
+      \n\nYou may be low on points. Reset your skill points in the Sword Tab to recover
+      them."
     image: {fileID: 0}
   <NextState>k__BackingField: 3

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 5
   <Pages>k__BackingField:
-  - text: To do more damage to many foes, upgrade to an Area of Effect (AOE) skill.
-      AOE is less effective against a single foe.
+  - text: "To do more damage to many foes, upgrade to an Area of Effect (AOE) skill.
+      \n\nAOE attacks are less effective against a single foe."
     image: {fileID: 0}
   <NextState>k__BackingField: 3

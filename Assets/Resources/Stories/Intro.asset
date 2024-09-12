@@ -22,7 +22,7 @@ MonoBehaviour:
   - text: The cool wind whispers of desperation and paranoia growing inside the wooded
       folk. A storm is coming.
     image: {fileID: 2800000, guid: 29e500fc77dfd4df1ad6fe16d6d60d60, type: 3}
-  - text: Rolig knows what must be done. This will not be the playful forages of
-      seasons gone by. Rolig readys his sword...
+  - text: "Rolig knows what must be done. This will not be the playful foraging of
+      seasons gone by. \n\nRolig readies his sword..."
     image: {fileID: 2800000, guid: cea40ef40011e154288a61115fb242e9, type: 3}
   <NextState>k__BackingField: 1

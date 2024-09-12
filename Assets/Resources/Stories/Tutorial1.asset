@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 3
   <Pages>k__BackingField:
-  - text: Click the Sword Upgrade Icon to Unlock an Attack. This costs a skill point.
-      Spend more to make it stronger!
+  - text: "Click the Sword Upgrade Icon to Unlock an Attack. This costs a skill point.
+      \n\nSpend more to make it stronger!"
     image: {fileID: 0}
   <NextState>k__BackingField: 3

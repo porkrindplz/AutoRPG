@@ -20,6 +20,7 @@ public class Story
 }
 [System.Serializable]
 public class StoryPage{
+    [TextArea(3,10)]
     public string text;
     public Texture image;
 }
