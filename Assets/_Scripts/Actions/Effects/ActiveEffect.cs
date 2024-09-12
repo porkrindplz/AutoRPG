@@ -7,9 +7,9 @@ namespace _Scripts.Actions.Effects
     public enum ActiveEffectType
     {
         Block,
-        Burn,
-        Slow,
-        AtkUp
+        ShieldWater,
+        ShieldFire,
+        ShieldLeaf
     }
     
     public class ActiveEffect

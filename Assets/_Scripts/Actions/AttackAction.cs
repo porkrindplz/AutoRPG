@@ -1,8 +1,10 @@
 using System;
+using _Scripts.Actions.Effects;
 using _Scripts.Entities;
 using _Scripts.Managers;
 using _Scripts.Models;
 using UnityEngine;
+using Logger = _Scripts.Utilities.Logger;
 
 namespace _Scripts.Actions
 {
@@ -27,13 +29,18 @@ namespace _Scripts.Actions
             var (actorE, acteeE) = (actor.Entity, actee.Entity);
             var dmg = (actorE.BaseAtk*actorE.BaseAtk) / (actorE.BaseAtk + acteeE.BaseDef);
 
-            // Check for enchant modifier for shield breaks
-            if (GameAction.AttackGroupType == AttackGroupType.Melee && GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("enchant") > 0)
+            HandleEnemyShieldCast(actor);
+            dmg *= CheckShieldBreaks(actee);
+
+            // Elemental shields at this point soak up all damage
+            if (actee.HasActiveEffect(ActiveEffectType.ShieldFire) ||
+                actee.HasActiveEffect(ActiveEffectType.ShieldLeaf) ||
+                actee.HasActiveEffect(ActiveEffectType.ShieldWater))
             {
-                // TODO: make this break different shields
-                Debug.Log("Elemental attack, attempting to shield break");
+                return;
             }
-            
+
+
             var upgradeModifiers = GetUpgradeModifier(actorE, acteeE);
             dmg *= upgradeModifiers;
             
@@ -45,6 +52,49 @@ namespace _Scripts.Actions
             Value = dmg;
             acteeE.CurrentHealth = Math.Max(0, acteeE.CurrentHealth - dmg);
             OnFinished?.Invoke();
+        }
+
+        /// <summary>
+        /// Checks to see if an elemental shield can be broken. Player must have enchant + the correct effective element to break
+        /// </summary>
+        private double CheckShieldBreaks(EntityBehaviour actee)
+        {
+            // Check for enchant modifier for shield breaks
+            if (GameAction.AttackGroupType != AttackGroupType.Melee ||
+                GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("enchant") <= 0) return 1;
+            
+            Debug.Log("Elemental attack, attempting to shield break");
+            if (GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("fireball") > 0 &&
+                actee.HasActiveEffect(ActiveEffectType.ShieldLeaf))
+            {
+                Logger.Log("Leaf shield broken by fire!");
+                actee.RemoveActiveEffect(ActiveEffectType.ShieldLeaf);
+                return 0;
+            }
+            
+            if (GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("leaf") > 0 &&
+                actee.HasActiveEffect(ActiveEffectType.ShieldWater))
+            {
+                Logger.Log("Water shield broken by leaf!");
+                actee.RemoveActiveEffect(ActiveEffectType.ShieldWater);
+                return 0;
+            }
+            
+            if (GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("water") > 0 &&
+                actee.HasActiveEffect(ActiveEffectType.ShieldFire))
+            {
+                Logger.Log("Fire shield broken by water!");
+                actee.RemoveActiveEffect(ActiveEffectType.ShieldFire);
+                return 0;
+            }
+            return 1;
+        }
+
+        private void HandleEnemyShieldCast(EntityBehaviour actor)
+        {
+            if (AttackType == AttackType.ShieldFire) actor.Entity.ActiveEffects.Add(new ActiveEffect(ActiveEffectType.ShieldFire, 100000));
+            if (AttackType == AttackType.ShieldLeaf) actor.Entity.ActiveEffects.Add(new ActiveEffect(ActiveEffectType.ShieldLeaf, 100000));
+            if (AttackType == AttackType.ShieldWater) actor.Entity.ActiveEffects.Add(new ActiveEffect(ActiveEffectType.ShieldWater, 100000));
         }
 
         private double GetUpgradeModifier(Entity actor, Entity actee)
@@ -132,7 +182,8 @@ namespace _Scripts.Actions
                 AttackType.CrossSlash => ModifierChart.GetModifier(actee.ReceivedModifiers.Aoe),
                 AttackType.Slash => ModifierChart.GetModifier(actee.ReceivedModifiers.Melee),
                 AttackType.Whirlwind => ModifierChart.GetModifier(actee.ReceivedModifiers.Aoe),
-                _ => throw new ArgumentOutOfRangeException()
+                
+                _ => 0
             };
         }
 

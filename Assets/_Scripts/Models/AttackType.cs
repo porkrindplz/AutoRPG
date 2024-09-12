@@ -17,7 +17,10 @@ namespace _Scripts.Models
         Slash,
         SniperShot,
         Water,
-        Whirlwind
+        Whirlwind,
+        ShieldFire,
+        ShieldWater,
+        ShieldLeaf,
     }
 
     public enum AttackGroupType

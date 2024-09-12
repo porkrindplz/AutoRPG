@@ -17,7 +17,7 @@ MonoBehaviour:
   maxMagic: 10
   baseAtk: 6
   baseDef: 2
-  speed: 50
+  speed: 35
   baseNuts: 50
   actions: 000000000c000000
   actionWeights:
@@ -27,7 +27,7 @@ MonoBehaviour:
   Modifiers:
     Melee: 0
     Ranged: 3
-    AoE: 3
+    Aoe: 3
     Fire: 2
     Water: 5
     Leaf: 3

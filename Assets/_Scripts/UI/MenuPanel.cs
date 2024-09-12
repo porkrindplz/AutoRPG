@@ -43,12 +43,15 @@ public class MenuPanel : MonoBehaviour
 
     public void SwitchPanel(int panel)
     {
+        if (GameManager.Instance.CurrentGameState != EGameState.Playing) return;
         SelectPanel((EMenuPanel)panel);
         openPanelId = panel;
     }
 
     public void ResetTree()
     {
+        if (GameManager.Instance.CurrentGameState != EGameState.Playing) return;
+        
         switch ((EMenuPanel)openPanelId)
         {
             case EMenuPanel.Sword:

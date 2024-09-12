@@ -15,18 +15,19 @@ MonoBehaviour:
   name: Beetle
   maxHealth: 50
   maxMagic: 10
-  baseAtk: 5
+  baseAtk: 8
   baseDef: 3
   speed: 25
   baseNuts: 10
-  actions: 00000000
+  actions: 0e00000000000000
   actionWeights:
+  - 4
   - 4
   sprite: {fileID: 21300000, guid: 29e500fc77dfd4df1ad6fe16d6d60d60, type: 3}
   Modifiers:
     Melee: 0
     Ranged: 3
-    AoE: 3
+    Aoe: 3
     Fire: 3
     Water: 3
     Leaf: 3

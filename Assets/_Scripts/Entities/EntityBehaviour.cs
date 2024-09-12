@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using _Scripts.Actions.Effects;
 using _Scripts.Models;
 using UnityEngine;
@@ -14,6 +15,18 @@ namespace _Scripts.Entities
         void Start()
         {
             
+        }
+
+        public bool HasActiveEffect(ActiveEffectType effect)
+        {
+            var t = Entity.ActiveEffects.FirstOrDefault(ae => ae.ActiveEffectType == effect);
+            return t != null;
+        }
+
+        public void RemoveActiveEffect(ActiveEffectType effect)
+        {
+            var index = Entity.ActiveEffects.FindIndex(e => e.ActiveEffectType == effect);
+            if (index != -1) Entity.ActiveEffects.RemoveAt(index);
         }
 
         /// <summary>

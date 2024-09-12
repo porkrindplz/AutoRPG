@@ -65,6 +65,7 @@ namespace _Scripts.UI
 
         public void OnClick()
         {
+            if (GameManager.Instance.CurrentGameState != EGameState.Playing) return;
             Upgrade upgrade = parentName switch
             {
                 "SwordTree" => GameManager.Instance.AllTrees.Sword.TryUpgrade(UpgradeId),

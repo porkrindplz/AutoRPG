@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Snowmen
   m_EditorClassIdentifier: 
   name: Snowmen
-  maxHealth: 10
+  maxHealth: 150
   maxMagic: 10
   baseAtk: 5
   baseDef: 3
-  speed: 50
-  baseNuts: 10
+  speed: 35
+  baseNuts: 100
   actions: 000000000c000000
   actionWeights:
   - 2
@@ -27,7 +27,7 @@ MonoBehaviour:
   Modifiers:
     Melee: 0
     Ranged: 3
-    AoE: 2
+    Aoe: 2
     Fire: 2
     Water: 5
     Leaf: 3
