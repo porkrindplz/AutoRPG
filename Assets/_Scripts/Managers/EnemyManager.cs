@@ -59,11 +59,15 @@ namespace _Scripts.Managers
             if (enemyOrder[EnemyIndex].SkillPointRewarded)
             {
                 ((Player)GameManager.Instance.Player.Entity).MaxSkillPoints++;
+                GameManager.Instance.OnSkillPointGain?.Invoke();
             }
 
             EnemyIndex++;
-            //if enemy index > full play through of enemies StoryManager.SetStoryState(StoryState.Ending);
-            //GameManager.Instance.ChangeGameState(EGameState.Story);
+            if (EnemyIndex >= enemyOrder.Count())
+            {
+                GameManager.Instance.ChangeGameState(EGameState.Story);
+                StoryManager.Instance.SetStory(StoryType.Ending);
+            }
         }
 
         public void SpawnEnemy()

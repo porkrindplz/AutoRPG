@@ -74,7 +74,7 @@ namespace _Scripts.UI
             
             statText.text = $"{name.ToUpper()}\n" +
                             $"Health: {(int)entityBehaviour.Entity.CurrentHealth}/{(int)entityBehaviour.Entity.MaxHealth}\n" +
-                            $"Magic: {(int)entityBehaviour.Entity.CurrentMagic}/{(int)entityBehaviour.Entity.MaxMagic}\n" +
+                            //$"Magic: {(int)entityBehaviour.Entity.CurrentMagic}/{(int)entityBehaviour.Entity.MaxMagic}\n" +
                             $"Attack: {(int)entityBehaviour.Entity.BaseAtk}\n" +
                             $"Defense: {(int)entityBehaviour.Entity.BaseDef}\n" +
                             $"Speed: {entityBehaviour.Entity.Speed}";

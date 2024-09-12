@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6836162988457459885
 Transform:
   m_ObjectHideFlags: 0
@@ -53,9 +53,10 @@ MonoBehaviour:
       HealthPercentage: 0
       HitCount: 0
       HitGroupType: 0
-    ShareHp: 0
+    ShareHp: 1
     CurrentEnemy: 0
     SkillPointRewarded: 0
+    GoalBestTime: 0
   - EnemySets:
     - NextEnemy: -1
       EnemyName: Snowman
@@ -67,6 +68,7 @@ MonoBehaviour:
     ShareHp: 0
     CurrentEnemy: 0
     SkillPointRewarded: 1
+    GoalBestTime: 0
   - EnemySets:
     - NextEnemy: -1
       EnemyName: Beetles
@@ -78,6 +80,7 @@ MonoBehaviour:
     ShareHp: 0
     CurrentEnemy: 0
     SkillPointRewarded: 0
+    GoalBestTime: 0
   - EnemySets:
     - NextEnemy: -1
       EnemyName: Snowmen
@@ -89,6 +92,7 @@ MonoBehaviour:
     ShareHp: 0
     CurrentEnemy: 0
     SkillPointRewarded: 0
+    GoalBestTime: 0
   - EnemySets:
     - NextEnemy: 1
       EnemyName: Flame Beetles
@@ -107,6 +111,7 @@ MonoBehaviour:
     ShareHp: 0
     CurrentEnemy: 0
     SkillPointRewarded: 1
+    GoalBestTime: 0
   - EnemySets:
     - NextEnemy: 1
       EnemyName: Ooze
@@ -125,6 +130,7 @@ MonoBehaviour:
     ShareHp: 0
     CurrentEnemy: 0
     SkillPointRewarded: 0
+    GoalBestTime: 0
   - EnemySets:
     - NextEnemy: 1
       EnemyName: Balloon Mouse
@@ -143,6 +149,7 @@ MonoBehaviour:
     ShareHp: 1
     CurrentEnemy: 0
     SkillPointRewarded: 0
+    GoalBestTime: 0
   - EnemySets:
     - NextEnemy: -1
       EnemyName: Hummingbird
@@ -154,6 +161,7 @@ MonoBehaviour:
     ShareHp: 0
     CurrentEnemy: 0
     SkillPointRewarded: 0
+    GoalBestTime: 0
   - EnemySets:
     - NextEnemy: 1
       EnemyName: Turtle
@@ -172,3 +180,4 @@ MonoBehaviour:
     ShareHp: 0
     CurrentEnemy: 0
     SkillPointRewarded: 0
+    GoalBestTime: 0

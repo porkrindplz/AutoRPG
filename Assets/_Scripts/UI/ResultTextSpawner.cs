@@ -69,7 +69,7 @@ namespace _Scripts.UI
                     color = Elements.GetElementColor(damageAction.GameAction.Element);
                     break;
                 case BlockAction blockAction:
-                    text = $"Blocking {blockAction.GameAction.Element}";
+                    text = $"Blocking";
                     color = Elements.GetElementColor(blockAction.GameAction.Element);
                     break;
 

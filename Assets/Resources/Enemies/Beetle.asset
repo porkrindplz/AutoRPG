@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Beetle
   m_EditorClassIdentifier: 
   name: Beetle
-  maxHealth: 50
+  maxHealth: 60
   maxMagic: 10
-  baseAtk: 8
+  baseAtk: 12
   baseDef: 3
   speed: 25
   baseNuts: 10

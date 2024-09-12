@@ -79,6 +79,8 @@ public class GameManager : Singleton<GameManager>
     public Action<UpgradeTree, Upgrade> OnUpgraded;
 
     public Action<UpgradeTree> OnResetTree;
+
+    public Action OnSkillPointGain;
     
     public Dictionary<AttackType, GameAction> AllActions { get; set; }
     
@@ -129,7 +131,7 @@ public class GameManager : Singleton<GameManager>
 
     public IGameAction GetNewAction(AttackType attackType)
     {
-        if (attackType == AttackType.Block) return new BlockAction();
+        if (attackType == AttackType.Block) return new BlockAction(){GameAction = AllActions[attackType]};
         IGameAction action = new AttackAction(attackType);
         action.GameAction = AllActions[attackType];
         return action;
