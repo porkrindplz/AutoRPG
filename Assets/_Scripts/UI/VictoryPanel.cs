@@ -13,8 +13,8 @@ public class VictoryPanel : MonoBehaviour
     [SerializeField] private Button healthButton;
 
     private int nuts;
-    private int minNuts = 10;
-    private int health = 10;
+    [SerializeField] int minNuts = 10;
+    [SerializeField] int health = 25;
     private void OnEnable()
     {
         UpdateButtons();
