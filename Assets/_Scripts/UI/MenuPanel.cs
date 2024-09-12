@@ -7,7 +7,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
-    
+using Logger = _Scripts.Utilities.Logger;
+
 public enum EMenuPanel
 {
     Sword,
@@ -39,6 +40,8 @@ public class MenuPanel : MonoBehaviour
                 //UpdateSkillText();
             }
         };
+        
+        GameManager.Instance.OnUpgraded += (_, _) => UpdateSkillText();
     }
 
     public void SwitchPanel(int panel)
@@ -66,7 +69,7 @@ public class MenuPanel : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException();
         }
-        //UpdateSkillText();
+        UpdateSkillText();
     }
 
     public void Update()
@@ -75,6 +78,10 @@ public class MenuPanel : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2)) SwitchPanel(1);
         if (Input.GetKeyDown(KeyCode.Alpha3)) SwitchPanel(2);
         if (Input.GetKeyDown(KeyCode.Alpha4)) SwitchPanel(3);
+    }
+    
+    void UpdateSkillText()
+    {
         var player = (Player)GameManager.Instance.Player.Entity;
         SkillPointText.text = $"Skill Points: {player.UsedSkillPoints} / {player.MaxSkillPoints}";
     }

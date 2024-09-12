@@ -18,3 +18,5 @@ MonoBehaviour:
   Element: 0
   AttackGroupType: 1
   IsSelfTargetting: 0
+  SoundEffects:
+  - {fileID: 8300000, guid: f072eb493c0ce6d468da2dacf92055ac, type: 3}
