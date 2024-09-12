@@ -20,6 +20,16 @@ public class CharacterAnimationController : MonoBehaviour
         entity = GetComponent<EntityBehaviour>();
     }
 
+    private void OnEnable()
+    {
+        GameManager.Instance.OnAction += ReceiveAnimation;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.OnAction -= ReceiveAnimation;
+    }
+
     public float AttackAnimation(EntityBehaviour actor, EntityBehaviour actee, IGameAction action)
     {
         if (actor != entity) return 0;
@@ -31,5 +41,22 @@ public class CharacterAnimationController : MonoBehaviour
     {
         if (actor != entity.Entity) return;
         animator.SetTrigger("OnDeath");
+    }
+
+    private void ReceiveAnimation(EntityBehaviour actor,EntityBehaviour actee,IGameAction action)
+    {
+        if (actee != entity) return;
+
+        
+        if (action is AttackAction)
+        {
+            StartCoroutine(TakeDamageEffect());
+        }
+    }
+    IEnumerator TakeDamageEffect()
+    {
+        EntityImage.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        EntityImage.color = Color.white;
     }
 }
