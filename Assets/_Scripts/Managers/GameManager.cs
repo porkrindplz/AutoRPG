@@ -22,6 +22,45 @@ public enum EGameState
     PlayerDefeated,
     Walking,
     Paused,
+    Story,
+}
+
+public class PlayStats
+{
+    public string PlayerID{get; private set;}
+    public int TotalDefeats{get; private set;}
+    public int TotalVictories{get; private set;}
+    public int TotatStarts{get; private set;}
+    public int MostNuts{get; private set; }=0;
+    public double TotalTimePlayed{get; private set;}
+    
+    public PlayStats()
+    {
+        PlayerID = Guid.NewGuid().ToString();
+    }
+    public void AddVictory()
+    {
+        TotalVictories++;
+    }
+    public void AddDefeat()
+    {
+        TotalDefeats++;
+    }
+    public void AddStart()
+    {
+        TotatStarts++;
+    }
+    public void UpdateNuts(int nuts)
+    {
+        if (nuts > MostNuts)
+        {
+            MostNuts = nuts;
+        }
+    }
+    public void UpdateTimePlayed()
+    {
+        TotalTimePlayed += Time.realtimeSinceStartupAsDouble;
+    }
 }
 public class GameManager : Singleton<GameManager>
 {
@@ -56,10 +95,14 @@ public class GameManager : Singleton<GameManager>
     public RectTransform MainMenuPanel;
     public RectTransform VictoryPanel;
     public RectTransform GameOverPanel;
+    public RectTransform StoryPanel;
     [field:SerializeField]public EntityBehaviour Player { get; private set; }
     
     [field:SerializeField]public EGameState CurrentGameState { get; private set; }
 
+    public PlayStats PlayStats { get; private set; }
+    
+    
     public int EnemyNuts
     {
         get => enemyNuts;
@@ -76,6 +119,11 @@ public class GameManager : Singleton<GameManager>
         LoadActions();
         LoadUpgradeTrees();
         base.Awake();
+        if (PlayStats == null)
+        {
+            PlayStats = new PlayStats();
+            TransmitPlayStats();
+        }
     }
 
     public IGameAction GetNewAction(AttackType attackType)
@@ -147,6 +195,10 @@ public class GameManager : Singleton<GameManager>
                 Logger.Log("Paused");
                 HandlePaused();
                 break;
+            case EGameState.Story:
+                Logger.Log("Story");
+                HandleStory();
+                break;
         }
     }
 
@@ -158,13 +210,25 @@ public class GameManager : Singleton<GameManager>
     }
 
     private void HandleSetupGame()
-    {
-        
+    {        
+        OnUpgraded?.Invoke(AllTrees.Sword, AllTrees.Sword.Upgrades[0]);
+
+        ScreenFade.Instance.FadeIn(1);
+        PlayStats.AddStart();
+        TransmitPlayStats();
         //Load Player
         //Load trees
         //Load Enemy
         Logger.Log("Handle Setup");
         AllTrees.Reset();
+
+        StartCoroutine(SetupSequence());
+    }
+
+    IEnumerator SetupSequence()
+    {
+        ScreenFade.Instance.FadeIn(1);
+        yield return new WaitForSeconds(1);
         
         ChangeGameState(EGameState.SpawnEnemy);
     }
@@ -178,12 +242,18 @@ public class GameManager : Singleton<GameManager>
 
     private void HandlePlaying()
     {
+        PlayStats.UpdateNuts(Player.Entity.Nuts);
+        PlayStats.UpdateTimePlayed();
+        TransmitPlayStats();
         DisableAllInput();
         //Enable play inputs
     }
 
     private void HandleEnemyDefeated()
     {
+        PlayStats.AddVictory();
+        PlayStats.UpdateTimePlayed();
+        TransmitPlayStats();
         DisableAllInput();
         StartCoroutine(EnemyDefeatedSequence());
     }
@@ -197,6 +267,9 @@ public class GameManager : Singleton<GameManager>
 
     private void HandlePlayerDefeated()
     {
+        PlayStats.AddDefeat();
+        PlayStats.UpdateTimePlayed();
+        TransmitPlayStats();
         DisableAllInput();
 
         StartCoroutine(PlayerDefeatedSequence());
@@ -215,15 +288,35 @@ public class GameManager : Singleton<GameManager>
 
     private void HandlePaused()
     {
+        PlayStats.UpdateTimePlayed();
+        PlayStats.UpdateNuts(Player.Entity.Nuts);
+        TransmitPlayStats();
         DisableAllInput();
 
         //Activate Pause UI
         //Enable pause inputs
     }
 
+    private void HandleStory()
+    {
+        StoryPanel.gameObject.SetActive(true);
+        
+    }
+
     private void DisableAllInput()
     {
         //Disable all input types
+    }
+    
+    private void TransmitPlayStats()
+    {
+        Logger.Log($"PlayerID: {PlayStats.PlayerID} \n "+
+                   $"Total Victories: {PlayStats.TotalVictories} \n "+
+                   $"Total Defeats: {PlayStats.TotalDefeats.ToString()} \n" +
+                   $"Total Starts: {PlayStats.TotatStarts.ToString()} \n" +
+                   $"Most Nuts: {PlayStats.MostNuts.ToString()} \n" +
+                   $"Total Time Played: {PlayStats.TotalTimePlayed.ToString()}");
+                   
     }
 
 }

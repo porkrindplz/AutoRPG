@@ -1,29 +1,93 @@
 using System;
+using _Scripts.Models;
 using _Scripts.Utilities;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _Scripts.UI
 {
     public class ToolTip : Singleton<ToolTip>
     {
+        [Header("Tool Tip")]
+        [SerializeField] RectTransform toolTipRect;
+        [SerializeField] TextMeshProUGUI toolTipText;
 
-        [SerializeField] RectTransform rectTransform;
-        [SerializeField] TextMeshProUGUI text;
+        [Header("Tutorials")]
+        [SerializeField]private StorySO[] Tutorials;
+
+        private StorySO ActiveTutorial;
+
+        [SerializeField] private RectTransform tutorialRect;
+        [SerializeField] private TextMeshProUGUI tutorialText;
         protected override void Awake()
         {
             base.Awake();
             HideToolTip();
         }
-        
 
+        private void OnEnable()
+        {
+            GameManager.Instance.OnBeforeGameStateChanged += OnGameStateChanged;
+            GameManager.Instance.OnUpgraded += OnUpgrade;
+
+        }
+        
+        void OnGameStateChanged(EGameState prevState, EGameState state)
+        {
+            if (state == EGameState.Playing)
+            {
+                if (GameManager.Instance.PlayStats.TotalVictories == 0)
+                {
+                    ShowTutorial(0);
+                }
+                if(GameManager.Instance.PlayStats.TotalVictories == 1)
+                {
+                    ShowTutorial(1);
+                }
+                if(GameManager.Instance.PlayStats.TotalVictories == 2)
+                {
+                    ShowTutorial(2);
+                }
+            }
+        }
+
+        void OnUpgrade(UpgradeTree Tree, Upgrade upgrade)
+        {
+            if (ActiveTutorial == Tutorials[0] && upgrade.Id== "sword")
+            {
+                HideTutorial();
+            }
+            if(ActiveTutorial == Tutorials[1] && upgrade.Id == "fireball")
+            {
+                HideTutorial();
+            }
+            if(ActiveTutorial == Tutorials[2] && upgrade.Id == "aoe")
+            {
+                HideTutorial();
+            }
+        }
         protected void Update()
         {
-            if(rectTransform.gameObject.activeSelf)
+            if(toolTipRect.gameObject.activeSelf)
             {
-                rectTransform.position = Input.mousePosition;
+                toolTipRect.position = Input.mousePosition;
             }
 
+        }
+        public void ShowTutorial(int tipIndex)
+        {
+            ActiveTutorial = Tutorials[tipIndex];
+            tutorialRect.gameObject.SetActive(true);
+
+            tutorialText.text = tutorialText.text = Tutorials[tipIndex].Pages[0].text;
+        }
+        
+        public void HideTutorial()
+        {
+            tutorialText.text = "";
+            ActiveTutorial = null;
+            tutorialRect.gameObject.SetActive(false);
         }
     
         public void ShowToolTip(string message)
@@ -34,14 +98,14 @@ namespace _Scripts.UI
                 return;
             }
 
-            rectTransform.gameObject.SetActive(true);
-            text.text = message;
+            toolTipRect.gameObject.SetActive(true);
+            toolTipText.text = message;
         }
     
         public void HideToolTip()
         {
-            text.text = "";
-            rectTransform.gameObject.SetActive(false);
+            toolTipText.text = "";
+            toolTipRect.gameObject.SetActive(false);
         }
     }
 }
