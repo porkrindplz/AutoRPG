@@ -23,6 +23,7 @@ public enum EGameState
     Walking,
     Paused,
     Story,
+    Credits,
 }
 
 public class PlayStats
@@ -199,6 +200,10 @@ public class GameManager : Singleton<GameManager>
                 Logger.Log("Story");
                 HandleStory();
                 break;
+            case EGameState.Credits:
+                Logger.Log("Credits");
+                HandleCredits();
+                break;
         }
     }
 
@@ -303,6 +308,11 @@ public class GameManager : Singleton<GameManager>
         
     }
 
+    private void HandleCredits()
+    {
+        
+    }
+
     private void DisableAllInput()
     {
         //Disable all input types
@@ -316,7 +326,6 @@ public class GameManager : Singleton<GameManager>
                    $"Total Starts: {PlayStats.TotatStarts.ToString()} \n" +
                    $"Most Nuts: {PlayStats.MostNuts.ToString()} \n" +
                    $"Total Time Played: {PlayStats.TotalTimePlayed.ToString()}");
-                   
     }
 
 }

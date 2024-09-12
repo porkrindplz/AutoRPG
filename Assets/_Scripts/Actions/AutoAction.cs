@@ -103,12 +103,11 @@ public class AutoAction : MonoBehaviour
         var processedAction = GameManager.Instance.GetNewAction(takenAction.GameAction.Name);
         var actee = takenAction.GameAction.IsSelfTargetting ? currentEntity : opposingEntity;
         float animationTime = AnimationController.AttackAnimation(currentEntity, actee, processedAction);
-        AudioSystem.Instance.PlaySound(takenAction.GameAction.SoundEffects,1,true);
+        AudioSystem.Instance.PlaySound(takenAction.GameAction.SoundEffects,.5f,true);
         yield return new WaitForSeconds(animationTime);
             
         processedAction?.Interact(currentEntity, actee);
         GameManager.Instance.OnAction?.Invoke(currentEntity, actee, processedAction);
-
         AddAction();
         _actionCoroutine = null;
         /*

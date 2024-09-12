@@ -38,7 +38,7 @@ namespace _Scripts.UI
 
             text.color = color;
             text.text = value;
-            text.rectTransform.position = entity.GetComponent<CharacterAnimationController>().EntityImage.rectTransform.position +(Vector3.up*shiftDistance);
+            text.rectTransform.position = entity.GetComponent<CharacterAnimationController>().EntityImageRect.position +(Vector3.up*shiftDistance);
             
             StartCoroutine(AnimateText(text));
         }
@@ -68,6 +68,11 @@ namespace _Scripts.UI
                     text += $"-{damageAction.Value}";
                     color = Elements.GetElementColor(damageAction.GameAction.Element);
                     break;
+                case BlockAction blockAction:
+                    text = $"Blocking {blockAction.GameAction.Element}";
+                    color = Elements.GetElementColor(blockAction.GameAction.Element);
+                    break;
+
             }
             UpdateDisplay(actee, text, color);
         }

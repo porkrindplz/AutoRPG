@@ -10,7 +10,8 @@ namespace _Scripts.Models
         Weak,
         Resistant,
         Null,
-        Absorb
+        Absorb,
+        Empty
     }
     
     [Serializable]

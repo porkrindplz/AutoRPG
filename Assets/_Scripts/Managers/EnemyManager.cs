@@ -6,6 +6,7 @@ using _Scripts.Entities.EnemyAIs;
 using _Scripts.Models;
 using _Scripts.Utilities;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 using UnityEngine;
 using Logger = _Scripts.Utilities.Logger;
 using Random = System.Random;
@@ -61,6 +62,8 @@ namespace _Scripts.Managers
             }
 
             EnemyIndex++;
+            //if enemy index > full play through of enemies StoryManager.SetStoryState(StoryState.Ending);
+            //GameManager.Instance.ChangeGameState(EGameState.Story);
         }
 
         public void SpawnEnemy()
@@ -118,7 +121,7 @@ namespace _Scripts.Managers
             OnEnemySpawned?.Invoke(newEnemyStats);
             
             enemyPanel.GetComponent<EntityBehaviour>().Entity = newEnemyStats;
-            enemyPanel.GetComponent<CharacterAnimationController>().EntityImage.sprite = newEnemyStats.Sprite;
+            enemyPanel.GetComponent<CharacterAnimationController>().EntityImageRect.GetComponent<Image>().sprite = newEnemyStats.Sprite;
             var enemyAi = enemyPanel.GetComponent<EnemyAI>();
             
             enemyAi.weights = newEnemyStats.ActionWeights;

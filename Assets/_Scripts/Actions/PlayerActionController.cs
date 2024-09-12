@@ -128,15 +128,9 @@ namespace _Scripts.Actions
         {
             if ((!Input.GetKeyDown(slotButtons[i]) && isKeyDown) || actionSlots[i]?.timer.IsFinished != true) return;
             if (GameManager.Instance.CurrentGameState != EGameState.Playing) return;
+            if (_actionCoroutine != null) return;
             _actionCoroutine = StartCoroutine(ProcessCoroutine(i));
 
-            // actionSlots[i]?.timer.Reset();
-            // actionSlots[i]?.timer.Start();
-            // var takenAction = actionSlots[i]?.action;
-            // var processedAction = GameManager.Instance.GetNewAction(takenAction.Name);
-            // var actee = takenAction.IsSelfTargetting ? currentEntity : opposingEntity;
-            // processedAction?.Interact(currentEntity, actee);
-            // GameManager.Instance.OnAction?.Invoke(currentEntity, actee, processedAction);   
         }
 
         IEnumerator ProcessCoroutine(int i)
@@ -147,14 +141,14 @@ namespace _Scripts.Actions
             var processedAction = GameManager.Instance.GetNewAction(takenAction.Name);
             var actee = takenAction.IsSelfTargetting ? currentEntity : opposingEntity;
             float animationTime = AnimationController.AttackAnimation(currentEntity, actee, processedAction);
-            //AudioSystem.Instance.PlaySound(takenAction.SoundEffects,1,true);
+            AudioSystem.Instance.PlaySound(takenAction.SoundEffects,.5f,true);
 
             yield return new WaitForSeconds(animationTime);
            
             processedAction?.Interact(currentEntity, actee);
             GameManager.Instance.OnAction?.Invoke(currentEntity, actee, processedAction);  
             yield return Cooldown(takenAction.TimeToExecute * currentEntity.Entity.GetSpeedMultiplier(), cooldowns[i]);
-
+            _actionCoroutine = null;
         }
         
         IEnumerator Cooldown(double cooldown, RectTransform cd)
@@ -181,8 +175,6 @@ namespace _Scripts.Actions
         }
         public void HideToolTip()
         {
-            
-            Debug.Log("Hiding from PC");
             ToolTip.Instance.HideToolTip();
         }
     }
