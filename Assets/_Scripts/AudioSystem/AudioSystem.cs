@@ -1,10 +1,13 @@
 using System.Collections;
 using _Scripts.Actions;
 using _Scripts.Entities;
+using _Scripts.Managers;
 using _Scripts.Models;
 using _Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.Serialization;
+using _Scripts.Utilities;
+using Logger = _Scripts.Utilities.Logger;
 
 namespace __Scripts.Systems
 {
@@ -30,6 +33,36 @@ namespace __Scripts.Systems
 
         [SerializeField] private float _musicTransitionDuration = 0.5f;
 
+
+        private AudioSource _activeSource;
+        [SerializeField] private AudioClip[] MenuTracks;
+        private AudioSource[] _menuSources;
+        private Coroutine _musicMenuTransition;
+        [SerializeField] private AudioClip[] StoryTracks;
+        private AudioSource[] _storySources;
+        private Coroutine _musicStoryTransition;
+        [SerializeField] private AudioClip[] SetupTracks;
+        private AudioSource[] _setupSources;
+        private Coroutine _musicSetupTransition;
+        [SerializeField] private AudioClip[] CombatATracks;
+        private AudioSource[] _combatASources;
+        private Coroutine _musicCombatATransition;
+        [SerializeField] private AudioClip[] CombatBTracks;
+        private AudioSource[] _combatBSources;
+        private Coroutine _musicCombatBTransition;
+        [SerializeField] private AudioClip[] CombatCTracks;
+        private AudioSource[] _combatCSources;
+        private Coroutine _musicCombatCTransition;
+
+        [Header("Ambience")]
+        private AudioSource _activeAmbiSource;
+        private AudioSource _peacefulSource;
+        private AudioClip _peacefulAmbi;
+        private AudioSource _windySource;
+        private AudioClip _windyAmbi;
+        private AudioSource _stormySource;
+        private AudioClip _stormyAmbi;
+        
 
         [Header("Music")]
         [SerializeField] private AudioClip _menuMusic;
@@ -59,6 +92,54 @@ namespace __Scripts.Systems
         {
             GameManager.Instance.OnAction += PlayActionSound;
             
+            GameManager.Instance.OnBeforeGameStateChanged += OnStateChanged;
+            EnemyManager.Instance.OnEnemySpawned += OnEnemyChanged;
+
+            _menuSources = new AudioSource[MenuTracks.Length];
+            for (int i = 0; i < MenuTracks.Length; i++)
+            {
+                _menuSources[i] = gameObject.AddComponent<AudioSource>();
+                _menuSources[i].clip = MenuTracks[i];
+                _menuSources[i].loop = true;
+            }
+            _storySources = new AudioSource[StoryTracks.Length];
+            for (int i = 0; i < StoryTracks.Length; i++)
+            {
+                _storySources[i] = gameObject.AddComponent<AudioSource>();
+                _storySources[i].clip = StoryTracks[i];
+                _storySources[i].loop = true;
+            }
+            _setupSources = new AudioSource[SetupTracks.Length];
+            for (int i = 0; i < SetupTracks.Length; i++)
+            {
+                _setupSources[i] = gameObject.AddComponent<AudioSource>();
+                _setupSources[i].clip = SetupTracks[i];
+                _setupSources[i].loop = true;
+            }
+            _combatASources = new AudioSource[CombatATracks.Length];
+            for (int i = 0; i < CombatATracks.Length; i++)
+            {
+                _combatASources[i] = gameObject.AddComponent<AudioSource>();
+                _combatASources[i].clip = CombatATracks[i];
+                _combatASources[i].loop = true;
+            }
+            _combatBSources = new AudioSource[CombatBTracks.Length];
+            for (int i = 0; i < CombatBTracks.Length; i++)
+            {
+                _combatBSources[i] = gameObject.AddComponent<AudioSource>();
+                _combatBSources[i].clip = CombatBTracks[i];
+                _combatBSources[i].loop = true;
+            }
+            _combatCSources = new AudioSource[CombatCTracks.Length];
+            for (int i = 0; i < CombatCTracks.Length; i++)
+            {
+                _combatCSources[i] = gameObject.AddComponent<AudioSource>();
+                _combatCSources[i].clip = CombatCTracks[i];
+                _combatCSources[i].loop = true;
+            }
+
+            _activeSource = _menuSources[0];
+            
             _musicSourceCombat = gameObject.AddComponent<AudioSource>();
             _musicSourceCombat.loop = true;
 
@@ -73,6 +154,229 @@ namespace __Scripts.Systems
 
             //PlayCombatMusic();
         }
+        void OnEnemyChanged(Enemy enemy)
+        {
+            if(GameManager.Instance.CurrentGameState!=EGameState.Playing) return;
+            Logger.Log("Enemies left: " + EnemyManager.Instance.GetEnemiesLeft());
+                if (EnemyManager.Instance.GetEnemiesLeft()<=1)
+                {
+                    foreach (var source in _combatCSources)
+                    {
+                        if (source.isPlaying) return;
+                        source.volume = 0;
+                        source.time = _activeSource.time;
+                    }
+                    _musicCombatCTransition =
+                        StartCoroutine(TransitionSounds(_combatCSources, _musicVolume, _musicTransitionDuration));
+                    if (_menuSources[0].isPlaying)
+                        StartCoroutine(TransitionOut(_menuSources, _musicTransitionDuration));
+                    if (_storySources[0].isPlaying)
+                        StartCoroutine(TransitionOut(_storySources, _musicTransitionDuration));
+                    if (_setupSources[0].isPlaying)
+                        StartCoroutine(TransitionOut(_setupSources, _musicTransitionDuration));
+                    if(_combatASources[0].isPlaying) 
+                        StartCoroutine(TransitionOut(_combatASources, _musicTransitionDuration));
+                    if(_combatBSources[0].isPlaying) 
+                        StartCoroutine(TransitionOut(_combatBSources, _musicTransitionDuration));
+                    _activeSource = _combatCSources[0];
+                    return;
+                }
+
+                else if (EnemyManager.Instance.GetEnemiesLeft()<2)
+                {
+                    foreach (var source in _combatBSources)
+                    {
+                        if (source.isPlaying) return;
+
+                        source.time = _activeSource.time;
+                        source.volume = 0;
+
+                    }
+                    _musicCombatBTransition =
+                        StartCoroutine(TransitionSounds(_combatBSources, _musicVolume, _musicTransitionDuration));
+                    if (_menuSources[0].isPlaying)
+                        StartCoroutine(TransitionOut(_menuSources, _musicTransitionDuration));
+                    if (_storySources[0].isPlaying)
+                        StartCoroutine(TransitionOut(_storySources, _musicTransitionDuration));
+                    if (_setupSources[0].isPlaying) 
+                        StartCoroutine(TransitionOut(_setupSources, _musicTransitionDuration));
+                    if(_combatASources[0].isPlaying) 
+                        StartCoroutine(TransitionOut(_combatASources, _musicTransitionDuration)); 
+                    if(_combatCSources[0].isPlaying) 
+                        StartCoroutine(TransitionOut(_combatCSources, _musicTransitionDuration));
+                }
+                
+                else if(EnemyManager.Instance.GetEnemiesLeft()<3)
+                {
+                    foreach (var source in _combatASources)
+                    {
+                        if (source.isPlaying) return;
+
+                        source.time = _activeSource.time;
+                        source.volume = 0;
+
+                    }
+
+                    _musicCombatATransition =
+                        StartCoroutine(TransitionSounds(_combatASources, _musicVolume, _musicTransitionDuration));
+                    if (_menuSources[0].isPlaying)
+                        StartCoroutine(TransitionOut(_menuSources, _musicTransitionDuration));
+                    if (_storySources[0].isPlaying)
+                        StartCoroutine(TransitionOut(_storySources, _musicTransitionDuration));
+                    if (_setupSources[0].isPlaying)
+                        StartCoroutine(TransitionOut(_setupSources, _musicTransitionDuration));
+                    if(_combatBSources[0].isPlaying) 
+                        StartCoroutine(TransitionOut(_combatBSources, _musicTransitionDuration));
+                    if(_combatCSources[0].isPlaying) 
+                        StartCoroutine(TransitionOut(_combatCSources, _musicTransitionDuration));
+                    _activeSource = _combatASources[0];
+                    return;
+                }
+            
+        }
+        void OnStateChanged(EGameState prevState, EGameState state)
+        {
+            if (state == EGameState.MainMenu)
+            {
+                foreach (var source in _menuSources)
+                {
+                    if (source.isPlaying) return;
+
+                        source.time = _activeSource.time;
+                        source.volume = 0;
+
+                }
+                _musicMenuTransition = StartCoroutine(TransitionSounds(_menuSources, _musicVolume, _musicTransitionDuration));
+                if(_storySources[0].isPlaying) StartCoroutine(TransitionOut(_storySources, _musicTransitionDuration));
+                if(_combatASources[0].isPlaying) StartCoroutine(TransitionOut(_combatASources, _musicTransitionDuration));
+                if(_setupSources[0].isPlaying) StartCoroutine(TransitionOut(_setupSources, _musicTransitionDuration));
+                if(_combatBSources[0].isPlaying) StartCoroutine(TransitionOut(_combatBSources, _musicTransitionDuration));
+                if(_combatCSources[0].isPlaying) StartCoroutine(TransitionOut(_combatCSources, _musicTransitionDuration));
+                _activeSource = _menuSources[0];
+                
+            }
+            if(state==EGameState.Story)
+            {
+                foreach (var source in _storySources)
+                {
+                    if (source.isPlaying) return;
+
+                        source.time = _activeSource.time;
+                        source.volume = 0;
+
+                }
+                _musicStoryTransition = StartCoroutine(TransitionSounds(_storySources, _musicVolume, _musicTransitionDuration));
+                if(_menuSources[0].isPlaying) StartCoroutine(TransitionOut(_menuSources, _musicTransitionDuration));
+                if(_combatASources[0].isPlaying) StartCoroutine(TransitionOut(_combatASources, _musicTransitionDuration));
+                if(_setupSources[0].isPlaying) StartCoroutine(TransitionOut(_setupSources, _musicTransitionDuration));
+                if(_combatASources[0].isPlaying) StartCoroutine(TransitionOut(_combatASources, _musicTransitionDuration));
+                if(_combatBSources[0].isPlaying) StartCoroutine(TransitionOut(_combatBSources, _musicTransitionDuration));
+                if(_combatCSources[0].isPlaying) StartCoroutine(TransitionOut(_combatCSources, _musicTransitionDuration));
+                _activeSource = _storySources[0];
+            }
+
+            if (state == EGameState.SetupGame)
+            {
+                foreach (var source in _setupSources)
+                {
+                    if (source.isPlaying) return;
+
+                        source.time = _activeSource.time;
+                        source.volume = 0;
+
+                }
+                _musicSetupTransition = StartCoroutine(TransitionSounds(_setupSources, _musicVolume, _musicTransitionDuration));
+                if(_menuSources[0].isPlaying) StartCoroutine(TransitionOut(_menuSources, _musicTransitionDuration));
+                if(_storySources[0].isPlaying) StartCoroutine(TransitionOut(_storySources, _musicTransitionDuration));
+                if(_combatASources[0].isPlaying) StartCoroutine(TransitionOut(_combatASources, _musicTransitionDuration));
+                if(_combatBSources[0].isPlaying) StartCoroutine(TransitionOut(_combatBSources, _musicTransitionDuration));
+                if(_combatCSources[0].isPlaying) StartCoroutine(TransitionOut(_combatCSources, _musicTransitionDuration));
+                _activeSource = _setupSources[0];
+            }
+            
+
+            if(state==EGameState.Playing)
+            {
+                if (EnemyManager.Instance.GetCurrentGroup().CurrentEnemy ==
+                    EnemyManager.Instance.GetCurrentGroup().GetCurrentSetCount())
+                {
+                    foreach (var source in _combatCSources)
+                    {
+                        if (source.isPlaying) return;
+
+                        source.time = _activeSource.time;
+                        source.volume = 0;
+
+                    }
+                    _musicCombatCTransition =
+                        StartCoroutine(TransitionSounds(_combatCSources, _musicVolume, _musicTransitionDuration));
+                    if (_menuSources[0].isPlaying)
+                        StartCoroutine(TransitionOut(_menuSources, _musicTransitionDuration));
+                    if (_storySources[0].isPlaying)
+                        StartCoroutine(TransitionOut(_storySources, _musicTransitionDuration));
+                    if (_setupSources[0].isPlaying)
+                        StartCoroutine(TransitionOut(_setupSources, _musicTransitionDuration));
+                    if(_combatASources[0].isPlaying) 
+                        StartCoroutine(TransitionOut(_combatASources, _musicTransitionDuration));
+                    if(_combatBSources[0].isPlaying) 
+                        StartCoroutine(TransitionOut(_combatBSources, _musicTransitionDuration));
+                    _activeSource = _combatCSources[0];
+                    return;
+                }
+
+                else if (EnemyManager.Instance.GetCurrentGroup().CurrentEnemy > 2)
+                {
+                    foreach (var source in _combatBSources)
+                    {
+                        if (source.isPlaying) return;
+
+                        source.time = _activeSource.time;
+                        source.volume = 0;
+
+                    }
+                    _musicCombatBTransition =
+                        StartCoroutine(TransitionSounds(_combatBSources, _musicVolume, _musicTransitionDuration));
+                    if (_menuSources[0].isPlaying)
+                        StartCoroutine(TransitionOut(_menuSources, _musicTransitionDuration));
+                    if (_storySources[0].isPlaying)
+                        StartCoroutine(TransitionOut(_storySources, _musicTransitionDuration));
+                    if (_setupSources[0].isPlaying) 
+                        StartCoroutine(TransitionOut(_setupSources, _musicTransitionDuration));
+                    if(_combatASources[0].isPlaying) 
+                        StartCoroutine(TransitionOut(_combatASources, _musicTransitionDuration)); 
+                    if(_combatCSources[0].isPlaying) 
+                        StartCoroutine(TransitionOut(_combatCSources, _musicTransitionDuration));
+                }
+                
+                else if(EnemyManager.Instance.GetCurrentGroup().CurrentEnemy ==2)
+                {
+                    foreach (var source in _combatASources)
+                    {
+                        if (source.isPlaying) return;
+
+                        source.time = _activeSource.time;
+                        source.volume = 0;
+
+                    }
+
+                    _musicCombatATransition =
+                        StartCoroutine(TransitionSounds(_combatASources, _musicVolume, _musicTransitionDuration));
+                    if (_menuSources[0].isPlaying)
+                        StartCoroutine(TransitionOut(_menuSources, _musicTransitionDuration));
+                    if (_storySources[0].isPlaying)
+                        StartCoroutine(TransitionOut(_storySources, _musicTransitionDuration));
+                    if (_setupSources[0].isPlaying)
+                        StartCoroutine(TransitionOut(_setupSources, _musicTransitionDuration));
+                    if(_combatBSources[0].isPlaying) 
+                        StartCoroutine(TransitionOut(_combatBSources, _musicTransitionDuration));
+                    if(_combatCSources[0].isPlaying) 
+                        StartCoroutine(TransitionOut(_combatCSources, _musicTransitionDuration));
+                    _activeSource = _combatASources[0];
+                    return;
+                }
+            }
+        }
+        
         
         public void PlayCombatMusic()
         {
@@ -107,6 +411,50 @@ namespace __Scripts.Systems
 
             source.volume = targetVolume;
             if (targetVolume == 0)
+            {
+                source.Stop();
+            }
+        }
+
+        IEnumerator TransitionSounds(AudioSource[] sources, float targetVolume, float duration)
+        {
+            foreach (var source in sources)
+            {
+                if (source.isPlaying == false) source.Play();
+            }
+
+            while (Mathf.Abs(sources[0].volume - targetVolume) > 0.1f)
+            {
+                foreach (var source in sources)
+                {
+                    source.volume = Mathf.MoveTowards(source.volume, targetVolume, Time.deltaTime / duration);
+                }
+                yield return null;
+            }
+
+            foreach (var source in sources)
+            {
+                source.volume = targetVolume;
+                if (targetVolume == 0)
+                {
+                    source.Stop();
+                }
+            }
+        }
+
+        IEnumerator TransitionOut(AudioSource[] sources, float time)
+        {
+            
+            while (sources[0].volume > 0)
+            {
+                foreach (var source in sources)
+                {
+                    source.volume = Mathf.MoveTowards(source.volume, 0, Time.deltaTime / time);
+                }
+                yield return null;
+            }
+
+            foreach (var source in sources)
             {
                 source.Stop();
             }

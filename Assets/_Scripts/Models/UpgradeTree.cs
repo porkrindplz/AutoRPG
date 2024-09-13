@@ -120,10 +120,8 @@ namespace _Scripts.Models
         {
             if (!CanUpgrade(id))
             {
-                AudioSystem.Instance.PlayNegativeSound();
                 return null;
             }
-            AudioSystem.Instance.PlayMenuConfirmSound();
             var upgrade = Upgrades.FirstOrDefault(u => u.Id == id);
             ((Player)GameManager.Instance.Player.Entity).UsedSkillPoints++;
             upgrade.NumOfUpgrades++;

@@ -43,6 +43,27 @@ public class AutoAction : MonoBehaviour
         AnimationController = GetComponent<CharacterAnimationController>();
     }
 
+    private void OnEnable()
+    {
+        GameManager.Instance.OnBeforeGameStateChanged += OnStateChanged;
+        EnemyManager.Instance.OnEnemySpawned += OnEnemyChanged;
+    }
+
+    private void OnDisable()
+    {
+        if (GameManager.Instance == null) return; GameManager.Instance.OnBeforeGameStateChanged -= OnStateChanged;
+        EnemyManager.Instance.OnEnemySpawned -= OnEnemyChanged;
+    }
+    void OnStateChanged(EGameState prevState, EGameState state)
+    {
+        StopAllCoroutines();
+    }
+    void OnEnemyChanged(Enemy enemy)
+    {
+        StopAllCoroutines();
+
+    }
+
     private void Start()
     {
         EnemyManager.Instance.OnEnemySpawned += enemy =>
@@ -115,7 +136,7 @@ public class AutoAction : MonoBehaviour
         var processedAction = GameManager.Instance.GetNewAction(takenAction.GameAction.Name);
         var actee = takenAction.GameAction.IsSelfTargetting ? currentEntity : opposingEntity;
         float animationTime = AnimationController.AttackAnimation(currentEntity, actee, processedAction);
-        AudioSystem.Instance.PlaySound(takenAction.GameAction.SoundEffects,.5f,true);
+        StartCoroutine(DelaySoundPlay(takenAction.GameAction.SoundEffects));
         yield return new WaitForSeconds(animationTime);
             
         processedAction?.Interact(currentEntity, actee);
@@ -125,6 +146,12 @@ public class AutoAction : MonoBehaviour
         /*
         */
         //yield return Cooldown(takenAction.TimeToExecute, cooldowns[i]); Need cooldown on enemy attacks
+    }
+    
+    IEnumerator DelaySoundPlay(AudioClip[] clips)
+    {
+        yield return new WaitForSeconds(.2f);
+        AudioSystem.Instance.PlaySound(clips,.5f,true);
     }
     IEnumerator Cooldown(double cooldown, RectTransform cd)
     {

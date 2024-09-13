@@ -36,6 +36,8 @@ namespace _Scripts.Models
         /// <summary>
         /// An amount that starts at 1.5x MinNutsWon, and slowly decrements as time progresses down to MinNutsWon
         /// </summary>
+        ///
+        //
         [NonSerialized] public float ActualNutsWon;
 
         public void GoToNextEnemy()
@@ -44,6 +46,8 @@ namespace _Scripts.Models
         }
 
         public string GetCurrentEnemy() => EnemySets[CurrentEnemy].EnemyName;
+        public int GetCurrentSetCount() => EnemySets.Count;
+        public int GetGroupCount() => EnemySets.Count;
         public EnemySet GetCurrentEnemySet() => EnemySets[CurrentEnemy];
     }
 

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using __Scripts.Systems;
 using _Scripts.UI;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MainMenuPanel : MonoBehaviour
@@ -17,6 +19,12 @@ public class MainMenuPanel : MonoBehaviour
     {
         StartButton.onClick.RemoveAllListeners();
     }
+    
+    public void PlayConfirmSound()
+    {
+        AudioSystem.Instance.PlayMenuConfirmSound();
+    }
+    
     void StartGame()
     {
         ScreenFade.Instance.FadeOut(.5f, Color.black);
@@ -30,4 +38,5 @@ public class MainMenuPanel : MonoBehaviour
         GameManager.Instance.ChangeGameState(EGameState.Story);
         gameObject.SetActive(false);
     }
+    
 }

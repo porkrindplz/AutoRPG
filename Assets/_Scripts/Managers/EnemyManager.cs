@@ -59,7 +59,8 @@ namespace _Scripts.Managers
         }
         
         public EnemyGroup GetCurrentGroup() => enemyOrder[EnemyIndex];
-
+        public int GetEnemiesLeft() => enemyOrder[EnemyIndex].GetGroupCount()-enemyOrder[EnemyIndex].CurrentEnemy;
+        
         public void IncrementEnemyIndex()
         {
 

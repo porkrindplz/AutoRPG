@@ -46,6 +46,10 @@ public class CharacterAnimationController : MonoBehaviour
         {
             animator.SetTrigger(("OnMagic"));
         }
+        else if(type.Contains("Block")||type.Contains("Shield"))
+        {
+            animator.SetTrigger("OnBlock");
+        }
         else animator.SetTrigger("OnAttack");
 
         return animator.GetCurrentAnimatorStateInfo(0).length;
@@ -58,6 +62,7 @@ public class CharacterAnimationController : MonoBehaviour
 
     public void ActeeHitAnimation(EntityBehaviour actor, EntityBehaviour actee, IGameAction action)
     {
+        
         if (actee != entity) return;
         
         Logger.Log($"Entity: {entity.Entity} is taking damage"); ;

@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5763472078040524620}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -46,14 +46,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainVolume: 0.5
   _sfxVolume: 1
-  _musicVolume: 1
-  _musicTransitionDuration: 0.5
+  _musicVolume: 0.5
+  _musicTransitionDuration: 2
+  MenuTracks:
+  - {fileID: 8300000, guid: dae4f6bee1f032a46a918d05c08bcaca, type: 3}
+  StoryTracks:
+  - {fileID: 8300000, guid: 0e7638379a0345f4aaa6025fc6a7ccc8, type: 3}
+  - {fileID: 8300000, guid: dae4f6bee1f032a46a918d05c08bcaca, type: 3}
+  SetupTracks:
+  - {fileID: 8300000, guid: e680bf0866fb9a0409b08bbbd64f3aa6, type: 3}
+  - {fileID: 8300000, guid: 083ea294a869b1343ba5f01f7145e2a6, type: 3}
+  - {fileID: 8300000, guid: 84335622ab8a2744ba6bd39796a51d5c, type: 3}
+  CombatATracks:
+  - {fileID: 8300000, guid: 84335622ab8a2744ba6bd39796a51d5c, type: 3}
+  - {fileID: 8300000, guid: 555fd928a44e4ac46a4681501b8e026b, type: 3}
+  CombatBTracks:
+  - {fileID: 8300000, guid: 0e7638379a0345f4aaa6025fc6a7ccc8, type: 3}
+  CombatCTracks:
+  - {fileID: 8300000, guid: 555fd928a44e4ac46a4681501b8e026b, type: 3}
+  - {fileID: 8300000, guid: 0e7638379a0345f4aaa6025fc6a7ccc8, type: 3}
   _menuMusic: {fileID: 0}
   _combatMusic: []
   _playCombatMusicOnStart: 1
   _direMusic: []
-  _selectSound: {fileID: 8300000, guid: 2a290d4845528104597387cde97db35c, type: 3}
-  _confirmSound: {fileID: 8300000, guid: c1747cd8a7b7a8542a7f543ec7d4ec5b, type: 3}
+  _selectSound: {fileID: 8300000, guid: f2ba7fdf31e204c4093cbcca484c71c6, type: 3}
+  _confirmSound: {fileID: 8300000, guid: 5f98fc7152110ff4c8484cecfcf7a2fd, type: 3}
   _negativeSound: {fileID: 0}
   _noneSounds: []
   _fireSounds: []

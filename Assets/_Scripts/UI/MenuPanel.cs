@@ -96,7 +96,6 @@ public class MenuPanel : MonoBehaviour
         SlingshotPanel.gameObject.SetActive(false);
         ShieldPanel.gameObject.SetActive(false);
 
-        AudioSystem.Instance.PlayMenuSelectSound();
         switch(panel)
         {
             case EMenuPanel.Sword:
@@ -112,5 +111,9 @@ public class MenuPanel : MonoBehaviour
                 ShieldPanel.gameObject.SetActive(true);
                 break;
         }
+    }
+    public void PlaySelectSound()
+    {
+        AudioSystem.Instance.PlayMenuSelectSound();
     }
 }

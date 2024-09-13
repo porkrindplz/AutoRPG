@@ -1,4 +1,5 @@
 using System;
+using __Scripts.Systems;
 using _Scripts.Models;
 using TMPro;
 using Unity.VisualScripting;
@@ -79,6 +80,11 @@ namespace _Scripts.UI
             {
                 numText.text = upgrade.NumOfUpgrades.ToString();
             }
+        }
+        
+        public void PlaySelectSound()
+        {
+            AudioSystem.Instance.PlayMenuSelectSound();
         }
 
         public void ShowToolTip()

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using __Scripts.Systems;
 using _Scripts.Entities;
+using _Scripts.Managers;
 using _Scripts.Models;
 using _Scripts.UI;
 using _Scripts.Utilities;
@@ -39,6 +40,36 @@ namespace _Scripts.Actions
             GameManager.Instance.OnResetTree += OnResetTree;
             slotTreeNames = new List<string>() { "Sword", "Shield", "Staff", "Slingshot" };
             //GameManager.Instance.OnBeforeGameStateChanged += OnBeforeGameStateChanged;
+        }
+
+        private void OnEnable()
+        {
+            GameManager.Instance.OnBeforeGameStateChanged += OnStateChanged;
+            EnemyManager.Instance.OnEnemySpawned += OnEnemyChanged;
+        }
+
+        private void OnDisable()
+        {
+            if(GameManager.Instance == null) return;
+            GameManager.Instance.OnBeforeGameStateChanged -= OnStateChanged;
+            EnemyManager.Instance.OnEnemySpawned -= OnEnemyChanged;
+        }
+        void OnStateChanged(EGameState prevState, EGameState state)
+        {
+            StopAllCoroutines();
+            if (cooldowns == null) return;
+            foreach (var cd in cooldowns)
+            {
+                cd.localScale = Vector2.zero;
+            }
+        }
+        void OnEnemyChanged(Enemy enemy)
+        {
+            StopAllCoroutines();
+            foreach (var cd in cooldowns)
+            {
+                cd.localScale = Vector2.zero;
+            }
         }
 
         private void OnResetTree(UpgradeTree tree)
@@ -141,8 +172,7 @@ namespace _Scripts.Actions
             var processedAction = GameManager.Instance.GetNewAction(takenAction.Name);
             var actee = takenAction.IsSelfTargetting ? currentEntity : opposingEntity;
             float animationTime = AnimationController.AttackAnimation(currentEntity, actee, processedAction);
-            AudioSystem.Instance.PlaySound(takenAction.SoundEffects,.5f,true);
-
+            StartCoroutine(DelaySoundPlay(takenAction.SoundEffects));
             yield return new WaitForSeconds(animationTime);
            
             processedAction?.Interact(currentEntity, actee);
@@ -150,7 +180,12 @@ namespace _Scripts.Actions
             yield return Cooldown(takenAction.TimeToExecute * currentEntity.Entity.GetSpeedMultiplier(), cooldowns[i]);
             _actionCoroutine = null;
         }
-        
+
+        IEnumerator DelaySoundPlay(AudioClip[] clips)
+        {
+            yield return new WaitForSeconds(.2f);
+            AudioSystem.Instance.PlaySound(clips,.5f,true);
+        }
         IEnumerator Cooldown(double cooldown, RectTransform cd)
         {
             float time = 0;
