@@ -47,6 +47,25 @@ MonoBehaviour:
   RatioOfStartingToMinNuts: 1.5
   enemyOrder:
   - EnemySets:
+    - NextEnemy: 1
+      EnemyName: Flame Beetles
+      StateChangeType: 3
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 0
+      HitGroupType: 0
+    - NextEnemy: -1
+      EnemyName: Beetle King
+      StateChangeType: 0
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 0
+      HitGroupType: 0
+    ShareHp: 0
+    SkillPointRewarded: 1
+    MinNutsWon: 150
+    TimeForNutLoss: 60
+  - EnemySets:
     - NextEnemy: -1
       EnemyName: Beetle
       StateChangeType: 0
@@ -96,25 +115,6 @@ MonoBehaviour:
     TimeForNutLoss: 25
   - EnemySets:
     - NextEnemy: 1
-      EnemyName: Flame Beetles
-      StateChangeType: 3
-      Timer: 0
-      HealthPercentage: 0
-      HitCount: 0
-      HitGroupType: 0
-    - NextEnemy: -1
-      EnemyName: Beetle King
-      StateChangeType: 0
-      Timer: 0
-      HealthPercentage: 0
-      HitCount: 0
-      HitGroupType: 0
-    ShareHp: 0
-    SkillPointRewarded: 1
-    MinNutsWon: 150
-    TimeForNutLoss: 60
-  - EnemySets:
-    - NextEnemy: 1
       EnemyName: Ooze
       StateChangeType: 3
       Timer: 0
@@ -152,9 +152,23 @@ MonoBehaviour:
     MinNutsWon: 175
     TimeForNutLoss: 110
   - EnemySets:
-    - NextEnemy: -1
-      EnemyName: Hummingbird
-      StateChangeType: 4
+    - NextEnemy: 1
+      EnemyName: Beetle
+      StateChangeType: 3
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 0
+      HitGroupType: 0
+    - NextEnemy: 2
+      EnemyName: Snowman
+      StateChangeType: 3
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 0
+      HitGroupType: 0
+    - NextEnemy: 2
+      EnemyName: Ballon Mouse
+      StateChangeType: 3
       Timer: 0
       HealthPercentage: 0
       HitCount: 0
@@ -178,14 +192,40 @@ MonoBehaviour:
       HealthPercentage: 50
       HitCount: 0
       HitGroupType: 0
-    - NextEnemy: -1
+    - NextEnemy: 2
       EnemyName: Rats
-      StateChangeType: 3
+      StateChangeType: 0
       Timer: 0
-      HealthPercentage: 50
+      HealthPercentage: 25
+      HitCount: 0
+      HitGroupType: 0
+    ShareHp: 0
+    SkillPointRewarded: 1
+    MinNutsWon: 500
+    TimeForNutLoss: 60
+  - EnemySets:
+    - NextEnemy: 1
+      EnemyName: Leaf Snake
+      StateChangeType: 2
+      Timer: 0
+      HealthPercentage: 66
+      HitCount: 0
+      HitGroupType: 0
+    - NextEnemy: 2
+      EnemyName: Water Snake
+      StateChangeType: 2
+      Timer: 0
+      HealthPercentage: 33
+      HitCount: 0
+      HitGroupType: 0
+    - NextEnemy: -1
+      EnemyName: Fire Snake
+      StateChangeType: 0
+      Timer: 0
+      HealthPercentage: 0
       HitCount: 0
       HitGroupType: 0
     ShareHp: 1
     SkillPointRewarded: 1
     MinNutsWon: 500
-    TimeForNutLoss: 0
+    TimeForNutLoss: 75
