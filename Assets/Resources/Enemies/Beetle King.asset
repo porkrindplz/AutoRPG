@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Beetle King
   m_EditorClassIdentifier: 
   name: Beetle King
-  maxHealth: 10
+  maxHealth: 25
   maxMagic: 10
   baseAtk: 5
   baseDef: 3

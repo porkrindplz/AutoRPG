@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Snowman
   maxHealth: 100
   maxMagic: 10
-  baseAtk: 15
+  baseAtk: 10
   baseDef: 2
   speed: 35
   baseNuts: 15

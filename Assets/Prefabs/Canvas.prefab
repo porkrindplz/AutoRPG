@@ -69,8 +69,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1a829366bd52b5c48966589f96c1d508, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 89df02107c5154c7bbd8a6f96f2be51e, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1154,8 +1154,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 284, y: -421.88617}
-  m_SizeDelta: {x: 568, y: 281.25745}
+  m_AnchoredPosition: {x: 284, y: -278.52942}
+  m_SizeDelta: {x: 568, y: 557.05884}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3768644624817458899
 CanvasRenderer:
@@ -3273,7 +3273,7 @@ MonoBehaviour:
   m_PreferredWidth: -1
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
-  m_FlexibleHeight: 1000
+  m_FlexibleHeight: 100
   m_LayoutPriority: 1
 --- !u!114 &5167776356253179179
 MonoBehaviour:
@@ -3934,7 +3934,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5, y: 0.000011444092}
+  m_AnchoredPosition: {x: -5, y: 0.000015258789}
   m_SizeDelta: {x: -10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6155411967165955858
@@ -4456,7 +4456,7 @@ MonoBehaviour:
     m_Top: 36
     m_Bottom: 36
   m_ChildAlignment: 0
-  m_Spacing: 2
+  m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -6660,8 +6660,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1a829366bd52b5c48966589f96c1d508, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 445383ba91c3d4954b6d2b6fa9794e97, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -7555,8 +7555,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1a829366bd52b5c48966589f96c1d508, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: fb13d090f5a054781b9c09451ed72145, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -7675,7 +7675,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5, y: 0.000011444092}
+  m_AnchoredPosition: {x: -5, y: 0.000015258789}
   m_SizeDelta: {x: -10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &69419972945497308
@@ -8504,8 +8504,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1a829366bd52b5c48966589f96c1d508, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: cb0ab94efb99c4a7ca34f38a1125c469, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -9728,7 +9728,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
   m_MinWidth: -1
-  m_MinHeight: 75
+  m_MinHeight: 100
   m_PreferredWidth: -1
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
@@ -10087,7 +10087,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
   m_MinWidth: -1
-  m_MinHeight: 40.4
+  m_MinHeight: 40
   m_PreferredWidth: -1
   m_PreferredHeight: -1
   m_FlexibleWidth: 100
@@ -10110,7 +10110,7 @@ MonoBehaviour:
     m_Right: 8
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 3
+  m_ChildAlignment: 6
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -12199,6 +12199,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3257268303357041672}
     m_Modifications:
+    - target: {fileID: 2237366612259749644, guid: 52e6ea0877ffd724aa7e83a8e1fd0686, type: 3}
+      propertyPath: m_MinWidth
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237366612259749644, guid: 52e6ea0877ffd724aa7e83a8e1fd0686, type: 3}
+      propertyPath: m_MinHeight
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237366612259749644, guid: 52e6ea0877ffd724aa7e83a8e1fd0686, type: 3}
+      propertyPath: m_PreferredWidth
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237366612259749644, guid: 52e6ea0877ffd724aa7e83a8e1fd0686, type: 3}
+      propertyPath: m_PreferredHeight
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 2579650426728810895, guid: 52e6ea0877ffd724aa7e83a8e1fd0686, type: 3}
       propertyPath: m_Name
       value: ActionSlot
@@ -12313,6 +12329,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3257268303357041672}
     m_Modifications:
+    - target: {fileID: 2237366612259749644, guid: 52e6ea0877ffd724aa7e83a8e1fd0686, type: 3}
+      propertyPath: m_MinWidth
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237366612259749644, guid: 52e6ea0877ffd724aa7e83a8e1fd0686, type: 3}
+      propertyPath: m_MinHeight
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237366612259749644, guid: 52e6ea0877ffd724aa7e83a8e1fd0686, type: 3}
+      propertyPath: m_PreferredWidth
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237366612259749644, guid: 52e6ea0877ffd724aa7e83a8e1fd0686, type: 3}
+      propertyPath: m_PreferredHeight
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 2579650426728810895, guid: 52e6ea0877ffd724aa7e83a8e1fd0686, type: 3}
       propertyPath: m_Name
       value: ActionSlot (2)
@@ -13872,6 +13904,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Leaf
       objectReference: {fileID: 0}
+    - target: {fileID: 4408409627110948537, guid: 7d199c4171fc76747bb423a99bc10732, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b526f2f437e4245989dcfe41a5a1b6db, type: 3}
     - target: {fileID: 5861156342519515078, guid: 7d199c4171fc76747bb423a99bc10732, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: leaf
@@ -14749,6 +14785,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Fireball
       objectReference: {fileID: 0}
+    - target: {fileID: 4408409627110948537, guid: 7d199c4171fc76747bb423a99bc10732, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cae9c37d7c7a6471ca7616e70d7059e0, type: 3}
     - target: {fileID: 5861156342519515078, guid: 7d199c4171fc76747bb423a99bc10732, type: 3}
       propertyPath: m_Interactable
       value: 1
@@ -14794,6 +14834,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3257268303357041672}
     m_Modifications:
+    - target: {fileID: 2237366612259749644, guid: 52e6ea0877ffd724aa7e83a8e1fd0686, type: 3}
+      propertyPath: m_MinWidth
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237366612259749644, guid: 52e6ea0877ffd724aa7e83a8e1fd0686, type: 3}
+      propertyPath: m_MinHeight
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237366612259749644, guid: 52e6ea0877ffd724aa7e83a8e1fd0686, type: 3}
+      propertyPath: m_PreferredWidth
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237366612259749644, guid: 52e6ea0877ffd724aa7e83a8e1fd0686, type: 3}
+      propertyPath: m_PreferredHeight
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 2579650426728810895, guid: 52e6ea0877ffd724aa7e83a8e1fd0686, type: 3}
       propertyPath: m_Name
       value: ActionSlot (3)
@@ -15680,6 +15736,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3257268303357041672}
     m_Modifications:
+    - target: {fileID: 2237366612259749644, guid: 52e6ea0877ffd724aa7e83a8e1fd0686, type: 3}
+      propertyPath: m_MinWidth
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237366612259749644, guid: 52e6ea0877ffd724aa7e83a8e1fd0686, type: 3}
+      propertyPath: m_MinHeight
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237366612259749644, guid: 52e6ea0877ffd724aa7e83a8e1fd0686, type: 3}
+      propertyPath: m_PreferredWidth
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237366612259749644, guid: 52e6ea0877ffd724aa7e83a8e1fd0686, type: 3}
+      propertyPath: m_PreferredHeight
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 2579650426728810895, guid: 52e6ea0877ffd724aa7e83a8e1fd0686, type: 3}
       propertyPath: m_Name
       value: ActionSlot (1)
@@ -17072,6 +17144,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Water
       objectReference: {fileID: 0}
+    - target: {fileID: 4408409627110948537, guid: 7d199c4171fc76747bb423a99bc10732, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 392d32c5074e4418e87e51f4df78e382, type: 3}
     - target: {fileID: 5861156342519515078, guid: 7d199c4171fc76747bb423a99bc10732, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: water
