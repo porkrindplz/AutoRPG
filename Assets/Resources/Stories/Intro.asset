@@ -16,8 +16,8 @@ MonoBehaviour:
   <Pages>k__BackingField:
   - text: The flower season has long passed. The hot foraging season has begun.
     image: {fileID: 2800000, guid: d476eb233780d29448257ad598117933, type: 3}
-  - text: Having foraged many times before, Rolig sensed something was different.
-      A smell of rust travels from the wooded depths.
+  - text: Having foraged many times before, Rolig Littleblade sensed something was
+      different. A smell of rust travels from the wooded depths.
     image: {fileID: 2800000, guid: be236e45341a3564ead2cab884c0046a, type: 3}
   - text: The cool wind whispers of desperation and paranoia growing inside the wooded
       folk. A storm is coming.
