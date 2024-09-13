@@ -39,7 +39,14 @@ public class CharacterAnimationController : MonoBehaviour
     public float AttackAnimation(EntityBehaviour actor, EntityBehaviour actee, IGameAction action)
     {
         if (actor != entity) return 0;
-        animator.SetTrigger("OnAttack");
+        
+        string type = action.GameAction.Name.ToString();
+        if (type.Contains("Fire") || type.Contains("Water") || type.Contains("Leaf") ||
+            type.Contains("Lightning") || type.Contains("Shadow"))
+        {
+            animator.SetTrigger(("OnMagic"));
+        }
+        else animator.SetTrigger("OnAttack");
 
         return animator.GetCurrentAnimatorStateInfo(0).length;
     }
@@ -59,14 +66,12 @@ public class CharacterAnimationController : MonoBehaviour
         Logger.Log("Type: " + type);
         if(action is AttackAction attackAction)
         {
-            if (type.Contains("Shield"))
+            if (action.GameAction.IsSelfTargetting)
             {
-                Logger.Log("Blocking?");
                 animator.SetTrigger("OnBlock");
             }
             else
             {
-                Logger.Log("Taking Damage");
                 animator.SetTrigger("OnHit");
             }
         }
