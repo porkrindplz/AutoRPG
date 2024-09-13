@@ -16,6 +16,8 @@ namespace _Scripts.UI
         [Header("Tutorials")]
         [SerializeField]private StorySO[] Tutorials;
 
+        private int tutorialIndex = 0;
+
         private StorySO ActiveTutorial;
 
         [SerializeField] private RectTransform tutorialRect;
@@ -37,34 +39,48 @@ namespace _Scripts.UI
         {
             if (state == EGameState.Playing)
             {
-                if (GameManager.Instance.PlayStats.TotalVictories == 0)
+                if(GameManager.Instance.PlayStats.TotalVictories == 0 && Tutorials.Length > tutorialIndex)
                 {
                     ShowTutorial(0);
                 }
-                if(GameManager.Instance.PlayStats.TotalVictories == 1)
-                {
-                    ShowTutorial(1);
-                }
-                if(GameManager.Instance.PlayStats.TotalVictories == 2)
+                if(GameManager.Instance.PlayStats.TotalVictories == 1 && Tutorials.Length > tutorialIndex)
                 {
                     ShowTutorial(2);
+                }
+
+                if (GameManager.Instance.PlayStats.TotalVictories == 2 && Tutorials.Length > tutorialIndex)
+                {
+                    ShowTutorial(3);
                 }
             }
         }
 
         void OnUpgrade(UpgradeTree Tree, Upgrade upgrade)
         {
-            if (ActiveTutorial == Tutorials[0] && upgrade.Id== "block")
+            if (ActiveTutorial == Tutorials[0] && upgrade.Id== "sword")
             {
                 HideTutorial();
+                tutorialIndex++;
+                ShowTutorial(tutorialIndex);
+                return;
             }
-            if(ActiveTutorial == Tutorials[1] && upgrade.Id == "fireball")
+            if (ActiveTutorial == Tutorials[1] && upgrade.Id== "block")
             {
                 HideTutorial();
+                tutorialIndex++;
+
             }
-            if(ActiveTutorial == Tutorials[2] && upgrade.Id == "aoe" || upgrade.Id == "cross_slash")
+            if(ActiveTutorial == Tutorials[2] && upgrade.Id == "fireball")
             {
                 HideTutorial();
+                tutorialIndex++;
+
+            }
+            if(ActiveTutorial == Tutorials[3] && upgrade.Id == "aoe" || upgrade.Id == "cross_slash")
+            {
+                HideTutorial();
+                tutorialIndex++;
+
             }
         }
         protected void Update()
