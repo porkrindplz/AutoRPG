@@ -37,8 +37,13 @@ public class PlayerInit : MonoBehaviour
                 };
                 playerEntity.Entity.OnDeath += _ =>
                 {
+                    GameManager.Instance.PlayStats.AddDefeat();
+                    GameManager.Instance.PlayStats.UpdateTimePlayed();
+                    GameManager.Instance.TransmitPlayStats();
+
                     AnimationController.DeathAnimation(playerEntity.Entity);
-                    GameManager.Instance.ChangeGameState(EGameState.PlayerDefeated);
+                    StoryManager.Instance.SetStory(StoryType.GameOver);
+                    GameManager.Instance.ChangeGameState(EGameState.Story);
                 };
             }
         };
