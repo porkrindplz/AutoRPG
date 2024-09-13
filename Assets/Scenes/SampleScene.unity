@@ -315,9 +315,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03663160ee5439b8ea4c82e90d8a89f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SwordMultiplier: 0.35
-  SlashMultiplier: 0.3
-  CrossSlashMultiplier: 0.3
+  SwordMultiplier: 0.3
+  SlashMultiplier: 0.25
+  CrossSlashMultiplier: 0.25
+  DefenseForBraveSlash: 0
+  SpeedForWhirlwind: 0
   ShieldTime: 3.5
   ShieldAmount: 0.25
   CannonModifier: 0.35

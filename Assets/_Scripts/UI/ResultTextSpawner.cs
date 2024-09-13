@@ -65,7 +65,7 @@ namespace _Scripts.UI
             switch (action)
             {
                 case AttackAction damageAction:
-                    text += $"-{damageAction.Value}";
+                    text += $"{-damageAction.Value}";
                     color = Elements.GetElementColor(damageAction.GameAction.Element);
                     break;
                 case BlockAction blockAction:

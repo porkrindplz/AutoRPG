@@ -30,12 +30,12 @@ namespace _Scripts.Actions
             var (actorE, acteeE) = (actor.Entity, actee.Entity);
             
             // Damage formula for non-magic
-            var dmg = (actorE.BaseAtk*actorE.BaseAtk) / (actorE.BaseAtk + acteeE.BaseDef);
+            var dmg = (actorE.BaseAtk*actorE.BaseAtk) / (actorE.BaseAtk + acteeE.GetDefense());
             
             // Damage formula for magic attacks
             if (GameAction.AttackGroupType == AttackGroupType.Magic)
             {
-                dmg = (actorE.BaseMagicAtk*actorE.BaseMagicAtk) / (actorE.BaseMagicAtk + acteeE.BaseDef);
+                dmg = (actorE.BaseMagicAtk*actorE.BaseMagicAtk) / (actorE.BaseMagicAtk + acteeE.GetDefense());
             }
             
             // Add +- 15% for randomness
@@ -64,7 +64,7 @@ namespace _Scripts.Actions
             
             Debug.Log($"Attack: {AttackType.ToString()} dmg: {dmg}");
             Value = dmg;
-            acteeE.CurrentHealth = Math.Max(0, acteeE.CurrentHealth - dmg);
+            acteeE.CurrentHealth = Math.Clamp(acteeE.CurrentHealth - dmg, 0, acteeE.MaxHealth);
             OnFinished?.Invoke();
         }
 

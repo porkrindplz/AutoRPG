@@ -40,7 +40,7 @@ public class MenuPanel : MonoBehaviour
                 //UpdateSkillText();
             }
         };
-        
+        GameManager.Instance.OnSkillPointGain += UpdateSkillText;
         GameManager.Instance.OnUpgraded += (_, _) => UpdateSkillText();
     }
 

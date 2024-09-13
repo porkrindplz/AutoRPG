@@ -100,7 +100,7 @@
       {
         "Id": "whirlwind",
         "Name": "Whirlwind",
-        "Description": "A flurry of melee attacks targeting multiple enemies.",
+        "Description": "A flurry of melee attacks targeting multiple enemies. Increases speed of user",
         "MaxUpgrades": 1,
         "Level": 3,
         "Prerequisites": ["cross_slash"],
@@ -110,7 +110,7 @@
       {
         "Id": "brave_slash",
         "Name": "Brave Slash",
-        "Description": "A focused and powerful melee attack targeting a single enemy.",
+        "Description": "A focused and powerful melee attack targeting a single enemy. Increases defense of user",
         "MaxUpgrades": 1,
         "Level": 3,
         "Prerequisites": ["slash"],

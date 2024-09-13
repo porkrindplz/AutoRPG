@@ -14,7 +14,8 @@ public class VictoryPanel : MonoBehaviour
 
     private int nuts;
     [SerializeField] int minNuts = 10;
-    [SerializeField] int health = 250;
+    [SerializeField] int healthWithoutNuts = 300;
+    [SerializeField] private int healthWithNuts = 100;
     private void OnEnable()
     {
         UpdateButtons();
@@ -30,30 +31,28 @@ public class VictoryPanel : MonoBehaviour
 
     private void UpdateButtons()
     {
-        nutsButton.GetComponentInChildren<TextMeshProUGUI>().text = $"Nuts: {GameManager.Instance.EnemyNuts}";
+        nutsButton.GetComponentInChildren<TextMeshProUGUI>().text = $"HP: +{healthWithNuts}\n+{GameManager.Instance.EnemyNuts} Nuts";
         nuts = GameManager.Instance.EnemyNuts;
-        healthButton.GetComponentInChildren<TextMeshProUGUI>().text = $"+{health.ToString()} HP\n+{(int)(nuts*0.75)} Nuts";
+        healthButton.GetComponentInChildren<TextMeshProUGUI>().text = $"HP: +{healthWithoutNuts.ToString()}\n+{(int)(nuts*0.5)} Nuts";
     }
     private void HealPlayer()
     {
-        GameManager.Instance.Player.Entity.CurrentHealth += health;
-        if(GameManager.Instance.Player.Entity.CurrentHealth > GameManager.Instance.Player.Entity.MaxHealth)
-        {
-            GameManager.Instance.Player.Entity.CurrentHealth = GameManager.Instance.Player.Entity.MaxHealth;
-        }
-
-        GameManager.Instance.Player.Entity.Nuts += (int)(0.75 * nuts);
+        GameManager.Instance.Player.Entity.CurrentHealth += healthWithNuts;
+        GameManager.Instance.Player.Entity.Nuts += (int)(0.5 * nuts);
         Continue();
     }
 
     private void CollectNuts()
     {
+        GameManager.Instance.Player.Entity.CurrentHealth += healthWithoutNuts;
         GameManager.Instance.Player.Entity.Nuts += nuts;
         Continue();
     }
 
     public void Continue()
     {
+        var e = GameManager.Instance.Player.Entity;
+        e.CurrentHealth = Math.Min(e.CurrentHealth, e.MaxHealth);
         GameManager.Instance.ChangeGameState(EGameState.SpawnEnemy);
         this.gameObject.SetActive(false);
     }

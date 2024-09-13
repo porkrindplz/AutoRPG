@@ -11,6 +11,8 @@ namespace _Scripts.Managers
         public float SwordMultiplier = 0.25f;
         public float SlashMultiplier = 0.2f;
         public float CrossSlashMultiplier = 0.2f;
+        public int DefenseForBraveSlash;
+        public int SpeedForWhirlwind;
 
         [Header("Shield Constants")] 
         public float ShieldTime = 5;

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using _Scripts.Actions.Effects;
+using _Scripts.Managers;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -34,7 +35,7 @@ namespace _Scripts.Models
         [Range(0, 100)]
         public int Speed;
         
-        public float GetSpeedMultiplier() => (float)(0.5 + (float)(100-Speed) / 100 * (2 - 0.5));
+        public float GetSpeedMultiplier() => (float)(0.5 + (float)(100-GetSpeed()) / 100 * (2 - 0.5));
 
         /// <summary>
         /// List of all active effects being applied, these are temporary and should affect stats on Getters.
@@ -61,15 +62,14 @@ namespace _Scripts.Models
 
         public List<Upgrade> Upgrades = new();
         
-        public double GetDefense()
+        public virtual double GetDefense()
         {
-            double multipliers = 1;
-            if (ActiveEffects.FindIndex(ae => ae.ActiveEffectType == ActiveEffectType.Block) != -1)
-            {
-                multipliers *= 2f;
-            }
+            return BaseDef;
+        }
 
-            return BaseDef * multipliers;
+        public virtual double GetSpeed()
+        {
+            return Speed;
         }
         
         //ublic double GetTotalAttack() => GetTotal(BaseAtk, "Attack");

@@ -29,7 +29,7 @@ public class PlayerInit : MonoBehaviour
                     BaseAtk = 10,
                     BaseMagicAtk = 7,
                     BaseDef = 5,
-                    Speed = 50,
+                    Speed = 65,
                     ReceivedModifiers = new ModifierChart(),
                     Upgrades = new List<Upgrade>(),
                     MaxSkillPoints = 3,
