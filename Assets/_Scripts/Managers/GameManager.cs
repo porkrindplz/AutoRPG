@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using _Scripts.Utilities;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Linq;
 using _Scripts.Actions;
@@ -218,6 +219,8 @@ public class GameManager : Singleton<GameManager>
 
     private void HandleSetupGame()
     {        
+        Player.GetComponent<CharacterAnimationController>().EntityImageRect.GetComponent<Image>().enabled = true;
+
         OnUpgraded?.Invoke(AllTrees.Sword, AllTrees.Sword.Upgrades[0]);
 
         ScreenFade.Instance.FadeIn(1);
@@ -274,16 +277,14 @@ public class GameManager : Singleton<GameManager>
 
     private void HandlePlayerDefeated()
     {
-        PlayStats.AddDefeat();
-        PlayStats.UpdateTimePlayed();
-        TransmitPlayStats();
+        Player.GetComponent<CharacterAnimationController>().EntityImageRect.GetComponent<Image>().enabled = false;
         DisableAllInput();
-
+        ScreenFade.Instance.FadeIn(1);
         StartCoroutine(PlayerDefeatedSequence());
     }
     IEnumerator PlayerDefeatedSequence()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         GameOverPanel.gameObject.SetActive(true);
     }
 
@@ -320,7 +321,7 @@ public class GameManager : Singleton<GameManager>
         //Disable all input types
     }
     
-    private void TransmitPlayStats()
+    public void TransmitPlayStats()
     {
         Logger.Log($"PlayerID: {PlayStats.PlayerID} \n "+
                    $"Total Victories: {PlayStats.TotalVictories} \n "+
