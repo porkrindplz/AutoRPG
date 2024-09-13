@@ -12,9 +12,9 @@ using Logger = _Scripts.Utilities.Logger;
 public enum EMenuPanel
 {
     Sword,
+    Shield,
     Staff,
-    Slingshot,
-    Shield
+    Slingshot
 }
 
 public class MenuPanel : MonoBehaviour

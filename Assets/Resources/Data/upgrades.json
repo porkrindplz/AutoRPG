@@ -233,18 +233,18 @@
         "Id": "multi_shot",
         "Name": "Multi Shot",
         "Description": "Shoots a spread of arrows targeting multiple enemies.",
-        "MaxUpgrades": 3,
+        "MaxUpgrades": 1,
         "Level": 2,
         "Prerequisites": ["bow"],
-        "Children": ["sniper_shot"]
+        "Children": []
       },
       {
         "Id": "sniper_shot",
         "Name": "Sniper Shot",
         "Description": "A precise ranged attack targeting a critical point on single enemy.",
-        "MaxUpgrades": 3,
+        "MaxUpgrades": 1,
         "Level": 3,
-        "Prerequisites": ["multi_shot"],
+        "Prerequisites": ["bow"],
         "Children": []
       },
       {

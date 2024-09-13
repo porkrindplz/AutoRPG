@@ -128,7 +128,7 @@ namespace _Scripts.Actions
         {
             if ((!Input.GetKeyDown(slotButtons[i]) && isKeyDown) || actionSlots[i]?.timer.IsFinished != true) return;
             if (GameManager.Instance.CurrentGameState != EGameState.Playing) return;
-            if (_actionCoroutine != null) return;
+            //if (_actionCoroutine != null) return;
             _actionCoroutine = StartCoroutine(ProcessCoroutine(i));
 
         }

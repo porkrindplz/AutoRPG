@@ -54,7 +54,7 @@ namespace _Scripts.UI
 
         void OnUpgrade(UpgradeTree Tree, Upgrade upgrade)
         {
-            if (ActiveTutorial == Tutorials[0] && upgrade.Id== "sword")
+            if (ActiveTutorial == Tutorials[0] && upgrade.Id== "block")
             {
                 HideTutorial();
             }
@@ -62,7 +62,7 @@ namespace _Scripts.UI
             {
                 HideTutorial();
             }
-            if(ActiveTutorial == Tutorials[2] && upgrade.Id == "aoe")
+            if(ActiveTutorial == Tutorials[2] && upgrade.Id == "aoe" || upgrade.Id == "cross_slash")
             {
                 HideTutorial();
             }
@@ -100,6 +100,18 @@ namespace _Scripts.UI
 
             toolTipRect.gameObject.SetActive(true);
             toolTipText.text = message;
+            // CURSED CODE
+            toolTipRect.position = Input.mousePosition;
+            if (toolTipRect.position.x > 640)
+            {
+                toolTipRect.transform.localScale = new Vector3(-1, 1, 1);
+                toolTipRect.transform.GetChild(0).transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else
+            {
+                toolTipRect.transform.localScale = new Vector3(1, 1, 1);
+                toolTipRect.transform.GetChild(0).transform.localScale = new Vector3(1, 1, 1);
+            }
         }
     
         public void HideToolTip()

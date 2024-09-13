@@ -13,7 +13,8 @@ namespace _Scripts.Managers
         public float CrossSlashMultiplier = 0.2f;
 
         [Header("Shield Constants")] 
-        public float ShieldTime = 5; 
+        public float ShieldTime = 5;
+        public float ShieldAmount = 0.2f;
 
         [Header("Magic Constants")]
         public float CannonModifier = 0.3f;

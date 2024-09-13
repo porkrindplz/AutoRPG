@@ -15,6 +15,7 @@ MonoBehaviour:
   <Type>k__BackingField: 3
   <Pages>k__BackingField:
   - text: "Click the Sword Upgrade Icon to Unlock an Attack. This costs a skill point.
-      \n\nSpend more to make it stronger!"
+      \n\nClick on Shield (or press 2) and Unlock your shield to defend yourself\n\nSpend
+      more to make it stronger!"
     image: {fileID: 0}
   <NextState>k__BackingField: 3

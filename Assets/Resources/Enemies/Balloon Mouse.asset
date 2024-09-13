@@ -23,7 +23,7 @@ MonoBehaviour:
   actionWeights:
   - 4
   - 1
-  sprite: {fileID: 21300000, guid: ccf83426f78ba7a4ea281c473ab130d7, type: 3}
+  sprite: {fileID: -711851197, guid: 163a8b0c229ff244cb880d021917c86b, type: 3}
   Modifiers:
     Melee: 4
     Ranged: 0

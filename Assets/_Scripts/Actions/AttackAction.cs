@@ -43,8 +43,11 @@ namespace _Scripts.Actions
 
             var upgradeModifiers = GetUpgradeModifier(actorE, acteeE);
             dmg *= upgradeModifiers;
+            dmg *= GetShieldModifier(actee);
             
             dmg *= GetModifier(acteeE);
+            
+            
 
             dmg = Math.Round(dmg, 1);
             
@@ -52,6 +55,16 @@ namespace _Scripts.Actions
             Value = dmg;
             acteeE.CurrentHealth = Math.Max(0, acteeE.CurrentHealth - dmg);
             OnFinished?.Invoke();
+        }
+
+        private double GetShieldModifier(EntityBehaviour actee)
+        {
+            if (actee.Entity is Player && actee.HasActiveEffect(ActiveEffectType.Block) && GameAction.AttackGroupType == AttackGroupType.Melee)
+            {
+                return 1 - (StatConstants.Instance.ShieldAmount*GameManager.Instance.AllTrees.Shield.GetUpgradeLevel("block"));
+            }
+
+            return 1;
         }
 
         /// <summary>

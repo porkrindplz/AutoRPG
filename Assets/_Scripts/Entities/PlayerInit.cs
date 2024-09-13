@@ -31,7 +31,7 @@ public class PlayerInit : MonoBehaviour
                     Speed = 50,
                     ReceivedModifiers = new ModifierChart(),
                     Upgrades = new List<Upgrade>(),
-                    MaxSkillPoints = 3,
+                    MaxSkillPoints = 2,
                     UsedSkillPoints = 0,
 
                 };
