@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Ooze
   m_EditorClassIdentifier: 
   name: Ooze
-  maxHealth: 60
+  maxHealth: 600
   maxMagic: 100
   baseAtk: 7
   baseDef: 7
+  baseMagicAtk: 0
   speed: 50
   baseNuts: 150
   actions: 0900000000000000

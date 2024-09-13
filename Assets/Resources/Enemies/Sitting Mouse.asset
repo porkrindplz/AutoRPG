@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Sitting Mouse
   m_EditorClassIdentifier: 
   name: Sitting Mouse
-  maxHealth: 100
+  maxHealth: 1000
   maxMagic: 10
   baseAtk: 10
   baseDef: 3
+  baseMagicAtk: 0
   speed: 50
   baseNuts: 300
   actions: 0800000001000000

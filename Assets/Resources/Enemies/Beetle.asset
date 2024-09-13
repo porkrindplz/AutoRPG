@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Beetle
   m_EditorClassIdentifier: 
   name: Beetle
-  maxHealth: 60
+  maxHealth: 600
   maxMagic: 10
   baseAtk: 6
   baseDef: 2
+  baseMagicAtk: 0
   speed: 25
   baseNuts: 10
   actions: 00000000

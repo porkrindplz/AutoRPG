@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using _Scripts.Actions;
 using _Scripts.Entities;
+using _Scripts.Managers;
 using _Scripts.Models;
 using TMPro;
 using UnityEngine;
@@ -84,7 +85,11 @@ namespace _Scripts.UI
                 resText += $"{element.ToString()}: {entityBehaviour.Entity.Resistances}\n";
             }*/
             
-            nutsText.text = $"{entityBehaviour.Entity.Nuts}";
+            // This is hacky for enemy
+            var nuts = entityBehaviour.Entity is Enemy
+                ? EnemyManager.Instance.GetCurrentGroup().ActualNutsWon
+                : entityBehaviour.Entity.Nuts; 
+            nutsText.text = $"{(int)nuts}";
         }
         
         void ClearStats()

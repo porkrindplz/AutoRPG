@@ -14,7 +14,7 @@ public class VictoryPanel : MonoBehaviour
 
     private int nuts;
     [SerializeField] int minNuts = 10;
-    [SerializeField] int health = 25;
+    [SerializeField] int health = 250;
     private void OnEnable()
     {
         UpdateButtons();
@@ -30,8 +30,8 @@ public class VictoryPanel : MonoBehaviour
 
     private void UpdateButtons()
     {
-        nutsButton.GetComponentInChildren<TextMeshProUGUI>().text = $"{minNuts.ToString()} Nuts \n +{GameManager.Instance.EnemyNuts} Bonus";
-        nuts = GameManager.Instance.EnemyNuts + minNuts;
+        nutsButton.GetComponentInChildren<TextMeshProUGUI>().text = $"Nuts: {GameManager.Instance.EnemyNuts}";
+        nuts = GameManager.Instance.EnemyNuts;
         healthButton.GetComponentInChildren<TextMeshProUGUI>().text = $"+{health.ToString()} HP";
     }
     private void HealPlayer()

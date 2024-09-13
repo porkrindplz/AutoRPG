@@ -27,6 +27,7 @@ namespace _Scripts.Managers
         
         private GameObject enemyPanel;
 
+        [SerializeField] private float RatioOfStartingToMinNuts = 1.5f;
         [SerializeField] private List<EnemyGroup> enemyOrder;
         private List<Enemy> _allEnemies;
         private Random _random;
@@ -40,6 +41,10 @@ namespace _Scripts.Managers
         {
             // Read JSON into
             enemyPanel = GameObject.Find("EnemyPanel");
+            foreach (var group in enemyOrder)
+            {
+                group.ActualNutsWon = (int)(RatioOfStartingToMinNuts * group.MinNutsWon);
+            }
             LoadEnemyData();
             Debug.Log(_allEnemies.Count);
             _random = new Random();
@@ -52,6 +57,8 @@ namespace _Scripts.Managers
             };
             base.Awake();
         }
+        
+        public EnemyGroup GetCurrentGroup() => enemyOrder[EnemyIndex];
 
         public void IncrementEnemyIndex()
         {
@@ -74,6 +81,8 @@ namespace _Scripts.Managers
         {
             var nextEnemy = enemyOrder[EnemyIndex].GetCurrentEnemySet();
             var newEnemyStats = _allEnemies.Find(e => e.Name == nextEnemy.EnemyName).Copy();
+            
+            GameManager.Instance.OnNutsChanged?.Invoke(newEnemyStats, (int)GetCurrentGroup().ActualNutsWon);
             
             newEnemyStats.OnDeath += OnEnemyDeath;
             var existingEnemy = enemyPanel.GetComponent<EntityBehaviour>();
@@ -155,11 +164,12 @@ namespace _Scripts.Managers
             CurrentEnemy.GetComponent<CharacterAnimationController>().DeathAnimation(entity);
             
             // Go to next enemy, if -1 then we have defeated enemy
+            var currentNuts = enemyOrder[EnemyIndex].ActualNutsWon;
             
             enemyOrder[EnemyIndex].GoToNextEnemy();
             if (enemyOrder[EnemyIndex].CurrentEnemy == -1)
             {
-                GameManager.Instance.EnemyNuts = entity.Nuts;    
+                GameManager.Instance.EnemyNuts = (int)currentNuts;    
                 GameManager.Instance.ChangeGameState(EGameState.EnemyGroupDefeated);    
             }
             else
@@ -184,8 +194,9 @@ namespace _Scripts.Managers
                      CurrentMagic = data.maxMagic,
                      BaseAtk = data.baseAtk,
                      BaseDef = data.baseDef,
+                     BaseMagicAtk = data.maxMagic,
                      Speed = data.speed,
-                     Nuts = data.baseNuts,
+                     //Nuts = data.baseNuts,
                      Actions = data.actions,
                      ActionWeights = data.actionWeights,
                      ReceivedModifiers = data.Modifiers,

@@ -13,8 +13,8 @@ namespace _Scripts.Entities
         public double maxMagic;
         public double baseAtk;
         public double baseDef;
+        public double baseMagicAtk;
         public int speed;
-        public int baseNuts;
         public List<AttackType> actions;
         public List<double> actionWeights;
         public Sprite sprite;

@@ -28,6 +28,7 @@ namespace _Scripts.Models
         public double MaxHealth;
         public double CurrentMagic;
         public double MaxMagic;
+        public double BaseMagicAtk;
         public double BaseAtk;
         public double BaseDef;
         [Range(0, 100)]

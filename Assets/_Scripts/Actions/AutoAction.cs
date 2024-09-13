@@ -26,7 +26,8 @@ public class AutoAction : MonoBehaviour
     private double _timer;
     
     private double _nutTimer;
-    private int _nutInterval = 5;
+    private int _nutUpdateInterval = 5;
+    private double _nutsLostPerUpdateInterval;
     
     Coroutine _actionCoroutine;
     CharacterAnimationController AnimationController;
@@ -46,7 +47,8 @@ public class AutoAction : MonoBehaviour
         {
             ActionQueue.Clear();
             _timer = 0;
-            
+            var currGroup = EnemyManager.Instance.GetCurrentGroup();
+            _nutsLostPerUpdateInterval = 0.5*currGroup.MinNutsWon / (currGroup.TimeForNutLoss) *  (float)_nutUpdateInterval;
         };
     }
 
@@ -80,15 +82,16 @@ public class AutoAction : MonoBehaviour
             // ActionQueue.Enqueue(newAction);
         }
         
-        if (currentEntity.Entity.Nuts > 1)
+        _nutTimer += Time.deltaTime;
+        if (_nutTimer >= _nutUpdateInterval)
         {
-            _nutTimer += Time.deltaTime;
-            if (_nutTimer >= _nutInterval)
-            {
-                _nutTimer = 0;
-                currentEntity.Entity.Nuts--;
-            }
+            _nutTimer = 0;
+            var enemyGroup = EnemyManager.Instance.GetCurrentGroup();
+            enemyGroup.ActualNutsWon = 
+                Math.Max(enemyGroup.MinNutsWon, enemyGroup.ActualNutsWon - (int)_nutsLostPerUpdateInterval);
+            GameManager.Instance.OnNutsChanged?.Invoke(currentEntity.Entity, (int)enemyGroup.ActualNutsWon);
         }
+        
     }
 
     private void AddAction()

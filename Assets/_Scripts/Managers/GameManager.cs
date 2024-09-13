@@ -11,6 +11,7 @@ using _Scripts.Managers;
 using _Scripts.Models;
 using _Scripts.UI;
 using Logger = _Scripts.Utilities.Logger;
+using Random = Unity.Mathematics.Random;
 
 
 public enum EGameState
@@ -94,6 +95,8 @@ public class GameManager : Singleton<GameManager>
     public EnemyManager EnemyManager;
 
     public AllTrees AllTrees;
+
+    public Random Random;
     
     [Header("UI")]
     public RectTransform MainMenuPanel;
@@ -120,6 +123,8 @@ public class GameManager : Singleton<GameManager>
     
     protected override void Awake()
     {
+        Random = new Random();
+        Random.InitState((uint)DateTime.Now.Ticks);
         LoadActions();
         LoadUpgradeTrees();
         base.Awake();

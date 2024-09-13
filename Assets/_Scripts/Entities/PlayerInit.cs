@@ -22,11 +22,12 @@ public class PlayerInit : MonoBehaviour
             {
                 playerEntity.Entity = new Player
                 {
-                    CurrentHealth = 100,
-                    MaxHealth = 100,
+                    CurrentHealth = 1000,
+                    MaxHealth = 1000,
                     CurrentMagic = 25,
                     MaxMagic = 25,
                     BaseAtk = 10,
+                    BaseMagicAtk = 7,
                     BaseDef = 5,
                     Speed = 50,
                     ReceivedModifiers = new ModifierChart(),

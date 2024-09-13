@@ -5,6 +5,7 @@ using _Scripts.Managers;
 using _Scripts.Models;
 using UnityEngine;
 using Logger = _Scripts.Utilities.Logger;
+using Random = System.Random;
 
 namespace _Scripts.Actions
 {
@@ -27,7 +28,18 @@ namespace _Scripts.Actions
         {
             
             var (actorE, acteeE) = (actor.Entity, actee.Entity);
+            
+            // Damage formula for non-magic
             var dmg = (actorE.BaseAtk*actorE.BaseAtk) / (actorE.BaseAtk + acteeE.BaseDef);
+            
+            // Damage formula for magic attacks
+            if (GameAction.AttackGroupType == AttackGroupType.Magic)
+            {
+                dmg = (actorE.BaseMagicAtk*actorE.BaseMagicAtk) / (actorE.BaseMagicAtk + acteeE.BaseDef);
+            }
+            
+            // Add +- 15% for randomness
+            dmg = GameManager.Instance.Random.NextDouble(dmg * 0.85, dmg * 1.15);
 
             HandleEnemyShieldCast(actor);
             dmg *= CheckShieldBreaks(actee);
@@ -44,12 +56,11 @@ namespace _Scripts.Actions
             var upgradeModifiers = GetUpgradeModifier(actorE, acteeE);
             dmg *= upgradeModifiers;
             dmg *= GetShieldModifier(actee);
-            
             dmg *= GetModifier(acteeE);
-            
-            
 
-            dmg = Math.Round(dmg, 1);
+            // Make the numbers bigger so no decimals
+            dmg *= 10;
+            dmg = Math.Round(dmg, 0);
             
             Debug.Log($"Attack: {AttackType.ToString()} dmg: {dmg}");
             Value = dmg;

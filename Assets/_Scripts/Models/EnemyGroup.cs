@@ -16,7 +16,7 @@ namespace _Scripts.Models
         //[SerializeField] private List<int> NextEnemy;
         public bool ShareHp;
 
-        public int CurrentEnemy;
+        [NonSerialized] public int CurrentEnemy;
         
         /// <summary>
         /// Determines if you should get an additional skill point after being the enemy group
@@ -24,9 +24,19 @@ namespace _Scripts.Models
         public bool SkillPointRewarded;
         
         /// <summary>
-        /// Time in seconds where you get an S ranking for beating the enemy that speed. Nuts will also decay in some proportion to this value
+        /// Minimum number of nuts achieved for winning this battle group
         /// </summary>
-        public double GoalBestTime;
+        public int MinNutsWon;
+
+        /// <summary>
+        /// Time in seconds it takes for the nut count to go from 1.5*MinNutsWon to 1.0*MinNutsWon
+        /// </summary>
+        public int TimeForNutLoss;
+        
+        /// <summary>
+        /// An amount that starts at 1.5x MinNutsWon, and slowly decrements as time progresses down to MinNutsWon
+        /// </summary>
+        [NonSerialized] public float ActualNutsWon;
 
         public void GoToNextEnemy()
         {

@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Rats
   m_EditorClassIdentifier: 
   name: Rats
-  maxHealth: 150
+  maxHealth: 1500
   maxMagic: 10
   baseAtk: 5
   baseDef: 3
+  baseMagicAtk: 0
   speed: 35
   baseNuts: 100
   actions: 000000000c000000
