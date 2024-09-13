@@ -25,7 +25,7 @@ MonoBehaviour:
   - 4
   sprite: {fileID: 21300000, guid: 04186b78e794c475aa7203bfe962aa7f, type: 3}
   Modifiers:
-    Melee: 0
+    Melee: 3
     Ranged: 3
     Aoe: 3
     Fire: 2

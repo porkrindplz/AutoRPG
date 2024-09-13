@@ -28,6 +28,7 @@ namespace _Scripts.Models
                 MaxMagic = MaxMagic,
                 BaseAtk = BaseAtk,
                 BaseDef = BaseDef,
+                BaseMagicAtk = BaseMagicAtk,
                 Speed = Speed,
                 Nuts = Nuts,
                 ReceivedModifiers = ReceivedModifiers,

@@ -32,7 +32,7 @@ public class VictoryPanel : MonoBehaviour
     {
         nutsButton.GetComponentInChildren<TextMeshProUGUI>().text = $"Nuts: {GameManager.Instance.EnemyNuts}";
         nuts = GameManager.Instance.EnemyNuts;
-        healthButton.GetComponentInChildren<TextMeshProUGUI>().text = $"+{health.ToString()} HP";
+        healthButton.GetComponentInChildren<TextMeshProUGUI>().text = $"+{health.ToString()} HP\n+{(int)(nuts*0.75)} Nuts";
     }
     private void HealPlayer()
     {
@@ -42,6 +42,7 @@ public class VictoryPanel : MonoBehaviour
             GameManager.Instance.Player.Entity.CurrentHealth = GameManager.Instance.Player.Entity.MaxHealth;
         }
 
+        GameManager.Instance.Player.Entity.Nuts += (int)(0.75 * nuts);
         Continue();
     }
 

@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3261670e94f729e49af9c549edb9a637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RatioOfStartingToMinNuts: 1.5
   enemyOrder:
   - EnemySets:
     - NextEnemy: -1
@@ -54,9 +55,9 @@ MonoBehaviour:
       HitCount: 0
       HitGroupType: 0
     ShareHp: 1
-    CurrentEnemy: 0
     SkillPointRewarded: 0
-    GoalBestTime: 0
+    MinNutsWon: 10
+    TimeForNutLoss: 15
   - EnemySets:
     - NextEnemy: -1
       EnemyName: Snowman
@@ -66,9 +67,9 @@ MonoBehaviour:
       HitCount: 0
       HitGroupType: 0
     ShareHp: 0
-    CurrentEnemy: 0
     SkillPointRewarded: 1
-    GoalBestTime: 0
+    MinNutsWon: 30
+    TimeForNutLoss: 20
   - EnemySets:
     - NextEnemy: -1
       EnemyName: Beetles
@@ -78,9 +79,9 @@ MonoBehaviour:
       HitCount: 0
       HitGroupType: 0
     ShareHp: 0
-    CurrentEnemy: 0
     SkillPointRewarded: 0
-    GoalBestTime: 0
+    MinNutsWon: 50
+    TimeForNutLoss: 25
   - EnemySets:
     - NextEnemy: -1
       EnemyName: Snowmen
@@ -90,9 +91,9 @@ MonoBehaviour:
       HitCount: 0
       HitGroupType: 0
     ShareHp: 0
-    CurrentEnemy: 0
     SkillPointRewarded: 0
-    GoalBestTime: 0
+    MinNutsWon: 75
+    TimeForNutLoss: 25
   - EnemySets:
     - NextEnemy: 1
       EnemyName: Flame Beetles
@@ -109,9 +110,9 @@ MonoBehaviour:
       HitCount: 0
       HitGroupType: 0
     ShareHp: 0
-    CurrentEnemy: 0
     SkillPointRewarded: 1
-    GoalBestTime: 0
+    MinNutsWon: 150
+    TimeForNutLoss: 60
   - EnemySets:
     - NextEnemy: 1
       EnemyName: Ooze
@@ -128,9 +129,9 @@ MonoBehaviour:
       HitCount: 0
       HitGroupType: 0
     ShareHp: 0
-    CurrentEnemy: 0
     SkillPointRewarded: 0
-    GoalBestTime: 0
+    MinNutsWon: 110
+    TimeForNutLoss: 60
   - EnemySets:
     - NextEnemy: 1
       EnemyName: Balloon Mouse
@@ -147,9 +148,9 @@ MonoBehaviour:
       HitCount: 2
       HitGroupType: 0
     ShareHp: 1
-    CurrentEnemy: 0
     SkillPointRewarded: 0
-    GoalBestTime: 0
+    MinNutsWon: 175
+    TimeForNutLoss: 110
   - EnemySets:
     - NextEnemy: -1
       EnemyName: Hummingbird
@@ -159,25 +160,32 @@ MonoBehaviour:
       HitCount: 0
       HitGroupType: 0
     ShareHp: 0
-    CurrentEnemy: 0
     SkillPointRewarded: 0
-    GoalBestTime: 0
+    MinNutsWon: 250
+    TimeForNutLoss: 45
   - EnemySets:
     - NextEnemy: 1
-      EnemyName: Turtle
+      EnemyName: Rats
       StateChangeType: 3
       Timer: 0
       HealthPercentage: 0
       HitCount: 0
       HitGroupType: 0
-    - NextEnemy: -1
-      EnemyName: Speed Turtle
-      StateChangeType: 4
+    - NextEnemy: 2
+      EnemyName: Rat King
+      StateChangeType: 2
       Timer: 0
-      HealthPercentage: 0
+      HealthPercentage: 50
       HitCount: 0
       HitGroupType: 0
-    ShareHp: 0
-    CurrentEnemy: 0
-    SkillPointRewarded: 0
-    GoalBestTime: 0
+    - NextEnemy: -1
+      EnemyName: Rats
+      StateChangeType: 3
+      Timer: 0
+      HealthPercentage: 50
+      HitCount: 0
+      HitGroupType: 0
+    ShareHp: 1
+    SkillPointRewarded: 1
+    MinNutsWon: 500
+    TimeForNutLoss: 0

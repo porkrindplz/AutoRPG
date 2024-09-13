@@ -154,7 +154,7 @@ namespace _Scripts.Actions
                     if (GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("aoe") > 0)
                     {
                         // TODO: make this more involved with # of enemies
-                        return ModifierChart.GetModifier(actee.ReceivedModifiers.Aoe);
+                        return bonusMagicDmg * ModifierChart.GetModifier(actee.ReceivedModifiers.Aoe);
                     }
 
                     var cannonLevel = GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("cannon");
