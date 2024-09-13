@@ -52,11 +52,12 @@ namespace _Scripts.UI
                 var mod = attackAction.GetModifier(actee.Entity);
                 text = mod switch
                 {
-                    -0.5 => "Absorb: ",
-                    0.0 => "Null: ",
-                    0.5 => "Resist: ",
-                    1.5 => "Weak: ",
-                    2.0 => "Vulnerable: ",
+                    <= -0.5 => "Absorb: ",
+                    <= 0.0 => "Null: ",
+                    <= 0.5 => "Resist: ",
+                    1 => "",
+                    <= 1.5 => "Weak: ",
+                    <= 2.0 => "Vulnerable: ",
                     > 2 => "Rekt: ",
                     _ => ""
                 };

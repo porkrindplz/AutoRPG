@@ -37,14 +37,14 @@ public class VictoryPanel : MonoBehaviour
     }
     private void HealPlayer()
     {
-        GameManager.Instance.Player.Entity.CurrentHealth += healthWithNuts;
+        GameManager.Instance.Player.Entity.CurrentHealth += healthWithoutNuts;
         GameManager.Instance.Player.Entity.Nuts += (int)(0.5 * nuts);
         Continue();
     }
 
     private void CollectNuts()
     {
-        GameManager.Instance.Player.Entity.CurrentHealth += healthWithoutNuts;
+        GameManager.Instance.Player.Entity.CurrentHealth += healthWithNuts;
         GameManager.Instance.Player.Entity.Nuts += nuts;
         Continue();
     }

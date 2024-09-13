@@ -53,7 +53,8 @@ namespace _Scripts.UI
                 foreach (RectTransform resistance in resistances)
                 {
                     string type = resistance.name;
-
+                    if (memory.GetType().GetField(type) == null) continue;
+                    
                     if((ModifierType)memory.GetType().GetField(type).GetValue(memory) == ModifierType.Empty)
                         continue;
                     ModifierType value = GetModifierType(type, memory);

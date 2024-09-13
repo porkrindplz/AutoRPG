@@ -19,7 +19,6 @@ MonoBehaviour:
   baseDef: 3
   baseMagicAtk: 0
   speed: 50
-  baseNuts: 50
   actions: 00000000
   actionWeights:
   - 4
@@ -28,8 +27,9 @@ MonoBehaviour:
     Melee: 0
     Ranged: 3
     Aoe: 2
-    Fire: 0
+    Fire: 3
     Water: 0
     Leaf: 0
     Lightning: 3
     Shadow: 3
+  startingAction: 17

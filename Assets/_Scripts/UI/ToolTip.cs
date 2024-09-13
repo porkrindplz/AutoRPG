@@ -28,6 +28,8 @@ namespace _Scripts.UI
             HideToolTip();
         }
 
+        public bool IsTutorialActive() => tutorialRect.gameObject.activeSelf;
+
         private void OnEnable()
         {
             GameManager.Instance.OnBeforeGameStateChanged += OnGameStateChanged;

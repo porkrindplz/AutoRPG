@@ -19,12 +19,11 @@ MonoBehaviour:
   baseDef: 7
   baseMagicAtk: 0
   speed: 50
-  baseNuts: 150
   actions: 0900000000000000
   actionWeights:
   - 5
   - 2
-  sprite: {fileID: 21300000, guid: 472480198c1c749b3947f47ec524fa69, type: 3}
+  sprite: {fileID: -735084042, guid: 472480198c1c749b3947f47ec524fa69, type: 3}
   Modifiers:
     Melee: 0
     Ranged: 0
@@ -34,3 +33,4 @@ MonoBehaviour:
     Leaf: 0
     Lightning: 3
     Shadow: 0
+  startingAction: 17

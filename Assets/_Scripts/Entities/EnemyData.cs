@@ -19,6 +19,6 @@ namespace _Scripts.Entities
         public List<double> actionWeights;
         public Sprite sprite;
         public ModifierChart Modifiers;
-
+        public AttackType startingAction;
     }
 }

@@ -8,7 +8,9 @@ using _Scripts.Entities;
 using _Scripts.Entities.EnemyAIs;
 using _Scripts.Managers;
 using _Scripts.Models;
+using _Scripts.UI;
 using _Scripts.Utilities;
+using UnityEditor;
 using UnityEngine;
 using Random = System.Random;
 
@@ -46,6 +48,7 @@ public class AutoAction : MonoBehaviour
         EnemyManager.Instance.OnEnemySpawned += enemy =>
         {
             ActionQueue.Clear();
+            enemyAi = GetComponent<EnemyAI>();
             _timer = 0;
             var currGroup = EnemyManager.Instance.GetCurrentGroup();
             _nutsLostPerUpdateInterval = 0.5*currGroup.MinNutsWon / (currGroup.TimeForNutLoss) *  (float)_nutUpdateInterval;
@@ -60,7 +63,8 @@ public class AutoAction : MonoBehaviour
             return;
         }
 
-        if (ActionQueue.Count == 0)
+        // Only queue up attack if tooltips are disabled
+        if (ActionQueue.Count == 0 && !ToolTip.Instance.IsTutorialActive())
         {
             AddAction();
         }
@@ -96,7 +100,12 @@ public class AutoAction : MonoBehaviour
 
     private void AddAction()
     {
-        ActionQueue.Enqueue( GameManager.Instance.GetNewAction(enemyAi.MakeDecision()));
+        AddAction(enemyAi.MakeDecision());
+    }
+
+    public void AddAction(AttackType attack)
+    {
+        ActionQueue.Enqueue(GameManager.Instance.GetNewAction(attack));
     }
     
     IEnumerator ProcessAction()

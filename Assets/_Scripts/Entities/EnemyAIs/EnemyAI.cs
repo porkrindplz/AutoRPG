@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _Scripts.Actions;
 using _Scripts.Actions.Effects;
 using _Scripts.Models;
 using _Scripts.Utilities;
@@ -19,6 +20,7 @@ namespace _Scripts.Entities.EnemyAIs
         {
             _weighter = new WeightedRouletteWheel();
             EnemyBehaviour = GetComponent<EntityBehaviour>();
+            
         }
 
         public virtual AttackType MakeDecision()
@@ -32,6 +34,11 @@ namespace _Scripts.Entities.EnemyAIs
                 return MakeDecision();
             }
             return attackType;
+        }
+
+        public virtual void Init()
+        {
+            
         }
     }
 }

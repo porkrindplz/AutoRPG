@@ -10,27 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6aa013173c7942fc8f530f0a4a842b32, type: 3}
-  m_Name: Sitting Mouse
+  m_Name: Water Snake
   m_EditorClassIdentifier: 
-  name: Sitting Mouse
-  maxHealth: 1500
+  name: Water Snake
+  maxHealth: 3000
   maxMagic: 10
   baseAtk: 10
   baseDef: 3
-  baseMagicAtk: 0
-  speed: 50
-  actions: 080000000100000001000000
+  baseMagicAtk: 8
+  speed: 60
+  actions: 0000000000000000
   actionWeights:
-  - 4
-  - 1
-  sprite: {fileID: 937487927, guid: 163a8b0c229ff244cb880d021917c86b, type: 3}
+  - 2
+  - 5
+  sprite: {fileID: -1144219536, guid: 848492a72b468c64f8b85ecc4412ecae, type: 3}
   Modifiers:
-    Melee: 2
-    Ranged: 3
-    Aoe: 3
+    Melee: 0
+    Ranged: 0
+    Aoe: 2
     Fire: 3
-    Water: 3
-    Leaf: 3
+    Water: 5
+    Leaf: 2
     Lightning: 3
-    Shadow: 4
-  startingAction: 17
+    Shadow: 3
+  startingAction: 15

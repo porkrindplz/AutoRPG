@@ -52,11 +52,14 @@ namespace _Scripts.Actions
                 return;
             }
 
-
             var upgradeModifiers = GetUpgradeModifier(actorE, acteeE);
             dmg *= upgradeModifiers;
             dmg *= GetShieldModifier(actee);
             dmg *= GetModifier(acteeE);
+            
+            #if UNITY_EDITOR
+            if (GameManager.Instance.MultDamage && actorE is Player) dmg *= 10;            
+            #endif
 
             // Make the numbers bigger so no decimals
             dmg *= 10;

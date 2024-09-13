@@ -97,6 +97,11 @@ public class GameManager : Singleton<GameManager>
     public AllTrees AllTrees;
 
     public Random Random;
+
+    [Header("Cheat")]
+#if UNITY_EDITOR
+    public bool MultDamage;
+#endif
     
     [Header("UI")]
     public RectTransform MainMenuPanel;

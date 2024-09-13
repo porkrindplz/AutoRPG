@@ -19,7 +19,6 @@ MonoBehaviour:
   baseDef: 3
   baseMagicAtk: 0
   speed: 35
-  baseNuts: 100
   actions: 000000000c000000
   actionWeights:
   - 2
@@ -34,3 +33,4 @@ MonoBehaviour:
     Leaf: 3
     Lightning: 3
     Shadow: 3
+  startingAction: 17

@@ -95,6 +95,7 @@ namespace _Scripts.Managers
                 }
                 
             }
+            
 
             switch (nextEnemy.StateChangeType)
             {
@@ -131,15 +132,50 @@ namespace _Scripts.Managers
             CurrentEnemy?.RemoveAllEffects();
 
             CurrentEnemy = existingEnemy;
-            OnEnemySpawned?.Invoke(newEnemyStats);
+            
             
             enemyPanel.GetComponent<EntityBehaviour>().Entity = newEnemyStats;
             enemyPanel.GetComponent<CharacterAnimationController>().EntityImageRect.GetComponent<Image>().sprite = newEnemyStats.Sprite;
-            var enemyAi = enemyPanel.GetComponent<EnemyAI>();
             
+            DestroyImmediate(enemyPanel.GetComponent<EnemyAI>());
+
+
+            
+            // Snake AI
+            /*if (newEnemyStats.Name == "Water Snake")
+            {
+                enemyPanel.AddComponent<SnakeAI>();
+                enemyPanel.GetComponent<SnakeAI>().shieldType = AttackType.ShieldWater;
+            }
+            else if (newEnemyStats.Name == "Fire Snake")
+            {
+                enemyPanel.AddComponent<SnakeAI>();
+                enemyPanel.GetComponent<SnakeAI>().shieldType = AttackType.ShieldFire;
+            }
+            else if (newEnemyStats.Name == "Leaf Snake")
+            {
+                enemyPanel.AddComponent<SnakeAI>();
+                enemyPanel.GetComponent<SnakeAI>().shieldType = AttackType.ShieldLeaf;
+            }*/
+            //else
+            //{
+                enemyPanel.AddComponent<EnemyAI>();
+            //}
+
+            EnemyAI enemyAi = enemyPanel.GetComponent<EnemyAI>();
+
+            // If there is an action to execute right away, then do it
+            if (newEnemyStats.FirstAction != AttackType.None)
+            {
+                enemyPanel.GetComponent<AutoAction>().AddAction(newEnemyStats.FirstAction);
+            }
+
+
             enemyAi.weights = newEnemyStats.ActionWeights;
             enemyAi.possibleActions = newEnemyStats.Actions;
             //autoAction.PopulateQueue();
+            
+            OnEnemySpawned?.Invoke(newEnemyStats);
 
             Logger.Log(enemyAi.weights.Count.ToString());
             UpdateNextEnemy();
@@ -152,7 +188,7 @@ namespace _Scripts.Managers
             //
         }
 
-        private void OnStageChange()
+        public void OnStageChange()
         {
             Logger.Log("Changing stage");
             enemyOrder[EnemyIndex].GoToNextEnemy();
@@ -194,8 +230,9 @@ namespace _Scripts.Managers
                      CurrentMagic = data.maxMagic,
                      BaseAtk = data.baseAtk,
                      BaseDef = data.baseDef,
-                     BaseMagicAtk = data.maxMagic,
+                     BaseMagicAtk = data.baseMagicAtk,
                      Speed = data.speed,
+                     FirstAction = data.startingAction,
                      //Nuts = data.baseNuts,
                      Actions = data.actions,
                      ActionWeights = data.actionWeights,

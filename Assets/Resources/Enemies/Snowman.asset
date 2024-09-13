@@ -33,3 +33,4 @@ MonoBehaviour:
     Leaf: 3
     Lightning: 3
     Shadow: 3
+  startingAction: 17
