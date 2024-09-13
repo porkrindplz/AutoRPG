@@ -10,27 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6aa013173c7942fc8f530f0a4a842b32, type: 3}
-  m_Name: Sitting Mouse
+  m_Name: Rat King
   m_EditorClassIdentifier: 
-  name: Sitting Mouse
+  name: Rats
   maxHealth: 1500
   maxMagic: 10
-  baseAtk: 10
+  baseAtk: 5
   baseDef: 3
   baseMagicAtk: 0
-  speed: 50
-  actions: 080000000100000001000000
+  speed: 35
+  actions: 000000000c000000
   actionWeights:
-  - 4
-  - 1
-  sprite: {fileID: 937487927, guid: 163a8b0c229ff244cb880d021917c86b, type: 3}
+  - 2
+  - 5
+  sprite: {fileID: -780616269, guid: cb19b8d95dd574b03a25379454eda9c6, type: 3}
   Modifiers:
-    Melee: 2
+    Melee: 0
     Ranged: 3
-    Aoe: 3
-    Fire: 3
-    Water: 3
+    Aoe: 2
+    Fire: 2
+    Water: 5
     Leaf: 3
     Lightning: 3
-    Shadow: 4
-  startingAction: 0
+    Shadow: 3
+  startingAction: 17

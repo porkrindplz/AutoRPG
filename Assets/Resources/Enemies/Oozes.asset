@@ -23,14 +23,14 @@ MonoBehaviour:
   actionWeights:
   - 5
   - 2
-  sprite: {fileID: 21300000, guid: 472480198c1c749b3947f47ec524fa69, type: 3}
+  sprite: {fileID: 21300000, guid: dc922a84aecd6468c8d4627cebee92b3, type: 3}
   Modifiers:
-    Melee: 0
-    Ranged: 0
-    Aoe: 0
-    Fire: 0
-    Water: 0
-    Leaf: 0
+    Melee: 3
+    Ranged: 3
+    Aoe: 2
+    Fire: 3
+    Water: 3
+    Leaf: 2
     Lightning: 3
     Shadow: 0
   startingAction: 17
