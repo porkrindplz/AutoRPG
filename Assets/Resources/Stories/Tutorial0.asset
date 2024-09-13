@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 811c9e099595d9d4f8b228ebf4cc6b47, type: 3}
-  m_Name: Tutorial1
+  m_Name: Tutorial0
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 3
   <Pages>k__BackingField:
-  - text: "Click on the Shield Tab (or press 2) and Unlock your shield to defend
-      yourself.\n\nIf you already used all your skill points, click Reset Tree while
-      in the tab you want to clear points from. \n"
+  - text: "Click the Sword Upgrade Icon to Unlock an Attack. This costs a skill point.
+      \n\nSpend more to make it stronger!"
     image: {fileID: 0}
   <NextState>k__BackingField: 3
