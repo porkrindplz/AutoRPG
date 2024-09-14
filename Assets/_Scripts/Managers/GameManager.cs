@@ -298,6 +298,9 @@ public class GameManager : Singleton<GameManager>
 
     private void HandlePlayerDefeated()
     {
+        PlayStats.AddDefeat();
+        PlayStats.UpdateTimePlayed();
+        PlayStats.UpdateNuts(Player.Entity.Nuts);
         Player.GetComponent<CharacterAnimationController>().EntityImageRect.GetComponent<Image>().enabled = false;
         DisableAllInput();
         ScreenFade.Instance.FadeIn(1);
