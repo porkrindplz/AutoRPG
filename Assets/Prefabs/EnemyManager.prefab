@@ -47,6 +47,54 @@ MonoBehaviour:
   RatioOfStartingToMinNuts: 1.5
   enemyOrder:
   - EnemySets:
+    - NextEnemy: -1
+      EnemyName: Beetle
+      StateChangeType: 0
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 0
+      HitGroupType: 0
+    ShareHp: 0
+    SkillPointRewarded: 0
+    MinNutsWon: 10
+    TimeForNutLoss: 15
+  - EnemySets:
+    - NextEnemy: -1
+      EnemyName: Snowman
+      StateChangeType: 0
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 0
+      HitGroupType: 0
+    ShareHp: 0
+    SkillPointRewarded: 1
+    MinNutsWon: 30
+    TimeForNutLoss: 20
+  - EnemySets:
+    - NextEnemy: -1
+      EnemyName: Snowmen
+      StateChangeType: 0
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 0
+      HitGroupType: 0
+    ShareHp: 0
+    SkillPointRewarded: 0
+    MinNutsWon: 75
+    TimeForNutLoss: 25
+  - EnemySets:
+    - NextEnemy: -1
+      EnemyName: Beetles
+      StateChangeType: 0
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 0
+      HitGroupType: 0
+    ShareHp: 0
+    SkillPointRewarded: 0
+    MinNutsWon: 50
+    TimeForNutLoss: 25
+  - EnemySets:
     - NextEnemy: 1
       EnemyName: Flame Beetles
       StateChangeType: 3
@@ -65,54 +113,6 @@ MonoBehaviour:
     SkillPointRewarded: 1
     MinNutsWon: 150
     TimeForNutLoss: 60
-  - EnemySets:
-    - NextEnemy: -1
-      EnemyName: Beetle
-      StateChangeType: 0
-      Timer: 0
-      HealthPercentage: 0
-      HitCount: 0
-      HitGroupType: 0
-    ShareHp: 1
-    SkillPointRewarded: 0
-    MinNutsWon: 10
-    TimeForNutLoss: 15
-  - EnemySets:
-    - NextEnemy: -1
-      EnemyName: Snowman
-      StateChangeType: 0
-      Timer: 0
-      HealthPercentage: 0
-      HitCount: 0
-      HitGroupType: 0
-    ShareHp: 0
-    SkillPointRewarded: 1
-    MinNutsWon: 30
-    TimeForNutLoss: 20
-  - EnemySets:
-    - NextEnemy: -1
-      EnemyName: Beetles
-      StateChangeType: 0
-      Timer: 0
-      HealthPercentage: 0
-      HitCount: 0
-      HitGroupType: 0
-    ShareHp: 0
-    SkillPointRewarded: 0
-    MinNutsWon: 50
-    TimeForNutLoss: 25
-  - EnemySets:
-    - NextEnemy: -1
-      EnemyName: Snowmen
-      StateChangeType: 0
-      Timer: 0
-      HealthPercentage: 0
-      HitCount: 0
-      HitGroupType: 0
-    ShareHp: 0
-    SkillPointRewarded: 0
-    MinNutsWon: 75
-    TimeForNutLoss: 25
   - EnemySets:
     - NextEnemy: 1
       EnemyName: Ooze

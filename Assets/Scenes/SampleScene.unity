@@ -803,6 +803,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1950832400063707752, guid: 092c755b846318648b410bdbf211eabd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950832400063707752, guid: 092c755b846318648b410bdbf211eabd, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950832400063707752, guid: 092c755b846318648b410bdbf211eabd, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950832400063707752, guid: 092c755b846318648b410bdbf211eabd, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950832400063707752, guid: 092c755b846318648b410bdbf211eabd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950832400063707752, guid: 092c755b846318648b410bdbf211eabd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2141496244624461765, guid: 092c755b846318648b410bdbf211eabd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1139,10 +1163,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3933966734073206420, guid: 092c755b846318648b410bdbf211eabd, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 105.899994
-      objectReference: {fileID: 0}
     - target: {fileID: 4048563729454238757, guid: 092c755b846318648b410bdbf211eabd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1252,30 +1272,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359733178104046723, guid: 092c755b846318648b410bdbf211eabd, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4573516627383873617, guid: 092c755b846318648b410bdbf211eabd, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4573516627383873617, guid: 092c755b846318648b410bdbf211eabd, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4573516627383873617, guid: 092c755b846318648b410bdbf211eabd, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4573516627383873617, guid: 092c755b846318648b410bdbf211eabd, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4573516627383873617, guid: 092c755b846318648b410bdbf211eabd, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4573516627383873617, guid: 092c755b846318648b410bdbf211eabd, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -1677,406 +1673,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7560116643512310147}
     m_Modifications:
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.size
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[1].ShareHp
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[6].ShareHp
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[7].ShareHp
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[8].ShareHp
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[9].ShareHp
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[0].MinNutsWon
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[1].MinNutsWon
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[2].MinNutsWon
-      value: 75
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[3].MinNutsWon
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[4].MinNutsWon
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[5].MinNutsWon
-      value: 110
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[6].MinNutsWon
-      value: 175
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[7].MinNutsWon
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[8].MinNutsWon
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[9].MinNutsWon
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[0].TimeForNutLoss
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[1].TimeForNutLoss
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[2].TimeForNutLoss
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[4].TimeForNutLoss
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[6].TimeForNutLoss
-      value: 110
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[7].TimeForNutLoss
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[8].TimeForNutLoss
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[9].TimeForNutLoss
-      value: 75
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[0].SkillPointRewarded
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[1].SkillPointRewarded
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[2].SkillPointRewarded
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[4].SkillPointRewarded
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[5].SkillPointRewarded
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[8].SkillPointRewarded
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[9].SkillPointRewarded
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[0].EnemySets.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[4].EnemySets.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[6].EnemySets.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[7].EnemySets.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[8].EnemySets.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[9].EnemySets.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[0].EnemySets.Array.data[0].HitCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[0].EnemySets.Array.data[1].HitCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[6].EnemySets.Array.data[0].HitCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[6].EnemySets.Array.data[1].HitCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[7].EnemySets.Array.data[0].HitCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[7].EnemySets.Array.data[1].HitCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[0].EnemySets.Array.data[0].EnemyName
-      value: Beetle
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[0].EnemySets.Array.data[0].NextEnemy
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[0].EnemySets.Array.data[1].EnemyName
-      value: Water Snake
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[0].EnemySets.Array.data[1].NextEnemy
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[0].EnemySets.Array.data[2].EnemyName
-      value: Fire Snake
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[0].EnemySets.Array.data[2].NextEnemy
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[1].EnemySets.Array.data[0].EnemyName
-      value: Snowman
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[2].EnemySets.Array.data[0].EnemyName
-      value: Snowmen
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[3].EnemySets.Array.data[0].EnemyName
-      value: Beetles
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[4].EnemySets.Array.data[0].EnemyName
-      value: Flame Beetles
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[4].EnemySets.Array.data[0].NextEnemy
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[4].EnemySets.Array.data[1].EnemyName
-      value: Beetle King
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[4].EnemySets.Array.data[1].NextEnemy
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[5].EnemySets.Array.data[0].EnemyName
-      value: Ooze
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[5].EnemySets.Array.data[1].EnemyName
-      value: Oozes
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[6].EnemySets.Array.data[0].EnemyName
-      value: Balloon Mouse
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[6].EnemySets.Array.data[0].NextEnemy
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[6].EnemySets.Array.data[1].EnemyName
-      value: Sitting Mouse
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[6].EnemySets.Array.data[1].NextEnemy
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[7].EnemySets.Array.data[0].EnemyName
-      value: Beetle
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[7].EnemySets.Array.data[0].NextEnemy
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[7].EnemySets.Array.data[1].EnemyName
-      value: Snowman
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[7].EnemySets.Array.data[1].NextEnemy
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[7].EnemySets.Array.data[2].EnemyName
-      value: Ballon Mouse
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[7].EnemySets.Array.data[2].NextEnemy
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[8].EnemySets.Array.data[0].EnemyName
-      value: Rats
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[8].EnemySets.Array.data[0].NextEnemy
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[8].EnemySets.Array.data[2].EnemyName
-      value: Rats
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[8].EnemySets.Array.data[2].NextEnemy
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[9].EnemySets.Array.data[0].EnemyName
-      value: Leaf Snake
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[9].EnemySets.Array.data[0].NextEnemy
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[9].EnemySets.Array.data[1].EnemyName
-      value: Water Snake
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[9].EnemySets.Array.data[1].NextEnemy
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[9].EnemySets.Array.data[2].EnemyName
-      value: Fire Snake
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[9].EnemySets.Array.data[2].NextEnemy
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[0].EnemySets.Array.data[0].HitGroupType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[6].EnemySets.Array.data[0].HitGroupType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[7].EnemySets.Array.data[0].HitGroupType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[0].EnemySets.Array.data[0].StateChangeType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[0].EnemySets.Array.data[1].StateChangeType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[4].EnemySets.Array.data[0].StateChangeType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[6].EnemySets.Array.data[0].StateChangeType
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[6].EnemySets.Array.data[1].StateChangeType
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[7].EnemySets.Array.data[0].StateChangeType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[7].EnemySets.Array.data[1].StateChangeType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[7].EnemySets.Array.data[2].StateChangeType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[8].EnemySets.Array.data[0].StateChangeType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[8].EnemySets.Array.data[2].StateChangeType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[9].EnemySets.Array.data[0].StateChangeType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[9].EnemySets.Array.data[1].StateChangeType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[9].EnemySets.Array.data[2].StateChangeType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[0].EnemySets.Array.data[0].HealthPercentage
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[0].EnemySets.Array.data[1].HealthPercentage
-      value: 33
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[8].EnemySets.Array.data[2].HealthPercentage
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[9].EnemySets.Array.data[0].HealthPercentage
-      value: 66
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[9].EnemySets.Array.data[1].HealthPercentage
-      value: 33
-      objectReference: {fileID: 0}
-    - target: {fileID: 2215918797181028561, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
-      propertyPath: enemyOrder.Array.data[9].EnemySets.Array.data[2].HealthPercentage
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4957443560608260350, guid: 57db7bd34a4e14678a8d118dd0d7e1b7, type: 3}
       propertyPath: m_Name
       value: EnemyManager
