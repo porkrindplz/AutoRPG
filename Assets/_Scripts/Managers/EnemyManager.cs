@@ -16,6 +16,7 @@ namespace _Scripts.Managers
     
     public class EnemyManager : Utilities.Singleton<EnemyManager>
     {
+        public event System.Action<Enemy> OnAfterEnemySpawned;
         public event System.Action<Enemy> OnEnemySpawned;
         
         
@@ -145,7 +146,7 @@ namespace _Scripts.Managers
             
             enemyPanel.GetComponent<EntityBehaviour>().Entity = newEnemyStats;
             enemyPanel.GetComponent<CharacterAnimationController>().EntityImageRect.GetComponent<Image>().sprite = newEnemyStats.Sprite;
-            
+
             //DestroyImmediate(enemyPanel.GetComponent<EnemyAI>());
 
 
@@ -182,6 +183,8 @@ namespace _Scripts.Managers
             
             OnEnemySpawned?.Invoke(newEnemyStats);
             
+            Logger.Log($"{newEnemyStats.ReceivedModifiers.Fire} {newEnemyStats.ReceivedModifiers.Water} {newEnemyStats.ReceivedModifiers.Leaf} {newEnemyStats.ReceivedModifiers.Lightning} {newEnemyStats.ReceivedModifiers.Shadow}");
+            
             // If there is an action to execute right away, then do it
             if (newEnemyStats.FirstAction != AttackType.None)
             {
@@ -192,6 +195,8 @@ namespace _Scripts.Managers
 
             Logger.Log(enemyAi.weights.Count.ToString());
             UpdateNextEnemy();
+            OnAfterEnemySpawned?.Invoke(CurrentEnemy.Entity as Enemy);
+
         }
 
         private void UpdateNextEnemy()

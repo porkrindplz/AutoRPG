@@ -4,6 +4,7 @@ using _Scripts.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Logger = _Scripts.Utilities.Logger;
 
 namespace _Scripts.UI
 {
@@ -22,9 +23,11 @@ namespace _Scripts.UI
 
         [SerializeField] private RectTransform tutorialRect;
         [SerializeField] private TextMeshProUGUI tutorialText;
+        Camera mainCamera;
         protected override void Awake()
         {
             base.Awake();
+            mainCamera = Camera.main;
             HideToolTip();
             GameManager.Instance.OnBeforeGameStateChanged += (state, gameState) =>
             {
@@ -113,7 +116,8 @@ namespace _Scripts.UI
             if(toolTipRect.gameObject.activeSelf)
             {
                 //toolTipRect.position = Input.mousePosition;
-                Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector3 worldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+                worldPosition.z = 0;
 
                 toolTipRect.position = worldPosition;
             }
@@ -121,6 +125,7 @@ namespace _Scripts.UI
         }
         public void ShowTutorial(int tipIndex)
         {
+            Logger.Log("Showing TUtorial");
             ActiveTutorial = Tutorials[tipIndex];
             tutorialRect.gameObject.SetActive(true);
 
@@ -129,6 +134,7 @@ namespace _Scripts.UI
         
         public void HideTutorial()
         {
+            Logger.Log("Hiding tutorial");
             tutorialText.text = "";
             ActiveTutorial = null;
             tutorialRect.gameObject.SetActive(false);

@@ -47,7 +47,7 @@ MonoBehaviour:
   _mainVolume: 0.5
   _sfxVolume: 1
   _musicVolume: 0.5
-  _musicTransitionDuration: 2
+  _musicTransitionDuration: 1
   MenuTracks:
   - {fileID: 8300000, guid: dae4f6bee1f032a46a918d05c08bcaca, type: 3}
   StoryTracks:

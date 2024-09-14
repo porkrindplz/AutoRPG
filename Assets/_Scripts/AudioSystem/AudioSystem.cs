@@ -93,7 +93,7 @@ namespace __Scripts.Systems
             GameManager.Instance.OnAction += PlayActionSound;
             
             GameManager.Instance.OnBeforeGameStateChanged += OnStateChanged;
-            EnemyManager.Instance.OnEnemySpawned += OnEnemyChanged;
+            EnemyManager.Instance.OnAfterEnemySpawned += OnEnemyChanged;
 
             _menuSources = new AudioSource[MenuTracks.Length];
             for (int i = 0; i < MenuTracks.Length; i++)

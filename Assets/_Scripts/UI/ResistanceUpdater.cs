@@ -21,29 +21,28 @@ namespace _Scripts.UI
         
             foreach (RectTransform resistance in resistancePanel.GetComponentsInChildren<RectTransform>())
             {
-                if (resistance.name != "Resistances")
+                if (resistance.name != "Resistances"&&resistance.name !="Indicator")
                     resistances.Add(resistance);
             }
         }
         private void OnEnable()
         {
-            GameManager.Instance.EnemyManager.OnEnemySpawned += CheckModifierMemory;
+            GameManager.Instance.EnemyManager.OnAfterEnemySpawned += CheckModifierMemory;
             GameManager.Instance.OnAction += UpdateEnemyResistances;
-            GameManager.Instance.OnUpgraded+= UpdatePlayerResistances;
         }
     
         private void OnDisable()
         {
             if (GameManager.Instance == null) return;
             GameManager.Instance.OnAction -= UpdateEnemyResistances;
-            GameManager.Instance.OnUpgraded -= UpdatePlayerResistances;
-            GameManager.Instance.EnemyManager.OnEnemySpawned -= CheckModifierMemory;
+            GameManager.Instance.EnemyManager.OnAfterEnemySpawned -= CheckModifierMemory;
         }
 
         void CheckModifierMemory(Enemy enemy)
         {
             if( enemy == null)
                 return;
+            Logger.Log("Checking memory for " + enemy.Name);
             _entity = GetComponent<EntityBehaviour>().Entity;
 
             //if enemy name is in dictionary, use modifier memory to populate resistances
@@ -67,6 +66,13 @@ namespace _Scripts.UI
             {
 
                 ModifierMemory.Add(enemy.Name, GenerateCleanChart());
+                foreach (RectTransform resistance in resistances)
+                {
+                    string type = resistance.name;
+                    Logger.Log("Type is " + type);
+                    UpdateResistanceIndicators(type,Color.black);
+                }
+
             }
         }
         
@@ -165,20 +171,6 @@ namespace _Scripts.UI
 
         }
         
-        private void UpdatePlayerResistances(UpgradeTree tree, Upgrade upgrade)
-        {
-            return;
-            //_entity = GetComponent<EntityBehaviour>().Entity;
-            
-            if(upgrade.UpgradeEffects == null)
-                return;
-            
-
-            if (_entity is Player player)
-            {
-                //Update once resistances are in for player
-            }
-        }
         private Color GetModifierColor(ModifierType type)
         {
             switch (type)
@@ -217,6 +209,7 @@ namespace _Scripts.UI
         
         public void GenerateToolTip(string type)
         {
+            Logger.Log("Generate tooltip");
             string message = "";
             _entity = GetComponent<EntityBehaviour>().Entity;
             var name = _entity is Enemy enemy ? enemy.Name : ""; 
