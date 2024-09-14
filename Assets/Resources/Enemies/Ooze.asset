@@ -16,10 +16,10 @@ MonoBehaviour:
   maxHealth: 500
   maxMagic: 100
   baseAtk: 7
-  baseDef: 14
-  baseMagicAtk: 0
+  baseDef: 9
+  baseMagicAtk: 5
   speed: 50
-  actions: 0900000000000000
+  actions: 0c00000000000000
   actionWeights:
   - 5
   - 2

@@ -76,6 +76,12 @@ public class AutoAction : MonoBehaviour
         {
             ActionQueue.Clear();
             enemyAi = GetComponent<EnemyAI>();
+            if (_actionCoroutine != null)
+            {
+                StopCoroutine(_actionCoroutine);
+                _actionCoroutine = null;
+            }
+
             _timer = 0;
             var currGroup = EnemyManager.Instance.GetCurrentGroup();
             _nutsLostPerUpdateInterval = 0.5*currGroup.MinNutsWon / (currGroup.TimeForNutLoss) *  (float)_nutUpdateInterval;

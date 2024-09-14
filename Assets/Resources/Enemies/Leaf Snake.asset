@@ -19,19 +19,19 @@ MonoBehaviour:
   baseDef: 5
   baseMagicAtk: 8
   speed: 65
-  actions: 000000000000000001000000
+  actions: 000000000100000006000000
   actionWeights:
   - 2
   - 5
   - 2
   sprite: {fileID: 2081136026, guid: 848492a72b468c64f8b85ecc4412ecae, type: 3}
   Modifiers:
-    Melee: 0
-    Ranged: 0
-    Aoe: 2
-    Fire: 0
-    Water: 0
-    Leaf: 0
+    Melee: 3
+    Ranged: 2
+    Aoe: 3
+    Fire: 2
+    Water: 3
+    Leaf: 5
     Lightning: 3
     Shadow: 3
-  startingAction: 0
+  startingAction: 15

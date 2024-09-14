@@ -16,20 +16,21 @@ MonoBehaviour:
   maxHealth: 250
   maxMagic: 10
   baseAtk: 5
-  baseDef: 3
+  baseDef: 20
   baseMagicAtk: 0
   speed: 50
-  actions: 00000000
+  actions: 0000000010000000
   actionWeights:
   - 4
+  - 0.75
   sprite: {fileID: 21300000, guid: 43e7b6afd555646caad1d587d5dcb516, type: 3}
   Modifiers:
     Melee: 4
     Ranged: 4
-    Aoe: 3
+    Aoe: 4
     Fire: 4
     Water: 2
     Leaf: 4
     Lightning: 0
     Shadow: 0
-  startingAction: 14
+  startingAction: 16

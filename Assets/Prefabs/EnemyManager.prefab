@@ -84,6 +84,18 @@ MonoBehaviour:
     TimeForNutLoss: 25
   - EnemySets:
     - NextEnemy: -1
+      EnemyName: Beetle
+      StateChangeType: 0
+      Timer: 0
+      HealthPercentage: 33
+      HitCount: 0
+      HitGroupType: 0
+    ShareHp: 0
+    SkillPointRewarded: 0
+    MinNutsWon: 10
+    TimeForNutLoss: 15
+  - EnemySets:
+    - NextEnemy: -1
       EnemyName: Snowmen
       StateChangeType: 0
       Timer: 0

@@ -112,7 +112,10 @@ namespace _Scripts.UI
         {
             if(toolTipRect.gameObject.activeSelf)
             {
-                toolTipRect.position = Input.mousePosition;
+                //toolTipRect.position = Input.mousePosition;
+                Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                toolTipRect.position = worldPosition;
             }
 
         }
@@ -143,6 +146,7 @@ namespace _Scripts.UI
             toolTipText.text = message;
             // CURSED CODE
             toolTipRect.position = Input.mousePosition;
+            //toolTipRect.position = Input.mousePosition;
             if (toolTipRect.position.x > 640)
             {
                 toolTipRect.transform.localScale = new Vector3(-1, 1, 1);

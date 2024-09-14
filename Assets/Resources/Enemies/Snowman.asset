@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Snowman
   m_EditorClassIdentifier: 
   name: Snowman
-  maxHealth: 1250
+  maxHealth: 900
   maxMagic: 10
-  baseAtk: 60
+  baseAtk: 6
   baseDef: 3
   baseMagicAtk: 9
   speed: 35

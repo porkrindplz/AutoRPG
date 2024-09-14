@@ -131,7 +131,7 @@ namespace _Scripts.Managers
             }
             
             // Carry over hp 
-            if (enemyOrder[EnemyIndex].ShareHp && existingEnemy.Entity != null)
+            if (enemyOrder[EnemyIndex].ShareHp && existingEnemy.Entity != null && enemyOrder[EnemyIndex].CurrentEnemy > 0)
             {
                 newEnemyStats.CurrentHealth = existingEnemy.Entity.CurrentHealth;
                 newEnemyStats.CurrentMagic = existingEnemy.Entity.CurrentMagic;

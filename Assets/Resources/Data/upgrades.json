@@ -175,7 +175,7 @@
       {
         "Id": "enchant",
         "Name": "Enchant",
-        "Description": "Allows sword to break through elemental shields. Uses whatever element is unlocked",
+        "Description": "Allows sword to break through elemental shields, but also does 0 damage. Uses whatever element is unlocked",
         "MaxUpgrades": 1,
         "Prerequisites": ["fireball", "water", "leaf"],
         "PrerequisiteType": "or",

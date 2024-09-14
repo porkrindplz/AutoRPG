@@ -56,9 +56,14 @@ namespace _Scripts.Actions
             dmg *= upgradeModifiers;
             dmg *= GetShieldModifier(actee);
             dmg *= GetModifier(acteeE);
+
+            if (GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("enchant") > 0)
+            {
+                dmg *= 0;
+            }
             
             #if UNITY_EDITOR
-            if (GameManager.Instance.MultDamage && actorE is Player) dmg *= 10;            
+            if (GameManager.Instance.MultDamage && actorE is Player) dmg *= 5;            
             #endif
 
             // Make the numbers bigger so no decimals
