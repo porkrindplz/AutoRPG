@@ -6,6 +6,7 @@ using _Scripts.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
+using Logger = _Scripts.Utilities.Logger;
 
 namespace _Scripts.UI
 {

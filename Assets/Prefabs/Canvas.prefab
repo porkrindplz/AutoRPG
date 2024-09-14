@@ -12270,7 +12270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textPrefab: {fileID: 9219365534660583725, guid: 2ee2c8b503548ef449fac0928ae6c2e8, type: 3}
-  shiftDistance: 100
+  shiftDistance: 1
 --- !u!1 &5237389698535078570
 GameObject:
   m_ObjectHideFlags: 0

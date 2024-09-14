@@ -47,12 +47,28 @@ namespace _Scripts.UI
                 }
                 if(GameManager.Instance.PlayStats.TotalVictories == 1 && Tutorials.Length > tutorialIndex)
                 {
-                    ShowTutorial(2);
+                    if(GameManager.Instance.AllTrees.Staff.Upgrades[0].Level > 0)
+                    {
+                        tutorialIndex++;
+                    }
+                    else
+                    {
+                        ShowTutorial(2);
+                    }
                 }
 
                 if (GameManager.Instance.PlayStats.TotalVictories == 2 && Tutorials.Length > tutorialIndex)
                 {
-                    ShowTutorial(3);
+                    if (GameManager.Instance.AllTrees.Sword.Upgrades[2].Level > 0
+                        || GameManager.Instance.AllTrees.Staff.Upgrades[3].Level > 0
+                        || GameManager.Instance.AllTrees.Slingshot.Upgrades[1].Level>0)
+                    {
+                        tutorialIndex++;
+                    }
+                    else
+                    {
+                        ShowTutorial(3);
+                    }
                 }
             }
         }
