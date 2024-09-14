@@ -6169,7 +6169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1462290807836486091
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6192,10 +6192,10 @@ RectTransform:
   - {fileID: 6738211308218991701}
   m_Father: {fileID: 2564664962798379215}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 284, y: -278.52942}
+  m_SizeDelta: {x: 568, y: 557.05884}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3768644624817458899
 CanvasRenderer:
@@ -9620,7 +9620,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1950832400063707752
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9642,10 +9642,10 @@ RectTransform:
   - {fileID: 3274490180548015115}
   m_Father: {fileID: 2564664962798379215}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 284, y: -278.52942}
-  m_SizeDelta: {x: 568, y: 557.05884}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5592320434193579337
 CanvasRenderer:
@@ -14699,15 +14699,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Health
+  m_text: 'BEETLE
 
-    Magic
-
-    Attack
-
-    Defence
-
-    Speed'
+    Health: 600/600'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bce694661dc5c774eaed7be4fff92214, type: 2}
   m_sharedMaterial: {fileID: 5070301412218342672, guid: bce694661dc5c774eaed7be4fff92214, type: 2}

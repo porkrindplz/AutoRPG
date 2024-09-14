@@ -19,10 +19,11 @@ MonoBehaviour:
   baseDef: 3
   baseMagicAtk: 8
   speed: 60
-  actions: 000000000c000000
+  actions: 000000000c0000000e000000
   actionWeights:
   - 2
   - 5
+  - 0.75
   sprite: {fileID: -1144219536, guid: 848492a72b468c64f8b85ecc4412ecae, type: 3}
   Modifiers:
     Melee: 2

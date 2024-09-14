@@ -94,9 +94,10 @@ namespace _Scripts.Actions
         private double CheckShieldBreaks(EntityBehaviour actee)
         {
             // Check for enchant modifier for shield breaks
-            if (GameAction.AttackGroupType != AttackGroupType.Melee ||
+            if (GameAction.AttackGroupType is AttackGroupType.Magic or AttackGroupType.Ranged ||
                 GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("enchant") <= 0) return 1;
             
+
             Debug.Log("Elemental attack, attempting to shield break");
             if (GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("fireball") > 0 &&
                 actee.HasActiveEffect(ActiveEffectType.ShieldLeaf))

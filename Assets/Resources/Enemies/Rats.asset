@@ -13,23 +13,23 @@ MonoBehaviour:
   m_Name: Rats
   m_EditorClassIdentifier: 
   name: Rats
-  maxHealth: 1500
+  maxHealth: 1175
   maxMagic: 10
-  baseAtk: 5
-  baseDef: 3
-  baseMagicAtk: 0
+  baseAtk: 8
+  baseDef: 6
+  baseMagicAtk: 4
   speed: 35
-  actions: 000000000c000000
+  actions: 0000000006000000
   actionWeights:
   - 2
   - 5
   sprite: {fileID: 21300000, guid: 0c61e2152286540da8f1d8bbee7a7477, type: 3}
   Modifiers:
     Melee: 0
-    Ranged: 3
-    Aoe: 2
+    Ranged: 0
+    Aoe: 3
     Fire: 2
-    Water: 5
+    Water: 3
     Leaf: 3
     Lightning: 3
     Shadow: 3

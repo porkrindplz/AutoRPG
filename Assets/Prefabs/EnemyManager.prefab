@@ -191,7 +191,7 @@ MonoBehaviour:
       HitCount: 0
       HitGroupType: 0
     - NextEnemy: -1
-      EnemyName: Rat King
+      EnemyName: Rats
       StateChangeType: 0
       Timer: 0
       HealthPercentage: 25

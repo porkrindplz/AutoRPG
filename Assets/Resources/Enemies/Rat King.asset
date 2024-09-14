@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa013173c7942fc8f530f0a4a842b32, type: 3}
   m_Name: Rat King
   m_EditorClassIdentifier: 
-  name: Rats
+  name: Rat King
   maxHealth: 1500
   maxMagic: 10
-  baseAtk: 5
-  baseDef: 3
+  baseAtk: 9
+  baseDef: 9
   baseMagicAtk: 0
   speed: 35
-  actions: 000000000c000000
+  actions: 0000000005000000
   actionWeights:
   - 2
   - 5
   sprite: {fileID: -780616269, guid: cb19b8d95dd574b03a25379454eda9c6, type: 3}
   Modifiers:
-    Melee: 0
-    Ranged: 3
+    Melee: 3
+    Ranged: 0
     Aoe: 2
-    Fire: 2
-    Water: 5
+    Fire: 4
+    Water: 2
     Leaf: 3
     Lightning: 3
     Shadow: 3

@@ -71,14 +71,14 @@ namespace _Scripts.UI
                 (entityBehaviour.Entity is Enemy && isPlayer)) return;
             if (entityBehaviour.Entity is null) return;
             
-            var name = entityBehaviour.Entity is Enemy enemy ? enemy.Name : "ROLIG"; 
-            
+            var name = entityBehaviour.Entity is Enemy enemy ? enemy.Name : "ROLIG";
+
             statText.text = $"{name.ToUpper()}\n" +
-                            $"Health: {(int)entityBehaviour.Entity.CurrentHealth}/{(int)entityBehaviour.Entity.MaxHealth}\n" +
+                            $"Health: {(int)entityBehaviour.Entity.CurrentHealth}/{(int)entityBehaviour.Entity.MaxHealth}\n";
                             //$"Magic: {(int)entityBehaviour.Entity.CurrentMagic}/{(int)entityBehaviour.Entity.MaxMagic}\n" +
-                            $"Attack: {(int)entityBehaviour.Entity.BaseAtk}\n" +
-                            $"Defense: {(int)entityBehaviour.Entity.GetDefense()}\n" +
-                            $"Speed: {entityBehaviour.Entity.GetSpeed()}";
+                            //$"Attack: {(int)entityBehaviour.Entity.BaseAtk}\n" +
+                            //$"Defense: {(int)entityBehaviour.Entity.GetDefense()}\n" +
+                            //$"Speed: {entityBehaviour.Entity.GetSpeed()}";
             var resText = "Resistances\n";
             /*foreach (var element in Enum.GetValues(typeof(ElementsType)).Cast<ElementsType>())
             {

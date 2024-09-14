@@ -18,7 +18,7 @@ public class PlayerInit : MonoBehaviour
         AnimationController = GetComponent<CharacterAnimationController>();
         GameManager.Instance.OnBeforeGameStateChanged += (_, gameState) =>
         {
-            if (gameState == EGameState.SetupGame)
+            if (gameState == EGameState.MainMenu)
             {
                 playerEntity.Entity = new Player
                 {
@@ -36,16 +36,8 @@ public class PlayerInit : MonoBehaviour
                     UsedSkillPoints = 0,
 
                 };
-                playerEntity.Entity.OnDeath += _ =>
-                {
-                    GameManager.Instance.PlayStats.AddDefeat();
-                    GameManager.Instance.PlayStats.UpdateTimePlayed();
-                    GameManager.Instance.TransmitPlayStats();
-
-                    AnimationController.DeathAnimation(playerEntity.Entity);
-                    StoryManager.Instance.SetStory(StoryType.GameOver);
-                    GameManager.Instance.ChangeGameState(EGameState.Story);
-                };
+                playerEntity.Entity.OnDeath -= OnEntityOnDeath;
+                playerEntity.Entity.OnDeath += OnEntityOnDeath;
             }
         };
 
@@ -82,6 +74,17 @@ public class PlayerInit : MonoBehaviour
             playerEntity.Entity.ReceivedModifiers.Water = ModifierType.Neutral;
         };
 
+    }
+
+    private void OnEntityOnDeath(Entity _)
+    {
+        GameManager.Instance.PlayStats.AddDefeat();
+        GameManager.Instance.PlayStats.UpdateTimePlayed();
+        GameManager.Instance.TransmitPlayStats();
+
+        AnimationController.DeathAnimation(playerEntity.Entity);
+        StoryManager.Instance.SetStory(StoryType.GameOver);
+        GameManager.Instance.ChangeGameState(EGameState.Story);
     }
 
     // Update is called once per frame

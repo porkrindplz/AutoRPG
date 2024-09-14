@@ -26,6 +26,7 @@ public enum EGameState
     Paused,
     Story,
     Credits,
+    Retry,
 }
 
 public class PlayStats
@@ -186,6 +187,9 @@ public class GameManager : Singleton<GameManager>
             case EGameState.SetupGame:
                 HandleSetupGame();
                 break;
+            case EGameState.Retry:
+                HandleRetry();
+                break;
             case EGameState.SpawnEnemy:
                 HandleSpawnEnemy();
                 break;
@@ -214,6 +218,15 @@ public class GameManager : Singleton<GameManager>
                 HandleCredits();
                 break;
         }
+    }
+
+    private void HandleRetry()
+    {
+        Player.Entity.CurrentHealth = Player.Entity.MaxHealth;
+        var p = (Player)Player.Entity;
+        AllTrees.Reset();
+        p.UsedSkillPoints = 0;
+        ChangeGameState(EGameState.SetupGame);
     }
 
     private void HandleMainMenu()

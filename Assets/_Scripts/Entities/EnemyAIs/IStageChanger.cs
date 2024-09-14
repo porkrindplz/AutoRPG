@@ -50,8 +50,8 @@ namespace _Scripts.Entities.EnemyAIs
             var healthPercentage = (_entityBehaviour.Entity.CurrentHealth / _entityBehaviour.Entity.MaxHealth) * 100;
             if (healthPercentage < healthPercentageToChange)
             {
+                Destroy(this);
                 ChangeStage?.Invoke();
-   
             }
         }
     }
