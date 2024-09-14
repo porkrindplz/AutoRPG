@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 2
   TimeToExecute: 3
-  QueueIcon: {fileID: 21300000, guid: 47365203c81f04ca7851515a5a413027, type: 3}
+  QueueIcon: {fileID: 21300000, guid: 0483c310b6c5f4562a2fa0c7da218001, type: 3}
   Element: 0
   AttackGroupType: 0
   IsSelfTargetting: 1

@@ -26,6 +26,13 @@ namespace _Scripts.UI
         {
             base.Awake();
             HideToolTip();
+            GameManager.Instance.OnBeforeGameStateChanged += (state, gameState) =>
+            {
+                if (gameState == EGameState.MainMenu)
+                {
+                    tutorialIndex = 0;
+                }
+            };
         }
 
         public bool IsTutorialActive() => tutorialRect.gameObject.activeSelf;

@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using __Scripts.Systems;
 using _Scripts.Entities;
 using _Scripts.Managers;
 using _Scripts.Models;
 using _Scripts.UI;
 using _Scripts.Utilities;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -79,7 +81,8 @@ namespace _Scripts.Actions
                 if (tree.Name == slotTreeNames[i])
                 {
                     actionSlots[i] = null;
-                    Buttons[i].gameObject.GetComponent<Image>().sprite = null;
+                    Buttons[i].GetComponentsInChildren<Image>()[1].sprite = null;
+                    Buttons[i].GetComponentsInChildren<Image>()[1].color = new Color(255,255,255, 0);
                 }
             }
         }
@@ -100,7 +103,8 @@ namespace _Scripts.Actions
                     {
                         actionSlots[i] = (highestLevelAction,
                             new CountdownTimer((float)highestLevelAction.TimeToExecute * currentEntity.Entity.GetSpeedMultiplier()));
-                        Buttons[i].gameObject.GetComponent<Image>().sprite = actionSlots[i].Value.action.QueueIcon;
+                        Buttons[i].GetComponentsInChildren<Image>()[1].sprite = actionSlots[i].Value.action.QueueIcon;
+                        Buttons[i].GetComponentsInChildren<Image>()[1].color = new Color(255,255,255, 1);
                     }
                 }
             }

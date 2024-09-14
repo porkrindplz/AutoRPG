@@ -50,10 +50,16 @@ namespace _Scripts.Managers
             _random = new Random();
             GameManager.Instance.OnBeforeGameStateChanged += (state, gameState) =>
             {
-                if (gameState == EGameState.SetupGame)
+                if (gameState == EGameState.MainMenu)
                 {
                     EnemyIndex = 0;
                 }
+
+                if (gameState == EGameState.PlayerDefeated)
+                {
+                    GetCurrentGroup().CurrentEnemy = 0;
+                }
+                
             };
             base.Awake();
         }
@@ -138,7 +144,7 @@ namespace _Scripts.Managers
             enemyPanel.GetComponent<EntityBehaviour>().Entity = newEnemyStats;
             enemyPanel.GetComponent<CharacterAnimationController>().EntityImageRect.GetComponent<Image>().sprite = newEnemyStats.Sprite;
             
-            DestroyImmediate(enemyPanel.GetComponent<EnemyAI>());
+            //DestroyImmediate(enemyPanel.GetComponent<EnemyAI>());
 
 
             
@@ -160,7 +166,7 @@ namespace _Scripts.Managers
             }*/
             //else
             //{
-                enemyPanel.AddComponent<EnemyAI>();
+               // enemyPanel.AddComponent<EnemyAI>();
             //}
 
             EnemyAI enemyAi = enemyPanel.GetComponent<EnemyAI>();
