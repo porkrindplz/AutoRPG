@@ -179,8 +179,8 @@ MonoBehaviour:
     - NextEnemy: 1
       EnemyName: Rats
       StateChangeType: 2
-      Timer: 50
-      HealthPercentage: 0
+      Timer: 0
+      HealthPercentage: 50
       HitCount: 0
       HitGroupType: 0
     - NextEnemy: 2
