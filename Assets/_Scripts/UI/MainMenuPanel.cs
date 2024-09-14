@@ -9,15 +9,18 @@ using UnityEngine.UI;
 public class MainMenuPanel : MonoBehaviour
 {
 [SerializeField] private Button StartButton;
+[SerializeField] private Button LeaderboardButton;
     public void OnEnable()
     {
         StartButton.onClick.AddListener(StartGame);
+        LeaderboardButton.onClick.AddListener(OpenLeaderboard);
         ScreenFade.Instance.FadeIn(2);
 
     }
     public void OnDisable()
     {
         StartButton.onClick.RemoveAllListeners();
+        LeaderboardButton.onClick.RemoveAllListeners();
     }
     
     public void PlayConfirmSound()
@@ -39,4 +42,9 @@ public class MainMenuPanel : MonoBehaviour
         gameObject.SetActive(false);
     }
     
+    void OpenLeaderboard()
+    {
+        GameManager.Instance.Leaderboard.gameObject.SetActive(true);
+        StartCoroutine(GameManager.Instance.LeaderboardSubmission());
+    }
 }

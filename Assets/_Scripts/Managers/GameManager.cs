@@ -9,6 +9,7 @@ using _Scripts.Actions;
 using _Scripts.Entities;
 using _Scripts.Managers;
 using _Scripts.Models;
+using _Scripts.Network;
 using _Scripts.UI;
 using Logger = _Scripts.Utilities.Logger;
 using Random = Unity.Mathematics.Random;
@@ -109,6 +110,7 @@ public class GameManager : Singleton<GameManager>
     public RectTransform VictoryPanel;
     public RectTransform GameOverPanel;
     public RectTransform StoryPanel;
+    public Leaderboard Leaderboard;
     [field:SerializeField]public EntityBehaviour Player { get; private set; }
     
     [field:SerializeField]public EGameState CurrentGameState { get; private set; }
@@ -305,6 +307,7 @@ public class GameManager : Singleton<GameManager>
     {
         yield return new WaitForSeconds(1);
         GameOverPanel.gameObject.SetActive(true);
+        StartCoroutine(LeaderboardSubmission());
     }
 
     private void HandleWalking()
@@ -332,8 +335,14 @@ public class GameManager : Singleton<GameManager>
 
     private void HandleCredits()
     {
-        
+        StartCoroutine(LeaderboardSubmission());
     }
+    public IEnumerator LeaderboardSubmission()
+    {
+        Leaderboard.gameObject.SetActive(true);
+        yield return StartCoroutine(Leaderboard.SubmitScoreRoutine(PlayStats.MostNuts));
+    }
+    
 
     private void DisableAllInput()
     {
