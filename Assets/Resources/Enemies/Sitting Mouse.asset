@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Sitting Mouse
   maxHealth: 1500
   maxMagic: 10
-  baseAtk: 10
+  baseAtk: 12
   baseDef: 3
   baseMagicAtk: 0
   speed: 50

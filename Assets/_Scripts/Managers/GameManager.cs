@@ -171,10 +171,6 @@ public class GameManager : Singleton<GameManager>
 
     protected void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            EnemyManager.Instance.SpawnEnemy();
-        }
     }
 
     public void ChangeGameState(EGameState newState)
@@ -255,7 +251,7 @@ public class GameManager : Singleton<GameManager>
     private void HandleSpawnEnemy()
     {
         DisableAllInput();
-        EnemyManager.Instance.SpawnEnemy();
+        EnemyManager.Instance.SpawnEnemy(true);
         
         ChangeGameState(EGameState.Playing);
     }

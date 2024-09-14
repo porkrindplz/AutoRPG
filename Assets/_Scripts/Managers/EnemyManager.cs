@@ -84,10 +84,11 @@ namespace _Scripts.Managers
             }
         }
 
-        public void SpawnEnemy()
+        public void SpawnEnemy(bool isFirst)
         {
             var nextEnemy = enemyOrder[EnemyIndex].GetCurrentEnemySet();
             var newEnemyStats = _allEnemies.Find(e => e.Name == nextEnemy.EnemyName).Copy();
+            
             
             GameManager.Instance.OnNutsChanged?.Invoke(newEnemyStats, (int)GetCurrentGroup().ActualNutsWon);
             
@@ -103,6 +104,12 @@ namespace _Scripts.Managers
                 
             }
             
+            // Carry over hp 
+            if (enemyOrder[EnemyIndex].ShareHp && existingEnemy.Entity != null && isFirst == false)
+            {
+                newEnemyStats.CurrentHealth = existingEnemy.Entity.CurrentHealth;
+                newEnemyStats.CurrentMagic = existingEnemy.Entity.CurrentMagic;
+            }
 
             switch (nextEnemy.StateChangeType)
             {
@@ -130,12 +137,7 @@ namespace _Scripts.Managers
                     throw new ArgumentOutOfRangeException();
             }
             
-            // Carry over hp 
-            if (enemyOrder[EnemyIndex].ShareHp && existingEnemy.Entity != null && enemyOrder[EnemyIndex].CurrentEnemy > 0)
-            {
-                newEnemyStats.CurrentHealth = existingEnemy.Entity.CurrentHealth;
-                newEnemyStats.CurrentMagic = existingEnemy.Entity.CurrentMagic;
-            }
+
             CurrentEnemy?.RemoveAllEffects();
 
             CurrentEnemy = existingEnemy;
@@ -203,7 +205,7 @@ namespace _Scripts.Managers
         {
             Logger.Log("Changing stage");
             enemyOrder[EnemyIndex].GoToNextEnemy();
-            SpawnEnemy();
+            SpawnEnemy(false);
         }
 
         private void OnEnemyDeath(Entity entity)
@@ -219,9 +221,15 @@ namespace _Scripts.Managers
                 GameManager.Instance.EnemyNuts = (int)currentNuts;    
                 GameManager.Instance.ChangeGameState(EGameState.EnemyGroupDefeated);    
             }
+            else if (entity.CurrentHealth <= 0 && GetCurrentGroup().ShareHp == true)
+            {
+                
+                GameManager.Instance.EnemyNuts = (int)currentNuts;    
+                GameManager.Instance.ChangeGameState(EGameState.EnemyGroupDefeated);    
+            }
             else
             {
-                SpawnEnemy();
+                SpawnEnemy(false);
             }
             
         }

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa013173c7942fc8f530f0a4a842b32, type: 3}
   m_Name: Hummingbird
   m_EditorClassIdentifier: 
-  name: Hummingbrid
+  name: Hummingbird
   maxHealth: 650
   maxMagic: 0
-  baseAtk: 5
-  baseDef: 3
+  baseAtk: 15
+  baseDef: 5
   baseMagicAtk: 7
   speed: 85
   actions: 010000000c0000000600000005000000
