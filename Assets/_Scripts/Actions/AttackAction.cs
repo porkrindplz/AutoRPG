@@ -39,7 +39,7 @@ namespace _Scripts.Actions
             }
             
             // Add +- 15% for randomness
-            dmg = GameManager.Instance.Random.NextDouble(dmg * 0.85, dmg * 1.15);
+            dmg = GameManager.Instance.Random.NextDouble(dmg * 0.90, dmg * 1.10);
 
             HandleEnemyShieldCast(actor);
             dmg *= CheckShieldBreaks(actee);
@@ -73,9 +73,11 @@ namespace _Scripts.Actions
 
         private double GetShieldModifier(EntityBehaviour actee)
         {
-            if (actee.Entity is Player && actee.HasActiveEffect(ActiveEffectType.Block) && GameAction.AttackGroupType == AttackGroupType.Melee)
+            if (actee.Entity is Player && actee.HasActiveEffect(ActiveEffectType.Block))
             {
-                return 1 - (StatConstants.Instance.ShieldAmount*GameManager.Instance.AllTrees.Shield.GetUpgradeLevel("block"));
+                var diff = (StatConstants.Instance.ShieldAmount *
+                            GameManager.Instance.AllTrees.Shield.GetUpgradeLevel("block"));
+                return 1 - diff;
             }
 
             return 1;

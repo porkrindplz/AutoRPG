@@ -18,8 +18,9 @@ namespace _Scripts.Actions
         public void Interact(EntityBehaviour actor, EntityBehaviour actee)
         {
             Debug.Log("Block");
-            _activeTimer = new CountdownTimer(StatConstants.Instance.ShieldTime);
-            actee.AddActiveEffect(new ActiveEffect(ActiveEffectType.Block, StatConstants.Instance.ShieldTime));
+            var time = StatConstants.Instance.ShieldTime * (1 + 0.20*GameManager.Instance.AllTrees.Sword.GetUpgradeLevel("block"));
+            _activeTimer = new CountdownTimer((float)time);
+            actee.AddActiveEffect(new ActiveEffect(ActiveEffectType.Block, (float)time));
             HasStarted = true;
             _activeTimer.Start();
         }

@@ -46,11 +46,13 @@ public class CharacterAnimationController : MonoBehaviour
         {
             animator.SetTrigger(("OnMagic"));
         }
-        else if(type.Contains("Block")||type.Contains("Shield"))
+        else if(type.Contains("Block")/*||type.Contains("Shield")*/)
         {
             animator.SetTrigger("OnBlock");
         }
         else animator.SetTrigger("OnAttack");
+
+        if (type.Contains("Shield")) return 0;
 
         return animator.GetCurrentAnimatorStateInfo(0).length;
     }

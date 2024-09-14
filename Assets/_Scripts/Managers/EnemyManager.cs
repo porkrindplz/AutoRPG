@@ -171,11 +171,7 @@ namespace _Scripts.Managers
 
             EnemyAI enemyAi = enemyPanel.GetComponent<EnemyAI>();
 
-            // If there is an action to execute right away, then do it
-            if (newEnemyStats.FirstAction != AttackType.None)
-            {
-                enemyPanel.GetComponent<AutoAction>().AddAction(newEnemyStats.FirstAction);
-            }
+
 
 
             enemyAi.weights = newEnemyStats.ActionWeights;
@@ -183,6 +179,14 @@ namespace _Scripts.Managers
             //autoAction.PopulateQueue();
             
             OnEnemySpawned?.Invoke(newEnemyStats);
+            
+            // If there is an action to execute right away, then do it
+            if (newEnemyStats.FirstAction != AttackType.None)
+            {
+                var autoAct = enemyPanel.GetComponent<AutoAction>();
+                autoAct.ActionQueue.Clear();
+                autoAct.AddAction(newEnemyStats.FirstAction);
+            }
 
             Logger.Log(enemyAi.weights.Count.ToString());
             UpdateNextEnemy();

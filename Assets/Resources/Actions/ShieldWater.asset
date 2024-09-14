@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShieldWater
   m_EditorClassIdentifier: 
   Name: 15
-  TimeToExecute: 5
+  TimeToExecute: 0
   QueueIcon: {fileID: 21300000, guid: ca2c734ec132247b98a76d5b6f6fafed, type: 3}
   Element: 2
   AttackGroupType: 3

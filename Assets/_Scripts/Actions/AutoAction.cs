@@ -12,6 +12,7 @@ using _Scripts.UI;
 using _Scripts.Utilities;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = System.Random;
 
 public class AutoAction : MonoBehaviour
@@ -20,6 +21,11 @@ public class AutoAction : MonoBehaviour
     [SerializeField] private EntityBehaviour currentEntity;
     [SerializeField] private EntityBehaviour opposingEntity;
     [SerializeField] private int maxQueuedActions = 3;
+    [SerializeField] private Image shieldImage;
+    [SerializeField] private Animator shieldAnimator;
+
+    // 0 is fire, 1 is leaf, 2 is water
+    [SerializeField] private List<Sprite> shieldSprites;
     
     public Queue<IGameAction> ActionQueue;
 
@@ -38,7 +44,7 @@ public class AutoAction : MonoBehaviour
     void Awake()
     {
         enemyAi = GetComponent<EnemyAI>();
-        
+        shieldImage.enabled = false;
         ActionQueue = new Queue<IGameAction>();
         AnimationController = GetComponent<CharacterAnimationController>();
     }
@@ -74,6 +80,7 @@ public class AutoAction : MonoBehaviour
             var currGroup = EnemyManager.Instance.GetCurrentGroup();
             _nutsLostPerUpdateInterval = 0.5*currGroup.MinNutsWon / (currGroup.TimeForNutLoss) *  (float)_nutUpdateInterval;
         };
+        
     }
 
     // Update is called once per frame
@@ -85,9 +92,14 @@ public class AutoAction : MonoBehaviour
         }
 
         // Only queue up attack if tooltips are disabled
-        if (ActionQueue.Count == 0 && !ToolTip.Instance.IsTutorialActive())
+        if (ActionQueue.Count == 0 && GameManager.Instance.CurrentGameState == EGameState.Playing && !ToolTip.Instance.IsTutorialActive())
         {
             AddAction();
+        }
+
+        if (currentEntity.Entity.ActiveEffects.Count == 0)
+        {
+            shieldImage.enabled = false;
         }
         
         //if (ActionQueue?.Peek().)
@@ -138,8 +150,25 @@ public class AutoAction : MonoBehaviour
         float animationTime = AnimationController.AttackAnimation(currentEntity, actee, processedAction);
         StartCoroutine(DelaySoundPlay(takenAction.GameAction.SoundEffects));
         yield return new WaitForSeconds(animationTime);
-            
+        
         processedAction?.Interact(currentEntity, actee);
+
+        if (takenAction.GameAction.Name is AttackType.ShieldFire)
+        {
+            shieldImage.sprite = shieldSprites[0];
+            shieldImage.enabled = true;
+        }
+        if (takenAction.GameAction.Name is AttackType.ShieldLeaf)
+        {
+            shieldImage.sprite = shieldSprites[1];
+            shieldImage.enabled = true;
+        }
+        if (takenAction.GameAction.Name is AttackType.ShieldWater)
+        {
+            shieldImage.sprite = shieldSprites[2];
+            shieldImage.enabled = true;
+        }
+        
         GameManager.Instance.OnAction?.Invoke(currentEntity, actee, processedAction);
         AddAction();
         _actionCoroutine = null;

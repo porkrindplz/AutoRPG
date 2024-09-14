@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShieldLeaf
   m_EditorClassIdentifier: 
   Name: 16
-  TimeToExecute: 5
+  TimeToExecute: 0
   QueueIcon: {fileID: 0}
   Element: 3
   AttackGroupType: 3

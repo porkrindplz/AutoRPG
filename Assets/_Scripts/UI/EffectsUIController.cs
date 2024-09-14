@@ -1,18 +1,20 @@
 using _Scripts.Entities;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _Scripts.UI
 {
     public class EffectsUIController : MonoBehaviour
     {
         [SerializeField] private EntityBehaviour entityBehaviour;
-        private TextMeshProUGUI text;
+        [SerializeField] private Image shieldImage;
         
         // Start is called before the first frame update
         void OnEnable()
         {
-            text = GetComponentInChildren<TextMeshProUGUI>();
+            
+            shieldImage.enabled = false;
 
             GameManager.Instance.OnBeforeGameStateChanged += (state, gameState) =>
             {
@@ -31,16 +33,11 @@ namespace _Scripts.UI
         {
             if(entityBehaviour.Entity.ActiveEffects.Count == 0)
             {
-                text.text = "";
+                shieldImage.enabled = false;
                 return;
             }
-            var s = "Effects:\n";
-            foreach (var effect in entityBehaviour.Entity.ActiveEffects)
-            {
-                s += effect.ActiveEffectType + "\n";
-            }
 
-            text.text = s;
+            shieldImage.enabled = true;
         }
 
         // Update is called once per frame
