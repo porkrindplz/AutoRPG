@@ -1,4 +1,5 @@
 using System;
+using _Scripts.Managers;
 using _Scripts.Models;
 using _Scripts.Utilities;
 using TMPro;
@@ -54,31 +55,41 @@ namespace _Scripts.UI
                 if(GameManager.Instance.PlayStats.TotalVictories == 0 && Tutorials.Length > tutorialIndex)
                 {
                     ShowTutorial(0);
+                    return;
                 }
                 if(GameManager.Instance.PlayStats.TotalVictories == 1 && Tutorials.Length > tutorialIndex)
                 {
-                    if(GameManager.Instance.AllTrees.Staff.Upgrades[0].Level > 0)
+                    if(GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("fireball")>0)
                     {
                         tutorialIndex++;
+                        return;
                     }
                     else
                     {
                         ShowTutorial(2);
+                        return;
                     }
                 }
 
                 if (GameManager.Instance.PlayStats.TotalVictories == 2 && Tutorials.Length > tutorialIndex)
                 {
-                    if (GameManager.Instance.AllTrees.Sword.Upgrades[2].Level > 0
-                        || GameManager.Instance.AllTrees.Staff.Upgrades[3].Level > 0
-                        || GameManager.Instance.AllTrees.Slingshot.Upgrades[1].Level>0)
+                    if (GameManager.Instance.AllTrees.Sword.GetUpgradeLevel("cross_slash") > 0
+                        || GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("aoe") > 0
+                        || GameManager.Instance.AllTrees.Slingshot.GetUpgradeLevel("multi_shot") > 0)
                     {
                         tutorialIndex++;
+                        return;
                     }
                     else
                     {
                         ShowTutorial(3);
+                        return;
                     }
+                }
+
+                if (EnemyManager.Instance.GetCurrentGroup().GetCurrentEnemy() == "Beetle King")
+                {
+                    ShowTutorial(4);
                 }
             }
         }
@@ -109,6 +120,15 @@ namespace _Scripts.UI
                 HideTutorial();
                 tutorialIndex++;
 
+            }
+
+            if (ActiveTutorial == Tutorials[4] &&
+                GameManager.Instance.AllTrees.Sword.GetUpgradeLevel("sword")>0 &&
+                GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("enchant")>0 &&
+                GameManager.Instance.AllTrees.Staff.GetUpgradeLevel("fireball")>0)
+            {
+                HideTutorial();
+                tutorialIndex++;
             }
         }
         protected void Update()

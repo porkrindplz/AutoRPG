@@ -1,8 +1,10 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using __Scripts.Systems;
 using JetBrains.Annotations;
+using UnityEngine;
 
 namespace _Scripts.Models
 {
@@ -29,7 +31,9 @@ namespace _Scripts.Models
     {
         public List<Upgrade> Upgrades;
         public string Name;
+        private bool active = true;
 
+        private float respecCooldown = 1.5f;
         /// <summary>
         /// Checks if the given hero's upgrades allows for the new upgrade to be chosen.
         /// Criteria is based on if the skill tree contains the given id, all its prereqs have been researched,
@@ -108,6 +112,15 @@ namespace _Scripts.Models
             ((Player)GameManager.Instance.Player.Entity).UsedSkillPoints -= pointsToGiveBack;
             Upgrades?.ForEach(u => u.NumOfUpgrades = 0);
             GameManager.Instance.OnResetTree?.Invoke(this);
+
+            GameManager.Instance.StartCoroutine(RespecCoroutine());
+        }
+        
+        IEnumerator RespecCoroutine()
+        {
+            active = false;
+            yield return new WaitForSecondsRealtime(respecCooldown);
+            active = true;
         }
 
         public int GetUpgradeLevel(string id)
@@ -118,7 +131,7 @@ namespace _Scripts.Models
         
         public Upgrade? TryUpgrade(string id)
         {
-            if (!CanUpgrade(id))
+            if (!CanUpgrade(id)|| !active)
             {
                 return null;
             }

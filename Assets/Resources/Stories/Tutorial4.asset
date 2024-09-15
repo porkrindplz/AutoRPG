@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811c9e099595d9d4f8b228ebf4cc6b47, type: 3}
+  m_Name: Tutorial4
+  m_EditorClassIdentifier: 
+  <Type>k__BackingField: 6
+  <Pages>k__BackingField:
+  - text: "Some enemies cast a strong Elemental Shield that nullifies all attacks.\n\nEnchant
+      your Sword with the Element that is strong against the Elemental Shield type.
+      Unlock Fireball and Enchant in the Staff tab. Then make sure you have a sword
+      attack. \n\nThis will break the shield but will do no damage on its own."
+    image: {fileID: 0}
+  <NextState>k__BackingField: 3

@@ -571,6 +571,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e20a105867620304999be7c15184f0b8, type: 2}
   - {fileID: 11400000, guid: 43ffb8395e860a043b1c81a6729bce20, type: 2}
   - {fileID: 11400000, guid: acf2ce2efb6c5a9439c10d6e8d7fbf2c, type: 2}
+  - {fileID: 11400000, guid: 7eb48807527b5684996c8a2b1e0ab72d, type: 2}
   tutorialRect: {fileID: 214038189}
   tutorialText: {fileID: 1896200546}
 --- !u!4 &1764253825658119344 stripped
@@ -1192,6 +1193,10 @@ PrefabInstance:
     - target: {fileID: 3824572024709436059, guid: 092c755b846318648b410bdbf211eabd, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4045837052598784971, guid: 092c755b846318648b410bdbf211eabd, type: 3}
+      propertyPath: m_Color.a
+      value: 0.28235295
       objectReference: {fileID: 0}
     - target: {fileID: 4048563729454238757, guid: 092c755b846318648b410bdbf211eabd, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1939,6 +1944,10 @@ PrefabInstance:
     - target: {fileID: 1592071895469371670, guid: ad77d319c2e5a8945a47ac8b003039c2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2729457046035996571, guid: ad77d319c2e5a8945a47ac8b003039c2, type: 3}
+      propertyPath: MultDamage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2729457046035996571, guid: ad77d319c2e5a8945a47ac8b003039c2, type: 3}
       propertyPath: StoryPanel

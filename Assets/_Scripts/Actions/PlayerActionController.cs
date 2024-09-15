@@ -83,9 +83,19 @@ namespace _Scripts.Actions
                     actionSlots[i] = null;
                     Buttons[i].GetComponentsInChildren<Image>()[1].sprite = null;
                     Buttons[i].GetComponentsInChildren<Image>()[1].color = new Color(255,255,255, 0);
+                    
+                    // var tempSlot = actionSlots[i];
+                    // tempSlot = (null, new CountdownTimer(treeCooldown));
+                    // actionSlots[i]= tempSlot;
+                    //
+                    // StartCoroutine(Cooldown(2 * currentEntity.Entity.GetSpeedMultiplier(), cooldowns[i]));
+                    
                 }
             }
         }
+        
+        float treeCooldown = 2;
+        
 
         private void OnUpgraded(UpgradeTree tree, Upgrade obj)
         {
@@ -105,6 +115,7 @@ namespace _Scripts.Actions
                             new CountdownTimer((float)highestLevelAction.TimeToExecute * currentEntity.Entity.GetSpeedMultiplier()));
                         Buttons[i].GetComponentsInChildren<Image>()[1].sprite = actionSlots[i].Value.action.QueueIcon;
                         Buttons[i].GetComponentsInChildren<Image>()[1].color = new Color(255,255,255, 1);
+
                     }
                 }
             }

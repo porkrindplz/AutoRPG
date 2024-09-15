@@ -236,6 +236,8 @@ public class GameManager : Singleton<GameManager>
         DisableAllInput();
         //Enable Main Menu Inputs
         MainMenuPanel.gameObject.SetActive(true);
+        if(ScreenFade.Instance.GetComponent<Image>().color.a > 0)
+            ScreenFade.Instance.FadeIn(1);
     }
 
     private void HandleSetupGame()
@@ -338,7 +340,10 @@ public class GameManager : Singleton<GameManager>
 
     private void HandleCredits()
     {
+        if(ScreenFade.Instance.GetComponent<Image>().color.a > 0)
+            ScreenFade.Instance.FadeIn(1);
         StartCoroutine(LeaderboardSubmission());
+        ChangeGameState(EGameState.MainMenu);
     }
     public IEnumerator LeaderboardSubmission()
     {

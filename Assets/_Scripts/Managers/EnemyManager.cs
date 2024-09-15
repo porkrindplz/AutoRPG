@@ -80,8 +80,8 @@ namespace _Scripts.Managers
             EnemyIndex++;
             if (EnemyIndex >= enemyOrder.Count())
             {
-                GameManager.Instance.ChangeGameState(EGameState.Story);
                 StoryManager.Instance.SetStory(StoryType.Ending);
+                GameManager.Instance.ChangeGameState(EGameState.Story);
             }
         }
 
