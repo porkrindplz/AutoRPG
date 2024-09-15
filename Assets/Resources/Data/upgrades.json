@@ -5,7 +5,7 @@
       {
         "Id": "block",
         "Name": "Block",
-        "Description": "Provides some protection against all types of damage. Each upgrade blocks +10% and lasts longer",
+        "Description": "Provides some protection against all damage. Each upgrade blocks +10%",
         "MaxUpgrades": 2,
         "Level": 1,
         "Prerequisites": [],
@@ -20,7 +20,7 @@
       {
         "Id": "resist_physical",
         "Name": "Resist Physical",
-        "Description": "Significantly reduces physical damage by 50%. TODO SEE IF THIS IS TOO MUCH",
+        "Description": "Significantly reduces physical damage by 50%.",
         "MaxUpgrades": 2,
         "Prerequisites": ["block"],
         "Children": [],
@@ -29,7 +29,7 @@
       {
         "Id": "resist_ranged",
         "Name": "Resist Range",
-        "Description": "Significantly reduces ranged damage by physical 50% TODO SEE IF THIS IS TOO MUCH",
+        "Description": "Significantly reduces ranged damage by physical 50%.",
         "MaxUpgrades": 2,
         "Level": 2,
         "Prerequisites": ["block"],
@@ -71,7 +71,7 @@
       {
         "Id": "sword",
         "Name": "Sword",
-        "Description": "A simple melee attack targeting a single enemy. +25% melee damage per upgrade",
+        "Description": "A simple melee attack targeting a single enemy. +30% damage per upgrade",
         "MaxUpgrades": 3,
         "Level": 1,
         "Prerequisites": [],
@@ -80,7 +80,7 @@
       {
         "Id": "slash",
         "Name": "Slash",
-        "Description": "A strong melee attack targeting a single enemy. +20% melee damage per upgrade",
+        "Description": "A strong melee attack targeting a single enemy. +25% damage per upgrade",
         "MaxUpgrades": 1,
         "Level": 2,
         "Prerequisites": ["sword"],
@@ -90,7 +90,7 @@
       {
         "Id": "cross_slash",
         "Name": "Cross Slash",
-        "Description": "A strong melee attack targeting multiple enemies. +20% damage per upgrade",
+        "Description": "A strong melee attack targeting multiple enemies. +25% damage per upgrade",
         "MaxUpgrades": 1,
         "Level": 2,
         "Prerequisites": ["sword"],
@@ -100,7 +100,7 @@
       {
         "Id": "whirlwind",
         "Name": "Whirlwind",
-        "Description": "A flurry of melee attacks targeting multiple enemies. Increases speed of user",
+        "Description": "A flurry of melee attacks targeting multiple enemies. Increases speed",
         "MaxUpgrades": 1,
         "Level": 3,
         "Prerequisites": ["cross_slash"],
@@ -110,7 +110,7 @@
       {
         "Id": "brave_slash",
         "Name": "Brave Slash",
-        "Description": "A focused and powerful melee attack targeting a single enemy. Increases defense of user",
+        "Description": "A focused and powerful melee attack targeting a single enemy. Increases defense",
         "MaxUpgrades": 1,
         "Level": 3,
         "Prerequisites": ["slash"],
@@ -125,7 +125,7 @@
       {
         "Id": "fireball",
         "Name": "Fireball",
-        "Description": "Enables fire magic attacks. +20% fire damage per upgrade",
+        "Description": "Enables fire magic attacks. +50% fire damage per upgrade",
         "MaxUpgrades": 3,
         "Level": 1,
         "Prerequisites": [],
@@ -135,7 +135,7 @@
       {
         "Id": "water",
         "Name": "Water",
-        "Description": "Enables water magic attacks. +20% water damage per upgrade",
+        "Description": "Enables water magic attacks. +50% water damage per upgrade",
         "MaxUpgrades": 3,
         "Level": 1,
         "Prerequisites": [],
@@ -145,7 +145,7 @@
       {
         "Id": "leaf",
         "Name": "Leaf",
-        "Description": "Enables leaf magic attacks. +20% leaf damage per upgrade",
+        "Description": "Enables leaf magic attacks. +50% leaf damage per upgrade",
         "MaxUpgrades": 3,
         "Level": 1,
         "Prerequisites": [],
@@ -165,7 +165,7 @@
       {
         "Id": "cannon",
         "Name": "Cannon",
-        "Description": "Makes magic attacks more effective against single enemies. +30% damage",
+        "Description": "Makes magic attacks more effective against single enemies. +35% damage",
         "MaxUpgrades": 1,
         "Prerequisites": ["fireball", "water", "leaf"],
         "PrerequisiteType": "or",
@@ -175,7 +175,7 @@
       {
         "Id": "enchant",
         "Name": "Enchant",
-        "Description": "Allows sword to break through elemental shields, but also does 0 damage. Uses whatever element is unlocked",
+        "Description": "Lets sword attacks break elemental shields based on previous element, deals 0 dmg.",
         "MaxUpgrades": 1,
         "Prerequisites": ["fireball", "water", "leaf"],
         "PrerequisiteType": "or",
@@ -212,7 +212,7 @@
       {
         "Id": "bow",
         "Name": "Bow",
-        "Description": "A quick ranged attack targeting a single enemy.",
+        "Description": "A quick ranged attack targeting a single enemy. +25% damage per upgrade",
         "MaxUpgrades": 3,
         "Level": 1,
         "Prerequisites": [],

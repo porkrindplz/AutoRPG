@@ -17,7 +17,7 @@ MonoBehaviour:
   maxMagic: 10
   baseAtk: 9
   baseDef: 9
-  baseMagicAtk: 0
+  baseMagicAtk: 6
   speed: 35
   actions: 0000000005000000
   actionWeights:
