@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bow
   m_EditorClassIdentifier: 
   Name: 1
-  TimeToExecute: 3.5
+  TimeToExecute: 3
   QueueIcon: {fileID: 21300000, guid: 5844de6eb39dd450a97ad57ac859cde5, type: 3}
   Element: 0
   AttackGroupType: 1
