@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Balloon Mouse
   m_EditorClassIdentifier: 
   name: Balloon Mouse
-  maxHealth: 1500
+  maxHealth: 1300
   maxMagic: 10
-  baseAtk: 10
+  baseAtk: 8
   baseDef: 5
   baseMagicAtk: 0
   speed: 50

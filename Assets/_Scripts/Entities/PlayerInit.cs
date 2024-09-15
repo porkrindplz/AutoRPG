@@ -27,7 +27,7 @@ public class PlayerInit : MonoBehaviour
                     CurrentMagic = 25,
                     MaxMagic = 25,
                     BaseAtk = 10,
-                    BaseMagicAtk = 7,
+                    BaseMagicAtk = 8,
                     BaseDef = 5,
                     Speed = 65,
                     ReceivedModifiers = new ModifierChart(),

@@ -31,7 +31,6 @@
         "Name": "Resist Range",
         "Description": "Significantly reduces ranged damage by physical 50%.",
         "MaxUpgrades": 2,
-        "Level": 2,
         "Prerequisites": ["block"],
         "Children": ["mega_block"],
         "ExclusiveWith": ["resist_physical"]

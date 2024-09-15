@@ -21,8 +21,8 @@ MonoBehaviour:
   speed: 50
   actions: 0000000010000000
   actionWeights:
-  - 4
-  - 0.75
+  - 5
+  - 0.5
   sprite: {fileID: 21300000, guid: 43e7b6afd555646caad1d587d5dcb516, type: 3}
   Modifiers:
     Melee: 4

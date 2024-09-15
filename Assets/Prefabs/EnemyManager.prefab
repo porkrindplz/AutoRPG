@@ -165,6 +165,18 @@ MonoBehaviour:
     TimeForNutLoss: 110
   - EnemySets:
     - NextEnemy: -1
+      EnemyName: Beetle
+      StateChangeType: 0
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 0
+      HitGroupType: 0
+    ShareHp: 0
+    SkillPointRewarded: 0
+    MinNutsWon: 50
+    TimeForNutLoss: 20
+  - EnemySets:
+    - NextEnemy: -1
       EnemyName: Hummingbird
       StateChangeType: 0
       Timer: 0
@@ -200,7 +212,7 @@ MonoBehaviour:
     ShareHp: 0
     SkillPointRewarded: 1
     MinNutsWon: 500
-    TimeForNutLoss: 60
+    TimeForNutLoss: 120
   - EnemySets:
     - NextEnemy: 1
       EnemyName: Leaf Snake
@@ -226,4 +238,4 @@ MonoBehaviour:
     ShareHp: 1
     SkillPointRewarded: 1
     MinNutsWon: 1000
-    TimeForNutLoss: 75
+    TimeForNutLoss: 180

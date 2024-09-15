@@ -15,10 +15,10 @@ MonoBehaviour:
   name: Hummingbird
   maxHealth: 650
   maxMagic: 0
-  baseAtk: 15
+  baseAtk: 10
   baseDef: 5
   baseMagicAtk: 7
-  speed: 85
+  speed: 77
   actions: 010000000c0000000600000005000000
   actionWeights:
   - 3
