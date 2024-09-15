@@ -45,7 +45,16 @@ namespace _Scripts.UI
         {
             GameManager.Instance.OnBeforeGameStateChanged += OnGameStateChanged;
             GameManager.Instance.OnUpgraded += OnUpgrade;
+            EnemyManager.Instance.OnEnemySpawned += OnEnemySpawned;
 
+        }
+
+        void OnEnemySpawned(Enemy enemy)
+        {
+            if (EnemyManager.Instance.GetCurrentGroup().GetCurrentEnemy() == "Beetle King")
+            {
+                ShowTutorial(4);
+            }
         }
         
         void OnGameStateChanged(EGameState prevState, EGameState state)
@@ -86,11 +95,11 @@ namespace _Scripts.UI
                         return;
                     }
                 }
-
-                if (EnemyManager.Instance.GetCurrentGroup().GetCurrentEnemy() == "Beetle King")
-                {
-                    ShowTutorial(4);
-                }
+                //
+                // if (EnemyManager.Instance.GetCurrentGroup().GetCurrentEnemy() == "Beetle King")
+                // {
+                //     ShowTutorial(4);
+                // }
             }
         }
 

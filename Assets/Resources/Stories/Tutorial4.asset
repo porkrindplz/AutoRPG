@@ -16,7 +16,7 @@ MonoBehaviour:
   <Pages>k__BackingField:
   - text: "Some enemies cast a strong Elemental Shield that nullifies all attacks.\n\nEnchant
       your Sword with the Element that is strong against the Elemental Shield type.
-      Unlock Fireball and Enchant in the Staff tab. Then make sure you have a sword
-      attack. \n\nThis will break the shield but will do no damage on its own."
+      Then make sure you have a sword attack. \n\nThis will break the shield but
+      will do no damage on its own."
     image: {fileID: 0}
   <NextState>k__BackingField: 3

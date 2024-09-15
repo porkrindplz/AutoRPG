@@ -131,7 +131,7 @@ namespace _Scripts.Models
         
         public Upgrade? TryUpgrade(string id)
         {
-            if (!CanUpgrade(id)|| !active)
+            if (!CanUpgrade(id))
             {
                 return null;
             }
