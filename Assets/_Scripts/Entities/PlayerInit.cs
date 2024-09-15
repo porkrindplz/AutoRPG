@@ -68,10 +68,15 @@ public class PlayerInit : MonoBehaviour
 
         GameManager.Instance.OnResetTree += tree =>
         {
-            if (tree.Name != "Shield") return;
-            playerEntity.Entity.ReceivedModifiers.Water = ModifierType.Neutral;
-            playerEntity.Entity.ReceivedModifiers.Fire = ModifierType.Neutral;
-            playerEntity.Entity.ReceivedModifiers.Water = ModifierType.Neutral;
+            if (tree.Name == "Shield")
+            {
+                playerEntity.Entity.ReceivedModifiers.Water = ModifierType.Neutral;
+                playerEntity.Entity.ReceivedModifiers.Fire = ModifierType.Neutral;
+                playerEntity.Entity.ReceivedModifiers.Leaf = ModifierType.Neutral;
+                playerEntity.Entity.ReceivedModifiers.Melee = ModifierType.Neutral;
+                playerEntity.Entity.ReceivedModifiers.Ranged = ModifierType.Neutral;
+                playerEntity.Entity.ReceivedModifiers.Aoe = ModifierType.Neutral;
+            }
         };
 
     }
