@@ -34,7 +34,7 @@ namespace _Scripts.Network
                 }
                 else
                 {
-                    Logger.Log("Could not start session");
+                    Debug.LogError("Could not start session");
                     done = true;
                 }
             });

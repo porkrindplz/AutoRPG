@@ -285,6 +285,7 @@ public class GameManager : Singleton<GameManager>
     {
         PlayStats.AddVictory();
         PlayStats.UpdateTimePlayed();
+        PlayStats.UpdateNuts(Player.Entity.Nuts);
         TransmitPlayStats();
         DisableAllInput();
         StartCoroutine(EnemyDefeatedSequence());
@@ -309,10 +310,10 @@ public class GameManager : Singleton<GameManager>
     }
     IEnumerator PlayerDefeatedSequence()
     {
-        yield return StartCoroutine(LeaderboardSubmission());
+        yield return StartCoroutine(Leaderboard.SubmitAndFetchRoutine(PlayStats.MostNuts));
+        Leaderboard.gameObject.SetActive(true);
         yield return new WaitForSeconds(1);
         GameOverPanel.gameObject.SetActive(true);
-
     }
 
     private void HandleWalking()
@@ -340,18 +341,11 @@ public class GameManager : Singleton<GameManager>
 
     private void HandleCredits()
     {
-        StartCoroutine(LeaderboardSubmission());
         if(ScreenFade.Instance.GetComponent<Image>().color.a > 0)
             ScreenFade.Instance.FadeIn(1);
-
-    }
-    public IEnumerator LeaderboardSubmission()
-    {
         Leaderboard.gameObject.SetActive(true);
-        yield return StartCoroutine(Leaderboard.SubmitScoreRoutine(PlayStats.MostNuts));
-        ChangeGameState(EGameState.MainMenu);
+        StartCoroutine(Leaderboard.SubmitAndFetchRoutine(PlayStats.MostNuts));
     }
-    
 
     private void DisableAllInput()
     {

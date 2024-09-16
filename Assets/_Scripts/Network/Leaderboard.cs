@@ -16,6 +16,12 @@ namespace _Scripts.Network
         [SerializeField] TextMeshProUGUI playerScores;
         [SerializeField] private TextMeshProUGUI currentPlayerPlacement;
  
+        public IEnumerator SubmitAndFetchRoutine(int score)
+        {
+            yield return SubmitScoreRoutine(score);
+            yield return FetchHighScoresRoutine();
+            yield return FetchCurrentPlayerPlacement();
+        }
         public IEnumerator SubmitScoreRoutine(int score)
         {
             bool done = false;
@@ -29,7 +35,7 @@ namespace _Scripts.Network
                 }
                 else
                 {
-                    Logger.Log($"Failed. + {response.errorData}");
+                    Debug.LogWarning($"Failed. + {response.errorData}");
                     done = true;
                 }
             });

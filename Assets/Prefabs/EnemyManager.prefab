@@ -72,6 +72,18 @@ MonoBehaviour:
     TimeForNutLoss: 20
   - EnemySets:
     - NextEnemy: -1
+      EnemyName: Snowmen
+      StateChangeType: 0
+      Timer: 0
+      HealthPercentage: 0
+      HitCount: 0
+      HitGroupType: 0
+    ShareHp: 0
+    SkillPointRewarded: 0
+    MinNutsWon: 75
+    TimeForNutLoss: 25
+  - EnemySets:
+    - NextEnemy: -1
       EnemyName: Beetles
       StateChangeType: 0
       Timer: 0
@@ -94,18 +106,6 @@ MonoBehaviour:
     SkillPointRewarded: 0
     MinNutsWon: 10
     TimeForNutLoss: 15
-  - EnemySets:
-    - NextEnemy: -1
-      EnemyName: Snowmen
-      StateChangeType: 0
-      Timer: 0
-      HealthPercentage: 0
-      HitCount: 0
-      HitGroupType: 0
-    ShareHp: 0
-    SkillPointRewarded: 0
-    MinNutsWon: 75
-    TimeForNutLoss: 25
   - EnemySets:
     - NextEnemy: 1
       EnemyName: Flame Beetles

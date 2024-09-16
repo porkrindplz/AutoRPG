@@ -45,6 +45,6 @@ public class MainMenuPanel : MonoBehaviour
     void OpenLeaderboard()
     {
         GameManager.Instance.Leaderboard.gameObject.SetActive(true);
-        StartCoroutine(GameManager.Instance.LeaderboardSubmission());
+        StartCoroutine(GameManager.Instance.Leaderboard.SubmitAndFetchRoutine(GameManager.Instance.PlayStats.MostNuts));
     }
 }
