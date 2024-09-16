@@ -254,7 +254,6 @@ public class GameManager : Singleton<GameManager>
         //Load Enemy
         Logger.Log("Handle Setup");
         AllTrees.Reset();
-
         StartCoroutine(SetupSequence());
     }
 
@@ -310,9 +309,10 @@ public class GameManager : Singleton<GameManager>
     }
     IEnumerator PlayerDefeatedSequence()
     {
+        yield return StartCoroutine(LeaderboardSubmission());
         yield return new WaitForSeconds(1);
         GameOverPanel.gameObject.SetActive(true);
-        StartCoroutine(LeaderboardSubmission());
+
     }
 
     private void HandleWalking()
@@ -340,15 +340,16 @@ public class GameManager : Singleton<GameManager>
 
     private void HandleCredits()
     {
+        StartCoroutine(LeaderboardSubmission());
         if(ScreenFade.Instance.GetComponent<Image>().color.a > 0)
             ScreenFade.Instance.FadeIn(1);
-        StartCoroutine(LeaderboardSubmission());
-        ChangeGameState(EGameState.MainMenu);
+
     }
     public IEnumerator LeaderboardSubmission()
     {
         Leaderboard.gameObject.SetActive(true);
         yield return StartCoroutine(Leaderboard.SubmitScoreRoutine(PlayStats.MostNuts));
+        ChangeGameState(EGameState.MainMenu);
     }
     
 
