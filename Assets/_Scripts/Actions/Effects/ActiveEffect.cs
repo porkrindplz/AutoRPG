@@ -9,7 +9,9 @@ namespace _Scripts.Actions.Effects
         Block,
         ShieldWater,
         ShieldFire,
-        ShieldLeaf
+        ShieldLeaf,
+        Honey,
+        Smoke
     }
     
     public class ActiveEffect

@@ -14,7 +14,13 @@ namespace _Scripts.Models
 
         public override double GetSpeed()
         {
-            return Speed + StatConstants.Instance.SpeedForWhirlwind * GameManager.Instance.AllTrees.Sword.GetUpgradeLevel("whirlwind");
+            var speed = Speed + StatConstants.Instance.SpeedForWhirlwind * GameManager.Instance.AllTrees.Sword.GetUpgradeLevel("whirlwind");
+            if (GameManager.Instance.IsAutoBattle)
+            {
+                speed = (int)(speed * 0.75f);
+            }
+
+            return speed;
         }
     }
 }

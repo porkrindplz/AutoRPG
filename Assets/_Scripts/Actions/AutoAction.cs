@@ -30,9 +30,7 @@ public class AutoAction : MonoBehaviour
     public Queue<IGameAction> ActionQueue;
 
     private EnemyAI enemyAi;
-    
     private double _timer;
-    
     private double _nutTimer;
     private int _nutUpdateInterval = 5;
     private double _nutsLostPerUpdateInterval;

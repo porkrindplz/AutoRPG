@@ -86,14 +86,15 @@ public class GameManager : Singleton<GameManager>
 
     public Action OnSkillPointGain;
     
-    public Dictionary<AttackType, GameAction> AllActions { get; set; }
-    
     /// <summary>
     ///  Emitted anytime deez nuts are updated
     /// </summary>
     public Action<Entity,int> OnNutsChanged;
+
+    public bool IsAutoBattle;
     
-    public AutoAction AutoAction;
+    public Dictionary<AttackType, GameAction> AllActions { get; set; }
+    
     public EnemyManager EnemyManager;
 
     public AllTrees AllTrees;
@@ -337,6 +338,11 @@ public class GameManager : Singleton<GameManager>
     {
         StoryPanel.gameObject.SetActive(true);
         
+    }
+
+    public void ToggleAutoBattle()
+    {
+        IsAutoBattle = !IsAutoBattle;
     }
 
     private void HandleCredits()

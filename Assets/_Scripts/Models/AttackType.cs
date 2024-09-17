@@ -21,7 +21,9 @@ namespace _Scripts.Models
         ShieldFire,
         ShieldWater,
         ShieldLeaf,
-        None
+        None,
+        Honey,
+        Smoke
     }
 
     public enum AttackGroupType
