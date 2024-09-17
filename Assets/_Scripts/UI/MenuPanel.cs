@@ -27,6 +27,9 @@ public class MenuPanel : MonoBehaviour
 
     [SerializeField] private Button ResetTreeButton;
     [SerializeField] private TextMeshProUGUI SkillPointText;
+
+    [SerializeField] private Material resetInit;
+    [SerializeField] private Material resetButtonGlow;
     
     private int openPanelId;
 
@@ -86,7 +89,15 @@ public class MenuPanel : MonoBehaviour
     void UpdateSkillText()
     {
         var player = (Player)GameManager.Instance.Player.Entity;
-        SkillPointText.text = $"Skill Points: {player.UsedSkillPoints} / {player.MaxSkillPoints}";
+        SkillPointText.text = $"Remaining Points: {player.MaxSkillPoints-player.UsedSkillPoints} / {player.MaxSkillPoints}";
+        if (player.UsedSkillPoints >= player.MaxSkillPoints)
+        {
+            ResetTreeButton.GetComponent<Image>().material = resetButtonGlow;
+        }
+        else
+        {
+            ResetTreeButton.GetComponent<Image>().material = resetInit;
+        }
     }
 
     public void SelectPanel(EMenuPanel panel)
