@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6636744615553439560}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 524.97504, y: 307.81693, z: -1.468017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7eeb23808b59364b8b19d023251ad08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AutoAction: {fileID: 0}
+  IsAutoBattle: 0
+  IsCountdownEnabled: 0
   EnemyManager: {fileID: 0}
   AllTrees:
     Sword:
@@ -66,5 +67,6 @@ MonoBehaviour:
   VictoryPanel: {fileID: 0}
   GameOverPanel: {fileID: 0}
   StoryPanel: {fileID: 0}
+  Leaderboard: {fileID: 0}
   <Player>k__BackingField: {fileID: 0}
   <CurrentGameState>k__BackingField: 0

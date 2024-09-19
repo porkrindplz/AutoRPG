@@ -23,7 +23,8 @@ namespace _Scripts.Models
         ShieldLeaf,
         None,
         Honey,
-        Smoke
+        Smoke,
+        Dodge
     }
 
     public enum AttackGroupType

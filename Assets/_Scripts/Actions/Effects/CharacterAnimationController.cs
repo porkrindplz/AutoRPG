@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using _Scripts.Actions;
+using _Scripts.Actions.Effects;
 using _Scripts.Entities;
 using _Scripts.Models;
 using UnityEngine;
@@ -11,6 +12,8 @@ using Logger = _Scripts.Utilities.Logger;
 public class CharacterAnimationController : MonoBehaviour
 {
 
+    [SerializeField] private Image honeyEffectImage;
+    [SerializeField] private Image smokeEffectImage;
     public RectTransform EntityImageRect;
     private Animator animator;
     private EntityBehaviour entity;
@@ -18,10 +21,24 @@ public class CharacterAnimationController : MonoBehaviour
     Color takeDamageColor = Color.red;
     Color defaultColor = Color.white;
 
-    private void Awake()    
+    private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
         entity = GetComponent<EntityBehaviour>();
+        entity.OnActiveEffectChanged += EntityOnActiveEffectChanged;
+    }
+
+    private void EntityOnActiveEffectChanged()
+    {
+        if (honeyEffectImage != null)
+        {
+            honeyEffectImage.enabled = entity.HasActiveEffect(ActiveEffectType.Honey);    
+        }
+
+        if (smokeEffectImage != null)
+        {
+            smokeEffectImage.enabled = entity.HasActiveEffect(ActiveEffectType.Smoke);
+        }
     }
 
     private void OnEnable()

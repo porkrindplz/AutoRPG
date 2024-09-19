@@ -92,6 +92,7 @@ public class GameManager : Singleton<GameManager>
     public Action<Entity,int> OnNutsChanged;
 
     public bool IsAutoBattle;
+    public bool IsCountdownEnabled;
     
     public Dictionary<AttackType, GameAction> AllActions { get; set; }
     
@@ -343,6 +344,11 @@ public class GameManager : Singleton<GameManager>
     public void ToggleAutoBattle()
     {
         IsAutoBattle = !IsAutoBattle;
+    }
+
+    public void ToggleCountdownTimer()
+    {
+        IsCountdownEnabled = !IsCountdownEnabled;
     }
 
     private void HandleCredits()
