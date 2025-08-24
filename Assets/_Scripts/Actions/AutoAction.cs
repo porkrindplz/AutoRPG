@@ -155,6 +155,7 @@ public class AutoAction : MonoBehaviour
         StartCoroutine(DelaySoundPlay(takenAction.GameAction.SoundEffects));
         yield return new WaitForSeconds(animationTime);
         
+        
         processedAction?.Interact(currentEntity, actee);
 
         if (takenAction.GameAction.Name is AttackType.ShieldFire)

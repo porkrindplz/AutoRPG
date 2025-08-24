@@ -80,12 +80,17 @@ namespace __Scripts.Systems
         [SerializeField] private AudioClip[] _fireSounds;
         [SerializeField] private AudioClip[] _iceSounds;
         [SerializeField] private AudioClip[] _waterSounds;
+        [SerializeField] private AudioClip[] _leafSounds;
         [SerializeField] private AudioClip[] _earthSounds;
         [SerializeField] private AudioClip[] _poisonSounds;
         [SerializeField] private AudioClip[] _electricSounds;
         [SerializeField] private AudioClip[] _swordSounds;
         [SerializeField] private AudioClip[] _shieldSounds;
         [SerializeField] private AudioClip[] _bowSounds;
+
+        [SerializeField] private AudioClip[] _playerDeath;
+        [SerializeField] private AudioClip[] _targetHit;
+        [SerializeField] private AudioClip[] _enemyDeath;
         
 
         private void OnEnable()
@@ -556,6 +561,12 @@ namespace __Scripts.Systems
                 case ElementsType.Fire:
                     PlaySound(_fireSounds,1,false);
                     break;
+                case ElementsType.Water:
+                    PlaySound(_waterSounds,1,false);
+                    break;
+                case ElementsType.Leaf:
+                    PlaySound(_leafSounds,1,false);
+                    break;
             }
         }
         public void PlayWeaponSound(WeaponsType type)
@@ -572,6 +583,20 @@ namespace __Scripts.Systems
                     PlaySound(_bowSounds,1,false);
                     break;
             }
+        }
+
+        public void PlayTargetHit()
+        {
+            PlaySound(_targetHit);
+        }
+
+        public void PlayEnemyDeath()
+        {
+            PlaySound(_enemyDeath);
+        }
+        public void PlayPlayerDeath()
+        {
+            PlaySound(_playerDeath);
         }
     }
 }

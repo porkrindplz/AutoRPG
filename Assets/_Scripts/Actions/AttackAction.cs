@@ -1,4 +1,5 @@
 using System;
+using __Scripts.Systems;
 using _Scripts.Actions.Effects;
 using _Scripts.Entities;
 using _Scripts.Managers;
@@ -127,9 +128,23 @@ namespace _Scripts.Actions
 
         private void HandleEnemyShieldCast(EntityBehaviour actor)
         {
-            if (AttackType == AttackType.ShieldFire) actor.Entity.ActiveEffects.Add(new ActiveEffect(ActiveEffectType.ShieldFire, 100000));
-            if (AttackType == AttackType.ShieldLeaf) actor.Entity.ActiveEffects.Add(new ActiveEffect(ActiveEffectType.ShieldLeaf, 100000));
-            if (AttackType == AttackType.ShieldWater) actor.Entity.ActiveEffects.Add(new ActiveEffect(ActiveEffectType.ShieldWater, 100000));
+            AudioSystem.Instance.PlayWeaponSound(WeaponsType.Shield);
+
+            switch (AttackType)
+            {
+                case AttackType.ShieldFire:
+                    AudioSystem.Instance.PlayElementalSound(ElementsType.Fire);
+                    if (AttackType == AttackType.ShieldFire) actor.Entity.ActiveEffects.Add(new ActiveEffect(ActiveEffectType.ShieldFire, 100000));
+                    break;
+                case AttackType.Leaf:
+                    AudioSystem.Instance.PlayElementalSound(ElementsType.Leaf);
+                    if (AttackType == AttackType.ShieldLeaf) actor.Entity.ActiveEffects.Add(new ActiveEffect(ActiveEffectType.ShieldLeaf, 100000));
+                    break;
+                case AttackType.Water:
+                    AudioSystem.Instance.PlayElementalSound(ElementsType.Water);
+                    if (AttackType == AttackType.ShieldWater) actor.Entity.ActiveEffects.Add(new ActiveEffect(ActiveEffectType.ShieldWater, 100000));
+                    break;
+            }
         }
 
         private double GetUpgradeModifier(Entity actor, Entity actee)

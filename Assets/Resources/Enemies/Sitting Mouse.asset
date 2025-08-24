@@ -35,3 +35,4 @@ MonoBehaviour:
     Lightning: 3
     Shadow: 4
   startingAction: 0
+  AnimOverride: {fileID: 22100000, guid: e52df71e86ad5fe4396ca2ae51986a18, type: 2}

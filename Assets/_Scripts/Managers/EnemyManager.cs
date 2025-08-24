@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using __Scripts.Systems;
 using _Scripts.Entities;
 using _Scripts.Entities.EnemyAIs;
 using _Scripts.Models;
@@ -8,6 +9,7 @@ using _Scripts.Utilities;
 using Unity.VisualScripting;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using Logger = _Scripts.Utilities.Logger;
 using Random = System.Random;
 
@@ -145,7 +147,12 @@ namespace _Scripts.Managers
             
             
             enemyPanel.GetComponent<EntityBehaviour>().Entity = newEnemyStats;
-            enemyPanel.GetComponent<CharacterAnimationController>().EntityImageRect.GetComponent<Image>().sprite = newEnemyStats.Sprite;
+            
+            CharacterAnimationController animCtrl = enemyPanel.GetComponent<CharacterAnimationController>();
+            animCtrl.animator.runtimeAnimatorController =
+                newEnemyStats.AnimOverride;
+           animCtrl.EntityImageRect.GetComponent<Image>().sprite = newEnemyStats.Sprite;
+            animCtrl.EntityImageRect.GetComponent<EnemyUIFixer>().SetEnemySprite(newEnemyStats.Sprite);
 
             //DestroyImmediate(enemyPanel.GetComponent<EnemyAI>());
 
@@ -215,6 +222,7 @@ namespace _Scripts.Managers
 
         private void OnEnemyDeath(Entity entity)
         { 
+            AudioSystem.Instance.PlayEnemyDeath();
             CurrentEnemy.GetComponent<CharacterAnimationController>().DeathAnimation(entity);
             
             // Go to next enemy, if -1 then we have defeated enemy
@@ -262,7 +270,8 @@ namespace _Scripts.Managers
                      ActionWeights = data.actionWeights,
                      ReceivedModifiers = data.Modifiers,
                      Upgrades = new List<Upgrade>(),
-                     Sprite = data.sprite
+                     Sprite = data.sprite,
+                     AnimOverride = data.AnimOverride
                 };
                 _allEnemies.Add(enemy);
             }

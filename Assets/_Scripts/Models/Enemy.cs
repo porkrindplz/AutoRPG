@@ -12,6 +12,7 @@ namespace _Scripts.Models
         public List<AttackType> Actions;
         public List<double> ActionWeights;
         public Sprite Sprite;
+        public AnimatorOverrideController AnimOverride;
         public AttackType FirstAction;
 
         /// <summary>
@@ -38,7 +39,8 @@ namespace _Scripts.Models
                 Actions = Actions,
                 ActionWeights = ActionWeights,
                 Sprite = Sprite,
-                FirstAction =  FirstAction
+                FirstAction =  FirstAction,
+                AnimOverride = AnimOverride
             };
         }
     }

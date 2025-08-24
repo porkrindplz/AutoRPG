@@ -20,5 +20,6 @@ namespace _Scripts.Entities
         public Sprite sprite;
         public ModifierChart Modifiers;
         public AttackType startingAction;
+        public AnimatorOverrideController AnimOverride;
     }
 }

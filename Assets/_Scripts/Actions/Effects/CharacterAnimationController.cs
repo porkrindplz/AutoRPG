@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using __Scripts.Systems;
 using _Scripts.Actions;
 using _Scripts.Actions.Effects;
 using _Scripts.Entities;
@@ -15,7 +17,7 @@ public class CharacterAnimationController : MonoBehaviour
     [SerializeField] private Image honeyEffectImage;
     [SerializeField] private Image smokeEffectImage;
     public RectTransform EntityImageRect;
-    private Animator animator;
+    [SerializeField]public Animator animator;
     private EntityBehaviour entity;
     
     Color takeDamageColor = Color.red;
@@ -44,6 +46,11 @@ public class CharacterAnimationController : MonoBehaviour
     private void OnEnable()
     {
         
+  
+    }
+
+    private void Start()
+    {
         GameManager.Instance.OnAction += ActeeHitAnimation;
     }
 
@@ -65,7 +72,7 @@ public class CharacterAnimationController : MonoBehaviour
         }
         else if(type.Contains("Block")/*||type.Contains("Shield")*/)
         {
-            animator.SetTrigger("OnBlock");
+           // animator.SetTrigger("OnBlock");
         }
         else animator.SetTrigger("OnAttack");
 
@@ -88,9 +95,11 @@ public class CharacterAnimationController : MonoBehaviour
         
         string type = action.GameAction.Name.ToString();
         Logger.Log("Type: " + type);
-        if(action is AttackAction attackAction)
+        if(action is AttackAction)
         {
-            if (action.GameAction.IsSelfTargetting)
+            if(actee.Entity.ActiveEffects.Count>0 &&
+               (actee.Entity.ActiveEffects.Any(x => x.ActiveEffectType == ActiveEffectType.Block) ||
+                actee.Entity.ActiveEffects.Any(x => x.ActiveEffectType.ToString().Contains("Shield"))))
             {
                 animator.SetTrigger("OnBlock");
             }
@@ -98,9 +107,10 @@ public class CharacterAnimationController : MonoBehaviour
             {
                 animator.SetTrigger("OnHit");
             }
+            AudioSystem.Instance.PlayTargetHit();
+
         }
-        else if(action is BlockAction blockAction)
-            animator.SetTrigger("OnBlock");
+        
 
         
     }

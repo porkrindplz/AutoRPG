@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using __Scripts.Systems;
 using _Scripts.Entities;
 using _Scripts.Models;
 using UnityEngine;
@@ -87,6 +88,7 @@ public class PlayerInit : MonoBehaviour
         GameManager.Instance.PlayStats.UpdateTimePlayed();
         GameManager.Instance.TransmitPlayStats();
 
+        AudioSystem.Instance.PlayPlayerDeath();
         AnimationController.DeathAnimation(playerEntity.Entity);
         StoryManager.Instance.SetStory(StoryType.GameOver);
         GameManager.Instance.ChangeGameState(EGameState.Story);
